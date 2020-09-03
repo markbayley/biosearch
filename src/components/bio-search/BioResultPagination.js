@@ -10,7 +10,6 @@ import {
   PaginationItem,
   PaginationLink,
   Button,
-  Input, Dropdown,
 } from "reactstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { updateFilterAction, fetchSearchAction } from "../../store/reducer";
