@@ -129,8 +129,9 @@ const BioResultPagination = ({ page_size, page_num, totalDocuments }) => {
   return (
     <div>
       <Row className="pagination-row">
-        <Pagination className="pagination" size="md">
-          <UncontrolledDropdown className="pageitems">
+        <Pagination className="pagination" size="sm">
+          {/* TODO: Images per page and Sort Order should probably not be part of pagination control. */}
+          <UncontrolledDropdown className="pageitems" size="sm">
             Images:
             {" "}
             <DropdownToggle
@@ -154,7 +155,7 @@ const BioResultPagination = ({ page_size, page_num, totalDocuments }) => {
             </DropdownMenu>
           </UncontrolledDropdown>
           <div className="mobile-pagination">
-            <UncontrolledDropdown className="pageitems">
+            <UncontrolledDropdown className="pageitems" size="sm">
               Sort Order:
               {" "}
               <DropdownToggle
@@ -208,10 +209,11 @@ const BioResultPagination = ({ page_size, page_num, totalDocuments }) => {
           <PaginationItem onClick={(e) => changePage(pages, e)}>
             <PaginationLink last title="Last" />
           </PaginationItem>
+          {/* TODO: page_size / totlaDocuments a Button? ... what should happen on click? */}
           <Button
             className="page-items"
             color="flat"
-            size="md"
+            size="sm"
             style={{ marginLeft: "10px", fontSize: "16px" }}
           >
             {/* Showing
