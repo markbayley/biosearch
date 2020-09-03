@@ -4,7 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useDispatch, useSelector } from "react-redux";
 import { get } from "lodash";
 import moment from "moment";
-import { Container, Row } from "reactstrap";
+import { Container, Row, Col } from "reactstrap";
 import {
   updateFilterAction,
   fetchFacetsAction,
@@ -49,26 +49,30 @@ const ReactDateRangeFacet = () => {
     return value;
   };
 
-  const handleOnDateChange = (date, startOrEnd) => {
+  const handleOnDateChange = (date, range) => {
     let fDate = "";
     if (date) {
       fDate = moment(date).format("YYYY-MM-DD");
     }
-    if (startOrEnd === "start") {
-      const endDate = toApiDate(fEnd);
-      dispatch(
-        updateFilterAction({
-          date_range: { [startOrEnd]: fDate, end: endDate },
-        }),
-      );
+
+    let otherDate = null;
+    const dateRange = { start: "", end: "" };
+    if (range === "start") {
+      otherDate = toApiDate(fEnd);
+      dateRange.start = fDate;
+      dateRange.end = otherDate;
     } else {
-      const startDate = toApiDate(fStart);
-      dispatch(
-        updateFilterAction({
-          date_range: { [startOrEnd]: fDate, start: startDate },
-        }),
-      );
+      otherDate = toApiDate(fStart);
+      dateRange.start = otherDate;
+      dateRange.end = fDate;
     }
+
+    dispatch(
+      updateFilterAction({
+        date_range: { ...dateRange },
+      }),
+    );
+
     dispatch(fetchFacetsAction());
     dispatch(fetchSearchAction());
   };
@@ -85,8 +89,8 @@ const ReactDateRangeFacet = () => {
       >
         Date Range
       </h6>
-      <Container>
-        <Row xs="2">
+      <Row sx="2">
+        <Col sm="5" sm={{ size: "5", offset: 0 }} style={{ marginLeft: 3, marginBottom: 2 }}>
           <DatePicker
             selected={fStart}
             minDate={start_range.min}
@@ -100,6 +104,8 @@ const ReactDateRangeFacet = () => {
             placeholderText="From"
             isClearable
           />
+        </Col>
+        <Col sm="3" sm={{ size: "5", offset: 1 }} style={{ paddingLeft: 1 }}>
           <DatePicker
             selected={fEnd}
             minDate={end_range.min}
@@ -113,8 +119,8 @@ const ReactDateRangeFacet = () => {
             placeholderText="To"
             isClearable
           />
-        </Row>
-      </Container>
+        </Col>
+      </Row>
     </div>
   );
 };

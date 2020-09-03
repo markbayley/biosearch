@@ -40,6 +40,7 @@ export function fetchFavourites() {
 
 export function fetchSearch(params) {
   // Where we're fetching data from
+  console.log("params=", params);
   return callAPI({
     url: "search",
     params,
