@@ -57,12 +57,8 @@ function filtersToParams(filters) {
       }
     } else if (key === "date_range") {
       // start and end date query params
-      if (value.start) {
-        // params.date_from = value.start.format("YYYY-MM-DD");
+      if (value.start && value.end) {
         params.date_from = value.start;
-      }
-      if (value.end) {
-        // params.date_to = value.end.format("YYYY-MM-DD");
         params.date_to = value.end;
       }
     } else if (key === "pagination") {

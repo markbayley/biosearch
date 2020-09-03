@@ -24,8 +24,8 @@ const ReactDateRangeFacet = () => {
     date_max = new Date(date_max);
   }
 
-  let fStart = new Date();
-  let fEnd = new Date();
+  let fStart = null;
+  let fEnd = null;
   if (start) {
     fStart = new Date(start);
   }
@@ -46,12 +46,14 @@ const ReactDateRangeFacet = () => {
     if (value) {
       return moment(value).format("YYYY-MM-DD");
     }
-    return moment().format("YYYY-MM-DD");
+    return value;
   };
 
   const handleOnDateChange = (date, startOrEnd) => {
-    const fDate = moment(date).format("YYYY-MM-DD");
-
+    let fDate = "";
+    if (date) {
+      fDate = moment(date).format("YYYY-MM-DD");
+    }
     if (startOrEnd === "start") {
       const endDate = toApiDate(fEnd);
       dispatch(
@@ -67,10 +69,16 @@ const ReactDateRangeFacet = () => {
         }),
       );
     }
-    // update facets
-    dispatch(fetchFacetsAction());
-    // trigger search
-    dispatch(fetchSearchAction());
+
+    // NB: Only update facets and perform a search
+    // if both dates have been filled in! User could have just cleared the
+    // date fields.
+    if ((fDate && fStart) || (fDate && fEnd)) {
+      dispatch(fetchFacetsAction());
+      dispatch(fetchSearchAction());
+    } else if ((!fDate && fStart && !fEnd) || (!fDate && !fStart && fEnd)) {
+      dispatch(fetchSearchAction());
+    }
   };
 
   return (
@@ -97,6 +105,8 @@ const ReactDateRangeFacet = () => {
             showYearDropdown
             dropdownMode="select"
             dateFormat="yyyy-MM-dd"
+            placeholderText="From"
+            isClearable
           />
           <DatePicker
             selected={fEnd}
@@ -108,6 +118,8 @@ const ReactDateRangeFacet = () => {
             showYearDropdown
             dropdownMode="select"
             dateFormat="yyyy-MM-dd"
+            placeholderText="To"
+            isClearable
           />
         </Row>
       </Container>
