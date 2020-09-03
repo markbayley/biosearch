@@ -11,9 +11,15 @@ const SearchResult = ({
 }) => {
   const dispatch = useDispatch();
   const bioImageDocument = useSelector((state) => state.search.hits[imageIdx]["_source"]);
-  const img_url_small = bioImageDocument.preview_urls[1].url;
-  const img_url_large = bioImageDocument.preview_urls[0].url;
 
+  let img_url_large = null;
+  let img_url_small = null;
+  // Nb: some docs dont have preview_urls (empty array)
+  // This causes the application to explored!
+  if (bioImageDocument.preview_urls.length !== 0) {
+    img_url_large = bioImageDocument.preview_urls[0].url;
+    img_url_small = bioImageDocument.preview_urls[1].url;
+  }
   const site_id = bioImageDocument["site_id"].value;
 
   const showImagePreview = (idx) => dispatch(showImagePreviewAction(idx));
