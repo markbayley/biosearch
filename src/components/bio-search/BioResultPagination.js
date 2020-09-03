@@ -10,7 +10,7 @@ import {
   PaginationItem,
   PaginationLink,
   Button,
-  Input,
+  Input, Dropdown,
 } from "reactstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { updateFilterAction, fetchSearchAction } from "../../store/reducer";
@@ -112,11 +112,9 @@ const BioResultPagination = ({ page_size, page_num, totalDocuments }) => {
     totalDocuments,
   );
 
-  const handlePageSizeChange = (event) => {
-    const intValue = parseInt("10", event.target.value);
-
+  const handlePageSizeChange = (value) => {
     dispatch(
-      updateFilterAction({ pagination: { page_size: intValue, page_num } }),
+      updateFilterAction({ pagination: { page_size: value, page_num } }),
     );
     dispatch(fetchSearchAction());
   };
@@ -133,19 +131,29 @@ const BioResultPagination = ({ page_size, page_num, totalDocuments }) => {
     <div>
       <Row className="pagination-row">
         <Pagination className="pagination" size="md">
-          <div className="image-count">
-            <div className="image-input">Images: </div>
-            <Input
-              placeholder="5"
-              name="images-per-page"
-              value={page_size}
-              min={10}
-              max={100}
-              type="number"
-              step="5"
-              onChange={handlePageSizeChange}
-            />
-          </div>
+          <UncontrolledDropdown className="pageitems">
+            Images:
+            {" "}
+            <DropdownToggle
+              size="sm"
+              caret
+              color="pageitems"
+              id="dropdown-basic-button"
+              className="pageitems"
+            >
+              {page_size}
+            </DropdownToggle>
+            <DropdownMenu>
+              {bioSort.images_per_page.map((perPage) => (
+                <DropdownItem
+                  key={perPage}
+                  onClick={() => handlePageSizeChange(perPage)}
+                >
+                  {perPage}
+                </DropdownItem>
+              ))}
+            </DropdownMenu>
+          </UncontrolledDropdown>
           <div className="mobile-pagination">
             <UncontrolledDropdown className="pageitems">
               Sort Order:
@@ -171,34 +179,6 @@ const BioResultPagination = ({ page_size, page_num, totalDocuments }) => {
               </DropdownMenu>
             </UncontrolledDropdown>
           </div>
-
-          {/* <div style={{ marginRight: "10px" }}>
-            <UncontrolledDropdown className="pageitems">
-              <DropdownToggle
-                size="sm"
-                caret
-                color="pageitems"
-                id="dropdown-basic-button"
-                className="pageitems"
-              >
-                {`${page_size}`}
-              </DropdownToggle>
-              <DropdownMenu>
-                <DropdownItem onClick={() => handlePageSizeChange(10)}>
-                  10 per page
-                </DropdownItem>
-                <DropdownItem onClick={() => handlePageSizeChange(25)}>
-                  25 per page
-                </DropdownItem>
-                <DropdownItem onClick={() => handlePageSizeChange(50)}>
-                  50 per page
-                </DropdownItem>
-                <DropdownItem onClick={() => handlePageSizeChange(100)}>
-                  100 per page
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
-          </div> */}
           <PaginationItem onClick={(e) => changePage(1, e)}>
             <PaginationLink first title="First" />
           </PaginationItem>
