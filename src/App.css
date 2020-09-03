@@ -107,6 +107,10 @@ body {
   justify-content: flex-end;
   padding-right: 15px;
 }
+.above-header-section-wrap .nav-item {
+  padding: 0 20px 0 20px;
+  font-size: 16px;
+}
 #data {
   color: #fff !important;
   padding-left: 45px;
