@@ -21,11 +21,11 @@ const BioResultPagination = ({ page_size, page_num, totalDocuments }) => {
   const dispatch = useDispatch();
 
   const { sort_order, sort_column } = useSelector(
-    (state) => state.ui.searchFilters.sort
+    (state) => state.ui.searchFilters.sort,
   );
 
   const selectedSortOrder = bioSort.sort_order.filter(
-    (sort) => sort.sort_name === sort_order
+    (sort) => sort.sort_name === sort_order,
   );
 
   const getPagination = (itemsPerPage, startFrom, totalImages) => {
@@ -65,7 +65,7 @@ const BioResultPagination = ({ page_size, page_num, totalDocuments }) => {
         dispatch(
           updateFilterAction({
             pagination: { page_size: itemsPerPage, page_num: page },
-          })
+          }),
         );
         dispatch(fetchSearchAction());
       }
@@ -77,7 +77,7 @@ const BioResultPagination = ({ page_size, page_num, totalDocuments }) => {
         dispatch(
           updateFilterAction({
             pagination: { page_size: itemsPerPage, page_num: currentPage - 1 },
-          })
+          }),
         );
         dispatch(fetchSearchAction());
       }
@@ -89,7 +89,7 @@ const BioResultPagination = ({ page_size, page_num, totalDocuments }) => {
         dispatch(
           updateFilterAction({
             pagination: { page_size: itemsPerPage, page_num: currentPage + 1 },
-          })
+          }),
         );
         dispatch(fetchSearchAction());
       }
@@ -104,15 +104,19 @@ const BioResultPagination = ({ page_size, page_num, totalDocuments }) => {
     };
   };
 
-  const { pagination, pages, prevPage, nextPage, changePage } = getPagination(
+  const {
+    pagination, pages, prevPage, nextPage, changePage,
+  } = getPagination(
     page_size,
     page_num,
-    totalDocuments
+    totalDocuments,
   );
 
-  const handlePageSizeChange = (value) => {
+  const handlePageSizeChange = (event) => {
+    const intValue = parseInt("10", event.target.value);
+
     dispatch(
-      updateFilterAction({ pagination: { page_size: value, page_num } })
+      updateFilterAction({ pagination: { page_size: intValue, page_num } }),
     );
     dispatch(fetchSearchAction());
   };
@@ -121,7 +125,7 @@ const BioResultPagination = ({ page_size, page_num, totalDocuments }) => {
     dispatch(
       updateFilterAction({
         sort: { sort_order: value, sort_column },
-      })
+      }),
     );
     dispatch(fetchSearchAction());
   };
@@ -131,11 +135,21 @@ const BioResultPagination = ({ page_size, page_num, totalDocuments }) => {
         <Pagination className="pagination" size="md">
           <div className="image-count">
             <div className="image-input">Images: </div>
-            <Input placeholder="24" min={12} max={100} type="number" step="6" />
+            <Input
+              placeholder="5"
+              name="images-per-page"
+              value={page_size}
+              min={10}
+              max={100}
+              type="number"
+              step="5"
+              onChange={handlePageSizeChange}
+            />
           </div>
           <div className="mobile-pagination">
             <UncontrolledDropdown className="pageitems">
-              Sort Order:{" "}
+              Sort Order:
+              {" "}
               <DropdownToggle
                 size="sm"
                 caret
@@ -223,7 +237,13 @@ const BioResultPagination = ({ page_size, page_num, totalDocuments }) => {
           >
             {/* Showing
             {" "} */}
-            {page_size} / {totalDocuments} Images
+            {page_size}
+            {" "}
+            /
+            {" "}
+            {totalDocuments}
+            {" "}
+            Images
           </Button>
         </Pagination>
       </Row>
