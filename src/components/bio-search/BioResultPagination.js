@@ -130,7 +130,8 @@ const BioResultPagination = ({ page_size, page_num, totalDocuments }) => {
     <div>
       <Row className="pagination-row">
         <Pagination className="pagination" size="sm">
-          {/* TODO: Images per page and Sort Order should probably not be part of pagination control. */}
+          {/* TODO: Images per page and Sort Order should probably not be part of
+                    pagination control. */}
           <UncontrolledDropdown className="pageitems" size="sm">
             Images:
             {" "}
