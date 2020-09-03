@@ -69,16 +69,8 @@ const ReactDateRangeFacet = () => {
         }),
       );
     }
-
-    // NB: Only update facets and perform a search
-    // if both dates have been filled in! User could have just cleared the
-    // date fields.
-    if ((fDate && fStart) || (fDate && fEnd)) {
-      dispatch(fetchFacetsAction());
-      dispatch(fetchSearchAction());
-    } else if ((!fDate && fStart && !fEnd) || (!fDate && !fStart && fEnd)) {
-      dispatch(fetchSearchAction());
-    }
+    dispatch(fetchFacetsAction());
+    dispatch(fetchSearchAction());
   };
 
   return (
