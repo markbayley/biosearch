@@ -265,10 +265,7 @@ body {
 .custom-marker-selected {
   background: #e36a51;
 }
-.custom-marker-disabled {
-  background: #333333;
-  border: 5px solid rgba(33, 33, 33, 0.9);
-}
+
 .custom-marker:hover {
   background: #e36a51;
   border: -10px solid rgba(149, 219, 199);
@@ -277,6 +274,17 @@ body {
   box-shadow: 0 0 0 10px rgba(84, 179, 166, 0.5), 0 3px 14px rgba(0, 0, 0, 0.4);
   size: 3em;
 }
+
+.custom-marker-disabled {
+  background: grey;
+  border: 5px solid lightgrey;
+}
+
+.custom-marker-disabled:hover {
+  background: grey;
+  border: 5px solid lightgrey;
+}
+
 .markercluster-map {
   height: 80vh;
 }

@@ -26,7 +26,7 @@ const SearchEngine = ({ embed }) => {
         page_num={page_num}
         totalDocuments={totalDocuments}
       />
-      <Row>
+      <Row style={{marginRight: '15px'}}>
         {data.map((bioImageDocument, index) => (
           <SearchResult
             imageIdx={index}

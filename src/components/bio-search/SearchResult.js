@@ -30,10 +30,7 @@ const SearchResult = ({ imageIdx, embed }) => {
       md={embed ? 12 : 4}
       sm={12}
       xs={12}
-      
     >
-
-
       <Card id={site_id} className="image-card">
         <div className="hvrbox">
           <Button
@@ -75,39 +72,26 @@ const SearchResult = ({ imageIdx, embed }) => {
                 <span className="center" />
               </div>
             </div>{" "}
-            <div className="thumbnail-text">
-              {/* <strong>Site:</strong>  */}
-              {bioImageDocument.site_id.label}
-              <br />
-              {/* <strong>Image Type:</strong> */}{" "}
-              {bioImageDocument.image_type.value[0].toUpperCase() +
-                bioImageDocument.image_type.value.substr(1)}{" "}
-              <img
-                src="/img/phenocam.svg"
-                width="20px"
-                alt="phenocam"
-                style={{
-                  border: ".5px solid orange",
-                  borderRadius: "20px",
-                  padding: "2px",
-                  marginBottom: "5px",
-                }}
-              />
-            </div>
-            {/* <Form className="center image-form">
-              {["checkbox"].map((type) => (
-                <div className="image-checkbox" key={type}>
-                  <Form.Check inline type={type} id={bioImageDocument.id} />
-                </div>
-              ))}
-            </Form> */}
-            {/* <strong>Image Count:</strong> {bioImageDocument.doc_count}{" "}  */}
-            {/* <strong>Plot:</strong> {bioImageDocument.plot.value}{" "} */}
-            {/* <strong>Visit:</strong> {bioImageDocument.site_visit_id}{" "} */}
           </Button>
+          <div className="thumbnail-text">
+            {bioImageDocument.site_id.label}
+            <br />
+            {bioImageDocument.image_type.value[0].toUpperCase() +
+              bioImageDocument.image_type.value.substr(1)}{" "}
+            {/* <img
+              src="/img/phenocam.svg"
+              width="20px"
+              alt="phenocam"
+              style={{
+                border: ".5px solid orange",
+                borderRadius: "20px",
+                padding: "2px",
+                marginBottom: "5px",
+              }}
+            /> */}
+          </div>
         </div>
       </Card>
-      {/* </div>  */}
     </Col>
   );
 };

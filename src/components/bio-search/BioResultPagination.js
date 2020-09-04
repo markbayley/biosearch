@@ -158,7 +158,7 @@ const BioResultPagination = ({ page_size, page_num, totalDocuments }) => {
               id="dropdown-basic-button"
               className="pageitems"
             >
-              {page_size}
+              {page_size} 
             </DropdownToggle>
             <DropdownMenu>
               {bioSort.images_per_page.map((perPage) => (
