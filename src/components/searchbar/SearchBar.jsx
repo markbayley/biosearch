@@ -49,14 +49,14 @@ function SearchBar() {
 
       <Container className="nav-container">
   
-        <h3 className="biologo">
+        <h4 className="biologo">
           <img
             className="bio-icon img-fluid"
             src="/img/icons/bioimages-download.svg"
             alt="bio icon"
           />
           Bioimages
-        </h3>
+        </h4>
 
 
         {/* Search Input */}

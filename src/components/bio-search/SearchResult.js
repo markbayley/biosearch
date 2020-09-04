@@ -30,6 +30,7 @@ const SearchResult = ({ imageIdx, embed }) => {
       md={embed ? 12 : 4}
       sm={12}
       xs={12}
+      
     >
 
 
@@ -93,13 +94,13 @@ const SearchResult = ({ imageIdx, embed }) => {
                 }}
               />
             </div>
-            <Form className="center image-form">
+            {/* <Form className="center image-form">
               {["checkbox"].map((type) => (
                 <div className="image-checkbox" key={type}>
-                  {/* <Form.Check inline type={type} id={bioImageDocument.id} /> */}
+                  <Form.Check inline type={type} id={bioImageDocument.id} />
                 </div>
               ))}
-            </Form>
+            </Form> */}
             {/* <strong>Image Count:</strong> {bioImageDocument.doc_count}{" "}  */}
             {/* <strong>Plot:</strong> {bioImageDocument.plot.value}{" "} */}
             {/* <strong>Visit:</strong> {bioImageDocument.site_visit_id}{" "} */}

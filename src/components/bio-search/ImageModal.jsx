@@ -10,6 +10,10 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
+  Carousel,
+  CarouselControl,
+  CarouselIndicators,
+  CarouselItem,
 } from "reactstrap";
 import { showModalAction, showImagePreviewAction } from "../../store/reducer";
 
@@ -52,6 +56,28 @@ const ImageModal = () => {
       </ModalHeader>
       <hr className="modal-line" />
       <ModalBody>
+
+        {/* To be finished ...<Carousel>
+          <CarouselIndicators />
+          <CarouselItem>
+            <img
+              className="img-fluid"
+              src={imageDoc.preview_urls[0].url}
+              alt="carousel"
+            />
+          </CarouselItem>
+          <CarouselControl
+            direction="prev"
+            directionText="Previous"
+            onClick={() => dispatch(showImagePreviewAction(prevIdx))}
+          />
+          <CarouselControl
+            direction="next"
+            directionText="Next"
+            onClick={() => dispatch(showImagePreviewAction(nextIdx))}
+          />
+        </Carousel> */}
+
         <img
           className="img-fluid"
           src={imageDoc.preview_urls[0].url}
