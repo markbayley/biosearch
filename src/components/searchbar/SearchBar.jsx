@@ -7,6 +7,7 @@ import { useDispatch, connect } from "react-redux";
 import LoginButton from "../buttons/LoginButton";
 import { updateFilterAction, fetchSearchAction, fetchFacetsAction } from "../../store/reducer";
 import { CONFIG } from "../../config";
+import MapImageToggle from "../buttons/MapImageToggle";
 
 // TODO: to be removed .... just a demo component to push state dependency down to component
 //       really not necessary here (only saves 1ms on edit)
@@ -87,13 +88,12 @@ function SearchBar() {
         {/* End of Search Input */}
 
         {/* Login Buttons */}
-        <div className="login">
-          <a href={CONFIG.LOGIN_URL}>
-            {" "}
-            <LoginButton />
-            {" "}
-          </a>
-        </div>
+        <MapImageToggle />
+        <a href={CONFIG.LOGIN_URL}>
+          {" "}
+          <LoginButton />
+          {" "}
+        </a>
       </Container>
       {/* </Navbar.Collapse> */}
     </Navbar>

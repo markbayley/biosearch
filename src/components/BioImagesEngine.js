@@ -1,41 +1,13 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Col, Row, Button } from "reactstrap";
+import { Col, Row } from "reactstrap";
 import SearchBar from "./searchbar/SearchBar";
 import Favourite from "./bio-favourites/Favourite";
 import ImageSearchEngine from "./bio-image-search/ImageSearchEngine";
 import BioMapEngine from "./bio-image-map/BioMapEngine";
 import SearchEngine from "./bio-search/SearchEngine";
 import FilterHeader from "./bio-image-search/FilterHeader";
-import {
-  fetchSearchAction,
-  fetchFacetsAction,
-  setSearchModeAction,
-} from "../store/reducer";
-
-/* Map Image Toggle */
-// function Toggle() {
-//   const dispatch = useDispatch();
-
-//   return (
-//     <div className="main-toggle">
-//       <Button
-//         size="sm"
-//         color="round"
-//         onClick={() => dispatch(setSearchModeAction("Map"))}
-//       >
-//         Map
-//       </Button>
-//       <Button
-//         size="sm"
-//         color="round"
-//         onClick={() => dispatch(setSearchModeAction("Images"))}
-//       >
-//         Images
-//       </Button>
-//     </div>
-//   );
-// }
+import { fetchSearchAction, fetchFacetsAction } from "../store/reducer";
 
 const BioImagesEngine = () => {
   const dispatch = useDispatch();
@@ -60,31 +32,12 @@ const BioImagesEngine = () => {
         {/* <Toggle /> */}
         <Col className="scroll-images">
           {/* Leaflet Map or Photo Gallery */}
-          {searchMode === "Map" ? (
-            <>
+          {searchMode === "Map"
+            ? (
               <BioMapEngine />
-              <Button
-                className="main-toggle"
-                size="sm"
-                color="round"
-                onClick={() => dispatch(setSearchModeAction("Images"))}
-              >
-                Images
-              </Button>{" "}
-            </>
-          ) : (
-            <>
+            ) : (
               <SearchEngine />
-              <Button
-                className="main-toggle"
-                size="sm"
-                color="round"
-                onClick={() => dispatch(setSearchModeAction("Map"))}
-              >
-                Map
-              </Button>
-            </>
-          )}
+            )}
         </Col>
       </Row>
     </>

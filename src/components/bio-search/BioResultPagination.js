@@ -10,7 +10,6 @@ import {
   PaginationItem,
   PaginationLink,
   Button,
-  Input,
 } from "reactstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { updateFilterAction, fetchSearchAction } from "../../store/reducer";
@@ -21,11 +20,11 @@ const BioResultPagination = ({ page_size, page_num, totalDocuments }) => {
   const dispatch = useDispatch();
 
   const { sort_order, sort_column } = useSelector(
-    (state) => state.ui.searchFilters.sort
+    (state) => state.ui.searchFilters.sort,
   );
 
   const selectedSortOrder = bioSort.sort_order.filter(
-    (sort) => sort.sort_name === sort_order
+    (sort) => sort.sort_name === sort_order,
   );
 
   const getPagination = (itemsPerPage, startFrom, totalImages) => {
@@ -65,7 +64,7 @@ const BioResultPagination = ({ page_size, page_num, totalDocuments }) => {
         dispatch(
           updateFilterAction({
             pagination: { page_size: itemsPerPage, page_num: page },
-          })
+          }),
         );
         dispatch(fetchSearchAction());
       }
@@ -77,7 +76,7 @@ const BioResultPagination = ({ page_size, page_num, totalDocuments }) => {
         dispatch(
           updateFilterAction({
             pagination: { page_size: itemsPerPage, page_num: currentPage - 1 },
-          })
+          }),
         );
         dispatch(fetchSearchAction());
       }
@@ -89,7 +88,7 @@ const BioResultPagination = ({ page_size, page_num, totalDocuments }) => {
         dispatch(
           updateFilterAction({
             pagination: { page_size: itemsPerPage, page_num: currentPage + 1 },
-          })
+          }),
         );
         dispatch(fetchSearchAction());
       }
@@ -104,15 +103,17 @@ const BioResultPagination = ({ page_size, page_num, totalDocuments }) => {
     };
   };
 
-  const { pagination, pages, prevPage, nextPage, changePage } = getPagination(
+  const {
+    pagination, pages, prevPage, nextPage, changePage,
+  } = getPagination(
     page_size,
     page_num,
-    totalDocuments
+    totalDocuments,
   );
 
   const handlePageSizeChange = (value) => {
     dispatch(
-      updateFilterAction({ pagination: { page_size: value, page_num } })
+      updateFilterAction({ pagination: { page_size: value, page_num } }),
     );
     dispatch(fetchSearchAction());
   };
@@ -121,45 +122,43 @@ const BioResultPagination = ({ page_size, page_num, totalDocuments }) => {
     dispatch(
       updateFilterAction({
         sort: { sort_order: value, sort_column },
-      })
+      }),
     );
     dispatch(fetchSearchAction());
   };
   return (
     <div>
       <Row className="pagination-row">
-        <Pagination className="pagination" size="md">
-          <div style={{ marginRight: "10px" }}>
-            <UncontrolledDropdown className="pageitems">
-              Images / Page:{" "}
-              <DropdownToggle
-                size="sm"
-                caret
-                color="pageitems"
-                id="dropdown-basic-button"
-                className="pageitems"
-              >
-                {`${page_size}`}
-              </DropdownToggle>
-              <DropdownMenu>
-                <DropdownItem onClick={() => handlePageSizeChange(10)}>
-                  10 per page
+        <Pagination className="pagination" size="sm">
+          {/* TODO: Images per page and Sort Order should probably not be part of
+                    pagination control. */}
+          <UncontrolledDropdown className="pageitems" size="sm">
+            Images:
+            {" "}
+            <DropdownToggle
+              size="sm"
+              caret
+              color="pageitems"
+              id="dropdown-basic-button"
+              className="pageitems"
+            >
+              {page_size}
+            </DropdownToggle>
+            <DropdownMenu>
+              {bioSort.images_per_page.map((perPage) => (
+                <DropdownItem
+                  key={perPage}
+                  onClick={() => handlePageSizeChange(perPage)}
+                >
+                  {perPage}
                 </DropdownItem>
-                <DropdownItem onClick={() => handlePageSizeChange(25)}>
-                  25 per page
-                </DropdownItem>
-                <DropdownItem onClick={() => handlePageSizeChange(50)}>
-                  50 per page
-                </DropdownItem>
-                <DropdownItem onClick={() => handlePageSizeChange(100)}>
-                  100 per page
-                </DropdownItem>
-              </DropdownMenu>
-            </UncontrolledDropdown>
-          </div>
+              ))}
+            </DropdownMenu>
+          </UncontrolledDropdown>
           <div className="mobile-pagination">
-            <UncontrolledDropdown className="pageitems">
-              Sort Order:{" "}
+            <UncontrolledDropdown className="pageitems" size="sm">
+              Sort Order:
+              {" "}
               <DropdownToggle
                 size="sm"
                 caret
@@ -181,8 +180,6 @@ const BioResultPagination = ({ page_size, page_num, totalDocuments }) => {
               </DropdownMenu>
             </UncontrolledDropdown>
           </div>
-
-
           <PaginationItem onClick={(e) => changePage(1, e)}>
             <PaginationLink first title="First" />
           </PaginationItem>
@@ -217,16 +214,23 @@ const BioResultPagination = ({ page_size, page_num, totalDocuments }) => {
           <PaginationItem onClick={(e) => changePage(pages, e)}>
             <PaginationLink last title="Last" />
           </PaginationItem>
-          <div
+          {/* TODO: page_size / totlaDocuments a Button? ... what should happen on click? */}
+          <Button
             className="page-items"
             color="flat"
-            size="md"
-            style={{ marginLeft: "10px", fontSize: "16px", paddingTop: "7px" }}
+            size="sm"
+            style={{ marginLeft: "10px", fontSize: "16px" }}
           >
             {/* Showing
             {" "} */}
-            {page_size} / {totalDocuments} Pages
-          </div>
+            {page_size}
+            {" "}
+            /
+            {" "}
+            {totalDocuments}
+            {" "}
+            Images
+          </Button>
         </Pagination>
       </Row>
     </div>

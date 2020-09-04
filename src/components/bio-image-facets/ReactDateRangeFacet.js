@@ -4,7 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useDispatch, useSelector } from "react-redux";
 import { get } from "lodash";
 import moment from "moment";
-import { Container, Row } from "reactstrap";
+import { Container, InputGroup, Row, Input } from "reactstrap";
 import {
   updateFilterAction,
   fetchFacetsAction,
@@ -24,8 +24,8 @@ const ReactDateRangeFacet = () => {
     date_max = new Date(date_max);
   }
 
-  let fStart = new Date();
-  let fEnd = new Date();
+  let fStart = null;
+  let fEnd = null;
   if (start) {
     fStart = new Date(start);
   }
@@ -46,30 +46,34 @@ const ReactDateRangeFacet = () => {
     if (value) {
       return moment(value).format("YYYY-MM-DD");
     }
-    return moment().format("YYYY-MM-DD");
+    return value;
   };
 
-  const handleOnDateChange = (date, startOrEnd) => {
-    const fDate = moment(date).format("YYYY-MM-DD");
-
-    if (startOrEnd === "start") {
-      const endDate = toApiDate(fEnd);
-      dispatch(
-        updateFilterAction({
-          date_range: { [startOrEnd]: fDate, end: endDate },
-        }),
-      );
-    } else {
-      const startDate = toApiDate(fStart);
-      dispatch(
-        updateFilterAction({
-          date_range: { [startOrEnd]: fDate, start: startDate },
-        }),
-      );
+  const handleOnDateChange = (date, range) => {
+    let fDate = "";
+    if (date) {
+      fDate = moment(date).format("YYYY-MM-DD");
     }
-    // update facets
+
+    let otherDate = null;
+    const dateRange = { start: "", end: "" };
+    if (range === "start") {
+      otherDate = toApiDate(fEnd);
+      dateRange.start = fDate;
+      dateRange.end = otherDate;
+    } else {
+      otherDate = toApiDate(fStart);
+      dateRange.start = otherDate;
+      dateRange.end = fDate;
+    }
+
+    dispatch(
+      updateFilterAction({
+        date_range: { ...dateRange },
+      }),
+    );
+
     dispatch(fetchFacetsAction());
-    // trigger search
     dispatch(fetchSearchAction());
   };
 
@@ -86,29 +90,39 @@ const ReactDateRangeFacet = () => {
         Date Range
       </h6>
       <Container>
-        <Row xs="2">
-          <DatePicker
-            selected={fStart}
-            minDate={start_range.min}
-            maxDate={start_range.max}
-            onChange={(date) => handleOnDateChange(date, "start")}
-            peekNextMonth
-            showMonthDropdown
-            showYearDropdown
-            dropdownMode="select"
-            dateFormat="yyyy-MM-dd"
-          />
-          <DatePicker
-            selected={fEnd}
-            minDate={end_range.min}
-            maxDate={end_range.max}
-            onChange={(date) => handleOnDateChange(date, "end")}
-            peekNextMonth
-            showMonthDropdown
-            showYearDropdown
-            dropdownMode="select"
-            dateFormat="yyyy-MM-dd"
-          />
+        <Row>
+          <InputGroup>
+            <DatePicker
+              selected={fStart}
+              minDate={start_range.min}
+              maxDate={start_range.max}
+              onChange={(date) => handleOnDateChange(date, "start")}
+              peekNextMonth
+              showMonthDropdown
+              showYearDropdown
+              dropdownMode="select"
+              dateFormat="yyyy-MM-dd"
+              placeholderText="From"
+              isClearable
+              wrapperClassName="form-control"
+              customInput={<Input value={fStart} />}
+            />
+            <DatePicker
+              selected={fEnd}
+              minDate={end_range.min}
+              maxDate={end_range.max}
+              onChange={(date) => handleOnDateChange(date, "end")}
+              peekNextMonth
+              showMonthDropdown
+              showYearDropdown
+              dropdownMode="select"
+              dateFormat="yyyy-MM-dd"
+              placeholderText="To"
+              isClearable
+              wrapperClassName="form-control"
+              customInput={<Input value={fStart} />}
+            />
+          </InputGroup>
         </Row>
       </Container>
     </div>
