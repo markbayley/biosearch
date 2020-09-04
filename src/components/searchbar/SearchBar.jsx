@@ -1,11 +1,22 @@
 import React from "react";
 import {
-  Container, Button, Col, Form, InputGroup, Navbar, NavbarBrand, Input,
+  Container,
+  Button,
+  Col,
+  Form,
+  InputGroup,
+  Navbar,
+  NavbarBrand,
+  Input,
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import { useDispatch, connect } from "react-redux";
 import LoginButton from "../buttons/LoginButton";
-import { updateFilterAction, fetchSearchAction, fetchFacetsAction } from "../../store/reducer";
+import {
+  updateFilterAction,
+  fetchSearchAction,
+  fetchFacetsAction,
+} from "../../store/reducer";
 import { CONFIG } from "../../config";
 import MapImageToggle from "../buttons/MapImageToggle";
 
@@ -48,7 +59,7 @@ function SearchBar() {
       </Col>
 
       <Container className="nav-container">
-  
+        <div>
         <h4 className="biologo">
           <img
             className="bio-icon img-fluid"
@@ -57,14 +68,11 @@ function SearchBar() {
           />
           Bioimages
         </h4>
-
+        </div>
 
         {/* Search Input */}
         <Form onSubmit={handleSubmit}>
-          <InputGroup
-            inline="true"
-            className="searchbar"
-          >
+          <InputGroup inline="true" className="searchbar">
             <img
               src="/img/icons/search-bioimages-icon.svg"
               alt="bioimages search icon"
@@ -80,23 +88,19 @@ function SearchBar() {
               className="search-form form-control"
               aria-label="term"
             />
-            <Button
-              className="searchbutton"
-              color="outline"
-              type="submit"
-            />
+            <Button className="searchbutton" color="outline" type="submit" />
           </InputGroup>
         </Form>
         {/* End of Search Input */}
 
         {/* Login Buttons */}
-      
+       <div>
         <a href={CONFIG.LOGIN_URL}>
           {" "}
-          <LoginButton />
-          {" "}
+          <LoginButton />{" "}
         </a>
         <MapImageToggle />
+        </div>
       </Container>
       {/* </Navbar.Collapse> */}
     </Navbar>

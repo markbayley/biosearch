@@ -22,9 +22,9 @@ function LoginButton() {
   return (
     <>
       <Button
-        style={{ borderRadius: "10px" }}
+        style={{ borderRadius: "10px"}}
         color="login"
-        size="md"
+        size="sm"
         disabled={isLoading}
         onClick={!isLoading ? handleClick : null}
       >
