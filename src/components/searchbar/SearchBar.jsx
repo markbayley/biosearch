@@ -48,14 +48,16 @@ function SearchBar() {
       </Col>
 
       <Container className="nav-container">
+  
         <h3 className="biologo">
           <img
-            className="bio-icon"
+            className="bio-icon img-fluid"
             src="/img/icons/bioimages-download.svg"
-            alt=""
+            alt="bio icon"
           />
           Bioimages
         </h3>
+
 
         {/* Search Input */}
         <Form onSubmit={handleSubmit}>
@@ -88,12 +90,13 @@ function SearchBar() {
         {/* End of Search Input */}
 
         {/* Login Buttons */}
-        <MapImageToggle />
+      
         <a href={CONFIG.LOGIN_URL}>
           {" "}
           <LoginButton />
           {" "}
         </a>
+        <MapImageToggle />
       </Container>
       {/* </Navbar.Collapse> */}
     </Navbar>

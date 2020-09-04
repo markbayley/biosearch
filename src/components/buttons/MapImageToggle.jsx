@@ -15,16 +15,18 @@ function MapImageToggle() {
     searchMode === "Images"
       ? (
         <Button
-          size="sm"
-          color="round"
+          className="main-toggle" 
+          size="md"
+          color="login"
           onClick={() => dispatch(setSearchModeAction("Map"))}
         >
           Map
         </Button>
       ) : (
         <Button
-          size="sm"
-          color="round"
+          className="main-toggle" 
+          size="md"
+          color="login"
           onClick={() => dispatch(setSearchModeAction("Images"))}
         >
           Images

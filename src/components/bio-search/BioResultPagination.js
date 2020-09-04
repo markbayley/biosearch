@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import {
   Row,
@@ -10,6 +10,8 @@ import {
   PaginationItem,
   PaginationLink,
   Button,
+  Input,
+  Form,
 } from "reactstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { updateFilterAction, fetchSearchAction } from "../../store/reducer";
@@ -18,13 +20,14 @@ import { bioSort } from "./bioSort";
 
 const BioResultPagination = ({ page_size, page_num, totalDocuments }) => {
   const dispatch = useDispatch();
+  const [page_value, setPageValue] = useState(page_num);
 
   const { sort_order, sort_column } = useSelector(
-    (state) => state.ui.searchFilters.sort,
+    (state) => state.ui.searchFilters.sort
   );
 
   const selectedSortOrder = bioSort.sort_order.filter(
-    (sort) => sort.sort_name === sort_order,
+    (sort) => sort.sort_name === sort_order
   );
 
   const getPagination = (itemsPerPage, startFrom, totalImages) => {
@@ -64,7 +67,7 @@ const BioResultPagination = ({ page_size, page_num, totalDocuments }) => {
         dispatch(
           updateFilterAction({
             pagination: { page_size: itemsPerPage, page_num: page },
-          }),
+          })
         );
         dispatch(fetchSearchAction());
       }
@@ -76,7 +79,7 @@ const BioResultPagination = ({ page_size, page_num, totalDocuments }) => {
         dispatch(
           updateFilterAction({
             pagination: { page_size: itemsPerPage, page_num: currentPage - 1 },
-          }),
+          })
         );
         dispatch(fetchSearchAction());
       }
@@ -88,7 +91,7 @@ const BioResultPagination = ({ page_size, page_num, totalDocuments }) => {
         dispatch(
           updateFilterAction({
             pagination: { page_size: itemsPerPage, page_num: currentPage + 1 },
-          }),
+          })
         );
         dispatch(fetchSearchAction());
       }
@@ -103,17 +106,15 @@ const BioResultPagination = ({ page_size, page_num, totalDocuments }) => {
     };
   };
 
-  const {
-    pagination, pages, prevPage, nextPage, changePage,
-  } = getPagination(
+  const { pagination, pages, prevPage, nextPage, changePage } = getPagination(
     page_size,
     page_num,
-    totalDocuments,
+    totalDocuments
   );
 
   const handlePageSizeChange = (value) => {
     dispatch(
-      updateFilterAction({ pagination: { page_size: value, page_num } }),
+      updateFilterAction({ pagination: { page_size: value, page_num } })
     );
     dispatch(fetchSearchAction());
   };
@@ -122,19 +123,34 @@ const BioResultPagination = ({ page_size, page_num, totalDocuments }) => {
     dispatch(
       updateFilterAction({
         sort: { sort_order: value, sort_column },
-      }),
+      })
     );
     dispatch(fetchSearchAction());
   };
   return (
     <div>
       <Row className="pagination-row">
-        <Pagination className="pagination" size="sm">
+        <Pagination className="pagination" size="sm" style={{paddingTop: "3px"}}>
           {/* TODO: Images per page and Sort Order should probably not be part of
                     pagination control. */}
-          <UncontrolledDropdown className="pageitems" size="sm">
-            Images:
+          <div
+            className="page-items"
+            color="flat"
+            size="sm"
+            style={{ marginRight: "20px", fontSize: "16px", paddingTop: "2px" }}
+          >
+            {/* Showing
+            {" "} */}
+            {/* {page_size}
             {" "}
+            / */} 
+              Images:
+            {" "}
+            {totalDocuments}{" "}
+          
+          </div>
+          <UncontrolledDropdown className="pageitems" size="sm">
+            Page Size:{" "}
             <DropdownToggle
               size="sm"
               caret
@@ -157,8 +173,7 @@ const BioResultPagination = ({ page_size, page_num, totalDocuments }) => {
           </UncontrolledDropdown>
           <div className="mobile-pagination">
             <UncontrolledDropdown className="pageitems" size="sm">
-              Sort Order:
-              {" "}
+              Sort Order:{" "}
               <DropdownToggle
                 size="sm"
                 caret
@@ -186,7 +201,7 @@ const BioResultPagination = ({ page_size, page_num, totalDocuments }) => {
           <PaginationItem onClick={prevPage}>
             <PaginationLink previous title="Previous" />
           </PaginationItem>
-          <div className="mobile-pagination">
+          {/* <div className="mobile-pagination">
             {pagination.map((page) => {
               if (page.show) {
                 return (
@@ -203,10 +218,23 @@ const BioResultPagination = ({ page_size, page_num, totalDocuments }) => {
               }
               return null;
             })}
-          </div>
+          </div> */}
           <div className="page-input">
             {/* <div className="image-input">Page: </div> */}
-            <Input placeholder="24" min={10} max={100} />
+            <Form onSubmit={(e) => changePage(page_value, e)}>
+              <Input
+                // placeholder="24"
+                // onBlur={(e) => setTimeout(e.focus(), "5")}
+                size={1}
+                min={1}
+                max={pages}
+                bsSize="sm"
+                defaultValue={page_num}
+                // value={page_value}
+                // onChange={(e) => setPageValue(e.target.value)}
+                onChange={(e) => changePage(e.currentTarget.value, e)}
+              />
+            </Form>
           </div>
           <PaginationItem onClick={nextPage}>
             <PaginationLink next title="Next" />
@@ -215,22 +243,6 @@ const BioResultPagination = ({ page_size, page_num, totalDocuments }) => {
             <PaginationLink last title="Last" />
           </PaginationItem>
           {/* TODO: page_size / totlaDocuments a Button? ... what should happen on click? */}
-          <Button
-            className="page-items"
-            color="flat"
-            size="sm"
-            style={{ marginLeft: "10px", fontSize: "16px" }}
-          >
-            {/* Showing
-            {" "} */}
-            {page_size}
-            {" "}
-            /
-            {" "}
-            {totalDocuments}
-            {" "}
-            Images
-          </Button>
         </Pagination>
       </Row>
     </div>

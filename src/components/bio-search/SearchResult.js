@@ -5,12 +5,11 @@ import { Card, Button, Col, Form } from "reactstrap";
 import "./SearchResult.scss";
 import { showImagePreviewAction } from "../../store/reducer";
 
-const SearchResult = ({
-  imageIdx,
-  embed,
-}) => {
+const SearchResult = ({ imageIdx, embed }) => {
   const dispatch = useDispatch();
-  const bioImageDocument = useSelector((state) => state.search.hits[imageIdx]["_source"]);
+  const bioImageDocument = useSelector(
+    (state) => state.search.hits[imageIdx]["_source"]
+  );
 
   let img_url_large = null;
   let img_url_small = null;
@@ -32,6 +31,8 @@ const SearchResult = ({
       sm={12}
       xs={12}
     >
+
+
       <Card id={site_id} className="image-card">
         <div className="hvrbox">
           <Button
@@ -50,41 +51,36 @@ const SearchResult = ({
               className="small_preview img-fluid"
               src={img_url_small}
               alt="small preview"
-              onKeyPress={() => { }}
+              onKeyPress={() => {}}
               role="none"
             />
             <img
               className="large_preview img-fluid"
               src={img_url_large}
               alt="large preview"
-              onKeyPress={() => { }}
+              onKeyPress={() => {}}
               role="none"
             />
             <div className="hvrbox-layer_top">
               <div className="hvrbox-text">
                 View Image?
-                {" "}
                 <br />
                 <img
                   src="/img/icons/Bioimages icon.svg"
                   alt="bioimages icon"
                   width="80px"
-                />
-                {" "}
+                />{" "}
                 <br />
                 <span className="center" />
               </div>
-            </div>
-            {" "}
+            </div>{" "}
             <div className="thumbnail-text">
               {/* <strong>Site:</strong>  */}
               {bioImageDocument.site_id.label}
               <br />
-              {/* <strong>Image Type:</strong> */}
-              {" "}
-              {bioImageDocument.image_type.value[0].toUpperCase()
-                + bioImageDocument.image_type.value.substr(1)}
-              {" "}
+              {/* <strong>Image Type:</strong> */}{" "}
+              {bioImageDocument.image_type.value[0].toUpperCase() +
+                bioImageDocument.image_type.value.substr(1)}{" "}
               <img
                 src="/img/phenocam.svg"
                 width="20px"

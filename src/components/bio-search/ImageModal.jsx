@@ -23,8 +23,8 @@ const ImageModal = () => {
 
   const toggle = () => dispatch(showModalAction(!show));
 
-  const nextIdx = imageIdx === (numImages - 1) ? 0 : imageIdx + 1;
-  const prevIdx = imageIdx === 0 ? (numImages - 1) : imageIdx - 1;
+  const nextIdx = imageIdx === numImages - 1 ? 0 : imageIdx + 1;
+  const prevIdx = imageIdx === 0 ? numImages - 1 : imageIdx - 1;
 
   if (!show || !imageDoc) {
     return null;
@@ -41,20 +41,12 @@ const ImageModal = () => {
           <h6>
             {imageDoc.site_id.label}
             <br />
-            {imageDoc.image_type.label}
-            {" "}
-            <br />
-            Plot:
-            {" "}
-            {imageDoc.plot.label}
-            {" "}
-            <br />
+            {imageDoc.image_type.label} <br />
+            Plot: {imageDoc.plot.label} <br />
             Site Visit ID:
             {imageDoc.site_visit_id}
             <br />
-            {imageIdx + 1}
-            /
-            {numImages}
+            {imageIdx + 1}/{numImages}
           </h6>
         </Col>
       </ModalHeader>
@@ -65,6 +57,7 @@ const ImageModal = () => {
           src={imageDoc.preview_urls[0].url}
           alt="carousel"
         />
+        <br />
         <FormGroup check className="center modal-select">
           <Label check>
             <Input type="checkbox" />
@@ -74,18 +67,26 @@ const ImageModal = () => {
       </ModalBody>
       <br />
       <ModalFooter>
-        <Button color="login" onClick={() => dispatch(showImagePreviewAction(prevIdx))}>
+        <Button
+          size="sm"
+          color="login"
+          onClick={() => dispatch(showImagePreviewAction(prevIdx))}
+        >
           Prev
         </Button>
-        <Button color="login" onClick={() => dispatch(showImagePreviewAction(nextIdx))}>
+        <Button
+          size="sm"
+          color="login"
+          onClick={() => dispatch(showImagePreviewAction(nextIdx))}
+        >
           Next
         </Button>
-        <Button color="login" onClick={toggle}>
+        {/* <Button color="login" onClick={toggle}>
           Close
         </Button>
         <Button color="login" onClick={toggle}>
           Download
-        </Button>
+        </Button> */}
       </ModalFooter>
     </Modal>
   );

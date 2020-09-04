@@ -11,7 +11,7 @@ const FilterHeader = () => (
           Filter
         </NavLink>
       </NavItem>
-      <NavItem className="filter-item">
+      <NavItem className="filter-item" style={{display: "none"}}>
         <NavLink href="#" className="filter-link">
           <i className="fa fa-star" />
           {" "}
@@ -19,7 +19,7 @@ const FilterHeader = () => (
         </NavLink>
       </NavItem>
       <NavItem>
-        <NavLink href="#" className="filter-link">
+        <NavLink href="#" className="filter-link" style={{display: "none"}}>
           <i className="fa fa-check-square" />
           {" "}
           Saved

@@ -347,7 +347,7 @@ body {
   height: auto;
 }
 .hvrbox img {
-  max-width: 100%;
+  max-width: 70%;
 }
 .hvrbox .hvrbox-layer_bottom {
   display: block;
@@ -375,7 +375,7 @@ body {
 }
 .hvrbox .hvrbox-text {
   text-align: center;
-  font-size: 18px;
+  font-size: 15px;
   display: inline-block;
   position: absolute;
   top: 50%;
@@ -578,11 +578,7 @@ a.search-link.addlinks {
   }
 
 }
-@media (max-width: 998px) {
-  .biologo {
-    display: none;
-  }
-}
+
 @media (min-width: 768px) {
   .mobile-sidebar {
     display: none;

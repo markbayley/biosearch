@@ -56,13 +56,14 @@
 }
 
 .filter-link:hover {
-  background-color: #fff;
-  color: #00565D !important;
+  // background-color: #fff;
+  // color: #00565D !important;
+  border: none;
 }
 
 .filter-link:active {
-  background-color: #fff;
-  color: #00565D !important;
+  // background-color: #fff;
+  // color: #00565D !important;
 }
 
 
@@ -178,13 +179,15 @@
   height: 35px;
 }
 
+
+
 @media (max-width: 998px) {
   .biologo {
     display: none;
   }
-  .icon-bar {
-    display: none;
-  }
+  // .icon-bar {
+  //   display: none;
+  // }
   .filter-bar {
     border-right: 0px solid #B3D4C9;
   }
