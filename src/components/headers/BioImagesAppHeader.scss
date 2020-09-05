@@ -1,0 +1,22 @@
+
+.nav-container {
+    color: #6EB3A6;
+
+    .biologo {
+        margin-left: 2rem;
+
+        .bio-icon {
+            margin-bottom: 3%;
+            height: 35px;
+            margin-top: 0%;
+        }
+    }
+
+    // TODO: or 768px? . ... there were two references
+    @media (max-width: 998px) {
+        .biologo {
+          display: none;
+        }
+    }
+
+}

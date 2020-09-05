@@ -10,10 +10,10 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
-  Carousel,
-  CarouselControl,
-  CarouselIndicators,
-  CarouselItem,
+  // Carousel,
+  // CarouselControl,
+  // CarouselIndicators,
+  // CarouselItem,
 } from "reactstrap";
 import { showModalAction, showImagePreviewAction } from "../../store/reducer";
 
@@ -45,12 +45,17 @@ const ImageModal = () => {
           <h6>
             {imageDoc.site_id.label}
             <br />
-            {imageDoc.image_type.label} <br />
-            Plot: {imageDoc.plot.label} <br />
+            {imageDoc.image_type.label}
+            <br />
+            Plot:
+            {imageDoc.plot.label}
+            <br />
             Site Visit ID:
             {imageDoc.site_visit_id}
             <br />
-            {imageIdx + 1}/{numImages}
+            {imageIdx + 1}
+            /
+            {numImages}
           </h6>
         </Col>
       </ModalHeader>

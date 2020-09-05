@@ -1,26 +1,30 @@
 import React from "react";
 import { Nav, NavItem, NavLink } from "reactstrap";
+import { faFilter, faStar, faCheckSquare } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import "./FilterHeader.scss";
 
 const FilterHeader = () => (
   <div className="filter-header">
     <Nav tabs>
       <NavItem>
         <NavLink href="#" active className="filter-link">
-          <i className="fa fa-filter" />
+          <FontAwesomeIcon icon={faFilter} />
           {" "}
           Filter
         </NavLink>
       </NavItem>
-      <NavItem className="filter-item" style={{display: "none"}}>
+      <NavItem style={{ display: "none" }}>
         <NavLink href="#" className="filter-link">
-          <i className="fa fa-star" />
+          <FontAwesomeIcon icon={faStar} />
           {" "}
           Favs
         </NavLink>
       </NavItem>
-      <NavItem>
-        <NavLink href="#" className="filter-link" style={{display: "none"}}>
-          <i className="fa fa-check-square" />
+      <NavItem style={{ display: "none" }}>
+        <NavLink href="#" className="filter-link">
+          <FontAwesomeIcon icon={faCheckSquare} />
           {" "}
           Saved
         </NavLink>

@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "reactstrap";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 import "./buttons.scss";
 
 function simulateNetworkRequest() {
@@ -22,14 +25,13 @@ function LoginButton() {
   return (
     <>
       <Button
-        style={{ borderRadius: "10px"}}
         color="login"
         size="sm"
         disabled={isLoading}
         onClick={!isLoading ? handleClick : null}
       >
         <span style={{ paddingRight: "5px" }}>
-          <i className="fa fa-user"> </i>
+          <FontAwesomeIcon icon={faUser} />
         </span>
         {isLoading ? "Loading" : "Login"}
       </Button>

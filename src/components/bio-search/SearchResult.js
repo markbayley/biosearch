@@ -1,14 +1,15 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
-import { Card, Button, Col, Form } from "reactstrap";
-import "./SearchResult.scss";
+import { Card, Button, Col } from "reactstrap";
 import { showImagePreviewAction } from "../../store/reducer";
 
-const SearchResult = ({ imageIdx, embed }) => {
+import "./SearchResult.scss";
+
+const SearchResult = ({ imageIdx }) => {
   const dispatch = useDispatch();
   const bioImageDocument = useSelector(
-    (state) => state.search.hits[imageIdx]["_source"]
+    (state) => state.search.hits[imageIdx]["_source"],
   );
 
   let img_url_large = null;
@@ -25,11 +26,11 @@ const SearchResult = ({ imageIdx, embed }) => {
 
   return (
     <Col
-      xl={embed ? 7 : 2}
-      lg={embed ? 7 : 3}
-      md={embed ? 12 : 4}
-      sm={12}
-      xs={12}
+      xl="2"
+      lg="3"
+      md="4"
+      sm="12"
+      xs="12"
     >
       <Card id={site_id} className="image-card">
         <div className="hvrbox">
@@ -49,14 +50,14 @@ const SearchResult = ({ imageIdx, embed }) => {
               className="small_preview img-fluid"
               src={img_url_small}
               alt="small preview"
-              onKeyPress={() => {}}
+              onKeyPress={() => { }}
               role="none"
             />
             <img
               className="large_preview img-fluid"
               src={img_url_large}
               alt="large preview"
-              onKeyPress={() => {}}
+              onKeyPress={() => { }}
               role="none"
             />
             <div className="hvrbox-layer_top">
@@ -67,17 +68,20 @@ const SearchResult = ({ imageIdx, embed }) => {
                   src="/img/icons/Bioimages icon.svg"
                   alt="bioimages icon"
                   width="80px"
-                />{" "}
+                />
+                {" "}
                 <br />
                 <span className="center" />
               </div>
-            </div>{" "}
+            </div>
+            {" "}
           </Button>
           <div className="thumbnail-text">
             {bioImageDocument.site_id.label}
             <br />
-            {bioImageDocument.image_type.value[0].toUpperCase() +
-              bioImageDocument.image_type.value.substr(1)}{" "}
+            {bioImageDocument.image_type.value[0].toUpperCase()
+              + bioImageDocument.image_type.value.substr(1)}
+            {" "}
             {/* <img
               src="/img/phenocam.svg"
               width="20px"
@@ -98,11 +102,6 @@ const SearchResult = ({ imageIdx, embed }) => {
 
 SearchResult.propTypes = {
   imageIdx: PropTypes.number.isRequired,
-  embed: PropTypes.bool,
-};
-
-SearchResult.defaultProps = {
-  embed: false,
 };
 
 export default SearchResult;

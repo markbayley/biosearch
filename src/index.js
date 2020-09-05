@@ -2,8 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import axios from "axios";
+
+// include all our global standard styles.
+// should probably be the first css to be included, so that later css can override
+import "tern-react/dist/index.css";
+
 import { store } from "./store/configureStore";
-// import "tern-react/dist/index.css";
 import App from "./App";
 import registerServiceWorker from "./registerServiceWorker";
 

@@ -1,0 +1,33 @@
+.no-result {
+  display: flex;
+  // justify-content: center;
+  align-items: center;
+  font-family: "museo-sans", sans-serif;
+  border: 2px solid #065f65;
+  margin: 17% 20% 0% 22%;
+  font-size: 18px;
+  background-color: #b3d4c9;
+  font-weight: 500;
+  height: 15vh;
+  color: #065f65;
+  border-radius: 10px;
+  position: absolute;
+  z-index:20;
+  padding: 0% 3%;
+  // background-image: linear-gradient(to bottom right,  #c9e7dd, #B3D4C9);
+
+
+  .no-result-button {
+    flex-wrap: nowrap;
+    margin-left: 20px;
+    display: inline-block;
+  }
+
+}
+
+@media (max-width: 1199px) {
+  .no-result {
+    font-size: 16px;
+    height: 25vh;
+  }
+}

@@ -2,7 +2,6 @@ import React from "react";
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import ImageMarker from "./ImageMarker";
-// import BreadCrumb from "../BreadCrumb";
 
 // TODO: this component is almost pointless, there is no real need to wrap Marker
 //       within ImageMarkerEngine and ImageMarker

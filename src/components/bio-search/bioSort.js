@@ -12,5 +12,5 @@ export const bioSort = {
     { column_name: "camera_make", column_label: "Camera Make" },
     { column_name: "camera_model", column_label: "Camera Model" },
   ],
-  images_per_page: [10, 20, 40, 60, 100],
+  images_per_page: [12, 24, 48, 96, 192],
 };

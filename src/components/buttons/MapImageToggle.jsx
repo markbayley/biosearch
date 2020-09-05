@@ -9,24 +9,25 @@ function MapImageToggle() {
 
   const searchMode = useSelector((state) => state.ui.searchResults.searchMode);
 
-  return searchMode === "Images" ? (
-    <Button style={{marginLeft: "20px", width: "75px", borderRadius: "10px"}}
-      className=""
-      size="sm"
-      color="login"
-      onClick={() => dispatch(setSearchModeAction("Map"))}
-    >
-      Map
-    </Button>
-  ) : (
-    <Button style={{marginLeft: "20px", width: "75px", borderRadius: "10px"}}
-      className=""
-      size="sm"
-      color="login"
-      onClick={() => dispatch(setSearchModeAction("Images"))}
-    >
-      Images
-    </Button>
+  return (
+    searchMode === "Images"
+      ? (
+        <Button
+          size="sm"
+          color="login"
+          onClick={() => dispatch(setSearchModeAction("Map"))}
+        >
+          Map
+        </Button>
+      ) : (
+        <Button
+          size="sm"
+          color="login"
+          onClick={() => dispatch(setSearchModeAction("Images"))}
+        >
+          Images
+        </Button>
+      )
   );
 }
 

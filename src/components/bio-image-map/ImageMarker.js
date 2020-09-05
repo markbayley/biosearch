@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Marker, Tooltip } from "react-leaflet";
 import L from "leaflet";
-import "./Map.scss";
 
 const ImageMarker = (props) => {
   const {

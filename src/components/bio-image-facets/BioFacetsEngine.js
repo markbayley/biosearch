@@ -2,9 +2,11 @@ import React from "react";
 import ReactDateRangeFacet from "./ReactDateRangeFacet";
 import SelectFacet from "./SelectFacet";
 import ImageTypeSelectFacet from "./ImageTypeSelectFacet";
+import TextFacet from "./TextFacet";
 
 const BioFacetsEngine = () => (
-  <div>
+  <div className="bio-facets">
+    <TextFacet facet="search_string" placeholder="Enter serch text" />
     <SelectFacet facet="site_id" placeholder="Select Sites" />
     <SelectFacet facet="plot" placeholder="Select Plots" />
     <SelectFacet facet="site_visit_id" placeholder="Select Site Visit Ids" />

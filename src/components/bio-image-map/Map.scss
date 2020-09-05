@@ -1,43 +1,73 @@
 /* MAP */
 
-.map-image-toggle {
-    position: fixed;
-    right: 5%;
-    top: 80px;
-    z-index: 100;
-  }
-  .toggle-result {
-    height: 80vh;
-    padding: 0%;
-    margin: 0%;
-  }
-  .tool-tip {
-    margin: 0px;
-    padding: 3px 7px;
-    border-left: 3px solid #065f65;
-    font-family: "museo-sans", sans-serif;
-    color: #065f65;
-    // border-radius: 10px;
+.map-frame {
+  height: 100%;
+  width: 100%;
 
-  }
-  a {
-    .tool-tip-link {
-       color: #065f65;
-       text-transform: capitalize;
+  #map-id {
+    height: 100%;
+
+
+    // TODO: leaflet-container same as markercluster-map ...
+    .leaflet-container {
+      height: 80vh;
+      width: fluid;
     }
-  }
 
 
+    .markercluster-map {
+      height: 80vh;
 
-  @media (max-width: 1199px) {
-    .main-toggle {
-      // left: 40% !important;
-      // bottom: 50px;
+
+      .tool-tip {
+        margin: 0px;
+        padding: 3px 7px;
+        border-left: 3px solid #065f65;
+        font-family: "museo-sans", sans-serif;
+        color: #065f65;
+        // border-radius: 10px;
+
+        a {
+          .tool-tip-link {
+             color: #065f65;
+            text-transform: capitalize;
+          }
+        }
+      }
+
+      .custom-marker {
+        box-sizing: border-box;
+        color: #fff;
+        font-weight: bold;
+        background: #065f65;
+        font-size: "6px";
+        border-radius: 50%;
+        border: 5px solid rgba(84, 179, 166, 0.9);
+
+        &:hover {
+          background: #e36a51;
+          border: -10px solid rgb(149, 219, 199);
+          transition: background 0.5s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+          -webkit-transition: background 0.5s;
+          box-shadow: 0 0 0 10px rgba(84, 179, 166, 0.5), 0 3px 14px rgba(0, 0, 0, 0.4);
+          size: 3em;
+        }
+
+      }
+      .custom-marker-selected {
+        background: #e36a51;
+      }
+      .custom-marker-disabled {
+        background: grey;
+        border: 5px solid lightgrey;
+
+        &:hover {
+          background: grey;
+          border: 5px solid lightgrey;
+        }
+      }
+
     }
-  }
 
-  @media (max-width: 899px) {
-    .main-toggle {
-      // display: none;
-    }
   }
+}

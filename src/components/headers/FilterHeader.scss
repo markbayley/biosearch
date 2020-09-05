@@ -1,0 +1,36 @@
+@import '~tern-react/dist/scss/colors.scss';
+
+.filter-header {
+  background-color: $green-mid;
+  padding-top: 5px;
+  padding-left: 5px;
+
+
+  .filter-link {
+    // TODO: If I want to keep border, I need to set bottom color to color below header ...
+    //       otherwise it looks visually extended
+    border-color: $green-mid;
+    border-bottom: transparent;
+    color: $teal;
+
+    &:hover {
+      color: $green-light;
+      border-color: $green-mid;
+      border-bottom: transparent;
+    }
+
+  }
+
+  .filter-link.active {
+    color: $teal;
+    border-color: $green-mid;
+    border-bottom: transparent;
+
+    &:hover {
+      border-color: $green-mid;
+      border-bottom: transparent;
+    }
+
+  }
+
+}

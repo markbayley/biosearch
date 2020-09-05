@@ -9,6 +9,8 @@ import ImageMarkerEngine from "./ImageMarkerEngine";
 import NoResults from "../bio-search/NoResults";
 import AppError from "../bio-search/AppError";
 
+import "./Map.scss";
+
 const BioMapEngine = () => {
   const [mapInitState] = useState({
     lat: -26.47,
@@ -33,12 +35,6 @@ const BioMapEngine = () => {
 
   const BioMap = () => (
     <div className="map-frame">
-      <link
-        rel="stylesheet"
-        href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
-        integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
-        crossOrigin=""
-      />
       <div id="map-id">
         <Map
           className="markercluster-map"
@@ -93,4 +89,5 @@ const BioMapEngine = () => {
   }
   return <BioMap />;
 };
+
 export default BioMapEngine;

@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
+import React from "react";
 import {
   Row,
   UncontrolledDropdown,
@@ -9,148 +8,120 @@ import {
   Pagination,
   PaginationItem,
   PaginationLink,
-  Button,
   Input,
-  Form,
 } from "reactstrap";
 import { useSelector, useDispatch } from "react-redux";
+import { debounce } from "lodash";
 import { updateFilterAction, fetchSearchAction } from "../../store/reducer";
-import "./SearchResult.scss";
 import { bioSort } from "./bioSort";
 
-const BioResultPagination = ({ page_size, page_num, totalDocuments }) => {
+import "./BioResultPagination.scss";
+
+// define a debounced dispatch to fire search only once while user is typing
+// this method needs to be defined outside of component, otherwise the debounced
+// method would be recreated on each state change which would defeat the purpose
+const debouncedDispatch = debounce((dispatch, action) => {
+  dispatch(action);
+}, 1000);
+
+const BioResultPagination = () => {
   const dispatch = useDispatch();
-  const [page_value, setPageValue] = useState(page_num);
+  // ui data out of store
+  const { page_size, page_num } = useSelector((state) => state.ui.searchFilters.pagination);
+  const { sort_order, sort_column } = useSelector((state) => state.ui.searchFilters.sort);
+  // result data out of store
+  const totalDocuments = useSelector((state) => state.search.totalDocuments) || 0;
 
-  const { sort_order, sort_column } = useSelector(
-    (state) => state.ui.searchFilters.sort
-  );
+  const selectedSortOrder = bioSort.sort_order.filter((sort) => sort.sort_name === sort_order);
 
-  const selectedSortOrder = bioSort.sort_order.filter(
-    (sort) => sort.sort_name === sort_order
-  );
+  const pages = Math.ceil(totalDocuments / page_size);
 
-  const getPagination = (itemsPerPage, startFrom, totalImages) => {
-    const perPage = itemsPerPage || 4;
-    const pages = Math.ceil(totalImages / perPage);
-    const pagination = [];
-
-    const currentPage = startFrom <= pages ? startFrom : 1;
-
-    const showThisPage = (pageNo) => {
-      for (let i = 1; i < 3; i += 1) {
-        if (pageNo === currentPage + i) {
-          return true;
-        }
-        if (pageNo === currentPage - i) {
-          return true;
-        }
-      }
-      return false;
-    };
-
-    // TODO: [TERNDA-867] Change pagination to only show 5 pages
-    // between the prev and next buttons like portal.tern.org.au
-    for (let i = 1; i <= pages; i += 1) {
-      if (i === currentPage) {
-        pagination.push({ id: i, current: true, show: true });
-      } else if (showThisPage(i)) {
-        pagination.push({ id: i, current: false, show: true });
-      } else {
-        pagination.push({ id: i, current: false, show: false });
-      }
+  // change Page to given page, if delay is true, it will debounce the fetchSearchAction dispatch
+  const changePage = (page, delay = false) => {
+    // TODO: maybe move value checks into reduer?
+    let newPage = parseInt(page, 10);
+    if (Number.isNaN(newPage)) {
+      return;
     }
-
-    const changePage = (page, e) => {
-      e.preventDefault();
-      if (page !== currentPage) {
-        dispatch(
-          updateFilterAction({
-            pagination: { page_size: itemsPerPage, page_num: page },
-          })
-        );
-        dispatch(fetchSearchAction());
-      }
-    };
-
-    const goToPrevPage = (e) => {
-      e.preventDefault();
-      if (currentPage !== 1) {
-        dispatch(
-          updateFilterAction({
-            pagination: { page_size: itemsPerPage, page_num: currentPage - 1 },
-          })
-        );
-        dispatch(fetchSearchAction());
-      }
-    };
-
-    const goToNextPage = (e) => {
-      e.preventDefault();
-      if (currentPage !== pages) {
-        dispatch(
-          updateFilterAction({
-            pagination: { page_size: itemsPerPage, page_num: currentPage + 1 },
-          })
-        );
-        dispatch(fetchSearchAction());
-      }
-    };
-
-    return {
-      pagination,
-      pages,
-      prevPage: goToPrevPage,
-      nextPage: goToNextPage,
-      changePage,
-    };
+    // don't go below 1
+    if (newPage < 1) {
+      newPage = 1;
+    }
+    // did it change at all?
+    if (newPage === page_num) {
+      // no change, cance debounce, and ignore
+      debouncedDispatch.cancel();
+      return;
+    }
+    // first update state
+    dispatch(updateFilterAction(
+      { pagination: { page_size, page_num: newPage } },
+    ));
+    // trigger search
+    if (delay) {
+      debouncedDispatch(dispatch, fetchSearchAction());
+    } else {
+      // cancel any debounced dispatchs
+      debouncedDispatch.cancel();
+      dispatch(fetchSearchAction());
+    }
   };
 
-  const { pagination, pages, prevPage, nextPage, changePage } = getPagination(
-    page_size,
-    page_num,
-    totalDocuments
-  );
-
   const handlePageSizeChange = (value) => {
-    dispatch(
-      updateFilterAction({ pagination: { page_size: value, page_num } })
-    );
+    dispatch(updateFilterAction(
+      { pagination: { page_size: value, page_num } },
+    ));
     dispatch(fetchSearchAction());
   };
 
   const handleSortOrder = (value) => {
-    dispatch(
-      updateFilterAction({
-        sort: { sort_order: value, sort_column },
-      })
-    );
+    dispatch(updateFilterAction(
+      { sort: { sort_order: value, sort_column } },
+    ));
     dispatch(fetchSearchAction());
   };
+
   return (
-    <div>
-      <Row className="pagination-row">
-        <Pagination className="pagination" size="sm" style={{paddingTop: "3px"}}>
-          {/* TODO: Images per page and Sort Order should probably not be part of
+    <Row className="pagination-row">
+      <Pagination className="pagination" size="sm" style={{ paddingTop: "3px" }}>
+        {/* TODO: Images per page and Sort Order should probably not be part of
                     pagination control. */}
-          <div
-            className="page-items"
-            color="flat"
+        <div
+          className="page-items"
+        >
+          Images:
+          {" "}
+          {totalDocuments}
+          {" "}
+
+        </div>
+        <UncontrolledDropdown className="pageitems" size="sm">
+          Page Size:
+          {" "}
+          <DropdownToggle
             size="sm"
-            style={{ marginRight: "20px", fontSize: "16px", paddingTop: "2px" }}
+            caret
+            color="pageitems"
+            id="dropdown-basic-button"
+            className="pageitems"
           >
-            {/* Showing
-            {" "} */}
-            {/* {page_size}
-            {" "}
-            / */} 
-              Images:
-            {" "}
-            {totalDocuments}{" "}
-          
-          </div>
+            {page_size}
+          </DropdownToggle>
+          <DropdownMenu>
+            {bioSort.images_per_page.map((perPage) => (
+              <DropdownItem
+                key={perPage}
+                onClick={() => handlePageSizeChange(perPage)}
+              >
+                {perPage}
+              </DropdownItem>
+            ))}
+          </DropdownMenu>
+        </UncontrolledDropdown>
+        <div className="mobile-pagination">
           <UncontrolledDropdown className="pageitems" size="sm">
-            Page Size:{" "}
+            Sort Order:
+            {" "}
             <DropdownToggle
               size="sm"
               caret
@@ -158,100 +129,47 @@ const BioResultPagination = ({ page_size, page_num, totalDocuments }) => {
               id="dropdown-basic-button"
               className="pageitems"
             >
-              {page_size} 
+              {selectedSortOrder[0].sort_label}
             </DropdownToggle>
             <DropdownMenu>
-              {bioSort.images_per_page.map((perPage) => (
+              {bioSort.sort_order.map((sort) => (
                 <DropdownItem
-                  key={perPage}
-                  onClick={() => handlePageSizeChange(perPage)}
+                  key={sort.sort_name}
+                  onClick={() => handleSortOrder(sort.sort_name)}
                 >
-                  {perPage}
+                  {sort.sort_label}
                 </DropdownItem>
               ))}
             </DropdownMenu>
           </UncontrolledDropdown>
-          <div className="mobile-pagination">
-            <UncontrolledDropdown className="pageitems" size="sm">
-              Sort Order:{" "}
-              <DropdownToggle
-                size="sm"
-                caret
-                color="pageitems"
-                id="dropdown-basic-button"
-                className="pageitems"
-              >
-                {selectedSortOrder[0].sort_label}
-              </DropdownToggle>
-              <DropdownMenu>
-                {bioSort.sort_order.map((sort) => (
-                  <DropdownItem
-                    key={sort.sort_name}
-                    onClick={() => handleSortOrder(sort.sort_name)}
-                  >
-                    {sort.sort_label}
-                  </DropdownItem>
-                ))}
-              </DropdownMenu>
-            </UncontrolledDropdown>
-          </div>
-          <PaginationItem onClick={(e) => changePage(1, e)}>
-            <PaginationLink first title="First" />
-          </PaginationItem>
-          <PaginationItem onClick={prevPage}>
-            <PaginationLink previous title="Previous" />
-          </PaginationItem>
-          {/* <div className="mobile-pagination">
-            {pagination.map((page) => {
-              if (page.show) {
-                return (
-                  <div key={page.id} className="pagelink">
-                    <PaginationItem
-                      key={page.id}
-                      active={!!page.current}
-                      onClick={(e) => changePage(page.id, e)}
-                    >
-                      <PaginationLink>{page.id}</PaginationLink>
-                    </PaginationItem>
-                  </div>
-                );
-              }
-              return null;
-            })}
-          </div> */}
-          <div className="page-input">
-            {/* <div className="image-input">Page: </div> */}
-            <Form onSubmit={(e) => changePage(page_value, e)}>
-              <Input
-                // placeholder="24"
-                // onBlur={(e) => setTimeout(e.focus(), "5")}
-                size={1}
-                min={1}
-                max={pages}
-                bsSize="sm"
-                defaultValue={page_num}
-                // value={page_value}
-                // onChange={(e) => setPageValue(e.target.value)}
-                onChange={(e) => changePage(e.currentTarget.value, e)}
-              />
-            </Form>
-          </div>
-          <PaginationItem onClick={nextPage}>
-            <PaginationLink next title="Next" />
-          </PaginationItem>
-          <PaginationItem onClick={(e) => changePage(pages, e)}>
-            <PaginationLink last title="Last" />
-          </PaginationItem>
-          {/* TODO: page_size / totlaDocuments a Button? ... what should happen on click? */}
-        </Pagination>
-      </Row>
-    </div>
+        </div>
+        <PaginationItem onClick={() => changePage(1)}>
+          <PaginationLink first title="First" />
+        </PaginationItem>
+        <PaginationItem onClick={() => changePage(page_num - 1)}>
+          <PaginationLink previous title="Previous" />
+        </PaginationItem>
+        <div className="page-input">
+          <Input
+            size="4"
+            min="1"
+            max={pages}
+            type="number"
+            bsSize="sm"
+            value={page_num}
+            style={{ textAlign: "center" }}
+            onChange={(e) => changePage(e.currentTarget.value, true)}
+          />
+        </div>
+        <PaginationItem onClick={() => changePage(page_num + 1)}>
+          <PaginationLink next title="Next" />
+        </PaginationItem>
+        <PaginationItem onClick={() => changePage(pages)}>
+          <PaginationLink last title="Last" />
+        </PaginationItem>
+      </Pagination>
+    </Row>
   );
 };
 
-BioResultPagination.propTypes = {
-  page_size: PropTypes.number.isRequired,
-  page_num: PropTypes.number.isRequired,
-  totalDocuments: PropTypes.number.isRequired,
-};
 export default BioResultPagination;
