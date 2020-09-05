@@ -9,7 +9,7 @@ import ImageMarkerEngine from "./ImageMarkerEngine";
 import NoResults from "../bio-search/NoResults";
 import AppError from "../bio-search/AppError";
 
-import "./Map.scss";
+import "./BioMapEngine.scss";
 
 const BioMapEngine = () => {
   const [mapInitState] = useState({
