@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <!-- <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" /> -->
-    <!--
+
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <meta name="description" content="Web site created using create-react-app" />
+  <!-- <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" /> -->
+  <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
       Only files inside the `public` folder can be referenced from the HTML.
@@ -24,34 +22,22 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>TERN Bioimages Portal</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
-    <link rel="stylesheet" href="https://use.typekit.net/pwr4rlr.css" />
-    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
-    <script src="https://use.fontawesome.com/abac3c7363.js"></script>
+  <title>TERN Bioimages Portal</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <!-- TODO: check whether these two are needed, may be included via tern-react pkg already -->
+  <!-- <link rel="stylesheet" href="https://use.typekit.net/pwr4rlr.css" /> -->
+  <!-- <script src="https://use.fontawesome.com/abac3c7363.js"></script> -->
 
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
-    />
-    <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+  <!-- leaflet css ... TODO: check size; could be imported via node as well -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
+  <link rel="stylesheet" href="https://unpkg.com/react-leaflet-markercluster/dist/styles.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.3/leaflet.draw.css" />
+</head>
 
-    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/react-leaflet-markercluster/dist/styles.min.css"
-    />
-
-    <link
-      rel="stylesheet"
-      href="//cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.3/leaflet.draw.css"
-    />
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
+<body>
+  <noscript>You need to enable JavaScript to run this app.</noscript>
+  <div id="root"></div>
+  <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
 
@@ -61,24 +47,6 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
-    <script>
-      jQuery(".main-header-menu li:has(ul)").addClass("has-child");
-    </script>
-    <script>
-      // Mosheh commented this out because there is no element
-      // with id = navbar. Where is it Mark?
-      // window.onscroll = function() {myFunction()};
+</body>
 
-      // var navbar = document.getElementById("navbar");
-      // var sticky = navbar.offsetTop;
-
-      // function myFunction() {
-      //   if (window.pageYOffset >= sticky) {
-      //     navbar.classList.add("sticky")
-      //   } else {
-      //     navbar.classList.remove("sticky");
-      //   }
-      // }
-    </script>
-  </body>
 </html>
