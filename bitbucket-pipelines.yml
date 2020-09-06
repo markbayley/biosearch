@@ -1,5 +1,9 @@
 image: node:12
 
+# cloning another repo in pipeline
+# https://bitbucket.org/blog/cloning-another-bitbucket-repository-in-bitbucket-pipelines
+# TODO: I like the node cache ... need to do something about tern-react pkg caching .... properly version it?
+
 definitions:
   # generic re-usable steps
   steps:
@@ -9,11 +13,12 @@ definitions:
           export IMAGE_NAME=ternau/bioimages_portal_ui
 
     - step: &build-test-step
-        #caches:
-        #  - node
+        caches:
+          - node
         script: &build-test
           - *setenv
           - npm install
+          - npm install git+ssh://git@bitbucket.org/terndatateam/tern-react.git#develop
           - npm run lint
           - npm run build
           # - CI=true npm test
@@ -32,8 +37,8 @@ pipelines:
       - step: *build-test-step
     master:
       - step:
-          #caches:
-          #  - node
+          caches:
+            - node
           script:
             - *build-test
             # TODO: get some image version from somewhere?
