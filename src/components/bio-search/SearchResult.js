@@ -2,6 +2,8 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import PropTypes from "prop-types";
 import { Card, Button, Col } from "reactstrap";
+import get from "lodash/get";
+import sortBy from "lodash/sortBy";
 import { showImagePreviewAction } from "../../store/reducer";
 
 import "./SearchResult.scss";
@@ -12,14 +14,9 @@ const SearchResult = ({ imageIdx }) => {
     (state) => state.search.hits[imageIdx]["_source"],
   );
 
-  let img_url_large = null;
-  let img_url_small = null;
-  // Nb: some docs dont have preview_urls (empty array)
-  // This causes the application to explored!
-  if (bioImageDocument.preview_urls.length !== 0) {
-    img_url_large = bioImageDocument.preview_urls[0].url;
-    img_url_small = bioImageDocument.preview_urls[1].url;
-  }
+  // get smallest preview url ... returns undefined if there are no preview urls.
+  const img_url_small = get(sortBy(bioImageDocument.preview_urls, "size")[0], "url");
+
   const site_id = bioImageDocument["site_id"].value;
 
   const showImagePreview = (idx) => dispatch(showImagePreviewAction(idx));
@@ -47,16 +44,9 @@ const SearchResult = ({ imageIdx }) => {
             }}
           >
             <img
-              className="small_preview img-fluid"
+              className="preview img-fluid"
               src={img_url_small}
               alt="small preview"
-              onKeyPress={() => { }}
-              role="none"
-            />
-            <img
-              className="large_preview img-fluid"
-              src={img_url_large}
-              alt="large preview"
               onKeyPress={() => { }}
               role="none"
             />
