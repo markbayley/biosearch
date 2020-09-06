@@ -15,6 +15,9 @@ import {
   // CarouselIndicators,
   // CarouselItem,
 } from "reactstrap";
+import sortBy from "lodash/sortBy";
+import get from "lodash/get";
+import last from "lodash/last";
 import { showModalAction, showImagePreviewAction } from "../../store/reducer";
 
 const ImageModal = () => {
@@ -33,6 +36,8 @@ const ImageModal = () => {
   if (!show || !imageDoc) {
     return null;
   }
+
+  const img_url_large = get(last(sortBy(imageDoc.preview_urls, "size")), "url");
 
   return (
     <Modal size="lg" isOpen={show} toggle={toggle} unmountOnClose>
@@ -85,7 +90,7 @@ const ImageModal = () => {
 
         <img
           className="img-fluid"
-          src={imageDoc.preview_urls[0].url}
+          src={img_url_large}
           alt="carousel"
         />
         <br />

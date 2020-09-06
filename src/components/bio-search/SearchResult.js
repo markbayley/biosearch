@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { Card, Button, Col } from "reactstrap";
 import get from "lodash/get";
 import sortBy from "lodash/sortBy";
+import first from "lodash/first";
 import { showImagePreviewAction } from "../../store/reducer";
 
 import "./SearchResult.scss";
@@ -15,7 +16,7 @@ const SearchResult = ({ imageIdx }) => {
   );
 
   // get smallest preview url ... returns undefined if there are no preview urls.
-  const img_url_small = get(sortBy(bioImageDocument.preview_urls, "size")[0], "url");
+  const img_url_small = get(first(sortBy(bioImageDocument.preview_urls, "size")), "url");
 
   const site_id = bioImageDocument["site_id"].value;
 
