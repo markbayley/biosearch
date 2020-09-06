@@ -9,8 +9,8 @@ definitions:
           export IMAGE_NAME=ternau/bioimages_portal_ui
 
     - step: &build-test-step
-        caches:
-          - node
+        #caches:
+        #  - node
         script: &build-test
           - *setenv
           - npm install
@@ -32,8 +32,8 @@ pipelines:
       - step: *build-test-step
     master:
       - step:
-          caches:
-            - node
+          #caches:
+          #  - node
           script:
             - *build-test
             # TODO: get some image version from somewhere?
