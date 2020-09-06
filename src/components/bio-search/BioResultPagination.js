@@ -47,6 +47,9 @@ const BioResultPagination = () => {
     if (newPage < 1) {
       newPage = 1;
     }
+    if (newPage > pages) {
+      newPage = pages;
+    }
     // did it change at all?
     if (newPage === page_num) {
       // no change, cance debounce, and ignore
