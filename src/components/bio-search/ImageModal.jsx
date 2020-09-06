@@ -26,7 +26,7 @@ const ImageModal = () => {
   const { show, imageIdx } = useSelector((state) => state.ui.imageModal);
   const data = useSelector((state) => state.search.hits);
   const numImages = data.length;
-  const imageDoc = data[imageIdx]["_source"];
+  const imageDoc = get(data[imageIdx], "_source");
 
   const toggle = () => dispatch(showModalAction(!show));
 
