@@ -6,7 +6,6 @@ import {
 import Leaflet from "leaflet";
 import { useSelector } from "react-redux";
 import ImageMarkerEngine from "./ImageMarkerEngine";
-import NoResults from "../bio-search/NoResults";
 import AppError from "../bio-search/AppError";
 
 import "./BioMapEngine.scss";
