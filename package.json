@@ -22,7 +22,6 @@
     "leaflet.markercluster": "^1.4.1",
     "localforage": "^1.9.0",
     "lodash": "^4.17.20",
-    "lodash.groupby": "^4.6.0",
     "moment": "^2.27.0",
     "node-sass": "^4.14.1",
     "prop-types": "^15.7.2",
