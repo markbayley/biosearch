@@ -2,7 +2,7 @@ import React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useDispatch, useSelector } from "react-redux";
-import { get } from "lodash";
+import get from "lodash/get";
 import moment from "moment";
 import { Container, InputGroup, Row, Input } from "reactstrap";
 import {

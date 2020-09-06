@@ -1,5 +1,6 @@
 // eslint-disable-next-line object-curly-newline
-import { isEmpty, uniq } from "lodash";
+import isEmpty from "lodash/isEmpty";
+import uniq from "lodash/uniq";
 import {
   all, takeLatest, put, call, select, cancelled,
 } from "redux-saga/effects";

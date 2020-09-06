@@ -1,6 +1,7 @@
 /* eslint-disable no-nested-ternary */
 import React from "react";
-import { startCase, get } from "lodash";
+import startCase from "lodash/startCase";
+import get from "lodash/get";
 import Select from "react-select";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";

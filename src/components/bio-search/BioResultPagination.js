@@ -11,7 +11,7 @@ import {
   Input,
 } from "reactstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { debounce } from "lodash";
+import debounce from "lodash/debounce";
 import { updateFilterAction, fetchSearchAction } from "../../store/reducer";
 import { bioSort } from "./bioSort";
 

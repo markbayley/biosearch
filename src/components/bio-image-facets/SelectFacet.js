@@ -3,7 +3,7 @@ import React from "react";
 import Select from "react-select";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
-import { get } from "lodash";
+import get from "lodash/get";
 import {
   updateFilterAction,
   fetchFacetsAction,
