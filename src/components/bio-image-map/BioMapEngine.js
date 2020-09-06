@@ -20,13 +20,8 @@ const BioMapEngine = () => {
     minZoom: 5,
   });
   const mapInitPosition = [mapInitState.lat, mapInitState.lng];
-  const sites = useSelector((state) => state.search.facets.site_id.buckets);
-  const totalImages = useSelector((state) => state.search.totalDocuments);
 
   const error = useSelector((state) => state.search.error);
-
-  const selectedSites = useSelector((state) => state.ui.searchFilters.site_id);
-  const selectedSiteIds = new Set(selectedSites.map((site) => site.value));
 
   // Set map boundary (australia)
   const corner1 = Leaflet.latLng(-9.820066, 115.240312);
@@ -67,13 +62,8 @@ const BioMapEngine = () => {
                     if map shows result sites, we need to change the API to
                        return a site aggregation with sub aggregations about additional data.
           */}
-          {sites.map((site) => (
-            <ImageMarkerEngine
-              site={site}
-              key={site.key}
-              selected={selectedSiteIds.has(site.key)}
-            />
-          ))}
+          <ImageMarkerEngine />
+
         </Map>
       </div>
     </div>
@@ -84,8 +74,6 @@ const BioMapEngine = () => {
     return (
       <AppError />
     );
-  } if (totalImages === 0) {
-    return <NoResults />;
   }
   return <BioMap />;
 };
