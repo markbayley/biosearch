@@ -43,7 +43,7 @@
     "react-select": "^3.1.0",
     "reactstrap": "^8.5.1",
     "redux-saga": "^1.1.3",
-    "tern-react": "git+ssh://git@bitbucket.org/terndatateam/tern-react.git#develop"
+    "tern-react": "git+ssh://git@bitbucket.org/terndatateam/tern-react.git#e0c4c33"
   },
   "scripts": {
     "start": "react-scripts start",
