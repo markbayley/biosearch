@@ -42,14 +42,14 @@ pipelines:
             - node
           script:
             - *build-test
-            # TODO: get some image version from somewhere?
+            # TODO: take package.json version into account?
             # - export VERSION=$(....)
             - docker build -t $IMAGE_NAME .
-            # - export IMAGE_TAG=${VERSION/+/-}
-            # - docker tag $IMAGE_NAME $IMAGE_NAME:$IMAGE_TAG
-            # - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
-            # - docker push $IMAGE_NAME
-            # - docker push $IMAGE_NAME:$IMAGE_TAG
+            - export IMAGE_TAG=${git describe}
+            - docker tag $IMAGE_NAME $IMAGE_NAME:$IMAGE_TAG
+            - docker login --username $DOCKER_USERNAME --password $DOCKER_PASSWORD
+            - docker push $IMAGE_NAME
+            - docker push $IMAGE_NAME:$IMAGE_TAG
           services:
             - docker
 
