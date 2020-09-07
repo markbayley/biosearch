@@ -7,6 +7,8 @@ import sortBy from "lodash/sortBy";
 import first from "lodash/first";
 import { showImagePreviewAction } from "../../store/reducer";
 
+import { ReactComponent as BioimagesIcon } from "../../assets/icons/BioimagesIcon.svg";
+
 import "./SearchResult.scss";
 
 const SearchResult = ({ imageIdx }) => {
@@ -55,11 +57,7 @@ const SearchResult = ({ imageIdx }) => {
               <div className="hvrbox-text">
                 View Image?
                 <br />
-                <img
-                  src="/img/icons/Bioimages icon.svg"
-                  alt="bioimages icon"
-                  width="80px"
-                />
+                <BioimagesIcon style={{ color: "#777777", width: "80px" }} />
                 {" "}
                 <br />
                 <span className="center" />
@@ -72,18 +70,6 @@ const SearchResult = ({ imageIdx }) => {
             <br />
             {bioImageDocument.image_type.value[0].toUpperCase()
               + bioImageDocument.image_type.value.substr(1)}
-            {" "}
-            {/* <img
-              src="/img/phenocam.svg"
-              width="20px"
-              alt="phenocam"
-              style={{
-                border: ".5px solid orange",
-                borderRadius: "20px",
-                padding: "2px",
-                marginBottom: "5px",
-              }}
-            /> */}
           </div>
         </div>
       </Card>
