@@ -15,8 +15,4 @@ FROM nginx:1.19-alpine as runner
 
 COPY --from=builder /build/build/ /usr/share/nginx/html/
 
-
-
-
-
-
+COPY dockerfiles/nginx/ /etc/nginx/

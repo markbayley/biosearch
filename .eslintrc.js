@@ -27,7 +27,6 @@ module.exports = {
         missingExports: true,
         unusedExports: true,
         ignoreExports: [
-          "src/serviceWorker.js",
           "src/*.test.js",
           "src/index.js",
           "src/setupTests.js",
