@@ -10,10 +10,10 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
-  // Carousel,
-  // CarouselControl,
-  // CarouselIndicators,
-  // CarouselItem,
+  Carousel,
+  CarouselControl,
+  CarouselIndicators,
+  CarouselItem,
 } from "reactstrap";
 import { showModalAction, showImagePreviewAction } from "../../store/reducer";
 
@@ -45,23 +45,17 @@ const ImageModal = () => {
           <h6>
             {imageDoc.site_id.label}
             <br />
-            {imageDoc.image_type.label}
-            <br />
-            Plot:
-            {imageDoc.plot.label}
-            <br />
+            {imageDoc.image_type.label} <br />
+            Plot: {imageDoc.plot.label} <br />
             Site Visit ID:
             {imageDoc.site_visit_id}
             <br />
-            {imageIdx + 1}
-            /
-            {numImages}
+            {imageIdx + 1}/{numImages}
           </h6>
         </Col>
       </ModalHeader>
       <hr className="modal-line" />
       <ModalBody>
-
         {/* To be finished ...<Carousel>
           <CarouselIndicators />
           <CarouselItem>
@@ -111,6 +105,19 @@ const ImageModal = () => {
           onClick={() => dispatch(showImagePreviewAction(nextIdx))}
         >
           Next
+        </Button>
+
+        <Button
+          style={{
+            position: "absolute",
+            right: "15px",
+            top: "200px",
+            opacity: "0.5",
+          }}
+          color="flat"
+          onClick={() => dispatch(showImagePreviewAction(nextIdx))}
+        >
+          <i className="fa fa-chevron-right" />
         </Button>
         {/* <Button color="login" onClick={toggle}>
           Close
