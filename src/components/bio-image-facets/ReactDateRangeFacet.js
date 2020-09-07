@@ -7,8 +7,7 @@ import moment from "moment";
 import { Container, InputGroup, Row, Input } from "reactstrap";
 import {
   updateFilterAction,
-  fetchFacetsAction,
-  fetchSearchAction,
+  fetchFacetsSearchAction,
 } from "../../store/reducer";
 
 const ReactDateRangeFacet = () => {
@@ -73,8 +72,7 @@ const ReactDateRangeFacet = () => {
       }),
     );
 
-    dispatch(fetchFacetsAction());
-    dispatch(fetchSearchAction());
+    dispatch(fetchFacetsSearchAction());
   };
 
   return (

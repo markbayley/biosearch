@@ -7,8 +7,7 @@ import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import {
   updateFilterAction,
-  fetchFacetsAction,
-  fetchSearchAction,
+  fetchFacetsSearchAction,
 } from "../../store/reducer";
 import { facetColourStyles } from "./facetColourStyles";
 
@@ -71,10 +70,8 @@ const ImageTypeSelectFacet = ({ facet, ...props }) => {
     } else {
       dispatch(updateFilterAction({ [facet]: items }));
     }
-    // update facets
-    dispatch(fetchFacetsAction());
-    // trigger search
-    dispatch(fetchSearchAction());
+    // update facets and search results
+    dispatch(fetchFacetsSearchAction());
   };
 
   // items: [{label: "", value: ""}, ]
