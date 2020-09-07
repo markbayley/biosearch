@@ -41,7 +41,11 @@ pipelines:
           caches:
             - node
           script:
-            - *build-test
+            - *setenv
+            - npm install
+            - npm run lint
+            - npm run build
+            # - CI=true npm test
             # TODO: take package.json version into account?
             # - export VERSION=$(....)
             - docker build -t $IMAGE_NAME .
