@@ -1,4 +1,6 @@
-image: node:12
+image:
+  name: node:12
+  run-as-user: 1000
 
 # cloning another repo in pipeline
 # https://bitbucket.org/blog/cloning-another-bitbucket-repository-in-bitbucket-pipelines
@@ -18,7 +20,6 @@ definitions:
         script: &build-test
           - *setenv
           - npm install
-          - npm install git+ssh://git@bitbucket.org/terndatateam/tern-react.git#develop
           - npm run lint
           - npm run build
           # - CI=true npm test
