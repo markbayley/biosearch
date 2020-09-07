@@ -2,8 +2,6 @@ import React from "react";
 import { useSelector } from "react-redux";
 import ImageMarker from "./ImageMarker";
 
-// TODO: this component is almost pointless, there is no real need to wrap Marker
-//       within ImageMarkerEngine and ImageMarker
 const ImageMarkerEngine = () => {
   // all sites from facet
   const sites = useSelector((state) => state.search.facets.site_id.buckets);
@@ -11,6 +9,7 @@ const ImageMarkerEngine = () => {
   const selectedSites = useSelector((state) => state.ui.searchFilters.site_id);
 
   // site.doc_count, site.key
+  // TODO: may fail if vocab is null
   const site_vocab = useSelector((state) => state.search.vocabs.site_id);
 
   // set of currently selected site ids
