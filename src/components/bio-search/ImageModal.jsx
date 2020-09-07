@@ -18,6 +18,9 @@ import {
 import sortBy from "lodash/sortBy";
 import get from "lodash/get";
 import last from "lodash/last";
+
+import ternlogo from "tern-react/dist/images/tern-logo.png";
+
 import { showModalAction, showImagePreviewAction } from "../../store/reducer";
 
 const ImageModal = () => {
@@ -44,7 +47,7 @@ const ImageModal = () => {
       <ModalHeader className="modal-header" toggle={toggle}>
         {" "}
         <Col sm={2} className="modal-column">
-          <img src="/img/logo@3x.png" style={{ width: "300px" }} alt="" />
+          <img src={ternlogo} style={{ width: "300px" }} alt="" />
         </Col>
         <Col className="modal-info" sm={5}>
           <h6>
