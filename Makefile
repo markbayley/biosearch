@@ -1,6 +1,6 @@
 
 
-IMAGE = "ternau/eco-images-ui"
+IMAGE = "ternau/bioimages-portal-ui"
 TAG = $(shell git describe --dirty)
 
 buildapp:

@@ -12,7 +12,7 @@ definitions:
     - step: &envstep
       # use a multiline step to set environment variables
       - script: &setenv |
-          export IMAGE_NAME=ternau/bioimages_portal_ui
+          export IMAGE_NAME=ternau/bioimages-portal-ui
 
     - step: &build-test-step
         caches:
