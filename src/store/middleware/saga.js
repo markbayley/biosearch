@@ -1,5 +1,6 @@
 // eslint-disable-next-line object-curly-newline
-import { isEmpty, uniq } from "lodash";
+import isEmpty from "lodash/isEmpty";
+import uniq from "lodash/uniq";
 import {
   all, takeLatest, put, call, select, cancelled,
 } from "redux-saga/effects";
@@ -10,6 +11,7 @@ import {
   fetchFacetsDoneAction,
   fetchSearchErrorAction,
   fetchVocabsDoneAction,
+  fetchFacetsSearchAction,
 } from "../reducer";
 
 import { bioimages } from "./api";
@@ -107,13 +109,14 @@ function extractFacetResult(data) {
   return result;
 }
 
-function* fetchSearchSaga() {
+function* fetchSearchSaga(action, params) {
   try {
-    // TODO: state may not be accurate at this stage ...
-    //       => find a better way to get full set of search parameters
-    const filters = yield select((state) => state.ui.searchFilters);
-    const params = filtersToParams(filters);
-    const { data } = yield call(bioimages.fetchSearch, params);
+    let apiparams = params;
+    if (!apiparams) {
+      const filters = yield select((state) => state.ui.searchFilters);
+      apiparams = filtersToParams(filters);
+    }
+    const { data } = yield call(bioimages.fetchSearch, apiparams);
     yield put(fetchSearchDoneAction(data));
   } catch (error) {
     yield put(fetchSearchErrorAction(error.message));
@@ -126,13 +129,16 @@ function* fetchSearchSaga() {
   }
 }
 
-function* fetchFacetsSaga() {
+function* fetchFacetsSaga(action, params) {
   try {
     // TODO: state may not be accurate at this stage ...
     //       => find a better way to get full set of search parameters
-    const filters = yield select((state) => state.ui.searchFilters);
-    const params = filtersToParams(filters);
-    const { data } = yield call(bioimages.fetchFacets, params);
+    let apiparams = params;
+    if (!apiparams) {
+      const filters = yield select((state) => state.ui.searchFilters);
+      apiparams = filtersToParams(filters);
+    }
+    const { data } = yield call(bioimages.fetchFacets, apiparams);
     const vocabs = yield select((state) => state.search.vocabs);
     // TODO: we probably want to load vocabs regularly / or on page load
     if (isEmpty(vocabs)) {
@@ -158,18 +164,20 @@ function* fetchFacetsSaga() {
   }
 }
 
-function* watchFetchFacetsSaga() {
-  yield takeLatest(fetchFacetsAction.type, fetchFacetsSaga);
-}
-
-function* watchFetchSearchSaga() {
-  yield takeLatest(fetchSearchAction.type, fetchSearchSaga);
+function* fetchFacetsSearchSaga(action) {
+  // get filters and api params
+  const filters = yield select((state) => state.ui.searchFilters);
+  const params = filtersToParams(filters);
+  // run fetch search and fetch facets in parallel
+  yield all([
+    call(fetchFacetsSaga, action, params),
+    call(fetchSearchSaga, action, params),
+  ]);
 }
 
 export function* rootSaga() {
-  // TODO: we probably want to run both sagas always together ....
-  //       => handle double call here instead of when invoking actions
-  //          makes it also easier to use the same filters / params and
-  //          call the filtersToParams only once
-  yield all([watchFetchSearchSaga(), watchFetchFacetsSaga()]);
+  // TODO: fetchFacetsAction is not emitted separately ... only Search or facets and search
+  yield takeLatest(fetchFacetsAction.type, fetchFacetsSaga);
+  yield takeLatest(fetchSearchAction.type, fetchSearchSaga);
+  yield takeLatest(fetchFacetsSearchAction.type, fetchFacetsSearchSaga);
 }

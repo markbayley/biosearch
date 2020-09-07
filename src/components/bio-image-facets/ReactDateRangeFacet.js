@@ -2,13 +2,12 @@ import React from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { useDispatch, useSelector } from "react-redux";
-import { get } from "lodash";
+import get from "lodash/get";
 import moment from "moment";
 import { Container, InputGroup, Row, Input } from "reactstrap";
 import {
   updateFilterAction,
-  fetchFacetsAction,
-  fetchSearchAction,
+  fetchFacetsSearchAction,
 } from "../../store/reducer";
 
 const ReactDateRangeFacet = () => {
@@ -73,8 +72,7 @@ const ReactDateRangeFacet = () => {
       }),
     );
 
-    dispatch(fetchFacetsAction());
-    dispatch(fetchSearchAction());
+    dispatch(fetchFacetsSearchAction());
   };
 
   return (

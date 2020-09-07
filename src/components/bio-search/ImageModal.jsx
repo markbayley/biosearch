@@ -15,6 +15,12 @@ import {
   CarouselIndicators,
   CarouselItem,
 } from "reactstrap";
+import sortBy from "lodash/sortBy";
+import get from "lodash/get";
+import last from "lodash/last";
+
+import ternlogo from "tern-react/dist/images/tern-logo.png";
+
 import { showModalAction, showImagePreviewAction } from "../../store/reducer";
 
 const ImageModal = () => {
@@ -23,7 +29,7 @@ const ImageModal = () => {
   const { show, imageIdx } = useSelector((state) => state.ui.imageModal);
   const data = useSelector((state) => state.search.hits);
   const numImages = data.length;
-  const imageDoc = data[imageIdx]["_source"];
+  const imageDoc = get(data[imageIdx], "_source");
 
   const toggle = () => dispatch(showModalAction(!show));
 
@@ -34,12 +40,14 @@ const ImageModal = () => {
     return null;
   }
 
+  const img_url_large = get(last(sortBy(imageDoc.preview_urls, "size")), "url");
+
   return (
     <Modal size="lg" isOpen={show} toggle={toggle} unmountOnClose>
       <ModalHeader className="modal-header" toggle={toggle}>
         {" "}
         <Col sm={2} className="modal-column">
-          <img src="/img/logo@3x.png" style={{ width: "300px" }} alt="" />
+          <img src={ternlogo} style={{ width: "300px" }} alt="" />
         </Col>
         <Col className="modal-info" sm={5}>
           <h6>
@@ -79,7 +87,7 @@ const ImageModal = () => {
 
         <img
           className="img-fluid"
-          src={imageDoc.preview_urls[0].url}
+          src={img_url_large}
           alt="carousel"
         />
         <br />

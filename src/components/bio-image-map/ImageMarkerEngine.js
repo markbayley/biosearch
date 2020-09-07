@@ -1,44 +1,51 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import PropTypes from "prop-types";
 import ImageMarker from "./ImageMarker";
 
 // TODO: this component is almost pointless, there is no real need to wrap Marker
 //       within ImageMarkerEngine and ImageMarker
-const ImageMarkerEngine = ({ site, selected }) => {
+const ImageMarkerEngine = () => {
+  // all sites from facet
+  const sites = useSelector((state) => state.search.facets.site_id.buckets);
+  // current select sites UI
+  const selectedSites = useSelector((state) => state.ui.searchFilters.site_id);
+
   // site.doc_count, site.key
   const site_vocab = useSelector((state) => state.search.vocabs.site_id);
 
-  // var sitePosition = bioImageDocument.centre_point;
-  const sitePosition = site_vocab[site.key].centre_point.coordinates;
-  const locType = site_vocab[site.key].centre_point.type;
+  // set of currently selected site ids
+  const selectedSiteIds = new Set(selectedSites.map((site) => site.value));
 
-  const siteCordinates = [];
-  if (locType === "polygon") {
-    // Take lat/lon from the first coords
-    // TODO Have asked Wilma to look at this if we should be expecting
-    // that some sites have polygons instead of lat/lon
-    siteCordinates.push(sitePosition[0][0][1]);
-    siteCordinates.push(sitePosition[0][0][0]);
-  } else {
-    siteCordinates.push(sitePosition[1]);
-    siteCordinates.push(sitePosition[0]);
-  }
+  const getSiteCoordinates = (site) => {
+    const sitePosition = site_vocab[site.key].centre_point.coordinates;
+    const locType = site_vocab[site.key].centre_point.type;
+
+    const siteCordinates = [];
+    if (locType === "polygon") {
+      // Take lat/lon from the first coords
+      // TODO Have asked Wilma to look at this if we should be expecting
+      // that some sites have polygons instead of lat/lon
+      siteCordinates.push(sitePosition[0][0][1]);
+      siteCordinates.push(sitePosition[0][0][0]);
+    } else {
+      siteCordinates.push(sitePosition[1]);
+      siteCordinates.push(sitePosition[0]);
+    }
+    return siteCordinates;
+  };
 
   return (
-    <ImageMarker
-      sitePosition={siteCordinates}
-      id={site_vocab[site.key].value}
-      name={site_vocab[site.key].label}
-      count={site.doc_count}
-      selected={selected}
-    />
+    sites.map((site) => (
+      <ImageMarker
+        key={site.key}
+        sitePosition={getSiteCoordinates(site)}
+        id={site_vocab[site.key].value}
+        name={site_vocab[site.key].label}
+        count={site.doc_count}
+        selected={selectedSiteIds.has(site.key)}
+      />
+    ))
   );
-};
-
-ImageMarkerEngine.propTypes = {
-  site: PropTypes.objectOf(PropTypes.any).isRequired,
-  selected: PropTypes.bool.isRequired,
 };
 
 export default ImageMarkerEngine;

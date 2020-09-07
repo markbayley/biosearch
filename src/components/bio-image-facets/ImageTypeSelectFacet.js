@@ -1,13 +1,13 @@
 /* eslint-disable no-nested-ternary */
 import React from "react";
-import { startCase, get } from "lodash";
+import startCase from "lodash/startCase";
+import get from "lodash/get";
 import Select from "react-select";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import {
   updateFilterAction,
-  fetchFacetsAction,
-  fetchSearchAction,
+  fetchFacetsSearchAction,
 } from "../../store/reducer";
 import { facetColourStyles } from "./facetColourStyles";
 
@@ -70,10 +70,8 @@ const ImageTypeSelectFacet = ({ facet, ...props }) => {
     } else {
       dispatch(updateFilterAction({ [facet]: items }));
     }
-    // update facets
-    dispatch(fetchFacetsAction());
-    // trigger search
-    dispatch(fetchSearchAction());
+    // update facets and search results
+    dispatch(fetchFacetsSearchAction());
   };
 
   // items: [{label: "", value: ""}, ]

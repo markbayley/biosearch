@@ -9,7 +9,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import {
-  updateFilterAction, fetchFacetsAction, fetchSearchAction,
+  updateFilterAction, fetchFacetsSearchAction,
 } from "../../store/reducer";
 
 const TextFacet = ({ facet, ...props }) => {
@@ -23,8 +23,7 @@ const TextFacet = ({ facet, ...props }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     event.stopPropagation();
-    dispatch(fetchFacetsAction());
-    dispatch(fetchSearchAction());
+    dispatch(fetchFacetsSearchAction());
   };
 
   return (

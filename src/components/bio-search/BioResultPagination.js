@@ -11,7 +11,7 @@ import {
   Input,
 } from "reactstrap";
 import { useSelector, useDispatch } from "react-redux";
-import { debounce } from "lodash";
+import debounce from "lodash/debounce";
 import { updateFilterAction, fetchSearchAction } from "../../store/reducer";
 import { bioSort } from "./bioSort";
 
@@ -46,6 +46,9 @@ const BioResultPagination = () => {
     // don't go below 1
     if (newPage < 1) {
       newPage = 1;
+    }
+    if (newPage > pages) {
+      newPage = pages;
     }
     // did it change at all?
     if (newPage === page_num) {

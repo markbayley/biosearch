@@ -6,7 +6,7 @@ import BioFacetsEngine from "./bio-image-facets/BioFacetsEngine";
 import BioMapEngine from "./bio-image-map/BioMapEngine";
 import SearchEngine from "./bio-search/SearchEngine";
 import FilterHeader from "./headers/FilterHeader";
-import { fetchSearchAction, fetchFacetsAction } from "../store/reducer";
+import { fetchFacetsSearchAction } from "../store/reducer";
 
 import "./BioImagesEngine.scss";
 
@@ -16,8 +16,7 @@ const BioImagesEngine = () => {
 
   // trigger initial search to populate facets results
   useEffect(() => {
-    dispatch(fetchSearchAction());
-    dispatch(fetchFacetsAction());
+    dispatch(fetchFacetsSearchAction());
   }, [dispatch]);
 
   return (

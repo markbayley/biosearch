@@ -3,11 +3,10 @@ import React from "react";
 import Select from "react-select";
 import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
-import { get } from "lodash";
+import get from "lodash/get";
 import {
   updateFilterAction,
-  fetchFacetsAction,
-  fetchSearchAction,
+  fetchFacetsSearchAction,
 } from "../../store/reducer";
 import { facetColourStyles } from "./facetColourStyles";
 
@@ -47,10 +46,8 @@ const SelectFacet = ({ facet, ...props }) => {
     } else {
       dispatch(updateFilterAction({ [facet]: items }));
     }
-    // update facets
-    dispatch(fetchFacetsAction());
-    // trigger search
-    dispatch(fetchSearchAction());
+    // update facets and search results
+    dispatch(fetchFacetsSearchAction());
   };
 
   return (
