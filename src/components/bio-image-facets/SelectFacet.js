@@ -10,7 +10,7 @@ import {
 } from "../../store/reducer";
 import { facetColourStyles } from "./facetColourStyles";
 
-const SelectFacet = ({ facet, ...props }) => {
+const SelectFacet = ({ facet, showZeros, ...props }) => {
   const dispatch = useDispatch();
 
   // currently selected facets
@@ -24,20 +24,20 @@ const SelectFacet = ({ facet, ...props }) => {
 
   // build list of options for select widget
   const cur_value = [];
-  const options = facets.buckets.map((item) => {
+  const options = facets.buckets.reduce((accum, item) => {
     const count = item.doc_count;
-    const value = item.key;
-    const label = get(vocab, `${item.key}.label`, item.key);
-    const option = {
-      label,
-      value,
-      count,
-    };
-    if (selectedValues.has(value)) {
-      cur_value.push(option);
+    if (showZeros || count > 0) {
+      const value = item.key;
+      const label = get(vocab, `${item.key}.label`, item.key);
+      const option = { label, value, count };
+      if (selectedValues.has(value)) {
+        cur_value.push(option);
+      }
+      // add option to result
+      accum.push(option);
     }
-    return option;
-  });
+    return accum;
+  }, []);
 
   const handleChange = (items) => {
     // update state
@@ -68,7 +68,14 @@ const SelectFacet = ({ facet, ...props }) => {
 };
 
 SelectFacet.propTypes = {
+  // the property name in redux store at 'state.search.facets[facet]'.
   facet: PropTypes.string.isRequired,
+  // show values with 0 results?
+  showZeros: PropTypes.bool,
+};
+
+SelectFacet.defaultProps = {
+  showZeros: true,
 };
 
 export default SelectFacet;
