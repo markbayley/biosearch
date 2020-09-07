@@ -9,7 +9,6 @@ import "tern-react/dist/index.css";
 
 import { store } from "./store/configureStore";
 import App from "./App";
-import registerServiceWorker from "./registerServiceWorker";
 
 import { CONFIG } from "./config";
 
@@ -27,5 +26,3 @@ axios({
     document.getElementById("root"),
   );
 });
-
-registerServiceWorker();
