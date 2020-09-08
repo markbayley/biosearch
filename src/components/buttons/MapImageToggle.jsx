@@ -1,9 +1,10 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "reactstrap";
-import { setSearchModeAction } from "../../store/reducer";
 import { faGlobeAsia } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import { setSearchModeAction } from "../../store/reducer";
 
 /* Map Image Toggle */
 function MapImageToggle() {

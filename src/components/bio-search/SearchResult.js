@@ -57,7 +57,7 @@ const SearchResult = ({ imageIdx }) => {
               <div className="hvrbox-text">
                 View Image?
                 <br />
-                <BioimagesIcon id="bio-icon"/>
+                <BioimagesIcon id="bio-icon" />
                 {" "}
                 <br />
                 <span className="center" />
