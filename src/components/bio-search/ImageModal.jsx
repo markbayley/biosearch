@@ -18,7 +18,12 @@ import {
 import sortBy from "lodash/sortBy";
 import get from "lodash/get";
 import last from "lodash/last";
-
+import {
+  faChevronRight,
+  faChevronLeft,
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "./ImageModal.scss";
 import ternlogo from "tern-react/dist/images/tern-logo.png";
 
 import { showModalAction, showImagePreviewAction } from "../../store/reducer";
@@ -47,9 +52,13 @@ const ImageModal = () => {
       <ModalHeader className="modal-header" toggle={toggle}>
         {" "}
         <Col sm={2} className="modal-column">
-          <img src={ternlogo} style={{ width: "300px" }} alt="" />
+          <img
+            src={ternlogo}
+            style={{ width: "300px" }}
+            alt="tern logo modal"
+          />
         </Col>
-        <Col className="modal-info" sm={5}>
+        <Col className="modal-info" sm={12}>
           <h6>
             {imageDoc.site_id.label}
             <br />
@@ -62,34 +71,10 @@ const ImageModal = () => {
           </h6>
         </Col>
       </ModalHeader>
-      <hr className="modal-line" />
+      {/* <hr className="modal-line" /> */}
       <ModalBody>
-        {/* To be finished ...<Carousel>
-          <CarouselIndicators />
-          <CarouselItem>
-            <img
-              className="img-fluid"
-              src={imageDoc.preview_urls[0].url}
-              alt="carousel"
-            />
-          </CarouselItem>
-          <CarouselControl
-            direction="prev"
-            directionText="Previous"
-            onClick={() => dispatch(showImagePreviewAction(prevIdx))}
-          />
-          <CarouselControl
-            direction="next"
-            directionText="Next"
-            onClick={() => dispatch(showImagePreviewAction(nextIdx))}
-          />
-        </Carousel> */}
-
-        <img
-          className="img-fluid"
-          src={img_url_large}
-          alt="carousel"
-        />
+        <img className="img-fluid" src={img_url_large} alt="carousel" />
+        <br />
         <br />
         <FormGroup check className="center modal-select">
           <Label check>
@@ -102,30 +87,34 @@ const ImageModal = () => {
       <ModalFooter>
         <Button
           size="sm"
-          color="login"
+          color="round"
           onClick={() => dispatch(showImagePreviewAction(prevIdx))}
         >
+          <FontAwesomeIcon icon={faChevronLeft} /> 
           Prev
         </Button>
         <Button
           size="sm"
-          color="login"
+          color="round"
           onClick={() => dispatch(showImagePreviewAction(nextIdx))}
         >
           Next
+          <FontAwesomeIcon icon={faChevronRight} />
         </Button>
 
         <Button
-          style={{
-            position: "absolute",
-            right: "15px",
-            top: "200px",
-            opacity: "0.5",
-          }}
+          id="chevron-right"
           color="flat"
           onClick={() => dispatch(showImagePreviewAction(nextIdx))}
         >
-          <i className="fa fa-chevron-right" />
+          <FontAwesomeIcon icon={faChevronRight} />
+        </Button>
+        <Button
+          id="chevron-left"
+          color="flat"
+          onClick={() => dispatch(showImagePreviewAction(nextIdx))}
+        >
+          <FontAwesomeIcon icon={faChevronLeft} />
         </Button>
         {/* <Button color="login" onClick={toggle}>
           Close

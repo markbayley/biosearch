@@ -34,18 +34,20 @@
   // background-image: linear-gradient(to bottom right, #B3D4C9, #B3D4C9);
 }
 .btn-flat {
-  background-color: rgba(228,228,232,1);
+  // background-color: rgba(228,228,232,1);
   // color:  #00565D;
-  color: black;
-  border: 1px solid lightgrey;
+  color: #fff;
+  // border: 1px solid lightgrey;
+
 
 }
 
-// .btn-flat:hover {
-//   // background-color: #00565D;
-//   // color:  #fff;
-//   // border: 1px solid #00565D;
-// }
+.btn-flat:hover {
+  // opacity: 0.7;
+  // background-color: #00565D;
+  color:  lightgrey;
+  // border: 1px solid #00565D;
+}
 
 
 .btn-round {

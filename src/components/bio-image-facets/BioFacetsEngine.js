@@ -6,7 +6,7 @@ import TextFacet from "./TextFacet";
 
 const BioFacetsEngine = () => (
   <div className="bio-facets">
-    <TextFacet facet="search_string" placeholder="Enter serch text" />
+    <TextFacet facet="search_string" placeholder="Enter search text" />
     <SelectFacet facet="site_id" placeholder="Select Sites" />
     <SelectFacet facet="plot" placeholder="Select Plots" />
     <SelectFacet facet="site_visit_id" placeholder="Select Site Visit Ids" />

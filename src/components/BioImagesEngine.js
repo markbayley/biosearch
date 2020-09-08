@@ -20,7 +20,7 @@ const BioImagesEngine = () => {
   }, [dispatch]);
 
   return (
-    <Row>
+    <Row style={{borderBottom: "1px solid #6EB3A6"}}>
       {/* Filter SideBar */}
       <Col xs={12} md={3} className="filter-bar">
         <FilterHeader />

@@ -2,7 +2,8 @@
 /* GALLERY */
 .image-card {
   border: #fff;
-  margin: 0px -25px 5px 0px;
+  margin: 0px -20px 5px 0px;
+  border: 1px solid lightgrey;
 
   .hvrbox {
     position: relative;
@@ -57,6 +58,7 @@
   .image-card-button {
     width: 100;
     padding: 0px;
+    
 
     .preview {
       max-width: 100%;
@@ -70,6 +72,11 @@
   .thumbnail-text {
     font-size: 13px;
     text-align: center;
+  }
+
+  #bio-icon {
+    color: #fff;
+    width: 80px;
   }
 
 }

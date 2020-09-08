@@ -31,7 +31,6 @@ const TextFacet = ({ facet, ...props }) => {
       <InputGroup
         inline="true"
         className="mb-4 facet"
-        style={{ border: "1px solid #6EB3A6", borderRadius: "5px" }}
       >
         <Input
           onChange={handleChange}
@@ -43,7 +42,7 @@ const TextFacet = ({ facet, ...props }) => {
           {...props}
         />
         <InputGroupAddon addonType="append">
-          <Button color="secondary" onClick={handleSubmit} type="submit">
+          <Button color="login" onClick={handleSubmit} type="submit">
             <FontAwesomeIcon icon={faSearch} />
           </Button>
         </InputGroupAddon>

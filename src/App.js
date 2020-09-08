@@ -13,9 +13,7 @@ function App() {
         <BioImagesAppHeader />
       </AppHeader>
       <BioImagesEngine />
-
       <Footer />
-      {/* <Footer /> */}
     </Router>
   );
 }

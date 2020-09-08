@@ -9,6 +9,7 @@ import {
   updateFilterAction,
   fetchFacetsSearchAction,
 } from "../../store/reducer";
+import "./DatePicker.scss";
 
 const ReactDateRangeFacet = () => {
   const dispatch = useDispatch();
