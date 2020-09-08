@@ -112,7 +112,7 @@ const ImageModal = () => {
         <Button
           id="chevron-left"
           color="flat"
-          onClick={() => dispatch(showImagePreviewAction(nextIdx))}
+          onClick={() => dispatch(showImagePreviewAction(prevIdx))}
         >
           <FontAwesomeIcon icon={faChevronLeft} />
         </Button>
