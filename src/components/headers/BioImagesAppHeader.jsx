@@ -9,10 +9,10 @@ import { ReactComponent as BioimagesDownload } from "../../assets/icons/Bioimage
 import "./BioImagesAppHeader.scss";
 
 const BioImagesAppHeader = () => (
-  <Nav navbar className="nav-container mb-auto mt-auto" style={{width: "95%"}}>
+  <Nav navbar className="nav-container mb-auto mt-auto" style={{ width: "95%" }}>
     <NavItem className="mt-auto mb-auto mr-auto">
       <h3 className="biologo">
-        <BioimagesDownload className="bio-icon" style={{color: "#6EB3A6"}} />
+        <BioimagesDownload className="bio-icon" style={{ color: "#6EB3A6" }} />
         Bioimages
       </h3>
     </NavItem>

@@ -10,10 +10,6 @@ import {
   ModalHeader,
   ModalBody,
   ModalFooter,
-  Carousel,
-  CarouselControl,
-  CarouselIndicators,
-  CarouselItem,
 } from "reactstrap";
 import sortBy from "lodash/sortBy";
 import get from "lodash/get";
@@ -62,12 +58,19 @@ const ImageModal = () => {
           <h6>
             {imageDoc.site_id.label}
             <br />
-            {imageDoc.image_type.label} <br />
-            Plot: {imageDoc.plot.label} <br />
+            {imageDoc.image_type.label}
+            <br />
+            Plot:
+            {" "}
+            {imageDoc.plot.label}
+            <br />
             Site Visit ID:
+            {" "}
             {imageDoc.site_visit_id}
             <br />
-            {imageIdx + 1}/{numImages}
+            {imageIdx + 1}
+            /
+            {numImages}
           </h6>
         </Col>
       </ModalHeader>
@@ -90,7 +93,7 @@ const ImageModal = () => {
           color="round"
           onClick={() => dispatch(showImagePreviewAction(prevIdx))}
         >
-          <FontAwesomeIcon icon={faChevronLeft} /> 
+          <FontAwesomeIcon icon={faChevronLeft} />
           Prev
         </Button>
         <Button
