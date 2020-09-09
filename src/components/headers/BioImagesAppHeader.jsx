@@ -13,7 +13,7 @@ const BioImagesAppHeader = () => (
     <NavItem className="mt-auto mb-auto mr-auto">
       <h3 className="biologo">
         <BioimagesDownload className="bio-icon" style={{ color: "#6EB3A6" }} />
-        Bioimages preview
+        Bioimages
       </h3>
     </NavItem>
 
