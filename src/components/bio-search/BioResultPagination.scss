@@ -89,8 +89,10 @@
       margin-left: 5px;
       margin-top: auto;
       margin-bottom: auto;
+     
 
       input {
+        text-align: center;
         // hide number buttons
         -moz-appearance:textfield; /* Firefox */
 
@@ -99,6 +101,7 @@
           /* display: none; <- Crashes Chrome on hover */
           -webkit-appearance: none;
           margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+          
         }
       }
     }

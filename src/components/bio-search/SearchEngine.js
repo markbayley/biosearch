@@ -26,7 +26,7 @@ const SearchEngine = () => {
     <>
       <BioResultPagination />
 
-      <Row className="image-grid">
+      <Row className="">
         {data.map((bioImageDocument, index) => (
           <SearchResult
             imageIdx={index}

@@ -78,14 +78,7 @@ const ReactDateRangeFacet = () => {
 
   return (
     <div style={{ border: "1px solid #6EB3A6", borderRadius: "5px" }}>
-      <h6
-        style={{
-          paddingTop: "10px",
-          paddingLeft: "5px",
-          color: "grey",
-          fontWeight: "400",
-        }}
-      >
+      <h6 id="date-range">
         Date Range
       </h6>
       <Container>

@@ -30,7 +30,7 @@ const TextFacet = ({ facet, ...props }) => {
     <Form onSubmit={handleSubmit}>
       <InputGroup
         inline="true"
-        className="mb-4 facet"
+        className="mb-4 text-facet"
       >
         <Input
           onChange={handleChange}

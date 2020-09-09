@@ -160,7 +160,6 @@ const BioResultPagination = () => {
             type="number"
             bsSize="sm"
             value={page_num}
-            style={{ textAlign: "center" }}
             onChange={(e) => changePage(e.currentTarget.value, true)}
           />
         </div>
