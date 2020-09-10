@@ -30,8 +30,8 @@ axios({
 /** TODO: remove this function after some time */
 (function unregister() {
   if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.ready.then((registration) => {
-      registration.unregister();
-    });
+    navigator.serviceWorker.getRegistrations().then(
+      (regs) => regs.forEach((reg) => reg.unregister()),
+    );
   }
 }());
