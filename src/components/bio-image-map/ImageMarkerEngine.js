@@ -38,7 +38,6 @@ const ImageMarkerEngine = () => {
       <ImageMarker
         key={site.key}
         sitePosition={getSiteCoordinates(site)}
-        id={site_vocab[site.key].value}
         name={site_vocab[site.key].label}
         count={site.doc_count}
         selected={selectedSiteIds.has(site.key)}

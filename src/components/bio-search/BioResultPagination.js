@@ -105,7 +105,6 @@ const BioResultPagination = () => {
             size="sm"
             caret
             color="pageitems"
-            id="dropdown-basic-button"
             className="pageitems"
           >
             {page_size}
@@ -129,7 +128,6 @@ const BioResultPagination = () => {
               size="sm"
               caret
               color="pageitems"
-              id="dropdown-basic-button"
               className="pageitems"
             >
               {selectedSortOrder[0].sort_label}

@@ -49,7 +49,7 @@ const SearchResult = ({ imageIdx }) => {
           <div className="hvrbox-text">
             View Image?
             <br />
-            <BioimagesIcon id="bio-icon" />
+            <BioimagesIcon />
             {" "}
             <br />
             <span className="center" />
