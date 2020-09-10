@@ -26,7 +26,7 @@ const SearchEngine = () => {
     <>
       <BioResultPagination />
 
-      <Row className="">
+      <div className="d-flex flex-wrap">
         {data.map((bioImageDocument, index) => (
           <SearchResult
             imageIdx={index}
@@ -34,7 +34,7 @@ const SearchEngine = () => {
             totalDocuments={totalDocuments}
           />
         ))}
-      </Row>
+      </div>
 
       <ImageModal />
 

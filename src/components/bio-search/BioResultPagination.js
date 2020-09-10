@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  Row,
+  Button,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
@@ -27,12 +27,19 @@ const debouncedDispatch = debounce((dispatch, action) => {
 const BioResultPagination = () => {
   const dispatch = useDispatch();
   // ui data out of store
-  const { page_size, page_num } = useSelector((state) => state.ui.searchFilters.pagination);
-  const { sort_order, sort_column } = useSelector((state) => state.ui.searchFilters.sort);
+  const { page_size, page_num } = useSelector(
+    (state) => state.ui.searchFilters.pagination
+  );
+  const { sort_order, sort_column } = useSelector(
+    (state) => state.ui.searchFilters.sort
+  );
   // result data out of store
-  const totalDocuments = useSelector((state) => state.search.totalDocuments) || 0;
+  const totalDocuments =
+    useSelector((state) => state.search.totalDocuments) || 0;
 
-  const selectedSortOrder = bioSort.sort_order.filter((sort) => sort.sort_name === sort_order);
+  const selectedSortOrder = bioSort.sort_order.filter(
+    (sort) => sort.sort_name === sort_order
+  );
 
   const pages = Math.ceil(totalDocuments / page_size);
 
@@ -57,9 +64,9 @@ const BioResultPagination = () => {
       return;
     }
     // first update state
-    dispatch(updateFilterAction(
-      { pagination: { page_size, page_num: newPage } },
-    ));
+    dispatch(
+      updateFilterAction({ pagination: { page_size, page_num: newPage } })
+    );
     // trigger search
     if (delay) {
       debouncedDispatch(dispatch, fetchSearchAction());
@@ -71,36 +78,29 @@ const BioResultPagination = () => {
   };
 
   const handlePageSizeChange = (value) => {
-    dispatch(updateFilterAction(
-      { pagination: { page_size: value, page_num } },
-    ));
+    dispatch(
+      updateFilterAction({ pagination: { page_size: value, page_num } })
+    );
     dispatch(fetchSearchAction());
   };
 
   const handleSortOrder = (value) => {
-    dispatch(updateFilterAction(
-      { sort: { sort_order: value, sort_column } },
-    ));
+    dispatch(updateFilterAction({ sort: { sort_order: value, sort_column } }));
     dispatch(fetchSearchAction());
   };
 
   return (
-    <Row className="pagination-row">
-      <Pagination className="pagination" size="sm" style={{ paddingTop: "3px" }}>
+    <div className="pagination-row">
+      <Pagination
+        className="pagination"
+        size="sm"
+        style={{ paddingTop: "5px" }}
+      >
         {/* TODO: Images per page and Sort Order should probably not be part of
                     pagination control. */}
-        <div
-          className="page-items"
-        >
-          Images:
-          {" "}
-          {totalDocuments}
-          {" "}
-
-        </div>
+        <div className="page-items">Images: {totalDocuments} </div>
         <UncontrolledDropdown className="pageitems" size="sm">
-          Page Size:
-          {" "}
+          <span className="">Page Size:{" "}</span>
           <DropdownToggle
             size="sm"
             caret
@@ -123,8 +123,7 @@ const BioResultPagination = () => {
         </UncontrolledDropdown>
         <div className="mobile-pagination">
           <UncontrolledDropdown className="pageitems" size="sm">
-            Sort Order:
-            {" "}
+            Sort Order:{" "}
             <DropdownToggle
               size="sm"
               caret
@@ -152,17 +151,39 @@ const BioResultPagination = () => {
         <PaginationItem onClick={() => changePage(page_num - 1)}>
           <PaginationLink previous title="Previous" />
         </PaginationItem>
-        <div className="page-input">
-          <Input
-            size="4"
-            min="1"
-            max={pages}
-            type="number"
-            bsSize="sm"
-            value={page_num}
-            onChange={(e) => changePage(e.currentTarget.value, true)}
-          />
-        </div>
+        <form
+          onSubmit={(e) => {
+            e.preventDefault();
+            changePage(Number(page_num), true);
+          }}
+        >
+          <div className="page-input">
+            <Input
+              size="4"
+              // min="1"
+              max={pages}
+              type="text"
+              bsSize="sm"
+              value={page_num}
+              onChange={(e) => {
+                dispatch(
+                  updateFilterAction({
+                    pagination: { page_size, page_num: e.currentTarget.value },
+                  })
+                );
+              }}
+            />
+          </div>
+        </form>
+        <Button
+          style={{ height: "31px", marginTop: "1px", border: "1px solid lightgrey", marginRight: "5px"}}
+          size="sm"
+          color="go"
+          type="button"
+          onClick={() => changePage(Number(page_num), true)}
+        >
+          Go!
+        </Button>
         <PaginationItem onClick={() => changePage(page_num + 1)}>
           <PaginationLink next title="Next" />
         </PaginationItem>
@@ -170,7 +191,7 @@ const BioResultPagination = () => {
           <PaginationLink last title="Last" />
         </PaginationItem>
       </Pagination>
-    </Row>
+    </div>
   );
 };
 
