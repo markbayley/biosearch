@@ -20,6 +20,7 @@
       border-width: 1px;
       border-color: transparent;
       background: transparent;
+      box-shadow: none;
     }
 
     .separator {
@@ -33,6 +34,11 @@
 
     button {
       padding-left: 8px;
+      box-shadow: none;
+      color: hsl(0,0%,80%);
+      &:hover {
+        color: hsl(0,0%,60%);
+      }
     }
   }
 }
