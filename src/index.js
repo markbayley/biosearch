@@ -26,3 +26,12 @@ axios({
     document.getElementById("root"),
   );
 });
+
+/** TODO: remove this function after some time */
+(function unregister() {
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.ready.then((registration) => {
+      registration.unregister();
+    });
+  }
+}());
