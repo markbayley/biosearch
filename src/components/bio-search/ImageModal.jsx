@@ -44,7 +44,7 @@ const ImageModal = () => {
   const img_url_large = get(last(sortBy(imageDoc.preview_urls, "size")), "url");
 
   return (
-    <Modal size="lg" isOpen={show} toggle={toggle} unmountOnClose>
+    <Modal size="lg" className="image-preview-modal" isOpen={show} toggle={toggle} unmountOnClose>
       <ModalHeader className="modal-header" toggle={toggle}>
         {" "}
         <Col sm={2} className="modal-column">
@@ -76,7 +76,26 @@ const ImageModal = () => {
       </ModalHeader>
       {/* <hr className="modal-line" /> */}
       <ModalBody>
-        <img className="img-fluid" src={img_url_large} alt="carousel" />
+        <div className="modal-image-container">
+          <img className="img-fluid" src={img_url_large} alt="carousel" />
+          <Button
+            size="lg"
+            className="chevron-right"
+            color="flat"
+            onClick={() => dispatch(showImagePreviewAction(nextIdx))}
+          >
+            <FontAwesomeIcon icon={faChevronRight} />
+          </Button>
+          <Button
+            size="lg"
+            className="chevron-left"
+            color="flat"
+            onClick={() => dispatch(showImagePreviewAction(prevIdx))}
+          >
+            <FontAwesomeIcon icon={faChevronLeft} />
+          </Button>
+        </div>
+
         <br />
         <br />
         <FormGroup check className="center modal-select">
@@ -94,6 +113,7 @@ const ImageModal = () => {
           onClick={() => dispatch(showImagePreviewAction(prevIdx))}
         >
           <FontAwesomeIcon icon={faChevronLeft} />
+          {" "}
           Prev
         </Button>
         <Button
@@ -102,25 +122,10 @@ const ImageModal = () => {
           onClick={() => dispatch(showImagePreviewAction(nextIdx))}
         >
           Next
+          {" "}
           <FontAwesomeIcon icon={faChevronRight} />
         </Button>
 
-        <Button
-          size="lg"
-          id="chevron-right"
-          color="flat"
-          onClick={() => dispatch(showImagePreviewAction(nextIdx))}
-        >
-          <FontAwesomeIcon icon={faChevronRight} />
-        </Button>
-        <Button
-          size="lg"
-          id="chevron-left"
-          color="flat"
-          onClick={() => dispatch(showImagePreviewAction(prevIdx))}
-        >
-          <FontAwesomeIcon icon={faChevronLeft} />
-        </Button>
         {/* <Button color="login" onClick={toggle}>
           Close
         </Button>
