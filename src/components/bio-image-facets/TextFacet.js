@@ -12,6 +12,8 @@ import {
   updateFilterAction, fetchFacetsSearchAction,
 } from "../../store/reducer";
 
+import "./TextFacet.scss";
+
 const TextFacet = ({ facet, ...props }) => {
   const dispatch = useDispatch();
 
@@ -27,14 +29,15 @@ const TextFacet = ({ facet, ...props }) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} className="mb-4 text-facet">
       <InputGroup
         inline="true"
-        className="mb-4 text-facet"
+      // className="mb-4 text-facet"
       >
         <Input
           onChange={handleChange}
           onBlur={handleSubmit}
+          className="text-facet-input"
           type="text"
           aria-label="term"
           value={value}
@@ -42,6 +45,7 @@ const TextFacet = ({ facet, ...props }) => {
           {...props}
         />
         <InputGroupAddon addonType="append">
+          <span className="separator" />
           <Button color="login" onClick={handleSubmit} type="submit">
             <FontAwesomeIcon icon={faSearch} />
           </Button>
