@@ -1,6 +1,5 @@
 import React from "react";
 import { Nav, NavItem, NavLink } from "reactstrap";
-import LoginButton from "../buttons/LoginButton";
 import { CONFIG } from "../../config";
 import MapImageToggle from "../buttons/MapImageToggle";
 
@@ -26,15 +25,6 @@ const BioImagesAppHeader = () => (
     <NavLink className="mt-auto mb-auto" href={CONFIG.LOGIN_URL}>
       Login
     </NavLink>
-
-
-    {/* <NavItem className="mt-auto mb-auto">
-   
-      <a href={CONFIG.LOGIN_URL}>
-        {" "}
-        <LoginButton />{" "}
-      </a>
-    </NavItem> */}
 
     <NavItem className="mt-auto mb-auto">
       <MapImageToggle />
