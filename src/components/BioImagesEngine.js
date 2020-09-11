@@ -20,7 +20,7 @@ const BioImagesEngine = () => {
   }, [dispatch]);
 
   return (
-    <Row className="main-content">
+    <div className="main-content d-flex">
       {/* Filter SideBar */}
       <Col xs={12} md={3} className="filter-bar">
         <FilterHeader />
@@ -29,7 +29,7 @@ const BioImagesEngine = () => {
       </Col>
       {/* TODO: the scroll-images class should probably be moved as separate
           div into SearchEngine, just simple Col here */}
-      <Col className="scroll-images">
+      <Col md={9} className="scroll-images">
         {/* Leaflet Map or Photo Gallery */}
         {
           searchMode === "Map"
@@ -40,7 +40,7 @@ const BioImagesEngine = () => {
             )
         }
       </Col>
-    </Row>
+    </div>
   );
 };
 

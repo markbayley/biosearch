@@ -56,3 +56,28 @@ button.react-datepicker__close-icon::after {
   color: #ed694b;
   background-color: #fff;
 }
+
+// select option:hover {
+//     box-shadow: 0 0 10px 100px red inset;
+// }
+option:hover {
+    background-color: #ed694b;
+}
+
+// select:active, select:hover { background: red }
+.react-datepicker__month-select__option:hover {
+  
+        background-color: #ed694b;
+    
+  }
+
+#date-range {
+  padding-top: 10px;
+  padding-left: 5px;
+  color: grey;
+  font-weight: 400;
+}
+.text-facet {
+  border: 1px solid #6eb3a6;
+  border-radius: 10px;
+}
