@@ -4,6 +4,8 @@ import SelectFacet from "./SelectFacet";
 import ImageTypeSelectFacet from "./ImageTypeSelectFacet";
 import TextFacet from "./TextFacet";
 
+import "./BioFacetsEngine.scss";
+
 const BioFacetsEngine = () => (
   <div className="bio-facets">
     <TextFacet facet="search_string" placeholder="Enter search text" />
