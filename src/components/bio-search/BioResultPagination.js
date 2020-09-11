@@ -174,7 +174,7 @@ const BioResultPagination = () => {
           </div>
         </form>
         <Button
-          style={{ height: "31px", marginTop: "1px", border: "1px solid lightgrey", marginRight: "5px"}}
+          className="go"
           size="sm"
           color="go"
           type="button"
