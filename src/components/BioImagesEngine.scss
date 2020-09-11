@@ -1,4 +1,7 @@
 @import '~tern-react/dist/scss/colors.scss';
+@import "~bootstrap/scss/_functions";
+@import "~bootstrap/scss/_variables";
+@import "~bootstrap/scss/mixins/_breakpoints";
 
 .filter-bar {
   height: auto;
@@ -14,18 +17,11 @@
   background-color: #fff;
   // border-right: 1.5px solid lightgrey;
 
-  .bio-facets {
-    margin: 20px 10px;
-    color: $green-dark;
-  }
-
-}
-
-@media (max-width: 998px) {
-  .filter-bar {
+  @include media-breakpoint-down(md) {
     border-right: 0px solid #B3D4C9;
     height: auto;
   }
+
 }
 
 .main-content {
@@ -44,5 +40,3 @@
   // background: rgb(231,230,235);
   // background: radial-gradient(circle, rgba(231,230,235,1) 0%, rgba(228,228,232,1) 68%, rgba(217,221,222,1) 100%);
 }
-
-

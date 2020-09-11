@@ -1,7 +1,11 @@
-.pagination-row {
- 
+@import "~bootstrap/scss/_functions";
+@import "~bootstrap/scss/_variables";
+@import "~bootstrap/scss/mixins/_breakpoints";
 
- 
+.pagination-row {
+
+
+
   // position: relative;
   // left: 25px;
   // padding-right: 5px;
@@ -11,7 +15,7 @@
   height: 44px;
   width: 100%;
   margin: 0px 0px 0px 0px;
- 
+
   // padding-top: 3px;
 
   // .adjust {
@@ -64,24 +68,22 @@
       margin-top: 1px;
       border: 1px solid lightgrey;
     }
-    
+
     .btn-go:hover {
       background-color:   #B3D4C9;
     }
 
-    
+
 
     // # sort order
     .mobile-pagination {
       display: flex;
       flex-direction: row;
-    }
-    @media (max-width: 1199px) {
-      .mobile-pagination{
+
+      @include media-breakpoint-down(md) {
         display: none;
       }
     }
-
 
 
     // page selection
@@ -116,7 +118,7 @@
       margin-left: 5px;
       margin-top: auto;
       margin-bottom: auto;
-     
+
 
       input {
         margin-top: 1px;
@@ -129,7 +131,7 @@
           /* display: none; <- Crashes Chrome on hover */
           -webkit-appearance: none;
           margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
-          
+
         }
       }
     }
