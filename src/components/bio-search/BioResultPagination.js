@@ -28,17 +28,16 @@ const BioResultPagination = () => {
   const dispatch = useDispatch();
   // ui data out of store
   const { page_size, page_num } = useSelector(
-    (state) => state.ui.searchFilters.pagination
+    (state) => state.ui.searchFilters.pagination,
   );
   const { sort_order, sort_column } = useSelector(
-    (state) => state.ui.searchFilters.sort
+    (state) => state.ui.searchFilters.sort,
   );
   // result data out of store
-  const totalDocuments =
-    useSelector((state) => state.search.totalDocuments) || 0;
+  const totalDocuments = useSelector((state) => state.search.totalDocuments) || 0;
 
   const selectedSortOrder = bioSort.sort_order.filter(
-    (sort) => sort.sort_name === sort_order
+    (sort) => sort.sort_name === sort_order,
   );
 
   const pages = Math.ceil(totalDocuments / page_size);
@@ -65,7 +64,7 @@ const BioResultPagination = () => {
     }
     // first update state
     dispatch(
-      updateFilterAction({ pagination: { page_size, page_num: newPage } })
+      updateFilterAction({ pagination: { page_size, page_num: newPage } }),
     );
     // trigger search
     if (delay) {
@@ -79,7 +78,7 @@ const BioResultPagination = () => {
 
   const handlePageSizeChange = (value) => {
     dispatch(
-      updateFilterAction({ pagination: { page_size: value, page_num } })
+      updateFilterAction({ pagination: { page_size: value, page_num } }),
     );
     dispatch(fetchSearchAction());
   };
@@ -98,9 +97,15 @@ const BioResultPagination = () => {
       >
         {/* TODO: Images per page and Sort Order should probably not be part of
                     pagination control. */}
-        <div className="page-items">Images: {totalDocuments} </div>
+        <div className="page-items">
+          Images:
+          {totalDocuments}
+        </div>
         <UncontrolledDropdown className="pageitems" size="sm">
-          <span className="">Page Size:{" "}</span>
+          <span className="">
+            Page Size:
+            {" "}
+          </span>
           <DropdownToggle
             size="sm"
             caret
@@ -122,7 +127,8 @@ const BioResultPagination = () => {
         </UncontrolledDropdown>
         <div className="mobile-pagination">
           <UncontrolledDropdown className="pageitems" size="sm">
-            Sort Order:{" "}
+            Sort Order:
+            {" "}
             <DropdownToggle
               size="sm"
               caret
@@ -167,7 +173,7 @@ const BioResultPagination = () => {
                 dispatch(
                   updateFilterAction({
                     pagination: { page_size, page_num: e.currentTarget.value },
-                  })
+                  }),
                 );
               }}
             />

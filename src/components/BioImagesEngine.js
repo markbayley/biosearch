@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Col, Row } from "reactstrap";
+import { Col } from "reactstrap";
 import Favourite from "./bio-favourites/Favourite";
 import BioFacetsEngine from "./bio-image-facets/BioFacetsEngine";
 import BioMapEngine from "./bio-image-map/BioMapEngine";
