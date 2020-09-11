@@ -2,19 +2,15 @@
 .image-preview-modal {
 
   .modal-header {
-    padding-bottom: 10%;
 
-    .modal-column {
-      position: absolute;
-      left: 0%;
+    .modal-title {
+      width: 100%;
     }
 
     .modal-info {
-      position: absolute;
-      right: 4%;
-      text-align: right;
-      color: #043e4f;
-      text-transform: capitalize;
+       text-align: right;
+       color: #043e4f;
+       text-transform: capitalize;
     }
   }
 
@@ -64,5 +60,3 @@
 
   }
 }
-
- 

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   Button,
   Col,
+  Row,
   FormGroup,
   Label,
   Input,
@@ -45,16 +46,15 @@ const ImageModal = () => {
 
   return (
     <Modal size="lg" className="image-preview-modal" isOpen={show} toggle={toggle} unmountOnClose>
-      <ModalHeader className="modal-header" toggle={toggle}>
-        {" "}
-        <Col sm={2} className="modal-column">
+      <ModalHeader className="modal-header" toggle={toggle} tag={Row}>
+        <Col className="modal-column">
           <img
             src={ternlogo}
             style={{ width: "300px" }}
             alt="tern logo modal"
           />
         </Col>
-        <Col className="modal-info" sm={12}>
+        <Col className="modal-info">
           <h6>
             {imageDoc.site_id.label}
             <br />
