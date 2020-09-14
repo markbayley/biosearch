@@ -102,10 +102,7 @@ const BioResultPagination = () => {
           {totalDocuments}
         </div>
         <UncontrolledDropdown className="pageitems" size="sm">
-          <span className="">
-            Page Size:
-            {" "}
-          </span>
+          <span className="">Page Size: </span>
           <DropdownToggle
             size="sm"
             caret
@@ -165,6 +162,7 @@ const BioResultPagination = () => {
             <Input
               size="4"
               // min="1"
+              pattern="[0-9]*"
               max={pages}
               type="text"
               bsSize="sm"
@@ -172,7 +170,10 @@ const BioResultPagination = () => {
               onChange={(e) => {
                 dispatch(
                   updateFilterAction({
-                    pagination: { page_size, page_num: e.currentTarget.value },
+                    pagination: {
+                      page_size,
+                      page_num: e.currentTarget.value.replace(/\D/, ""),
+                    },
                   }),
                 );
               }}

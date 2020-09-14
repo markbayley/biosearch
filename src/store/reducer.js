@@ -94,9 +94,15 @@ const uiReducer = createReducer(initialUiState, {
   // updateFilterAction leaves filters not mentioned in payload unchanged
   [updateFilterAction]: (state, action) => {
     const { pagination } = action.payload;
+
     // TODO: this is a bad workaround to avoid issues with paging past 10000 results
     //       we need a better way to deal with that but for now this avoids errors
     if (pagination) {
+      // Check if user typed a none number character
+      // If so replace page_num with previous value in store.
+      if (pagination.page_num === "") {
+        pagination.page_num = state.searchFilters.pagination.page_num;
+      }
       // we are updating pagination
       if (state.searchFilters.pagination.page_size !== pagination.page_size) {
         // updating page_size ... re-calc page_num
