@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 import {
-  Button,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
@@ -40,11 +39,13 @@ const BioResultPagination = () => {
     (sort) => sort.sort_name === sort_order,
   );
 
+  const [userPageNum, setUserPageNum] = useState(page_num);
+
   const pages = Math.ceil(totalDocuments / page_size);
 
   // change Page to given page, if delay is true, it will debounce the fetchSearchAction dispatch
   const changePage = (page, delay = false) => {
-    // TODO: maybe move value checks into reduer?
+    // TODO: maybe move value checks into reducer?
     let newPage = parseInt(page, 10);
     if (Number.isNaN(newPage)) {
       return;
@@ -63,6 +64,7 @@ const BioResultPagination = () => {
       return;
     }
     // first update state
+    setUserPageNum(newPage);
     dispatch(
       updateFilterAction({ pagination: { page_size, page_num: newPage } }),
     );
@@ -149,38 +151,42 @@ const BioResultPagination = () => {
         <PaginationItem onClick={() => changePage(1)}>
           <PaginationLink first title="First" />
         </PaginationItem>
-        <PaginationItem onClick={() => changePage(page_num - 1)}>
+        <PaginationItem onClick={() => changePage(userPageNum - 1)}>
           <PaginationLink previous title="Previous" />
         </PaginationItem>
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            changePage(Number(page_num), true);
+            // changePage(Number(page_num), true);
+            changePage(Number(userPageNum), true);
           }}
         >
           <div className="page-input">
             <Input
+              title="Enter page number"
               size="4"
               // min="1"
               pattern="[0-9]*"
               max={pages}
               type="text"
               bsSize="sm"
-              value={page_num}
+              value={userPageNum}
               onChange={(e) => {
-                dispatch(
-                  updateFilterAction({
-                    pagination: {
-                      page_size,
-                      page_num: e.currentTarget.value.replace(/\D/, ""),
-                    },
-                  }),
-                );
+                // dispatch(
+                //   updateFilterAction({
+                //     pagination: {
+                //       page_size,
+                //       page_num: e.currentTarget.value.replace(/\D/, ""),
+                //     },
+                //   }),
+                // );
+                // changePage(e.currentTarget.value.replace(/\D/, ""), true);
+                setUserPageNum(e.currentTarget.value.replace(/\D/, ""));
               }}
             />
           </div>
         </form>
-        <Button
+        {/* <Button
           className="go"
           size="sm"
           color="go"
@@ -188,8 +194,8 @@ const BioResultPagination = () => {
           onClick={() => changePage(Number(page_num), true)}
         >
           Go!
-        </Button>
-        <PaginationItem onClick={() => changePage(page_num + 1)}>
+        </Button> */}
+        <PaginationItem onClick={() => changePage(Number(userPageNum) + 1)}>
           <PaginationLink next title="Next" />
         </PaginationItem>
         <PaginationItem onClick={() => changePage(pages)}>
