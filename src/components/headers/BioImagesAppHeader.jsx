@@ -8,7 +8,7 @@ import "./BioImagesAppHeader.scss";
 
 const BioImagesAppHeader = () => (
   <>
-    <NavbarText>
+    <NavbarText >
       <h3 className="biologo">
         <BioimagesDownload className="bio-icon" />
         Bioimages
@@ -27,12 +27,17 @@ const BioImagesAppHeader = () => (
       </NavItem>
       <NavItem>
         <NavLink>
-          Help
+          Search
         </NavLink>
       </NavItem>
       <NavItem>
         <NavLink href={CONFIG.LOGIN_URL}>
           Login
+        </NavLink>
+      </NavItem>
+      <NavItem>
+        <NavLink>
+          Help
         </NavLink>
       </NavItem>
     </Nav>
