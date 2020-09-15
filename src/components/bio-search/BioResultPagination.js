@@ -1,6 +1,7 @@
+// TODO: Refactor this compoment and remove code to separate components
+// e.g. PageSize, SortOrder, etc - and move the pagination comp to /search-control-bar folder
 import React from "react";
 import {
-  Button,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
@@ -13,9 +14,9 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import debounce from "lodash/debounce";
 import { updateFilterAction, fetchSearchAction } from "../../store/reducer";
-import { bioSort } from "./bioSort";
+import { bioSort } from "./search-control-bar/bioSort";
 
-import "./BioResultPagination.scss";
+import "./search-control-bar/BioResultPagination.scss";
 
 // define a debounced dispatch to fire search only once while user is typing
 // this method needs to be defined outside of component, otherwise the debounced
@@ -28,24 +29,23 @@ const BioResultPagination = () => {
   const dispatch = useDispatch();
   // ui data out of store
   const { page_size, page_num } = useSelector(
-    (state) => state.ui.searchFilters.pagination
+    (state) => state.ui.searchFilters.pagination,
   );
   const { sort_order, sort_column } = useSelector(
-    (state) => state.ui.searchFilters.sort
+    (state) => state.ui.searchFilters.sort,
   );
   // result data out of store
-  const totalDocuments =
-    useSelector((state) => state.search.totalDocuments) || 0;
+  const totalDocuments = useSelector((state) => state.search.totalDocuments) || 0;
 
   const selectedSortOrder = bioSort.sort_order.filter(
-    (sort) => sort.sort_name === sort_order
+    (sort) => sort.sort_name === sort_order,
   );
 
   const pages = Math.ceil(totalDocuments / page_size);
 
   // change Page to given page, if delay is true, it will debounce the fetchSearchAction dispatch
   const changePage = (page, delay = false) => {
-    // TODO: maybe move value checks into reduer?
+    // TODO: maybe move value checks into reducer?
     let newPage = parseInt(page, 10);
     if (Number.isNaN(newPage)) {
       return;
@@ -65,7 +65,7 @@ const BioResultPagination = () => {
     }
     // first update state
     dispatch(
-      updateFilterAction({ pagination: { page_size, page_num: newPage } })
+      updateFilterAction({ pagination: { page_size, page_num: newPage } }),
     );
     // trigger search
     if (delay) {
@@ -79,7 +79,7 @@ const BioResultPagination = () => {
 
   const handlePageSizeChange = (value) => {
     dispatch(
-      updateFilterAction({ pagination: { page_size: value, page_num } })
+      updateFilterAction({ pagination: { page_size: value, page_num } }),
     );
     dispatch(fetchSearchAction());
   };
@@ -96,11 +96,14 @@ const BioResultPagination = () => {
         size="sm"
         style={{ paddingTop: "5px" }}
       >
-        {/* TODO: Images per page and Sort Order should probably not be part of
+        {/* TODO: [TERNDA-903] Images per page and Sort Order should probably not be part of
                     pagination control. */}
-        <div className="page-items">Images: {totalDocuments} </div>
+        <div className="page-items">
+          Images:
+          {totalDocuments}
+        </div>
         <UncontrolledDropdown className="pageitems" size="sm">
-          <span className="">Page Size:{" "}</span>
+          <span className="">Page Size: </span>
           <DropdownToggle
             size="sm"
             caret
@@ -122,7 +125,8 @@ const BioResultPagination = () => {
         </UncontrolledDropdown>
         <div className="mobile-pagination">
           <UncontrolledDropdown className="pageitems" size="sm">
-            Sort Order:{" "}
+            Sort Order:
+            {" "}
             <DropdownToggle
               size="sm"
               caret
@@ -143,11 +147,29 @@ const BioResultPagination = () => {
             </DropdownMenu>
           </UncontrolledDropdown>
         </div>
-        <PaginationItem onClick={() => changePage(1)}>
-          <PaginationLink first title="First" />
+        <PaginationItem
+          className={
+            page_num === "" || parseInt(page_num, 10) === 1
+              ? "disable-pagination"
+              : "page-item"
+          }
+          disabled={page_num === "" || parseInt(page_num, 10) === 1}
+        >
+          <PaginationLink first title="First" onClick={() => changePage(1)} />
         </PaginationItem>
-        <PaginationItem onClick={() => changePage(page_num - 1)}>
-          <PaginationLink previous title="Previous" />
+        <PaginationItem
+          className={
+            page_num === "" || parseInt(page_num, 10) === 1
+              ? "disable-pagination"
+              : "page-item"
+          }
+          disabled={page_num === "" || parseInt(page_num, 10) === 1}
+        >
+          <PaginationLink
+            previous
+            title="Previous"
+            onClick={() => changePage(page_num - 1)}
+          />
         </PaginationItem>
         <form
           onSubmit={(e) => {
@@ -157,8 +179,10 @@ const BioResultPagination = () => {
         >
           <div className="page-input">
             <Input
+              title="Enter page number"
               size="4"
               // min="1"
+              pattern="[0-9]*"
               max={pages}
               type="text"
               bsSize="sm"
@@ -166,27 +190,39 @@ const BioResultPagination = () => {
               onChange={(e) => {
                 dispatch(
                   updateFilterAction({
-                    pagination: { page_size, page_num: e.currentTarget.value },
-                  })
+                    pagination: {
+                      page_size,
+                      page_num: e.currentTarget.value.replace(/\D/, ""),
+                    },
+                  }),
                 );
               }}
             />
           </div>
         </form>
-        <Button
-          className="go"
-          size="sm"
-          color="go"
-          type="button"
-          onClick={() => changePage(Number(page_num), true)}
+        <PaginationItem
+          className={
+            page_num === "" || parseInt(page_num, 10) === pages
+              ? "disable-pagination"
+              : "page-item"
+          }
+          disabled={page_num === "" || parseInt(page_num, 10) === pages}
         >
-          Go!
-        </Button>
-        <PaginationItem onClick={() => changePage(page_num + 1)}>
-          <PaginationLink next title="Next" />
+          <PaginationLink
+            next
+            title="Next"
+            onClick={() => changePage(Number(page_num) + 1)}
+          />
         </PaginationItem>
-        <PaginationItem onClick={() => changePage(pages)}>
-          <PaginationLink last title="Last" />
+        <PaginationItem
+          className={
+            page_num === "" || parseInt(page_num, 10) === pages
+              ? "disable-pagination"
+              : "page-item"
+          }
+          disabled={page_num === "" || parseInt(page_num, 10) === pages}
+        >
+          <PaginationLink last title="Last" onClick={() => changePage(pages)} />
         </PaginationItem>
       </Pagination>
     </div>

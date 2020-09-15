@@ -33,9 +33,11 @@
     }
 
     button {
-      padding-left: 8px;
+      padding: 8px;
       box-shadow: none;
       color: hsl(0,0%,80%);
+      width: 36px;
+      height: 36px;
       &:hover {
         color: hsl(0,0%,60%);
       }

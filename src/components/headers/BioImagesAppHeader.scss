@@ -1,23 +1,26 @@
+@import "~bootstrap/scss/_functions";
+@import "~bootstrap/scss/_variables";
+@import "~bootstrap/scss/mixins/_breakpoints";
 
-.nav-container {
+.main-header .navbar {
     color: #6EB3A6;
     width: 95%;
 
     .biologo {
         margin-left: 2rem;
+        margin: 0;
         line-height: 2em;
+
+        @include media-breakpoint-down(md) {
+            display: none;
+        }
 
         .bio-icon {
             margin-bottom: 3%;
             height: 35px;
             margin-top: 0%;
         }
-    }
 
-    @media (max-width: 998px) {
-        .biologo {
-          display: none;
-        }
     }
 
 }

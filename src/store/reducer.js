@@ -97,20 +97,31 @@ const uiReducer = createReducer(initialUiState, {
     // TODO: this is a bad workaround to avoid issues with paging past 10000 results
     //       we need a better way to deal with that but for now this avoids errors
     if (pagination) {
-      // we are updating pagination
-      if (state.searchFilters.pagination.page_size !== pagination.page_size) {
-        // updating page_size ... re-calc page_num
-        pagination.page_num = Math.floor(
-          (state.searchFilters.pagination.page_size * state.searchFilters.pagination.page_num)
-          / pagination.page_size,
-        );
+      // Check if user cleared pagination input field
+      if (pagination.page_num !== "") {
+        // we are updating pagination
+        if (state.searchFilters.pagination.page_size !== pagination.page_size) {
+          // updating page_size ... re-calc page_num
+          pagination.page_num = Math.floor(
+            (state.searchFilters.pagination.page_size * state.searchFilters.pagination.page_num)
+            / pagination.page_size,
+          );
+        }
+        // check if page_num * page_size > 10000
+        if ((pagination.page_num * pagination.page_size) > 10000) {
+          // fix page_num to last page
+          pagination.page_num = Math.floor(10000 / pagination.page_size);
+        }
+        action.payload.pagination = pagination;
       }
-      // check if page_num * page_size > 10000
-      if ((pagination.page_num * pagination.page_size) > 10000) {
-        // fix page_num to last page
-        pagination.page_num = Math.floor(10000 / pagination.page_size);
+    } else {
+      // Hack: revert page_num to default 1!
+      // just in case the user cleared pagination input
+      // then jumped to facets searching!
+      const pageNum = state.searchFilters.pagination.page_num;
+      if (pageNum === "") {
+        state.searchFilters.pagination.page_num = 1;
       }
-      action.payload.pagination = pagination;
     }
     Object.assign(state.searchFilters, action.payload);
   },
@@ -132,11 +143,3 @@ export const rootReducer = combineReducers({
   search: searchReducer,
   ui: uiReducer,
 });
-
-// Add Selector function (using memoization)
-// TODO look at it later
-// export const getSelectedFilter = createSelector(
-//   (state) => state.search.selectedFilter,
-//   (state) => state.search.pagination,
-//   (selectedFilter, pagination) => ({ ...selectedFilter, ...pagination })
-// );

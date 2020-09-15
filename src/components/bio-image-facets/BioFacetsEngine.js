@@ -5,6 +5,8 @@ import ImageTypeSelectFacet from "./ImageTypeSelectFacet";
 import TextFacet from "./TextFacet";
 import MapImageToggle from "../buttons/MapImageToggle";
 
+import "./BioFacetsEngine.scss";
+
 const BioFacetsEngine = () => (
   <div className="bio-facets">
     <TextFacet facet="search_string" placeholder="Enter search text" />

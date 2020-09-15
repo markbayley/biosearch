@@ -1,6 +1,5 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Row } from "reactstrap";
 import SearchResult from "./SearchResult";
 import BioResultPagination from "./BioResultPagination";
 import ImageModal from "./ImageModal";
@@ -22,6 +21,8 @@ const SearchEngine = () => {
   if (totalDocuments === 0) {
     return <NoResults />;
   }
+  // TODO: Replace BioResultPagination with BioSearchControlBar
+  
   return (
     <>
       <BioResultPagination />

@@ -1,3 +1,7 @@
+@import "~bootstrap/scss/_functions";
+@import "~bootstrap/scss/_variables";
+@import "~bootstrap/scss/mixins/_breakpoints";
+
 .no-result {
   display: flex;
   // justify-content: center;
@@ -16,6 +20,10 @@
   padding: 0% 3%;
   // background-image: linear-gradient(to bottom right,  #c9e7dd, #B3D4C9);
 
+  @include media-breakpoint-down(lg) {
+    font-size: 16px;
+    height: 25vh;
+  }
 
   .no-result-button {
     flex-wrap: nowrap;
@@ -23,11 +31,4 @@
     display: inline-block;
   }
 
-}
-
-@media (max-width: 1199px) {
-  .no-result {
-    font-size: 16px;
-    height: 25vh;
-  }
 }
