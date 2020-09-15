@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   UncontrolledDropdown,
   DropdownToggle,
@@ -39,7 +39,6 @@ const BioResultPagination = () => {
     (sort) => sort.sort_name === sort_order,
   );
 
-  const [userPageNum, setUserPageNum] = useState(page_num);
   const pages = Math.ceil(totalDocuments / page_size);
 
   // change Page to given page, if delay is true, it will debounce the fetchSearchAction dispatch
@@ -63,7 +62,6 @@ const BioResultPagination = () => {
       return;
     }
     // first update state
-    setUserPageNum(newPage);
     dispatch(
       updateFilterAction({ pagination: { page_size, page_num: newPage } }),
     );
@@ -149,33 +147,32 @@ const BioResultPagination = () => {
         </div>
         <PaginationItem
           className={
-            userPageNum === "" || parseInt(userPageNum, 10) === 1
+            page_num === "" || parseInt(page_num, 10) === 1
               ? "disable-pagination"
               : "page-item"
           }
-          disabled={userPageNum === "" || parseInt(userPageNum, 10) === 1}
+          disabled={page_num === "" || parseInt(page_num, 10) === 1}
         >
           <PaginationLink first title="First" onClick={() => changePage(1)} />
         </PaginationItem>
         <PaginationItem
           className={
-            userPageNum === "" || parseInt(userPageNum, 10) === 1
+            page_num === "" || parseInt(page_num, 10) === 1
               ? "disable-pagination"
               : "page-item"
           }
-          disabled={userPageNum === "" || parseInt(userPageNum, 10) === 1}
+          disabled={page_num === "" || parseInt(page_num, 10) === 1}
         >
           <PaginationLink
             previous
             title="Previous"
-            onClick={() => changePage(userPageNum - 1)}
+            onClick={() => changePage(page_num - 1)}
           />
         </PaginationItem>
         <form
           onSubmit={(e) => {
             e.preventDefault();
-            // changePage(Number(page_num), true);
-            changePage(Number(userPageNum), true);
+            changePage(Number(page_num), true);
           }}
         >
           <div className="page-input">
@@ -187,43 +184,41 @@ const BioResultPagination = () => {
               max={pages}
               type="text"
               bsSize="sm"
-              value={userPageNum}
+              value={page_num}
               onChange={(e) => {
-                // dispatch(
-                //   updateFilterAction({
-                //     pagination: {
-                //       page_size,
-                //       page_num: e.currentTarget.value.replace(/\D/, ""),
-                //     },
-                //   }),
-                // );
-                // changePage(e.currentTarget.value.replace(/\D/, ""), true);
-                setUserPageNum(e.currentTarget.value.replace(/\D/, ""));
+                dispatch(
+                  updateFilterAction({
+                    pagination: {
+                      page_size,
+                      page_num: e.currentTarget.value.replace(/\D/, ""),
+                    },
+                  }),
+                );
               }}
             />
           </div>
         </form>
         <PaginationItem
           className={
-            userPageNum === "" || parseInt(userPageNum, 10) === pages
+            page_num === "" || parseInt(page_num, 10) === pages
               ? "disable-pagination"
               : "page-item"
           }
-          disabled={userPageNum === "" || parseInt(userPageNum, 10) === pages}
+          disabled={page_num === "" || parseInt(page_num, 10) === pages}
         >
           <PaginationLink
             next
             title="Next"
-            onClick={() => changePage(Number(userPageNum) + 1)}
+            onClick={() => changePage(Number(page_num) + 1)}
           />
         </PaginationItem>
         <PaginationItem
           className={
-            userPageNum === "" || parseInt(userPageNum, 10) === pages
+            page_num === "" || parseInt(page_num, 10) === pages
               ? "disable-pagination"
               : "page-item"
           }
-          disabled={userPageNum === "" || parseInt(userPageNum, 10) === pages}
+          disabled={page_num === "" || parseInt(page_num, 10) === pages}
         >
           <PaginationLink last title="Last" onClick={() => changePage(pages)} />
         </PaginationItem>
