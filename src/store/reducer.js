@@ -143,11 +143,3 @@ export const rootReducer = combineReducers({
   search: searchReducer,
   ui: uiReducer,
 });
-
-// Add Selector function (using memoization)
-// TODO look at it later
-// export const getSelectedFilter = createSelector(
-//   (state) => state.search.selectedFilter,
-//   (state) => state.search.pagination,
-//   (selectedFilter, pagination) => ({ ...selectedFilter, ...pagination })
-// );
