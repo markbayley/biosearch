@@ -109,7 +109,7 @@ const ImageModal = () => {
       <ModalFooter>
         <Button
           size="sm"
-          color="round"
+          color="modal"
           onClick={() => dispatch(showImagePreviewAction(prevIdx))}
         >
           <FontAwesomeIcon icon={faChevronLeft} />
@@ -118,7 +118,7 @@ const ImageModal = () => {
         </Button>
         <Button
           size="sm"
-          color="round"
+          color="modal"
           onClick={() => dispatch(showImagePreviewAction(nextIdx))}
         >
           Next

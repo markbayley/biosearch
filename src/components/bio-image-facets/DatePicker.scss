@@ -20,7 +20,6 @@
   position: relative;
 }
 
-
 .react-datepicker__header {
   font-family: "museo-sans", sans-serif;
   text-align: center;
@@ -52,24 +51,18 @@ button.react-datepicker__close-icon::after {
   color: #ed694b;
 }
 /* datepicker thinks its 15th today */
-.react-datepicker__day--015 {
-  color: #ed694b;
-  background-color: #fff;
-}
-
-// select option:hover {
-//     box-shadow: 0 0 10px 100px red inset;
+// .react-datepicker__day--015 {
+//   color: #ed694b;
+//   background-color: #fff;
 // }
+
 option:hover {
     background-color: #ed694b;
 }
 
-// select:active, select:hover { background: red }
 .react-datepicker__month-select__option:hover {
-  
-        background-color: #ed694b;
-    
-  }
+    background-color: #ed694b; 
+}
 
 #date-range {
   padding-top: 10px;

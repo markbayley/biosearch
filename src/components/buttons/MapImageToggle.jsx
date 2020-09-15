@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "reactstrap";
-import { faGlobeAsia } from "@fortawesome/free-solid-svg-icons";
+import { faGlobeAsia, faImages } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import { setSearchModeAction } from "../../store/reducer";
@@ -14,20 +14,22 @@ function MapImageToggle() {
 
   return searchMode === "Images" ? (
     <Button
-      size="sm"
+      size="md"
       color="login"
       onClick={() => dispatch(setSearchModeAction("Map"))}
     >
-      <FontAwesomeIcon icon={faGlobeAsia} />
-      {" "}
+      <FontAwesomeIcon icon={faGlobeAsia} /> 
+      {" "} 
       Map
     </Button>
   ) : (
     <Button
-      size="sm"
+      size="md"
       color="login"
       onClick={() => dispatch(setSearchModeAction("Images"))}
     >
+      <FontAwesomeIcon icon={faImages} />
+      {" "} 
       Images
     </Button>
   );

@@ -1,7 +1,6 @@
 import React from "react";
 import { Nav, NavItem, NavLink } from "reactstrap";
 import { CONFIG } from "../../config";
-import MapImageToggle from "../buttons/MapImageToggle";
 
 import { ReactComponent as BioimagesDownload } from "../../assets/icons/BioimagesDownload.svg";
 
@@ -16,19 +15,11 @@ const BioImagesAppHeader = () => (
       </h3>
     </NavItem>
 
-    <NavLink className="mt-auto mb-auto">
-      Home
-    </NavLink>
-    <NavLink className="mt-auto mb-auto">
-      Help
-    </NavLink>
+    <NavLink className="mt-auto mb-auto">Home</NavLink>
     <NavLink className="mt-auto mb-auto" href={CONFIG.LOGIN_URL}>
       Login
     </NavLink>
-
-    <NavItem className="mt-auto mb-auto">
-      <MapImageToggle />
-    </NavItem>
+    <NavLink className="mt-auto mb-auto">Help</NavLink>
   </Nav>
 );
 

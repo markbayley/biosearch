@@ -3,10 +3,12 @@ import ReactDateRangeFacet from "./ReactDateRangeFacet";
 import SelectFacet from "./SelectFacet";
 import ImageTypeSelectFacet from "./ImageTypeSelectFacet";
 import TextFacet from "./TextFacet";
+import MapImageToggle from "../buttons/MapImageToggle";
 
 const BioFacetsEngine = () => (
   <div className="bio-facets">
     <TextFacet facet="search_string" placeholder="Enter search text" />
+    <MapImageToggle />
     <SelectFacet facet="site_id" placeholder="Select Sites" />
     <SelectFacet facet="plot" showZeros={false} placeholder="Select Plots" />
     <SelectFacet facet="site_visit_id" placeholder="Select Site Visit Ids" />
