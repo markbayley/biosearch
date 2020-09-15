@@ -94,7 +94,7 @@ const BioResultPagination = () => {
         size="sm"
         style={{ paddingTop: "5px" }}
       >
-        {/* TODO: Images per page and Sort Order should probably not be part of
+        {/* TODO: [TERNDA-903] Images per page and Sort Order should probably not be part of
                     pagination control. */}
         <div className="page-items">
           Images:
