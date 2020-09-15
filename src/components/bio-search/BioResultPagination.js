@@ -148,11 +148,29 @@ const BioResultPagination = () => {
             </DropdownMenu>
           </UncontrolledDropdown>
         </div>
-        <PaginationItem onClick={() => changePage(1)}>
-          <PaginationLink first title="First" />
+        <PaginationItem
+          className={
+            userPageNum === "" || userPageNum === 1
+              ? "disable-pagination"
+              : "page-item"
+          }
+          disabled={userPageNum === "" || userPageNum === 1}
+        >
+          <PaginationLink first title="First" onClick={() => changePage(1)} />
         </PaginationItem>
-        <PaginationItem onClick={() => changePage(userPageNum - 1)}>
-          <PaginationLink previous title="Previous" />
+        <PaginationItem
+          className={
+            userPageNum === "" || userPageNum === 1
+              ? "disable-pagination"
+              : "page-item"
+          }
+          disabled={userPageNum === "" || userPageNum === 1}
+        >
+          <PaginationLink
+            previous
+            title="Previous"
+            onClick={() => changePage(userPageNum - 1)}
+          />
         </PaginationItem>
         <form
           onSubmit={(e) => {
@@ -186,20 +204,29 @@ const BioResultPagination = () => {
             />
           </div>
         </form>
-        {/* <Button
-          className="go"
-          size="sm"
-          color="go"
-          type="button"
-          onClick={() => changePage(Number(page_num), true)}
+        <PaginationItem
+          className={
+            userPageNum === "" || userPageNum === pages
+              ? "disable-pagination"
+              : "page-item"
+          }
+          disabled={userPageNum === "" || userPageNum === pages}
         >
-          Go!
-        </Button> */}
-        <PaginationItem onClick={() => changePage(Number(userPageNum) + 1)}>
-          <PaginationLink next title="Next" />
+          <PaginationLink
+            next
+            title="Next"
+            onClick={() => changePage(Number(userPageNum) + 1)}
+          />
         </PaginationItem>
-        <PaginationItem onClick={() => changePage(pages)}>
-          <PaginationLink last title="Last" />
+        <PaginationItem
+          className={
+            userPageNum === "" || userPageNum === pages
+              ? "disable-pagination"
+              : "page-item"
+          }
+          disabled={userPageNum === "" || userPageNum === pages}
+        >
+          <PaginationLink last title="Last" onClick={() => changePage(pages)} />
         </PaginationItem>
       </Pagination>
     </div>
