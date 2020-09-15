@@ -14,8 +14,8 @@ function MapImageToggle() {
 
   return searchMode === "Images" ? (
     <Button
-      size="md"
-      color="login"
+      size="sm"
+      color="toggle"
       onClick={() => dispatch(setSearchModeAction("Map"))}
     >
       <FontAwesomeIcon icon={faGlobeAsia} /> 
@@ -24,8 +24,8 @@ function MapImageToggle() {
     </Button>
   ) : (
     <Button
-      size="md"
-      color="login"
+      size="sm"
+      color="toggle"
       onClick={() => dispatch(setSearchModeAction("Images"))}
     >
       <FontAwesomeIcon icon={faImages} />

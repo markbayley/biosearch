@@ -13,6 +13,7 @@ import {
 } from "../../store/reducer";
 
 import "./TextFacet.scss";
+import "../buttons/buttons.scss";
 
 const TextFacet = ({ facet, ...props }) => {
   const dispatch = useDispatch();
@@ -46,7 +47,7 @@ const TextFacet = ({ facet, ...props }) => {
         />
         <InputGroupAddon addonType="append">
           <span className="separator" />
-          <Button color="login" onClick={handleSubmit} type="submit">
+          <Button color="round" className="login" onClick={handleSubmit} type="submit">
             <FontAwesomeIcon icon={faSearch} />
           </Button>
         </InputGroupAddon>

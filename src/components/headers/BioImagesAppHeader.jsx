@@ -16,6 +16,7 @@ const BioImagesAppHeader = () => (
     </NavItem>
 
     <NavLink className="mt-auto mb-auto">Home</NavLink>
+    <NavLink className="mt-auto mb-auto">About</NavLink>
     <NavLink className="mt-auto mb-auto" href={CONFIG.LOGIN_URL}>
       Login
     </NavLink>
