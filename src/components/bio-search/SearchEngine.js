@@ -21,6 +21,8 @@ const SearchEngine = () => {
   if (totalDocuments === 0) {
     return <NoResults />;
   }
+  // TODO: Replace BioResultPagination with BioSearchControlBar
+  
   return (
     <>
       <BioResultPagination />

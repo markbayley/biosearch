@@ -1,3 +1,5 @@
+// TODO: Refactor this compoment and remove code to separate components
+// e.g. PageSize, SortOrder, etc - and move the pagination comp to /search-control-bar folder
 import React from "react";
 import {
   UncontrolledDropdown,
@@ -12,9 +14,9 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import debounce from "lodash/debounce";
 import { updateFilterAction, fetchSearchAction } from "../../store/reducer";
-import { bioSort } from "./bioSort";
+import { bioSort } from "./search-control-bar/bioSort";
 
-import "./BioResultPagination.scss";
+import "./search-control-bar/BioResultPagination.scss";
 
 // define a debounced dispatch to fire search only once while user is typing
 // this method needs to be defined outside of component, otherwise the debounced
