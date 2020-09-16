@@ -28,8 +28,7 @@ const BioSortOrder = () => {
 
   return (
     <div
-      className="mobile-pagination search-control-bar-item"
-      // style={{ paddingTop: "10px", marginRight: "50px" }}
+      className="mobile-pagination"
     >
       <UncontrolledDropdown className="sort-order-item" size="sm">
         Sort Order:

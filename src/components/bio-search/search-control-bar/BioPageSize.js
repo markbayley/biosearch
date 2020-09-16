@@ -23,7 +23,7 @@ const BioPageSize = () => {
     dispatch(fetchSearchAction());
   };
   return (
-    <div className="search-control-bar-item">
+    <>
       <UncontrolledDropdown className="page-size-item" size="sm">
         <span className="">Page Size: </span>
         <DropdownToggle
@@ -45,7 +45,7 @@ const BioPageSize = () => {
           ))}
         </DropdownMenu>
       </UncontrolledDropdown>
-    </div>
+    </>
   );
 };
 

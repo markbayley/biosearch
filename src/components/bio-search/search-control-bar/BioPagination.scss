@@ -3,6 +3,7 @@
 @import "~bootstrap/scss/mixins/_breakpoints";
 
 .pagination {
+  margin-bottom: 2px;
   .page-input {
     display: flex;
     margin-right: 5px;
@@ -26,28 +27,28 @@
   }
 
   // page selection
-    .page-item {
-      margin-top: auto;
-      margin-bottom: auto;
+  .page-item {
+    margin-top: auto;
+    margin-bottom: auto;
 
-      &:hover {
-        button,
-        .page-link {
-          background-color: #b3d4c9;
-        }
-      }
-      &.active {
-        button,
-        .page-link {
-          background-color: #6eb3a6;
-          border-color: #065f65;
-        }
-      }
+    &:hover {
+      button,
       .page-link {
-        color: #065f65;
-        border: 1px solid lightgrey;
+        background-color: #b3d4c9;
       }
     }
+    &.active {
+      button,
+      .page-link {
+        background-color: #6eb3a6;
+        border-color: #065f65;
+      }
+    }
+    .page-link {
+      color: #065f65;
+      border: 1px solid lightgrey;
+    }
+  }
 
   .disable-pagination {
     margin-top: auto;

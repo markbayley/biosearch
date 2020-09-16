@@ -9,10 +9,18 @@ const BioSearchControlBar = () => (
   <div
     className="search-control-bar"
   >
-    <BioTotalImages />
-    <BioPageSize />
-    <BioSortOrder />
-    <BioPagination />
+    <div className="search-control-bar-item">
+      <BioTotalImages />
+    </div>
+    <div className="search-control-bar-item">
+      <BioPageSize />
+    </div>
+    <div className="search-control-bar-item">
+      <BioSortOrder />
+    </div>
+    <div className="search-control-bar-item">
+      <BioPagination />
+    </div>
   </div>
 );
 export default BioSearchControlBar;

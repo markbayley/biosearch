@@ -68,7 +68,7 @@ const BioPagination = () => {
     <div className="pagination">
       <Pagination
         size="sm"
-        style={{ paddingTop: "7px" }}
+        // style={{ paddingBottom: "6px" }}
       >
         <PaginationItem
           className={
