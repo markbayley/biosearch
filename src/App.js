@@ -14,7 +14,7 @@ function App() {
         <BioImagesAppHeader />
       </AppHeader>
       <BioImagesEngine />
-      <Footer about={getTernMenu(CONFIG.MENU).about} />
+      <Footer about={getTernMenu(CONFIG.MENU).resources} />
     </Router>
   );
 }
