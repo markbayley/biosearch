@@ -2,7 +2,7 @@
 import isEmpty from "lodash/isEmpty";
 import uniq from "lodash/uniq";
 import {
-  all, takeLatest, put, call, select, cancelled,
+  all, takeLatest, put, call, select, cancelled, delay, take, race,
 } from "redux-saga/effects";
 import {
   fetchSearchAction,
@@ -12,6 +12,10 @@ import {
   fetchSearchErrorAction,
   fetchVocabsDoneAction,
   fetchFacetsSearchAction,
+  checkLoginStatusAction,
+  checkLoginStatusStartAction,
+  checkLoginStatusStopAction,
+  checkLoginStatusSuccessAction,
 } from "../reducer";
 
 import { bioimages } from "./api";
@@ -175,9 +179,60 @@ function* fetchFacetsSearchSaga(action) {
   ]);
 }
 
+function* checkLoginStatusPollTask() {
+  // run forever
+  while (true) {
+    try {
+      yield put(checkLoginStatusAction(true));
+      const result = yield call(bioimages.whoami);
+      yield put(checkLoginStatusAction(false));
+      if (result.status === 200) {
+        // success ... we are logged in
+        yield put(checkLoginStatusSuccessAction(result.data));
+      } else {
+        // either not logged in or some error ... pretend to be logged out
+        yield put(checkLoginStatusSuccessAction(null));
+        if (result.status === 403) {
+          // definitely not logged in ... stop poll task
+          yield put(checkLoginStatusStopAction());
+        }
+      }
+    } catch (error) {
+      // more sever errors, like network request failed because of CORS issues
+      // console.error("WHOAMI error:", error);
+    } finally {
+      if (yield cancelled()) {
+        // ignore if cancelled ... there should be another request in flight
+        // TODO: do something useful here? (e.g. was a log out event?)
+        // console.log("WHOAMI cancelled");
+      }
+    }
+    // wait for some time to poll ogain
+    yield delay(60000); // 1 minute poll time
+  }
+}
+
+// start checkLoginStatusTask, which will run forever
+// also watch for a stop event to stop checkLoginStatusTask
+function* checkLoginStatusWatchStopTask() {
+  try {
+    // first task wins, other one get's cancelled
+    yield race({
+      // start login status poller (runs forever)
+      login: call(checkLoginStatusPollTask),
+      // in parallel wait far stop action, when received
+      // poll task will be cancelled
+      stop: take(checkLoginStatusStopAction),
+    });
+  } catch (error) {
+    // console.error("checkLoginStatusTask failed.", error);
+  }
+}
+
 export function* rootSaga() {
   // TODO: fetchFacetsAction is not emitted separately ... only Search or facets and search
   yield takeLatest(fetchFacetsAction.type, fetchFacetsSaga);
   yield takeLatest(fetchSearchAction.type, fetchSearchSaga);
   yield takeLatest(fetchFacetsSearchAction.type, fetchFacetsSearchSaga);
+  yield takeLatest(checkLoginStatusStartAction.type, checkLoginStatusWatchStopTask);
 }
