@@ -73,7 +73,7 @@ const initialUiState = {
       end: "",
     },
     pagination: {
-      page_size: 12,
+      page_size: 24,
       page_num: 1,
     },
     sort: {
@@ -102,10 +102,13 @@ const uiReducer = createReducer(initialUiState, {
         // we are updating pagination
         if (state.searchFilters.pagination.page_size !== pagination.page_size) {
           // updating page_size ... re-calc page_num
-          pagination.page_num = Math.floor(
-            (state.searchFilters.pagination.page_size * state.searchFilters.pagination.page_num)
-            / pagination.page_size,
-          );
+          // TODO: Mosheh. I have commented out this block because
+          // its causing changing the current page number weirdly
+          // when you change the page size!! Need to be investigated thoroughly.
+          // pagination.page_num = Math.floor(
+          //   (state.searchFilters.pagination.page_size * state.searchFilters.pagination.page_num)
+          //   / pagination.page_size,
+          // );
           if (pagination.page_num === 0) {
             pagination.page_num = 1;
           }
