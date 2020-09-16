@@ -3,10 +3,12 @@
 @import "~bootstrap/scss/mixins/_breakpoints";
 
 
+// header.main-header nav.navbar {
 .main-header .navbar {
+
     color: #6EB3A6;
     width: 100%;
-   
+
 
     .biologo {
         margin: 0;
@@ -25,5 +27,8 @@
 
     }
 
-}
+    .nav-item a:focus {
+        box-shadow: 0 0 black;
+    }
 
+}
