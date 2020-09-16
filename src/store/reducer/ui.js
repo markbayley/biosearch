@@ -1,56 +1,5 @@
-import { createAction, combineReducers, createReducer } from "@reduxjs/toolkit";
-
-export const fetchSearchAction = createAction("FETCH_SEARCH");
-export const fetchSearchDoneAction = createAction("FETCH_SEARCH_DONE");
-export const fetchSearchErrorAction = createAction("FETCH_SEARCH_ERROR");
-export const fetchFacetsAction = createAction("FETCH_FACETS");
-export const fetchFacetsDoneAction = createAction("FETCH_FACETS_DONE");
-export const fetchVocabsDoneAction = createAction("FETCH_VOCABS_DONE");
-export const fetchFacetsSearchAction = createAction("FETCH_FACETS_SEARCH");
-
-const initialSearchState = {
-  error: null,
-  isLoadingSearch: true,
-  hits: [],
-  totalDocuments: null,
-  // facet values and counts
-  facets: {
-    site_id: { buckets: [] },
-    plot: { buckets: [] },
-    site_visit_id: { buckets: [] },
-    image_type: { buckets: [] },
-  },
-  vocabs: null,
-};
-
-const searchReducer = createReducer(initialSearchState, {
-  [fetchFacetsSearchAction]: (state) => {
-    state.isLoadingSearch = true;
-  },
-  [fetchSearchAction]: (state) => {
-    state.isLoadingSearch = true;
-  },
-  [fetchSearchDoneAction]: (state, action) => {
-    state.isLoadingSearch = false;
-    const { hits } = action.payload;
-    if (hits) {
-      // Null, Undefined, Empty, Whatever .... All Means No Results
-      state.hits = hits.hits;
-      state.totalDocuments = hits.total.value;
-    }
-  },
-  [fetchSearchErrorAction]: (state, action) => {
-    state.isLoadingSearch = false;
-    state.error = action.payload;
-  },
-  [fetchFacetsDoneAction]: (state, action) => {
-    const { aggregations } = action.payload;
-    state.facets = aggregations;
-  },
-  [fetchVocabsDoneAction]: (state, action) => {
-    state.vocabs = action.payload;
-  },
-});
+import { createAction, createReducer } from "@reduxjs/toolkit";
+import { fetchSearchDoneAction } from "./search";
 
 export const setSearchModeAction = createAction("SET_SEARCH_MODE");
 export const updateFilterAction = createAction("UPDATE_SEARCH_FILTER");
@@ -145,27 +94,4 @@ const uiReducer = createReducer(initialUiState, {
   },
 });
 
-export const checkLoginStatusAction = createAction("CHECK_LOGIN_STATUS");
-export const checkLoginStatusStartAction = createAction("CHECK_LOGIN_STATUS_START");
-export const checkLoginStatusStopAction = createAction("CHECK_LOGIN_STATUS_STOP");
-export const checkLoginStatusSuccessAction = createAction("CHECK_LOGIN_STATUS_SUCCESS");
-
-const initialLoginState = {
-  checking: false,
-  user: null,
-};
-
-const loginReducer = createReducer(initialLoginState, {
-  [checkLoginStatusAction]: (state, action) => {
-    state.checking = action.payload;
-  },
-  [checkLoginStatusSuccessAction]: (state, action) => {
-    state.user = action.payload;
-  },
-});
-
-export const rootReducer = combineReducers({
-  search: searchReducer,
-  ui: uiReducer,
-  login: loginReducer,
-});
+export default uiReducer;
