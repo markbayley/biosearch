@@ -101,14 +101,14 @@ const uiReducer = createReducer(initialUiState, {
       if (pagination.page_num !== "") {
         // we are updating pagination
         if (state.searchFilters.pagination.page_size !== pagination.page_size) {
-          // updating page_size ... re-calc page_num
-          // TODO: Mosheh. I have commented out this block because
-          // its causing changing the current page number weirdly
-          // when you change the page size!! Need to be investigated thoroughly.
-          // pagination.page_num = Math.floor(
-          //   (state.searchFilters.pagination.page_size * state.searchFilters.pagination.page_num)
-          //   / pagination.page_size,
-          // );
+          // whon updating page_size, let's try to keep currently shown first image on page
+          // get "index" of first image
+          const firstImage = (
+            state.searchFilters.pagination.page_size
+            * (state.searchFilters.pagination.page_num - 1)
+          ) + 1;
+          // calculate page num wher firstImage is on in new page_size
+          pagination.page_num = Math.ceil(firstImage / pagination.page_size);
           if (pagination.page_num === 0) {
             pagination.page_num = 1;
           }
