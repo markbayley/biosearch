@@ -73,7 +73,7 @@ const initialUiState = {
       end: "",
     },
     pagination: {
-      page_size: 24,
+      page_size: 12,
       page_num: 1,
     },
     sort: {
@@ -106,6 +106,9 @@ const uiReducer = createReducer(initialUiState, {
             (state.searchFilters.pagination.page_size * state.searchFilters.pagination.page_num)
             / pagination.page_size,
           );
+          if (pagination.page_num === 0) {
+            pagination.page_num = 1;
+          }
         }
         // check if page_num * page_size > 10000
         if ((pagination.page_num * pagination.page_size) > 10000) {
