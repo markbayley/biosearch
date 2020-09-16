@@ -1,16 +1,18 @@
 import React from "react";
+import BioTotalImages from "./BioTotalImages";
 import BioPageSize from "./BioPageSize";
 import BioSortOrder from "./BioSortOrder";
-import BioTotalImages from "./BioTotalImages";
-// import BioPagination from "./BioPagination";
+import BioPagination from "./BioPagination";
+import "./BioSearchControlBar.scss";
 
-const BioSearchControlBar = () => {
-  // TODO: Mosheh - Add compoments tommorrow!
-  return (
-    <div>
-      To be implemented
-    </div>
-  );
-};
-
+const BioSearchControlBar = () => (
+  <div
+    className="search-control-bar"
+  >
+    <BioTotalImages />
+    <BioPageSize />
+    <BioSortOrder />
+    <BioPagination />
+  </div>
+);
 export default BioSearchControlBar;

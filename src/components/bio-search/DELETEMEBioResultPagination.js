@@ -16,7 +16,7 @@ import debounce from "lodash/debounce";
 import { updateFilterAction, fetchSearchAction } from "../../store/reducer";
 import { bioSort } from "./search-control-bar/bioSort";
 
-import "./search-control-bar/BioResultPagination.scss";
+import "./BioResultPagination.scss";
 
 // define a debounced dispatch to fire search only once while user is typing
 // this method needs to be defined outside of component, otherwise the debounced

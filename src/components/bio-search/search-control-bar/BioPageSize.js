@@ -8,14 +8,14 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { updateFilterAction, fetchSearchAction } from "../../../store/reducer";
 import { bioSort } from "./bioSort";
-// TODO: Create separate scss file for BioPageSize
-import "./BioResultPagination.scss";
+import "./BioPageSize.scss";
 
 const BioPageSize = () => {
   const dispatch = useDispatch();
   const { page_size, page_num } = useSelector(
     (state) => state.ui.searchFilters.pagination,
   );
+
   const handlePageSizeChange = (value) => {
     dispatch(
       updateFilterAction({ pagination: { page_size: value, page_num } }),
@@ -23,10 +23,15 @@ const BioPageSize = () => {
     dispatch(fetchSearchAction());
   };
   return (
-    <>
-      <UncontrolledDropdown className="pageitems" size="sm">
+    <div className="search-control-bar-item">
+      <UncontrolledDropdown className="page-size-item" size="sm">
         <span className="">Page Size: </span>
-        <DropdownToggle size="sm" caret color="pageitems" className="pageitems">
+        <DropdownToggle
+          size="sm"
+          caret
+          color="page-size-item"
+          className="page-size-item"
+        >
           {page_size}
         </DropdownToggle>
         <DropdownMenu>
@@ -40,7 +45,7 @@ const BioPageSize = () => {
           ))}
         </DropdownMenu>
       </UncontrolledDropdown>
-    </>
+    </div>
   );
 };
 

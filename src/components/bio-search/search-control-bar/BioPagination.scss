@@ -1,0 +1,65 @@
+@import "~bootstrap/scss/_functions";
+@import "~bootstrap/scss/_variables";
+@import "~bootstrap/scss/mixins/_breakpoints";
+
+.pagination {
+  .page-input {
+    display: flex;
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-top: auto;
+    margin-bottom: auto;
+
+    input {
+      margin-top: 1px;
+      text-align: center;
+      // hide number buttons
+      -moz-appearance: textfield; /* Firefox */
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        /* display: none; <- Crashes Chrome on hover */
+        -webkit-appearance: none;
+        margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+      }
+    }
+  }
+
+  // page selection
+    .page-item {
+      margin-top: auto;
+      margin-bottom: auto;
+
+      &:hover {
+        button,
+        .page-link {
+          background-color: #b3d4c9;
+        }
+      }
+      &.active {
+        button,
+        .page-link {
+          background-color: #6eb3a6;
+          border-color: #065f65;
+        }
+      }
+      .page-link {
+        color: #065f65;
+        border: 1px solid lightgrey;
+      }
+    }
+
+  .disable-pagination {
+    margin-top: auto;
+    margin-bottom: auto;
+
+    &:hover {
+      button,
+      .page-link {
+        background-color: #e0e0e4;
+        color: #a4a4a7;
+      }
+      cursor: not-allowed;
+    }
+  }
+}
