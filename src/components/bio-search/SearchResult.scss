@@ -1,27 +1,70 @@
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/mixins/_breakpoints";
 
-/* GALLERY */
-.image-card {
+.image-item {
+  display: flex;
+  padding: 0.5em;
+  // padding: 0.9em;
+  width: 100%;
+  background-color: #fff;
   border: #fff;
-  margin: 0px -20px 5px 0px;
-  border: 1px solid lightgrey;
+  // box-shadow: 0 0 0 1px rgba(84, 179, 166, 0.5), 0 1px 1px rgba(0, 0, 0, 0.4);
+  // border: 1px solid lightgrey;
+
+  @include media-breakpoint-up(sm) {
+    width: 50%;
+  }
+  @include media-breakpoint-up(md) {
+    width: 33.3%;
+  }
+  @include media-breakpoint-up(lg) {
+    width: 25%;
+  }
+  @include media-breakpoint-up(xl) {
+    width: 20%;
+    /*or 16.67% for 6 images */
+  }
 
   .hvrbox {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    // padding: 1em;
+    border: 1px solid lightgrey;
+
     position: relative;
-    display: inline-block;
-    overflow: hidden;
-    max-width: 100%;
-    height: auto;
+    // min-height: 200px;
+    .hvrbox-img-box {
+      // position: absolute;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
 
-    &:hover .hvrbox-layer_top,
-    &.active .hvrbox-layer_top {
-      opacity: 1;
-    }
-
-    img {
-      max-width: 70%;
-    }
-    .hvrbox-layer_bottom {
-      display: block;
+      .hvrbox-preview {
+        width:100%;
+        height:auto;
+        max-height: 20em;
+        // object-fit: contain;
+        // object-fit: cover;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        flex-grow: 1;
+        @include media-breakpoint-up(sm) {
+          max-height: 16em;
+        }
+        @include media-breakpoint-up(md) {
+          max-height: 12em;
+        }
+      }
+      .hvrbox-thumbnail-text {
+        font-size: 13px;
+        text-align: center;
+        flex-grow: 0;
+        color: #00565D;
+      
+      }
     }
     .hvrbox-layer_top {
       opacity: 0;
@@ -34,104 +77,34 @@
       height: 100%;
       background: rgba(0, 0, 0, 0.3);
       color: #fff;
-      padding: 15px;
+      // padding: 15px;
       -moz-transition: all 0.4s ease-in-out 0s;
       -webkit-transition: all 0.4s ease-in-out 0s;
       -ms-transition: all 0.4s ease-in-out 0s;
       transition: all 0.4s ease-in-out 0s;
+
+      &:hover {
+        opacity: 1;
+      }
+
+      .hvrbox-text {
+        text-align: center;
+        font-size: 15px;
+        display: inline-block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        text-transform: capitalize;
+        -moz-transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+      }
+
     }
-    .hvrbox-text {
-      text-align: center;
-      font-size: 15px;
-      display: inline-block;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      text-transform: capitalize;
-      -moz-transform: translate(-50%, -50%);
-      -webkit-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%);
-    }
   }
-
-  .image-card-button {
-    width: 100;
-    padding: 0px;
-    
-
-    .preview {
-      max-width: 100%;
-      max-height: 100%;
-      width: auto;
-      height: auto;
-    }
-
-  }
-
-  .thumbnail-text {
-    font-size: 13px;
-    text-align: center;
-  }
-
-  #bio-icon {
-    color: #fff;
-    width: 80px;
-  }
-
 }
 
-
-/* FLEXBOX */
-// * {
-//   box-sizing: border-box;
-// }
-// body {
-//   background-color: #f5f5f5;
-//   margin: 0 auto;
-//   max-width: 60em;
-//   line-height: 1.3;
-// }
-// ul, li {
-//   margin: 0;
-//   padding: 0;
-//   list-style: none;
-// }
-// .site-branding img {
-//   width: 100%;
-// }
-// h2 {
-//   margin-top: 0;
-//   // margin-bottom: 0.4em;
-// }
-
-// /*Flex items*/
-// .list {
-//   display: flex;
-//   flex-wrap: wrap;
-// }
-// .list-item {
-// 	display: flex;
-//   // padding: 0.5em;
-// 	width: 100%;
-// }
-// // @media all and (min-width: 40em) {
-// //   .list-item {
-// //     width: 50%;
-// //   }
-// // }
-// // @media all and (min-width: 60em) {
-// //   .list-item {
-// //     width: 33.33%;
-// //   }
-// // }
-// .list-content {
-// 	background-color: #fff;
-//   display: flex;
-//   flex-direction: column;
-//   // padding: 1em;
-// 	width: 100%;
-// }
-// .list-content p {
-// 	flex: 1 0 auto;
-// }
+.view-icon {
+  width: 70px;
+}

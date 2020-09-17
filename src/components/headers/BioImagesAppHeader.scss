@@ -1,21 +1,34 @@
+@import "~bootstrap/scss/_functions";
+@import "~bootstrap/scss/_variables";
+@import "~bootstrap/scss/mixins/_breakpoints";
 
-.nav-container {
+
+// header.main-header nav.navbar {
+.main-header .navbar {
+
     color: #6EB3A6;
+    width: 100%;
+
 
     .biologo {
-        margin-left: 2rem;
+        margin: 0;
+        line-height: 2em;
+        margin-left: 130px;
+
+        @include media-breakpoint-down(md) {
+            display: none;
+        }
 
         .bio-icon {
             margin-bottom: 3%;
             height: 35px;
             margin-top: 0%;
         }
+
     }
 
-    @media (max-width: 998px) {
-        .biologo {
-          display: none;
-        }
+    .nav-item a:focus {
+        box-shadow: 0 0 black;
     }
 
 }

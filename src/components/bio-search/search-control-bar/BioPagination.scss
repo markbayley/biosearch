@@ -1,0 +1,57 @@
+@import "~tern-react/dist/scss/colors";
+@import "~bootstrap/scss/_functions";
+@import "~bootstrap/scss/_variables";
+@import "~bootstrap/scss/mixins/_breakpoints";
+
+.pagination {
+
+  .page-input {
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-top: auto;
+    margin-bottom: auto;
+
+    input {
+      text-align: center;
+      // hide number buttons
+      -moz-appearance: textfield; /* Firefox */
+
+      &::-webkit-outer-spin-button,
+      &::-webkit-inner-spin-button {
+        /* display: none; <- Crashes Chrome on hover */
+        -webkit-appearance: none;
+        margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+      }
+    }
+  }
+
+  // page selection
+  .page-item {
+    margin-top: auto;
+    margin-bottom: auto;
+
+    .page-link {
+      color: #065f65;
+      border: 1px solid lightgrey;
+
+      &:hover {
+        background-color: $green-light;
+      }
+    }
+
+    &.disabled {
+
+      .page-link {
+        pointer-events: auto;
+        cursor: not-allowed;
+
+        &:hover {
+          background-color: #e0e0e4;
+          color: #a4a4a7;
+        }
+      }
+    }
+
+  }
+
+}

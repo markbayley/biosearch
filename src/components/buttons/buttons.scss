@@ -16,30 +16,12 @@
   background-image: linear-gradient(to bottom right, #64acb3, #00565D);
 }
 
-.btn-filter {
-  // background-color: #00565D;
-  color: #fff;
-  font-family: "museo-sans", sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  // border: 1px solid #00565D;
-  border-radius: 10px;
-  box-shadow: lightgrey 1px 1px 1px 1px;
-  background-image: linear-gradient(to bottom right, #2a747a, #00565D);
-}
 
-.btn-filter:hover {
-  background-image: linear-gradient(to bottom right, #64acb3, #00565D);
-  color: #fff;
-  // background-image: linear-gradient(to bottom right, #B3D4C9, #B3D4C9);
-}
 .btn-flat {
   // background-color: rgba(228,228,232,1);
   // color:  #00565D;
   color: #fff;
   // border: 1px solid lightgrey;
-
-
 }
 
 .btn-flat:hover {
@@ -50,39 +32,56 @@
 }
 
 
+.btn-modal {
+  // background-color: rgba(228,228,232,1);
+  // color:  #00565D;
+  color: #00565D;
+  // border: 1px solid lightgrey;
+}
+
+.btn-modal:hover {
+  // opacity: 0.7;
+  // background-color: #00565D;
+  color:  lightgrey;
+  // border: 1px solid #00565D;
+}
+
 .btn-round {
-  background-color:  #6EB3A6;
+  background-color:#6EB3A6;
   color: #fff;
   font-family: "museo-sans", sans-serif;
   // border: 1px solid #00565D;
-  border-radius: "0px";
+  // border-radius: 10px;
   font-weight: 200;
   font-size: 16px;
-  margin-right: 5px;
-  border: 1px solid #00565D;
+  margin-left: 1px;
+  // border: 1px solid lightgrey;
 }
 
 .btn-round:hover {
   // background-color: #00565D;
-  background-color:   #B3D4C9;
+  background-color: #B3D4C9;
   // border: 1px solid #00565D;
 }
 
+
 .btn-toggle {
-  // background-color: #fff;
-  color:  #00565D;
-  border: 1px solid #00565D;
+  background-color:#6EB3A6;
+  color: #fff;
   font-family: "museo-sans", sans-serif;
-  // border: 1px solid #00565D;
-  background-image: linear-gradient(to bottom right, #eee, #fff);
+  border-radius: 10px;
+  font-weight: 200;
   font-size: 16px;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin-bottom: 5px;
+  display: inline-block; 
+  text-align: right; 
+ 
+  display: block;
+  margin-left:auto;
+  margin-right:0;
 }
 
 .btn-toggle:hover {
-  // background-color: #B3D4C9;
-  font-weight: 400;
   color:  #00565D;
   background-image: linear-gradient(to bottom right,  #c9e7dd, #B3D4C9,);
   &.clicked, button {
@@ -105,3 +104,9 @@
   color:   #fff;
   // border: 1px solid #00565D;
 }
+
+
+
+
+
+

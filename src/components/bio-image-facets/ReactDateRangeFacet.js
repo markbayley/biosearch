@@ -4,7 +4,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { useDispatch, useSelector } from "react-redux";
 import get from "lodash/get";
 import moment from "moment";
-import { Container, InputGroup, Row, Input } from "reactstrap";
+import { InputGroup, Input } from "reactstrap";
 import {
   updateFilterAction,
   fetchFacetsSearchAction,
@@ -77,53 +77,42 @@ const ReactDateRangeFacet = () => {
   };
 
   return (
-    <div style={{ border: "1px solid #6EB3A6", borderRadius: "5px" }}>
-      <h6
-        style={{
-          paddingTop: "10px",
-          paddingLeft: "5px",
-          color: "grey",
-          fontWeight: "400",
-        }}
-      >
+    <div className="mb-4 date-facet" style={{ border: "1px solid #6EB3A6", borderRadius: "5px" }}>
+      <h6 className="date-range-header">
         Date Range
       </h6>
-      <Container>
-        <Row>
-          <InputGroup>
-            <DatePicker
-              selected={fStart}
-              minDate={start_range.min}
-              maxDate={start_range.max}
-              onChange={(date) => handleOnDateChange(date, "start")}
-              peekNextMonth
-              showMonthDropdown
-              showYearDropdown
-              dropdownMode="select"
-              dateFormat="yyyy-MM-dd"
-              placeholderText="From"
-              isClearable
-              wrapperClassName="form-control"
-              customInput={<Input value={fStart} />}
-            />
-            <DatePicker
-              selected={fEnd}
-              minDate={end_range.min}
-              maxDate={end_range.max}
-              onChange={(date) => handleOnDateChange(date, "end")}
-              peekNextMonth
-              showMonthDropdown
-              showYearDropdown
-              dropdownMode="select"
-              dateFormat="yyyy-MM-dd"
-              placeholderText="To"
-              isClearable
-              wrapperClassName="form-control"
-              customInput={<Input value={fStart} />}
-            />
-          </InputGroup>
-        </Row>
-      </Container>
+      <InputGroup>
+        <DatePicker
+          selected={fStart}
+          minDate={start_range.min}
+          maxDate={start_range.max}
+          onChange={(date) => handleOnDateChange(date, "start")}
+          peekNextMonth
+          showMonthDropdown
+          showYearDropdown
+          dropdownMode="select"
+          dateFormat="yyyy-MM-dd"
+          placeholderText="From"
+          isClearable
+          wrapperClassName="form-control"
+          customInput={<Input value={fStart} />}
+        />
+        <DatePicker
+          selected={fEnd}
+          minDate={end_range.min}
+          maxDate={end_range.max}
+          onChange={(date) => handleOnDateChange(date, "end")}
+          peekNextMonth
+          showMonthDropdown
+          showYearDropdown
+          dropdownMode="select"
+          dateFormat="yyyy-MM-dd"
+          placeholderText="To"
+          isClearable
+          wrapperClassName="form-control"
+          customInput={<Input value={fStart} />}
+        />
+      </InputGroup>
     </div>
   );
 };

@@ -1,37 +1,76 @@
+.date-facet {
+
+  .date-range-header {
+    padding-top: 10px;
+    padding-left: 10px;
+    color: grey;
+    font-weight: 400;
+  }
+}
+
+// TODO: maybe use react-datepicker scss variables to adapt most of these things below
+.react-datepicker {
+  font-family: "museo-sans", sans-serif;
+  font-size: 0.9rem;
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #6eb3a6;
+  border-radius: 5px;
+  display: inline-block;
+  position: relative;
+}
+
 .react-datepicker__header {
-    text-align: center;
-    background-color: #6EB3A6;
-    border-bottom: 0px;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    padding-top: 8px;
-    position: relative;
-  
-  }
-  
-  .react-datepicker__today-button {
-    border-top: 0px;
-    cursor: pointer;
-    text-align: center;
-    font-weight: bold;
-    padding: 5px 0;
-    clear: left;
-    color: #6EB3A6;
-    width: 500px;
-  }
+  font-family: "museo-sans", sans-serif;
+  text-align: center;
+  background-color: #6eb3a6;
+  border-bottom: 0px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  padding-top: 8px;
+  position: relative;
+}
 
-  .react-datepicker {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: .9rem;
-    background-color: #fff;
-    color: #000;
-    border: 1px solid #6EB3A6;
-    border-radius: 5px;
-    display: inline-block;
-    position: relative;
-  }
+.react-datepicker__day:hover {
+//   outline: 1px solid #6eb3a6;
+  background-color: #B3D4C9;
+}
+.react-datepicker__day--disabled:hover {
+  outline: none;
+  cursor: default;
+  background-color: #fff;
+}
+.react-datepicker__day--selected {
+  background-color: #6eb3a6;
+}
+button.react-datepicker__close-icon::after {
+  background: #6eb3a6;
+  color: #fff;
+}
+.react-datepicker__day--today {
+  color: #ed694b;
+}
+/* datepicker thinks its 15th today */
+// .react-datepicker__day--015 {
+//   color: #ed694b;
+//   background-color: #fff;
+// }
 
-  .facet {
-    border: 1px solid #6EB3A6;
-    border-radius: 10px;
-  }
+option:hover {
+    background-color: #ed694b;
+}
+
+.react-datepicker__month-select__option:hover {
+    background-color: #ed694b; 
+}
+
+#date-range {
+  padding-top: 10px;
+  padding-left: 5px;
+  color: grey;
+  font-weight: 400;
+}
+.text-facet {
+  border: 1px solid #6eb3a6;
+  border-radius: 10px;
+}

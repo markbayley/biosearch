@@ -1,35 +1,45 @@
 import React from "react";
-import { Nav, NavItem } from "reactstrap";
-import LoginButton from "../buttons/LoginButton";
-import { CONFIG } from "../../config";
-import MapImageToggle from "../buttons/MapImageToggle";
+import { Nav, NavbarText, NavItem, NavLink } from "reactstrap";
 
 import { ReactComponent as BioimagesDownload } from "../../assets/icons/BioimagesDownload.svg";
+
+import LoginNavItem from "./LoginNavItem";
 
 import "./BioImagesAppHeader.scss";
 
 const BioImagesAppHeader = () => (
-  <Nav navbar className="nav-container mb-auto mt-auto" style={{ width: "95%" }}>
-    <NavItem className="mt-auto mb-auto mr-auto">
+  <>
+    <NavbarText>
       <h3 className="biologo">
-        <BioimagesDownload className="bio-icon" style={{ color: "#6EB3A6" }} />
-        Bioimages preview
+        <BioimagesDownload className="bio-icon" />
+        {" "}
+        Bioimages
       </h3>
-    </NavItem>
-
-    <NavItem className="mt-auto mb-auto">
-      {/* Login Buttons */}
-      <a href={CONFIG.LOGIN_URL}>
-        {" "}
-        <LoginButton />
-        {" "}
-      </a>
-    </NavItem>
-
-    <NavItem className="mt-auto mb-auto">
-      <MapImageToggle />
-    </NavItem>
-  </Nav>
+    </NavbarText>
+    <Nav navbar>
+      <NavItem>
+        <NavLink>
+          Home
+        </NavLink>
+      </NavItem>
+      <NavItem>
+        <NavLink>
+          About
+        </NavLink>
+      </NavItem>
+      <NavItem>
+        <NavLink>
+          Search
+        </NavLink>
+      </NavItem>
+      <NavItem>
+        <NavLink>
+          Help
+        </NavLink>
+      </NavItem>
+      <LoginNavItem />
+    </Nav>
+  </>
 );
 
 export default BioImagesAppHeader;

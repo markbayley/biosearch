@@ -5,7 +5,7 @@ import L from "leaflet";
 
 const ImageMarker = (props) => {
   const {
-    id, name, sitePosition, count, selected,
+    name, sitePosition, count, selected,
   } = props;
 
   const className = `custom-marker ${selected ? "custom-marker-selected" : ""} ${count ? "" : "custom-marker-disabled"}`;
@@ -18,7 +18,6 @@ const ImageMarker = (props) => {
         iconSize: L.point(33, 33, true),
         tooltipAnchor: [20, 0],
       })}
-      key={id}
       position={sitePosition}
     // onClick={handleFilter} -mosheh disabled it!
     >
@@ -57,7 +56,6 @@ const ImageMarker = (props) => {
 };
 
 ImageMarker.propTypes = {
-  id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   sitePosition: PropTypes.arrayOf(PropTypes.number).isRequired,
   count: PropTypes.number.isRequired,

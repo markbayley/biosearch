@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   Button,
   Col,
+  Row,
   FormGroup,
   Label,
   Input,
@@ -44,17 +45,16 @@ const ImageModal = () => {
   const img_url_large = get(last(sortBy(imageDoc.preview_urls, "size")), "url");
 
   return (
-    <Modal size="lg" isOpen={show} toggle={toggle} unmountOnClose>
-      <ModalHeader className="modal-header" toggle={toggle}>
-        {" "}
-        <Col sm={2} className="modal-column">
+    <Modal size="lg" className="image-preview-modal" isOpen={show} toggle={toggle} unmountOnClose>
+      <ModalHeader className="modal-header" toggle={toggle} tag={Row}>
+        <Col className="modal-column">
           <img
             src={ternlogo}
             style={{ width: "300px" }}
             alt="tern logo modal"
           />
         </Col>
-        <Col className="modal-info" sm={12}>
+        <Col className="modal-info">
           <h6>
             {imageDoc.site_id.label}
             <br />
@@ -76,7 +76,26 @@ const ImageModal = () => {
       </ModalHeader>
       {/* <hr className="modal-line" /> */}
       <ModalBody>
-        <img className="img-fluid" src={img_url_large} alt="carousel" />
+        <div className="modal-image-container">
+          <img className="img-fluid" src={img_url_large} alt="carousel" />
+          <Button
+            size="lg"
+            className="chevron-right"
+            color="flat"
+            onClick={() => dispatch(showImagePreviewAction(nextIdx))}
+          >
+            <FontAwesomeIcon icon={faChevronRight} />
+          </Button>
+          <Button
+            size="lg"
+            className="chevron-left"
+            color="flat"
+            onClick={() => dispatch(showImagePreviewAction(prevIdx))}
+          >
+            <FontAwesomeIcon icon={faChevronLeft} />
+          </Button>
+        </div>
+
         <br />
         <br />
         <FormGroup check className="center modal-select">
@@ -90,35 +109,23 @@ const ImageModal = () => {
       <ModalFooter>
         <Button
           size="sm"
-          color="round"
+          color="modal"
           onClick={() => dispatch(showImagePreviewAction(prevIdx))}
         >
           <FontAwesomeIcon icon={faChevronLeft} />
+          {" "}
           Prev
         </Button>
         <Button
           size="sm"
-          color="round"
+          color="modal"
           onClick={() => dispatch(showImagePreviewAction(nextIdx))}
         >
           Next
+          {" "}
           <FontAwesomeIcon icon={faChevronRight} />
         </Button>
 
-        <Button
-          id="chevron-right"
-          color="flat"
-          onClick={() => dispatch(showImagePreviewAction(nextIdx))}
-        >
-          <FontAwesomeIcon icon={faChevronRight} />
-        </Button>
-        <Button
-          id="chevron-left"
-          color="flat"
-          onClick={() => dispatch(showImagePreviewAction(prevIdx))}
-        >
-          <FontAwesomeIcon icon={faChevronLeft} />
-        </Button>
         {/* <Button color="login" onClick={toggle}>
           Close
         </Button>

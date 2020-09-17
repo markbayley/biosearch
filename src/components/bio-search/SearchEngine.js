@@ -1,12 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Row } from "reactstrap";
 import SearchResult from "./SearchResult";
-import BioResultPagination from "./BioResultPagination";
+// import BioResultPagination from "./BioResultPagination";
 import ImageModal from "./ImageModal";
 
 import NoResults from "./NoResults";
 import AppError from "./AppError";
+import BioSearchControlBar from "./search-control-bar/BioSearchControlBar";
 
 const SearchEngine = () => {
   const data = useSelector((state) => state.search.hits);
@@ -22,11 +22,13 @@ const SearchEngine = () => {
   if (totalDocuments === 0) {
     return <NoResults />;
   }
+  // TODO: Replace BioResultPagination with BioSearchControlBar
+
   return (
     <>
-      <BioResultPagination />
-
-      <Row className="image-grid">
+      {/* <BioResultPagination /> */}
+      <BioSearchControlBar />
+      <div className="d-flex flex-wrap">
         {data.map((bioImageDocument, index) => (
           <SearchResult
             imageIdx={index}
@@ -34,11 +36,12 @@ const SearchEngine = () => {
             totalDocuments={totalDocuments}
           />
         ))}
-      </Row>
+      </div>
 
       <ImageModal />
 
-      <BioResultPagination />
+      {/* <BioResultPagination /> */}
+      <BioSearchControlBar />
     </>
   );
 };
