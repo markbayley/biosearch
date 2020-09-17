@@ -32,36 +32,28 @@
     margin-top: auto;
     margin-bottom: auto;
 
-    &:hover {
-      button,
-      .page-link {
-        background-color: $green-light;
-      }
-    }
-    &.active {
-      button,
-      .page-link {
-        background-color: $green-mid;
-        border-color: #065f65;
-      }
-    }
     .page-link {
       color: #065f65;
       border: 1px solid lightgrey;
-    }
-  }
 
-  .disable-pagination {
-    margin-top: auto;
-    margin-bottom: auto;
-
-    &:hover {
-      button,
-      .page-link {
-        background-color: #e0e0e4;
-        color: #a4a4a7;
+      &:hover {
+        background-color: $green-light;
       }
-      cursor: not-allowed;
     }
+
+    &.disabled {
+
+      .page-link {
+        pointer-events: auto;
+        cursor: not-allowed;
+
+        &:hover {
+          background-color: #e0e0e4;
+          color: #a4a4a7;
+        }
+      }
+    }
+
   }
+
 }
