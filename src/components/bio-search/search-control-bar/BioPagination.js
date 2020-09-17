@@ -4,6 +4,7 @@ import {
   PaginationItem,
   PaginationLink,
   Input,
+  Form,
 } from "reactstrap";
 import { useSelector, useDispatch } from "react-redux";
 import debounce from "lodash/debounce";
@@ -36,30 +37,47 @@ const BioPagination = () => {
 
   const updatePagination = (data) => {
     dispatch(updateFilterAction({ pagination: data }));
-  }
+  };
 
   // change Page to given page, if delay is true,
   // it will debounce the fetchSearchAction dispatch
   const changePage = (page, delay = false) => {
     // TODO: maybe move value checks into reducer?
-    let newPage = parseInt(page, 10);
+    let newPage = Number(page);
     if (Number.isNaN(newPage)) {
+      // input doesn't make any sense
+      // cancel actions in case there are any
+      debouncedDispatch.cancel();
       return;
     }
+    if (delay && page === "") {
+      // still typing just update store, so that current input is reflected in input field
+      updatePagination({ page_size, page_num: page });
+      // cancel actions in case there are any
+      debouncedDispatch.cancel();
+      return;
+    }
+    // some sanitiy checks on new page number
     // don't go below 1
     if (newPage < 1) {
       newPage = 1;
     }
+    // don't go beyond max pages
     if (newPage > pages) {
       newPage = pages;
     }
     // did it change at all?
     if (newPage === page_num) {
-      // no change, cance debounce, and ignore
-      debouncedDispatch.cancel();
+      // no change ... we either have an update queued in debounce
+      // or nothing needs to happen anyway
+      if (!delay) {
+        // don't wait, flush debounced events
+        debouncedDispatch.flush();
+      }
+      // otherwise do nothing
       return;
     }
-    // first update state
+    // first update store
     updatePagination({ page_size, page_num: newPage });
     // trigger search
     if (delay) {
@@ -73,27 +91,26 @@ const BioPagination = () => {
 
   return (
     <Pagination size="sm">
-      <PaginationItem
-        disabled={page_num === "" || parseInt(page_num, 10) === 1}
-      >
+      <PaginationItem disabled={page_num === 1}>
         <PaginationLink first title="First" onClick={() => changePage(1)} />
       </PaginationItem>
-      <PaginationItem
-        disabled={page_num === "" || parseInt(page_num, 10) === 1}
-      >
+      <PaginationItem disabled={page_num === 1}>
         <PaginationLink
           previous
           title="Previous"
           onClick={() => changePage(page_num - 1)}
         />
       </PaginationItem>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          changePage(Number(page_num), true);
-        }}
-      >
-        <div className="page-input">
+      <PaginationItem>
+        <Form
+          inline
+          className="page-input"
+          onSubmit={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            changePage(page_num);
+          }}
+        >
           <Input
             title="Enter page number"
             size="4"
@@ -102,30 +119,19 @@ const BioPagination = () => {
             type="number"
             bsSize="sm"
             value={page_num}
-            onChange={(e) => {
-              dispatch(
-                updateFilterAction({
-                  pagination: {
-                    page_num: e.currentTarget.value.replace(/\D/, ""),
-                  },
-                }),
-              );
-            }}
+            onBlur={() => changePage(page_num)}
+            onChange={(e) => { changePage(e.currentTarget.value, true); }}
           />
-        </div>
-      </form>
-      <PaginationItem
-        disabled={page_num === "" || parseInt(page_num, 10) === pages}
-      >
+        </Form>
+      </PaginationItem>
+      <PaginationItem disabled={page_num === pages}>
         <PaginationLink
           next
           title="Next"
-          onClick={() => changePage(Number(page_num) + 1)}
+          onClick={() => changePage(page_num + 1)}
         />
       </PaginationItem>
-      <PaginationItem
-        disabled={page_num === "" || parseInt(page_num, 10) === pages}
-      >
+      <PaginationItem disabled={page_num === pages}>
         <PaginationLink last title="Last" onClick={() => changePage(pages)} />
       </PaginationItem>
     </Pagination>

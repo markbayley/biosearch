@@ -4,16 +4,14 @@
 @import "~bootstrap/scss/mixins/_breakpoints";
 
 .pagination {
-  margin-bottom: 2px;
+
   .page-input {
-    display: flex;
     margin-right: 5px;
     margin-left: 5px;
     margin-top: auto;
     margin-bottom: auto;
 
     input {
-      margin-top: 1px;
       text-align: center;
       // hide number buttons
       -moz-appearance: textfield; /* Firefox */
