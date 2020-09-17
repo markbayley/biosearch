@@ -30,6 +30,7 @@ module.exports = {
           "src/*.test.js",
           "src/index.js",
           "src/setupTests.js",
+          "src/setupProxy.js",
         ],
       },
     ], // this rule requires the modules @typescript-eslint/parser and typescript to be installed ;(
