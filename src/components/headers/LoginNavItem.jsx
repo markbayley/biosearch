@@ -36,7 +36,7 @@ const LoginNavItem = () => {
         <FontAwesomeIcon icon={faUserCircle} />
       </DropdownToggle>
       <DropdownMenu right>
-        <DropdownItem href="http://localhost:5000/api/oidc/logout">
+        <DropdownItem href={CONFIG.LOGOUT_URL}>
           Sign Out
           {" "}
           <FontAwesomeIcon icon={faSignOutAlt} />
