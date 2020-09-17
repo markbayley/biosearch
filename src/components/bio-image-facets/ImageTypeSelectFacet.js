@@ -11,7 +11,7 @@ import {
 } from "../../store/reducer";
 import { facetColourStyles } from "./facetColourStyles";
 
-const ImageTypeSelectFacet = ({ facet, ...props }) => {
+const ImageTypeSelectFacet = ({ facet, showZeros, ...props }) => {
   const dispatch = useDispatch();
 
   // currently selected facets
@@ -22,13 +22,11 @@ const ImageTypeSelectFacet = ({ facet, ...props }) => {
   const vocab = useSelector((state) => get(state.search.vocabs, facet, null));
 
   const selectedValues = new Set(selected.map((item) => item.value));
-
   // build list of options for select widget
   const cur_value = [];
-  const options = facets.buckets.flatMap((item) => {
+  const computeOptions = facets.buckets.flatMap((item) => {
     const count = item.doc_count;
     const value = item.key;
-
     const label = get(vocab, `${value}.label`, facet);
     if (value === "ancillary") {
       return item["image_type_sub"].buckets.map((sub_type) => {
@@ -36,31 +34,39 @@ const ImageTypeSelectFacet = ({ facet, ...props }) => {
         // FIXME: [TERNDA-860] Data corruption needs to be fixed.
         // Ancillary Samford camera trap has string like %/20.
         // Wilma and Andrew need to look at backend data
-        const subValue = `ancillary.${sub_type.key.replace(/%20/gi, " ")}`;
-        const subLabel = `${label}[${startCase(
-          get(vocab, `${value}.${sub_type.key}.label`, sub_type.key).replace(/%20/gi, " "),
-        )}]`;
-        const option = {
-          label: subLabel,
-          value: subValue,
-          count: subCount,
-        };
-        if (selectedValues.has(subValue)) {
-          cur_value.push(option);
+        if (showZeros || subCount > 0) {
+          const subValue = `ancillary.${sub_type.key.replace(/%20/gi, " ")}`;
+          const subLabel = `${label}[${startCase(
+            get(vocab, `${value}.${sub_type.key}.label`, sub_type.key).replace(/%20/gi, " "),
+          )}]`;
+          const option = {
+            label: subLabel,
+            value: subValue,
+            count: subCount,
+          };
+          if (selectedValues.has(subValue)) {
+            cur_value.push(option);
+          }
+          return option;
         }
-        return option;
+        return null;
       });
     }
-    const option = {
-      label,
-      value,
-      count,
-    };
-    if (selectedValues.has(value)) {
-      cur_value.push(option);
+    if (showZeros || count > 0) {
+      const option = {
+        label,
+        value,
+        count,
+      };
+      if (selectedValues.has(value)) {
+        cur_value.push(option);
+      }
+      return option;
     }
-    return option;
+    return null;
   });
+
+  const options = computeOptions.filter((option) => option !== null);
 
   const handleChange = (items) => {
     // update state
@@ -94,6 +100,10 @@ const ImageTypeSelectFacet = ({ facet, ...props }) => {
 
 ImageTypeSelectFacet.propTypes = {
   facet: PropTypes.string.isRequired,
+  showZeros: PropTypes.bool,
+};
+ImageTypeSelectFacet.defaultProps = {
+  showZeros: true,
 };
 
 export default ImageTypeSelectFacet;
