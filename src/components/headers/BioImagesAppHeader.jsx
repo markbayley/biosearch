@@ -8,7 +8,7 @@ import "./BioImagesAppHeader.scss";
 
 const BioImagesAppHeader = () => (
   <>
-    <NavbarText >
+    <NavbarText style={{ marginLeft: "130px" }}>
       <h3 className="biologo">
         <BioimagesDownload className="bio-icon" />
         Bioimages

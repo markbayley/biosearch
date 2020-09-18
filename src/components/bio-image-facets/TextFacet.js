@@ -47,7 +47,7 @@ const TextFacet = ({ facet, ...props }) => {
         />
         <InputGroupAddon addonType="append">
           <span className="separator" />
-          <Button color="round" className="login" onClick={handleSubmit} type="submit">
+          <Button color="round" className="round" onClick={handleSubmit} type="submit">
             <FontAwesomeIcon icon={faSearch} />
           </Button>
         </InputGroupAddon>

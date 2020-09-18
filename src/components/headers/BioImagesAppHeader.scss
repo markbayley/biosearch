@@ -11,9 +11,9 @@
     .biologo {
         margin: 0;
         line-height: 2em;
-        margin-left: 130px;
+        // margin-left: 130px;
 
-        @include media-breakpoint-down(md) {
+        @include media-breakpoint-down(lg) {
             display: none;
         }
 

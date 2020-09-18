@@ -1,0 +1,83 @@
+
+.home-header {
+    // background-image: url(https://bioimages.tern.org.au/images/hero.jpg);
+    background-size: auto;
+    background-repeat: no-repeat;
+    height: auto;
+    padding-top: 60px;
+    padding-bottom: 20px;
+}
+
+.home-title {
+    font-size: 24px;
+    font-weight: 500;
+    padding: 10px 0px;
+}
+
+.home-caption {
+    font-size: 18px;
+    font-weight: 200;
+    padding-bottom: 0px;
+    background-color: black;
+    opacity: 0.6;
+    color: #fff;
+    width: 55%;
+  
+    padding: 1em;
+}
+
+.btn-home-search {
+    background-color: #ED694B;
+    color: #fff;
+    font-weight: 900;
+    border-radius: 10px;
+    font-size: 20px;
+    position: absolute;
+    right: 25%;
+    top: 20%;
+    padding: 10px 20px;
+    margin-top: 30px;
+}
+
+.btn-home-search:hover {
+    background-color: #F5A26C;
+    color: #fff;
+   
+}
+
+.btn-map-search {
+    background-color: #00565D;
+    color: #fff;
+    font-weight: 900;
+    border-radius: 10px;
+    font-size: 16px;
+    margin: 20px 0px;
+ 
+}
+
+.btn-map-search:hover {
+    background-color: #6EB3A6;
+    color: #fff;
+}
+
+.map {
+    width: 600px;
+    height: 350px;
+    border: 1px solid grey;
+    margin-bottom: 20px;
+}
+
+.home-sites a:hover {
+    background-color: #B3D4C9;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+@media (min-width: 1200px) {
+    .container {
+    // width: 1300px;
+    }
+}
