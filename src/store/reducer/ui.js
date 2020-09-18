@@ -1,56 +1,5 @@
-import { createAction, combineReducers, createReducer } from "@reduxjs/toolkit";
-
-export const fetchSearchAction = createAction("FETCH_SEARCH");
-export const fetchSearchDoneAction = createAction("FETCH_SEARCH_DONE");
-export const fetchSearchErrorAction = createAction("FETCH_SEARCH_ERROR");
-export const fetchFacetsAction = createAction("FETCH_FACETS");
-export const fetchFacetsDoneAction = createAction("FETCH_FACETS_DONE");
-export const fetchVocabsDoneAction = createAction("FETCH_VOCABS_DONE");
-export const fetchFacetsSearchAction = createAction("FETCH_FACETS_SEARCH");
-
-const initialSearchState = {
-  error: null,
-  isLoadingSearch: true,
-  hits: [],
-  totalDocuments: null,
-  // facet values and counts
-  facets: {
-    site_id: { buckets: [] },
-    plot: { buckets: [] },
-    site_visit_id: { buckets: [] },
-    image_type: { buckets: [] },
-  },
-  vocabs: null,
-};
-
-const searchReducer = createReducer(initialSearchState, {
-  [fetchFacetsSearchAction]: (state) => {
-    state.isLoadingSearch = true;
-  },
-  [fetchSearchAction]: (state) => {
-    state.isLoadingSearch = true;
-  },
-  [fetchSearchDoneAction]: (state, action) => {
-    state.isLoadingSearch = false;
-    const { hits } = action.payload;
-    if (hits) {
-      // Null, Undefined, Empty, Whatever .... All Means No Results
-      state.hits = hits.hits;
-      state.totalDocuments = hits.total.value;
-    }
-  },
-  [fetchSearchErrorAction]: (state, action) => {
-    state.isLoadingSearch = false;
-    state.error = action.payload;
-  },
-  [fetchFacetsDoneAction]: (state, action) => {
-    const { aggregations } = action.payload;
-    state.facets = aggregations;
-  },
-  [fetchVocabsDoneAction]: (state, action) => {
-    state.vocabs = action.payload;
-  },
-});
+import { createAction, createReducer } from "@reduxjs/toolkit";
+import { fetchSearchDoneAction } from "./search";
 
 export const setSearchModeAction = createAction("SET_SEARCH_MODE");
 export const updateFilterAction = createAction("UPDATE_SEARCH_FILTER");
@@ -101,11 +50,17 @@ const uiReducer = createReducer(initialUiState, {
       if (pagination.page_num !== "") {
         // we are updating pagination
         if (state.searchFilters.pagination.page_size !== pagination.page_size) {
-          // updating page_size ... re-calc page_num
-          pagination.page_num = Math.floor(
-            (state.searchFilters.pagination.page_size * state.searchFilters.pagination.page_num)
-            / pagination.page_size,
-          );
+          // whon updating page_size, let's try to keep currently shown first image on page
+          // get "index" of first image
+          const firstImage = (
+            state.searchFilters.pagination.page_size
+            * (state.searchFilters.pagination.page_num - 1)
+          ) + 1;
+          // calculate page num wher firstImage is on in new page_size
+          pagination.page_num = Math.ceil(firstImage / pagination.page_size);
+          if (pagination.page_num === 0) {
+            pagination.page_num = 1;
+          }
         }
         // check if page_num * page_size > 10000
         if ((pagination.page_num * pagination.page_size) > 10000) {
@@ -139,7 +94,4 @@ const uiReducer = createReducer(initialUiState, {
   },
 });
 
-export const rootReducer = combineReducers({
-  search: searchReducer,
-  ui: uiReducer,
-});
+export default uiReducer;

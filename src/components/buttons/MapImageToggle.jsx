@@ -12,27 +12,28 @@ function MapImageToggle() {
 
   const searchMode = useSelector((state) => state.ui.searchResults.searchMode);
 
-  return searchMode === "Images" ? (
-    <Button
-      size="sm"
-      color="toggle"
-      onClick={() => dispatch(setSearchModeAction("Map"))}
-    >
-      <FontAwesomeIcon icon={faGlobeAsia} /> 
-      {" "} 
-      Map
-    </Button>
-  ) : (
-    <Button
-      size="sm"
-      color="toggle"
-      onClick={() => dispatch(setSearchModeAction("Images"))}
-    >
-      <FontAwesomeIcon icon={faImages} />
-      {" "} 
-      Images
-    </Button>
-  );
+  return searchMode === "Images"
+    ? (
+      <Button
+        size="sm"
+        color="toggle"
+        onClick={() => dispatch(setSearchModeAction("Map"))}
+      >
+        <FontAwesomeIcon icon={faGlobeAsia} />
+        {" "}
+        Map
+      </Button>
+    ) : (
+      <Button
+        size="sm"
+        color="toggle"
+        onClick={() => dispatch(setSearchModeAction("Images"))}
+      >
+        <FontAwesomeIcon icon={faImages} />
+        {" "}
+        Images
+      </Button>
+    );
 }
 
 export default MapImageToggle;

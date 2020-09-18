@@ -34,27 +34,34 @@ function callAPI(options) {
 export function fetchFavourites() {
   // Where we're fetching data from
   return callAPI({
-    url: "favourites",
+    url: "/v1.0/favourites",
   });
 }
 
 export function fetchSearch(params) {
   // Where we're fetching data from
   return callAPI({
-    url: "search",
+    url: "/v1.0/search",
     params,
   });
 }
 
 export function fetchFacets(params) {
   return callAPI({
-    url: "facet",
+    url: "/v1.0/facet",
     params,
   });
 }
 
 export function fetchVocab(param) {
   return callAPI({
-    url: `vocab/${param}`,
+    url: `/v1.0/vocab/${param}`,
+  });
+}
+
+export function whoami() {
+  return callAPI({
+    url: "/whoami",
+    withCredentials: true,
   });
 }

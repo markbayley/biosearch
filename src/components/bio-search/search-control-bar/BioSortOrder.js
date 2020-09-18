@@ -8,8 +8,7 @@ import {
 import { useSelector, useDispatch } from "react-redux";
 import { updateFilterAction, fetchSearchAction } from "../../../store/reducer";
 import { bioSort } from "./bioSort";
-// TODO: Create seperate scss file for BioSortOrder
-import "./BioResultPagination.scss";
+import "./BioSortOrder.scss";
 
 const BioSortOrder = () => {
   const dispatch = useDispatch();
@@ -28,16 +27,13 @@ const BioSortOrder = () => {
   };
 
   return (
-    <div className="mobile-pagination">
-      <UncontrolledDropdown className="pageitems" size="sm">
+    <div
+      className="mobile-pagination"
+    >
+      <UncontrolledDropdown className="sort-order-item" size="sm">
         Sort Order:
         {" "}
-        <DropdownToggle
-          size="sm"
-          caret
-          color="pageitems"
-          className="pageitems"
-        >
+        <DropdownToggle size="sm" caret color="sort-order-item" className="sort-order-item">
           {selectedSortOrder[0].sort_label}
         </DropdownToggle>
         <DropdownMenu>

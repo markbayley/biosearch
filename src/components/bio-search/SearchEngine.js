@@ -1,11 +1,12 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import SearchResult from "./SearchResult";
-import BioResultPagination from "./BioResultPagination";
+// import BioResultPagination from "./BioResultPagination";
 import ImageModal from "./ImageModal";
 
 import NoResults from "./NoResults";
 import AppError from "./AppError";
+import BioSearchControlBar from "./search-control-bar/BioSearchControlBar";
 
 const SearchEngine = () => {
   const data = useSelector((state) => state.search.hits);
@@ -22,11 +23,11 @@ const SearchEngine = () => {
     return <NoResults />;
   }
   // TODO: Replace BioResultPagination with BioSearchControlBar
-  
+
   return (
     <>
-      <BioResultPagination />
-
+      {/* <BioResultPagination /> */}
+      <BioSearchControlBar />
       <div className="d-flex flex-wrap">
         {data.map((bioImageDocument, index) => (
           <SearchResult
@@ -39,7 +40,8 @@ const SearchEngine = () => {
 
       <ImageModal />
 
-      <BioResultPagination />
+      {/* <BioResultPagination /> */}
+      <BioSearchControlBar />
     </>
   );
 };

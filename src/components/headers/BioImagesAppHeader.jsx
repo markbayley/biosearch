@@ -1,16 +1,18 @@
 import React from "react";
 import { Nav, NavbarText, NavItem, NavLink } from "reactstrap";
-import { CONFIG } from "../../config";
 
 import { ReactComponent as BioimagesDownload } from "../../assets/icons/BioimagesDownload.svg";
+
+import LoginNavItem from "./LoginNavItem";
 
 import "./BioImagesAppHeader.scss";
 
 const BioImagesAppHeader = () => (
   <>
-    <NavbarText style={{ marginLeft: "130px" }}>
+    <NavbarText>
       <h3 className="biologo">
         <BioimagesDownload className="bio-icon" />
+        {" "}
         Bioimages
       </h3>
     </NavbarText>
@@ -31,15 +33,11 @@ const BioImagesAppHeader = () => (
         </NavLink>
       </NavItem>
       <NavItem>
-        <NavLink href={CONFIG.LOGIN_URL}>
-          Login
-        </NavLink>
-      </NavItem>
-      <NavItem>
         <NavLink>
           Help
         </NavLink>
       </NavItem>
+      <LoginNavItem />
     </Nav>
   </>
 );
