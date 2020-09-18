@@ -9,9 +9,13 @@ import {
   NavItem,
   NavLink,
 } from "reactstrap";
-import "./HomeHeader.scss";
-import { faSearch, faGlobeAsia } from "@fortawesome/free-solid-svg-icons";
+import "./Home.scss";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import SvgLai from "../icons-svgs/SvgLai";
+import SvgPanoramic from "../icons-svgs/SvgPanoramic";
+import SvgPhenocam from "../icons-svgs/SvgPhenocam";
+import SvgPhotopoint from "../icons-svgs/SvgPhotopoint";
 
 const HomeHeader = (props) => {
   return (
@@ -27,15 +31,19 @@ const HomeHeader = (props) => {
         </div>
 
         <Button color="home-search" className="home-search">
-          <FontAwesomeIcon icon={faSearch} /> Search Images
+          <FontAwesomeIcon icon={faSearch} />
+          {" "}
+          Search Images
         </Button>
       </div>
 
       <Container>
         <Row>
-          <Col xl={3} style={{ border: "1px solid grey", height: "auto" }}>
-            <div className="home-title">Sites  <hr></hr></div>
-           
+          <Col xl={3} className="sites-sidebar">
+            <div className="home-title">
+              Sites
+            </div>
+
             <Nav navbar className="home-sites">
               <NavItem>
                 <NavLink>Alice Mulga</NavLink>
@@ -47,45 +55,48 @@ const HomeHeader = (props) => {
                 <NavLink>Cape Tribulation</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="">Cumberland Plain</NavLink>
+                <NavLink>Cumberland Plain</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink>Calperum Mallee</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink>Alice Mulga</NavLink>
+                <NavLink>Cowbay</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink>Boyagin</NavLink>
+                <NavLink>Gingin Banksia Woodland</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink>Cape Tribulation</NavLink>
+                <NavLink>Great Western Woodland</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="">Cumberland Plain</NavLink>
+                <NavLink href="">Karawatha</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink>Calperum Mallee</NavLink>
+                <NavLink>Litchfield Savanna</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="">Cumberland Plain</NavLink>
+                <NavLink>Mitchel Grass Rangeland</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink>Calperum Mallee</NavLink>
+                <NavLink>Robson Creek</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink>Calperum Mallee</NavLink>
+                <NavLink>Samford</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="">Cumberland Plain</NavLink>
+                <NavLink>Tumbarumba</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink>Calperum Mallee</NavLink>
+                <NavLink>Wombat Stringybark Eucalypt</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink>Whroo Victorian Dry Eucalypt</NavLink>
               </NavItem>
             </Nav>
           </Col>
 
-          <Col style={{ border: "1px solid grey", height: "auto" }}>
+          <Col style={{ border: "1px solid lightgrey", height: "auto" }}>
             <div className="home-title">Welcome to TERN Bioimages Portal</div>
             <p>
               BioImage data from the Australian SuperSite Network records
@@ -93,38 +104,18 @@ const HomeHeader = (props) => {
               include Leaf Area Index, Phenocamera, and Photopoint images.
             </p>
 
-            <Nav className="center">
-              <NavItem>
-                <NavLink>
-                  <FontAwesomeIcon icon={faSearch} />
-                  <p>Leaf Area</p>
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink>
-                  <FontAwesomeIcon icon={faGlobeAsia} />
-                  <p>Phenocam</p>
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink>
-                  <FontAwesomeIcon icon={faSearch} />
-                  <p>Photopoint</p>
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="">
-                  <FontAwesomeIcon icon={faGlobeAsia} />
-                  <p>Panorama</p>
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink>
-                  <FontAwesomeIcon icon={faSearch} />
-                  <p> Auxillary</p>
-                </NavLink>
-              </NavItem>
-            </Nav>
+            <Row>
+              <Col className="center">
+                <img
+                  src="/img/sample-map.png"
+                  alt="sample site map"
+                  className="map-links"
+                />
+              </Col>
+            </Row>
+            <p className="info-text center">
+              Click on the map to learn more about our sites...
+            </p>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id
               dapibus nisl. Mauris ut ipsum nunc. Proin maximus, justo quis
@@ -133,11 +124,37 @@ const HomeHeader = (props) => {
               scelerisque purus. Morbi vel suscipit libero, vestibulum sodales
               nisl. Cras quis consequat velit.
             </p>
-            <Row>
-              <Col className="center">
-                <img src="" alt="map" className="map" />
-              </Col>
-            </Row>
+
+            <Nav className="image-links center">
+              <NavItem>
+                <NavLink>
+                  <SvgLai className="icon" />
+                  <p>Leaf Area</p>
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink>
+                  <SvgPanoramic className="icon"/>
+                  <p>Phenocam</p>
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="">
+                  <SvgPhenocam className="icon"/>
+                  <p>Photopoint</p>
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink>
+                  <SvgPhotopoint className="icon"/>
+                  <p>Panorama</p>
+                </NavLink>
+              </NavItem>
+            </Nav>
+
+            <p className="info-text center">
+              Click on an icon to learn more about image types...
+            </p>
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id
               dapibus nisl. Mauris ut ipsum nunc. Proin maximus, justo quis
@@ -148,9 +165,6 @@ const HomeHeader = (props) => {
             </p>
           </Col>
         </Row>
-        <Button color="map-search" className="map-search">
-          <FontAwesomeIcon icon={faGlobeAsia} /> Map Search
-        </Button>
       </Container>
     </Container>
   );
