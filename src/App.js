@@ -9,7 +9,6 @@ import BioImagesAppHeader from "./components/headers/BioImagesAppHeader";
 import BioImagesEngine from "./components/BioImagesEngine";
 import Home from "./components/homepage/Home";
 
-
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
