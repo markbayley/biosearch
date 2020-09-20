@@ -130,6 +130,8 @@ const ImageTypeSelectFacet2 = ({ facet, showZeros, ...props }) => {
     if (items === null) {
       // react-select return null if nothing is selected
       dispatch(updateFilterAction({ [facet]: [] }));
+    } else {
+      dispatch(updateFilterAction({ [facet]: items }));
     }
     // update facets and search results
     dispatch(fetchFacetsSearchAction());
