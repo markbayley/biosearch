@@ -17,7 +17,7 @@ import SvgPanoramic from "../icons-svgs/SvgPanoramic";
 import SvgPhenocam from "../icons-svgs/SvgPhenocam";
 import SvgPhotopoint from "../icons-svgs/SvgPhotopoint";
 
-const HomeHeader = (props) => {
+const Home = (props) => {
   return (
     <Container>
       <div className="home-header">
@@ -170,4 +170,4 @@ const HomeHeader = (props) => {
   );
 };
 
-export default HomeHeader;
+export default Home;
