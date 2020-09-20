@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink as RRNavLink } from "react-router-dom";
 import { Nav, NavbarText, NavItem, NavLink } from "reactstrap";
 
 import { ReactComponent as BioimagesDownload } from "../../assets/icons/BioimagesDownload.svg";
@@ -18,7 +19,7 @@ const BioImagesAppHeader = () => (
     </NavbarText>
     <Nav navbar>
       <NavItem>
-        <NavLink>
+        <NavLink tag={RRNavLink} to="/" exact>
           Home
         </NavLink>
       </NavItem>
@@ -28,7 +29,7 @@ const BioImagesAppHeader = () => (
         </NavLink>
       </NavItem>
       <NavItem>
-        <NavLink>
+        <NavLink tag={RRNavLink} to="/search">
           Search
         </NavLink>
       </NavItem>
