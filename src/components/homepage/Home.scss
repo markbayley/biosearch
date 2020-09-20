@@ -1,0 +1,129 @@
+.home-header {
+  background-image: url(https://bioimages.tern.org.au/images/hero.jpg);
+  background-size: auto;
+  background-repeat: no-repeat;
+  height: auto;
+  padding-top: 60px;
+  padding-bottom: 20px;
+  border-bottom: 5px solid #6eb3a6;
+}
+
+.home-title {
+  font-size: 24px;
+  font-weight: 500;
+  padding: 10px 0px;
+  color: #00565D;
+}
+
+.home-caption {
+  font-size: 18px;
+  font-weight: 200;
+  padding-bottom: 0px;
+  background-color: black;
+  opacity: 0.6;
+  color: #fff;
+  width: 52%;
+  padding: 1em;
+}
+
+.sites-sidebar {
+    border: 1px solid lightgrey;
+    border-right: none;
+    height: auto;
+}
+
+.home-sites {
+//   margin-left: 10px;
+}
+
+.home-sites a:hover {
+    background-color: #b3d4c9;
+    cursor: pointer;
+}
+
+.btn-home-search {
+  background-color: #ed694b;
+  color: #fff;
+  font-weight: 900;
+  border-radius: 10px;
+  font-size: 20px;
+  position: absolute;
+  right: 25%;
+  top: 20%;
+  padding: 10px 20px;
+  margin-top: 30px;
+  -webkit-box-shadow: 0px 1px 2px 0px #00565d;
+  -moz-box-shadow: 0px 1px 2px 0px #00565d;
+  box-shadow: 0px 1px 2px 0px #00565d;
+}
+
+.btn-home-search:hover {
+  background-color: #6eb3a6;
+  //background-color: #f5a26c;
+  color: #fff;
+ 
+}
+
+.btn-map-search {
+  background-color: #00565d;
+  color: #fff;
+  font-weight: 900;
+  border-radius: 10px;
+  font-size: 16px;
+  margin: 20px 0px;
+}
+
+.btn-map-search:hover {
+  background-color: #6eb3a6;
+  color: #fff;
+}
+
+.map-links {
+  width: 600px;
+  height: 350px;
+  border: 1px solid #6eb3a6;
+  margin-bottom: 20px;
+}
+
+.map-links:hover {
+    border-radius: 5px;
+    border: 1px solid #b3d4c9;
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow: 0px 3px 5px 0px #b3d4c9;
+    box-shadow: 0px 3px 5px 0px #b3d4c9;
+    cursor: pointer;
+}
+
+.icon {
+  width: 2.5em;
+  height: auto;
+  margin: 10px 5px 5px 20px;
+}
+
+.image-links a {
+  border-radius: 5px;
+  border: 1px solid #fff;
+  width: 120px;
+}
+.image-links a:hover {
+  border-radius: 5px;
+  border: 1px solid #6eb3a6;
+  background-color: #b3d4c9;
+}
+
+.info-text {
+  font-style: italic;
+  color: grey;
+  font-size: 14px;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    // width: 1300px;
+  }
+}

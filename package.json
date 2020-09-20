@@ -16,6 +16,7 @@
     "babel-plugin-redux-saga": "^1.1.2",
     "bootstrap": "^4.5.2",
     "chroma-js": "^2.1.0",
+    "http-proxy-middleware": "^1.0.5",
     "leaflet": "^1.6.0",
     "leaflet-draw": "^1.0.4",
     "leaflet-offline": "^1.1.0",
