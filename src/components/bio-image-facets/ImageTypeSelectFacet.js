@@ -22,14 +22,16 @@ const ImageTypeSelectFacet = ({ facet, showZeros, ...props }) => {
   const vocab = useSelector((state) => get(state.search.vocabs, facet, null));
 
   const selectedValues = new Set(selected.map((item) => item.value));
+
   // build list of options for select widget
   const cur_value = [];
-  const computeOptions = facets.buckets.flatMap((item) => {
+  const options = facets.buckets.reduce((accum, item) => {
     const count = item.doc_count;
     const value = item.key;
     const label = get(vocab, `${value}.label`, facet);
+
     if (value === "ancillary") {
-      return item["image_type_sub"].buckets.map((sub_type) => {
+      const ancillaryList = item["image_type_sub"].buckets.reduce((anciAccum, sub_type) => {
         const subCount = sub_type.doc_count;
         // FIXME: [TERNDA-860] Data corruption needs to be fixed.
         // Ancillary Samford camera trap has string like %/20.
@@ -47,10 +49,11 @@ const ImageTypeSelectFacet = ({ facet, showZeros, ...props }) => {
           if (selectedValues.has(subValue)) {
             cur_value.push(option);
           }
-          return option;
+          anciAccum.push(option);
         }
-        return null;
-      });
+        return anciAccum;
+      }, []);
+      return ancillaryList;
     }
     if (showZeros || count > 0) {
       const option = {
@@ -61,12 +64,10 @@ const ImageTypeSelectFacet = ({ facet, showZeros, ...props }) => {
       if (selectedValues.has(value)) {
         cur_value.push(option);
       }
-      return option;
+      accum.push(option);
     }
-    return null;
-  });
-
-  const options = computeOptions.filter((option) => option !== null);
+    return accum;
+  }, []);
 
   const handleChange = (items) => {
     // update state
@@ -80,7 +81,6 @@ const ImageTypeSelectFacet = ({ facet, showZeros, ...props }) => {
     dispatch(fetchFacetsSearchAction());
   };
 
-  // items: [{label: "", value: ""}, ]
   return (
     <Select
       className="mb-4"
