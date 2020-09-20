@@ -30,28 +30,7 @@ const ImageTypeSelectFacet2 = ({ facet, showZeros, ...props }) => {
 
   // For inserting icons (svgs) in options
   const { Option } = components;
-  const CustomSelectOption = (optionsProps) => (
-    // eslint-disable-next-line react/jsx-props-no-spreading
-    <Option {...optionsProps}>
-      <div className="input-select__single-value">
-        {optionsProps.data.icon && (
-          <span className="svg-icon2">{optionsProps.data.icon}</span>
-        )}
-        <span>{`${optionsProps.data.label} (${optionsProps.data.count})`}</span>
-      </div>
-    </Option>
-  );
 
-  const CustomSelectValue = (selectProps) => (
-    <div className="input-select">
-      <div className="input-select__single-value">
-        {selectProps.data.icon && (
-          <span className="svg-icon">{selectProps.data.icon}</span>
-        )}
-        <span>{`${selectProps.data.label} (${selectProps.data.count})`}</span>
-      </div>
-    </div>
-  );
   const optionSVGs = {
     lai: SvgLai,
     panorama: SvgPanoramic,
@@ -59,6 +38,39 @@ const ImageTypeSelectFacet2 = ({ facet, showZeros, ...props }) => {
     photopoint: SvgPhotopoint,
   };
   // End icon options
+
+  const CustomSelectOption = (optionsProps) => {
+    const Icon = optionSVGs[optionsProps.data.value];
+    return (
+      // eslint-disable-next-line react/jsx-props-no-spreading
+      <Option {...optionsProps}>
+        <div className="input-select__single-value">
+          {Icon && (
+            <span className={`svg-icon2 svg-icon-${optionsProps.data.value}`}>
+              <Icon />
+            </span>
+          )}
+          <span>{`${optionsProps.data.label} (${optionsProps.data.count})`}</span>
+        </div>
+      </Option>
+    );
+  };
+
+  const CustomSelectValue = (selectProps) => {
+    const Icon = optionSVGs[selectProps.data.value];
+    return (
+      <div className="input-select">
+        <div className="input-select__single-value">
+          {Icon && (
+            <span className={`svg-icon svg-icon-${selectProps.data.value}`}>
+              <Icon />
+            </span>
+          )}
+          <span>{`${selectProps.data.label} (${selectProps.data.count})`}</span>
+        </div>
+      </div>
+    );
+  };
 
   // build list of options for select widget
   const cur_value = [];
@@ -83,12 +95,10 @@ const ImageTypeSelectFacet2 = ({ facet, showZeros, ...props }) => {
                 sub_type.key,
               ).replace(/%20/gi, " "),
             )}]`;
-            //  const ImageType = optionSVGs[value];
             const option = {
               label: subLabel,
               value: subValue,
               count: subCount,
-              // icon: <ImageType />,
             };
             if (selectedValues.has(subValue)) {
               cur_value.push(option);
@@ -102,12 +112,10 @@ const ImageTypeSelectFacet2 = ({ facet, showZeros, ...props }) => {
       return ancillaryList;
     }
     if (showZeros || count > 0) {
-      const ImageType = optionSVGs[value];
       const option = {
         label,
         value,
         count,
-        icon: <ImageType />,
       };
       if (selectedValues.has(value)) {
         cur_value.push(option);
@@ -117,25 +125,11 @@ const ImageTypeSelectFacet2 = ({ facet, showZeros, ...props }) => {
     return accum;
   }, []);
 
-  const deleteIconInOptions = (items) => {
-    const iconsRemovedList = items.map((item) => {
-      delete item.icon;
-      return item;
-    });
-    return iconsRemovedList;
-  };
-
   const handleChange = (items) => {
     // update state
     if (items === null) {
       // react-select return null if nothing is selected
       dispatch(updateFilterAction({ [facet]: [] }));
-    } else {
-      // Hack: Note icons (svgs) in options are not serializable
-      // and cause issues with middleware dispatch. So remove them
-      // before calling dispatch. Not sure of this - its hackish!!
-      const noIconItems = deleteIconInOptions(items);
-      dispatch(updateFilterAction({ [facet]: noIconItems }));
     }
     // update facets and search results
     dispatch(fetchFacetsSearchAction());
