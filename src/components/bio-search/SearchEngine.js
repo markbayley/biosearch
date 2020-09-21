@@ -1,7 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import SearchResult from "./SearchResult";
-// import BioResultPagination from "./BioResultPagination";
 import ImageModal from "./ImageModal";
 
 import NoResults from "./NoResults";
@@ -22,11 +21,9 @@ const SearchEngine = () => {
   if (totalDocuments === 0) {
     return <NoResults />;
   }
-  // TODO: Replace BioResultPagination with BioSearchControlBar
 
   return (
     <>
-      {/* <BioResultPagination /> */}
       <BioSearchControlBar />
       <div className="d-flex flex-wrap">
         {data.map((bioImageDocument, index) => (
@@ -40,7 +37,6 @@ const SearchEngine = () => {
 
       <ImageModal />
 
-      {/* <BioResultPagination /> */}
       <BioSearchControlBar />
     </>
   );

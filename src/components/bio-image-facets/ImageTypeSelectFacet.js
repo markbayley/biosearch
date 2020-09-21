@@ -10,6 +10,8 @@ import {
   fetchFacetsSearchAction,
 } from "../../store/reducer";
 import { facetColourStyles } from "./facetColourStyles";
+import CustomSelectOption from "./CustomSelectOption";
+import CustomSelectValue from "./CustomSelectValue";
 
 const ImageTypeSelectFacet = ({ facet, showZeros, ...props }) => {
   const dispatch = useDispatch();
@@ -31,28 +33,35 @@ const ImageTypeSelectFacet = ({ facet, showZeros, ...props }) => {
     const label = get(vocab, `${value}.label`, facet);
 
     if (value === "ancillary") {
-      const ancillaryList = item["image_type_sub"].buckets.reduce((anciAccum, sub_type) => {
-        const subCount = sub_type.doc_count;
-        // FIXME: [TERNDA-860] Data corruption needs to be fixed.
-        // Ancillary Samford camera trap has string like %/20.
-        // Wilma and Andrew need to look at backend data
-        if (showZeros || subCount > 0) {
-          const subValue = `ancillary.${sub_type.key.replace(/%20/gi, " ")}`;
-          const subLabel = `${label}[${startCase(
-            get(vocab, `${value}.${sub_type.key}.label`, sub_type.key).replace(/%20/gi, " "),
-          )}]`;
-          const option = {
-            label: subLabel,
-            value: subValue,
-            count: subCount,
-          };
-          if (selectedValues.has(subValue)) {
-            cur_value.push(option);
+      const ancillaryList = item["image_type_sub"].buckets.reduce(
+        (anciAccum, sub_type) => {
+          const subCount = sub_type.doc_count;
+          // FIXME: [TERNDA-860] Data corruption needs to be fixed.
+          // Ancillary Samford camera trap has string like %/20.
+          // Wilma and Andrew need to look at backend data
+          if (showZeros || subCount > 0) {
+            const subValue = `ancillary.${sub_type.key.replace(/%20/gi, " ")}`;
+            const subLabel = `${label}[${startCase(
+              get(
+                vocab,
+                `${value}.${sub_type.key}.label`,
+                sub_type.key,
+              ).replace(/%20/gi, " "),
+            )}]`;
+            const option = {
+              label: subLabel,
+              value: subValue,
+              count: subCount,
+            };
+            if (selectedValues.has(subValue)) {
+              cur_value.push(option);
+            }
+            anciAccum.push(option);
           }
-          anciAccum.push(option);
-        }
-        return anciAccum;
-      }, []);
+          return anciAccum;
+        },
+        [],
+      );
       return ancillaryList;
     }
     if (showZeros || count > 0) {
@@ -91,7 +100,10 @@ const ImageTypeSelectFacet = ({ facet, showZeros, ...props }) => {
       autoFocus
       onChange={handleChange}
       styles={facetColourStyles}
-      getOptionLabel={(option) => `${option.label}   (${option.count})`}
+      components={{
+        Option: CustomSelectOption,
+        SingleValue: CustomSelectValue,
+      }}
       // eslint-disable-next-line react/jsx-props-no-spreading
       {...props}
     />
