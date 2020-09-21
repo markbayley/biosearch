@@ -12,7 +12,7 @@
   font-size: 24px;
   font-weight: 500;
   padding: 10px 0px;
-  color: #00565D;
+  color: #00565d;
 }
 
 .home-caption {
@@ -27,18 +27,18 @@
 }
 
 .sites-sidebar {
-    border: 1px solid lightgrey;
-    border-right: none;
-    height: auto;
+  border: 1px solid lightgrey;
+  border-right: none;
+  height: auto;
 }
 
 .home-sites {
-//   margin-left: 10px;
+  //   margin-left: 10px;
 }
 
 .home-sites a:hover {
-    background-color: #b3d4c9;
-    cursor: pointer;
+  background-color: #b3d4c9;
+  cursor: pointer;
 }
 
 .btn-home-search {
@@ -61,7 +61,6 @@
   background-color: #6eb3a6;
   //background-color: #f5a26c;
   color: #fff;
- 
 }
 
 .btn-map-search {
@@ -86,18 +85,34 @@
 }
 
 .map-links:hover {
-    border-radius: 5px;
-    border: 1px solid #b3d4c9;
-    -webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.15);
-    -moz-box-shadow: 0px 3px 5px 0px #b3d4c9;
-    box-shadow: 0px 3px 5px 0px #b3d4c9;
-    cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid #b3d4c9;
+  -webkit-box-shadow: 0px 3px 5px 0px rgba(0, 0, 0, 0.15);
+  -moz-box-shadow: 0px 3px 5px 0px #b3d4c9;
+  box-shadow: 0px 3px 5px 0px #b3d4c9;
+  cursor: pointer;
 }
 
 .icon {
   width: 2.5em;
   height: auto;
   margin: 10px 5px 5px 20px;
+}
+
+.svg-icon-lai {
+    color: #669FBA;
+}
+
+.svg-icon-panoramic {
+  color: #A5C8DC;
+}
+
+.svg-icon-phenocam {
+    color: #F5A26C;
+}
+
+.svg-icon-photopoint {
+    color: #B3D4C9;
 }
 
 .image-links a {

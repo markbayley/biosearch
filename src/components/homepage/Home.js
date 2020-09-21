@@ -12,10 +12,10 @@ import {
 import "./Home.scss";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import SvgLai from "../icons-svgs/SvgLai";
-import SvgPanoramic from "../icons-svgs/SvgPanoramic";
-import SvgPhenocam from "../icons-svgs/SvgPhenocam";
-import SvgPhotopoint from "../icons-svgs/SvgPhotopoint";
+import { ReactComponent as SvgLai } from "../../assets/icons/LAI.svg";
+import { ReactComponent as SvgPanoramic } from "../../assets/icons/panoramic.svg";
+import { ReactComponent as SvgPhenocam } from "../../assets/icons/phenocam.svg";
+import { ReactComponent as SvgPhotopoint } from "../../assets/icons/photopoint.svg";
 
 const HomeHeader = (props) => (
   <Container>
@@ -39,9 +39,7 @@ const HomeHeader = (props) => (
     <Container>
       <Row>
         <Col xl={3} className="sites-sidebar">
-          <div className="home-title">
-            Sites
-          </div>
+          <div className="home-title">Sites</div>
 
           <Nav navbar className="home-sites">
             <NavItem>
@@ -127,26 +125,26 @@ const HomeHeader = (props) => (
           <Nav className="image-links center">
             <NavItem>
               <NavLink>
-                <SvgLai className="icon" />
+                <SvgLai className="icon svg-icon-lai" />
                 <p>Leaf Area</p>
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink>
-                <SvgPanoramic className="icon" />
-                <p>Phenocam</p>
+                <SvgPanoramic className="icon svg-icon-phenocam" />
+                <p>Panorama</p>
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink href="">
-                <SvgPhenocam className="icon" />
-                <p>Photopoint</p>
+                <SvgPhenocam className="icon svg-icon-photopoint" />
+                <p>Phenocam</p>
               </NavLink>
             </NavItem>
             <NavItem>
               <NavLink>
-                <SvgPhotopoint className="icon" />
-                <p>Panorama</p>
+                <SvgPhotopoint className="icon svg-icon-panoramic" />
+                <p>Photopoint</p>
               </NavLink>
             </NavItem>
           </Nav>
