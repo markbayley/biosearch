@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink as RRNavLink } from "react-router-dom";
 import {
   Button,
   Container,
@@ -19,7 +20,7 @@ import SvgPhotopoint from "../icons-svgs/SvgPhotopoint";
 
 const Home = (props) => {
   return (
-    <Container>
+    <div>
       <div className="home-header">
         {/* <div className="home-title">
             Delivering open access to Australia's terrestrial ecosystem data
@@ -30,14 +31,14 @@ const Home = (props) => {
           different ecosystem type.
         </div>
 
-        <Button color="home-search" className="home-search">
+        <Button color="home-search" className="home-search" tag={RRNavLink} to="/search">
           <FontAwesomeIcon icon={faSearch} />
           {" "}
           Search Images
         </Button>
       </div>
 
-      <Container>
+      <div>
         <Row>
           <Col xl={3} className="sites-sidebar">
             <div className="home-title">
@@ -165,8 +166,8 @@ const Home = (props) => {
             </p>
           </Col>
         </Row>
-      </Container>
-    </Container>
+      </div>
+    </div>
   );
 };
 

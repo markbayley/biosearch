@@ -3,6 +3,8 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import axios from "axios";
 
+import { BrowserRouter } from "react-router-dom";
+
 // include all our global standard styles.
 // should probably be the first css to be included, so that later css can override
 import "tern-react/dist/index.css";
@@ -20,18 +22,20 @@ axios({
   ReactDOM.render(
     // <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>,
     // </React.StrictMode>
-    document.getElementById("root"),
+    document.getElementById("root")
   );
 });
 
 /** TODO: remove this function after some time */
 (function unregister() {
   if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.getRegistrations().then(
-      (regs) => regs.forEach((reg) => reg.unregister()),
-    );
+    navigator.serviceWorker
+      .getRegistrations()
+      .then((regs) => regs.forEach((reg) => reg.unregister()));
   }
-}());
+})();
