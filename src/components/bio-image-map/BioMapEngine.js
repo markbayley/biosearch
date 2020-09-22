@@ -14,10 +14,10 @@ const BioMapEngine = () => {
   const [mapInitState] = useState({
     lat: -26.47,
     lng: 134.02,
-    zoom: 4.5,
+    zoom: 4.75,
     zoomSnap: 0.25,
     maxZoom: 30,
-    minZoom: 4.5,
+    minZoom: 4.75,
   });
   const mapInitPosition = [mapInitState.lat, mapInitState.lng];
 

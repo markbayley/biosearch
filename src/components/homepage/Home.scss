@@ -1,6 +1,6 @@
 .home-header {
   background-image: url(https://bioimages.tern.org.au/images/hero.jpg);
-  background-size: auto;
+  background-size: cover;
   background-repeat: no-repeat;
   height: auto;
   padding-top: 60px;
@@ -8,11 +8,42 @@
   border-bottom: 5px solid #6eb3a6;
 }
 
+.home-text {
+  padding: 0px 15px;
+}
+
 .home-title {
   font-size: 24px;
   font-weight: 500;
-  padding: 10px 0px;
+  padding: 10px 15px;
   color: #00565d;
+}
+
+.content-home {
+  border-bottom: 1px solid #6eb3a6;
+  padding: 0px 30px 0px 10px; 
+}
+
+.content-about {
+  border-bottom: 1px solid #6eb3a6;
+  padding: 0px 30px 0px 30px; 
+}
+
+.home-subtitle {
+  font-size: 20px;
+  font-weight: 400;
+  padding: 10px 15px;
+  // color: #6eb3a6;
+  color: #F5A26C;
+}
+
+.home-subtitle-type {
+  font-size: 20px;
+  font-weight: 400;
+  padding: 10px 15px;
+  // color: #6eb3a6;
+  // color: #F5A26C;
+  color: #669FBA;
 }
 
 .home-caption {
@@ -27,12 +58,13 @@
 }
 
 .sites-sidebar {
-  border: 1px solid lightgrey;
-  border-right: none;
+  // border: 1px solid lightgrey;
+  border-right: 1px solid lightgrey;
   height: auto;
 }
 
 .home-sites {
+  padding: 0px 15px;
   //   margin-left: 10px;
 }
 
@@ -99,6 +131,20 @@
   margin: 10px 5px 5px 20px;
 }
 
+.icon-small {
+  width: 25px;
+  border: 1px solid #669FBA;
+  border-radius: 5px;
+  margin: 3px 3px 9px 0px;
+  padding: 2px;
+}
+
+.sample-image {
+  width: 250px;
+  height: 170px;
+  padding: 0px 0px 15px 15px;
+}
+
 .svg-icon-lai {
     color: #669FBA;
 }
@@ -135,6 +181,14 @@
 .center {
   display: flex;
   justify-content: center;
+}
+
+ .about-site-title {
+  font-size: 20px;
+  font-weight: 400;
+  padding: 10px 0px;
+  // color: #6eb3a6;
+  color: #F5A26C;
 }
 
 @media (min-width: 1200px) {

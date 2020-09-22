@@ -8,15 +8,14 @@ import {
 } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { TopBar, Footer, AppHeader, getTernMenu } from "tern-react";
-
+import { Container } from "reactstrap";
 import { CONFIG } from "./config";
 import { checkLoginStatusStartAction } from "./store/reducer";
 import BioImagesAppHeader from "./components/headers/BioImagesAppHeader";
 import BioImagesEngine from "./components/BioImagesEngine";
 import Home from "./components/homepage/Home";
-import { Container } from "reactstrap";
-
-const fluidpages = ["/search"];
+import About from "./components/homepage/About";
+import Help from "./components/homepage/Help";
 
 function App() {
   const dispatch = useDispatch();
@@ -31,12 +30,17 @@ function App() {
         <AppHeader fluid>
           <BioImagesAppHeader />
         </AppHeader>
-
         <Route exact path="/">
           <Home />
         </Route>
+        <Route path="/about">
+          <About />
+        </Route>
         <Route path="/search">
           <BioImagesEngine />
+        </Route>
+        <Route path="/help">
+          <Help />
         </Route>
 
         <Footer about={getTernMenu(CONFIG.MENU).resources} />
@@ -47,8 +51,21 @@ function App() {
 
 export default App;
 
+const fluidpages = ["/search"];
+
 function AppContainer({ children }) {
   const location = useLocation();
   console.log("location", location);
-  return <Container style={{border: "1px solid green"}} fluid={fluidpages.includes(location.pathname)}>{children}</Container>;
+  return (
+    <Container
+      style={{
+        borderRight: "1px solid lightgrey",
+        borderLeft: "1px solid lightgrey",
+        padding: "0",
+      }}
+      fluid={fluidpages.includes(location.pathname)}
+    >
+      {children}
+    </Container>
+  );
 }
