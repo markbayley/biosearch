@@ -5,6 +5,11 @@ import { ReactComponent as SvgLai } from "../../assets/icons/LAI.svg";
 import { ReactComponent as SvgPanoramic } from "../../assets/icons/panoramic.svg";
 import { ReactComponent as SvgPhenocam } from "../../assets/icons/phenocam.svg";
 import { ReactComponent as SvgPhotopoint } from "../../assets/icons/photopoint.svg";
+import { ReactComponent as SvgAncillaryFauna } from "../../assets/icons/ancillary-fauna.svg";
+import { ReactComponent as SvgAncillaryFlora } from "../../assets/icons/ancillary-flora.svg";
+import { ReactComponent as SvgAncillaryFungi } from "../../assets/icons/ancillary-fungi.svg";
+import { ReactComponent as SvgAncillaryGeneral } from "../../assets/icons/ancillary-general.svg";
+import { ReactComponent as SvgAncillaryCameraTrap } from "../../assets/icons/ancillary-camera-trap.svg";
 
 const CustomSelectOption = (props) => {
   const { Option } = components;
@@ -14,17 +19,23 @@ const CustomSelectOption = (props) => {
     panorama: SvgPanoramic,
     phenocam: SvgPhenocam,
     photopoint: SvgPhotopoint,
+    "ancillary.fauna": SvgAncillaryFauna,
+    "ancillary.flora": SvgAncillaryFlora,
+    "ancillary.fungi": SvgAncillaryFungi,
+    "ancillary.general": SvgAncillaryGeneral,
+    "ancillary.samford camera trap": SvgAncillaryCameraTrap,
   };
   const Icon = optionSVGs[props.data.value];
+  const cssClassName = props.data.value.replace(/[\W_]/g, "-");
 
   return (
-  // eslint-disable-next-line react/jsx-props-no-spreading
+    // eslint-disable-next-line react/jsx-props-no-spreading
     <Option {...props}>
       <div className="input-select__single-value">
         {Icon && (
-        <span className={`svg-icon2 svg-icon-${props.data.value}`}>
-          <Icon />
-        </span>
+          <span className={`svg-icon2 svg-icon-${cssClassName}`}>
+            <Icon />
+          </span>
         )}
         <span>{`${props.data.label} (${props.data.count})`}</span>
       </div>
