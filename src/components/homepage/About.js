@@ -41,7 +41,7 @@ const About = (props) => {
         </Button>
       </div>
 
-      <div className="content-about">
+      <Container className="content-about">
         <Row>
           <Col>
             <div className="home-title">About the TERN Bioimages Portal</div>
@@ -244,7 +244,7 @@ const About = (props) => {
             />
           </Col>
         </Row>
-      </div>
+      </Container>
     </div>
   );
 };

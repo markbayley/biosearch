@@ -21,26 +21,30 @@ const Help = (props) => {
         {/* <div className="home-title">
             Delivering open access to Australia's terrestrial ecosystem data
           </div> */}
-        <div className="home-caption">
-          The TERN Australian SuperSite Network is made up of a number of
-          "SuperSites" located across the country, each representative of a
-          different ecosystem type.
-        </div>
+        <Container>
+          <div className="home-caption">
+            The TERN Australian SuperSite Network is made up of a number of
+            "SuperSites" located across the country, each representative of a
+            different ecosystem type.
+          </div>
 
-        <Button
-          color="home-search"
-          className="home-search"
-          tag={RRNavLink}
-          to="/search"
-        >
-          <FontAwesomeIcon icon={faSearch} /> Search Images
-        </Button>
+          <Button
+            color="home-search"
+            className="home-search"
+            tag={RRNavLink}
+            to="/search"
+          >
+            <FontAwesomeIcon icon={faSearch} /> Search Images
+          </Button>
+        </Container>
       </div>
 
-      <div className="content-about">
+      <Container className="content-about">
         <Row>
           <Col>
-            <div className="home-title">Help with the TERN Bioimages Portal</div>
+            <div className="home-title">
+              Help with the TERN Bioimages Portal
+            </div>
             <p className="home-text">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id
               dapibus nisl. Mauris ut ipsum nunc. Proin maximus, justo quis
@@ -78,7 +82,7 @@ const Help = (props) => {
             </p>
           </Col>
         </Row>
-      </div>
+      </Container>
     </div>
   );
 };

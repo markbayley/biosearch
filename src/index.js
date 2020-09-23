@@ -22,9 +22,7 @@ axios({
   ReactDOM.render(
     // <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <App />
     </Provider>,
     // </React.StrictMode>
     document.getElementById("root")

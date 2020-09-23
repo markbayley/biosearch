@@ -24,12 +24,12 @@ function App() {
   });
 
   return (
-    <Switch>
-      <AppContainer>
-        <TopBar menuConfig={getTernMenu(CONFIG.MENU)} />
-        <AppHeader fluid>
-          <BioImagesAppHeader />
-        </AppHeader>
+    <Router>
+      <TopBar menuConfig={getTernMenu(CONFIG.MENU)} />
+      <AppHeader fluid>
+        <BioImagesAppHeader />
+      </AppHeader>
+      <Switch>
         <Route exact path="/">
           <Home />
         </Route>
@@ -42,30 +42,29 @@ function App() {
         <Route path="/help">
           <Help />
         </Route>
-
-        <Footer about={getTernMenu(CONFIG.MENU).resources} />
-      </AppContainer>
-    </Switch>
+      </Switch>
+      <Footer about={getTernMenu(CONFIG.MENU).resources} />
+    </Router>
   );
 }
 
 export default App;
 
-const fluidpages = ["/search"];
+// const fluidpages = ["/search"];
 
-function AppContainer({ children }) {
-  const location = useLocation();
-  console.log("location", location);
-  return (
-    <Container
-      style={{
-        borderRight: "1px solid lightgrey",
-        borderLeft: "1px solid lightgrey",
-        padding: "0",
-      }}
-      fluid={fluidpages.includes(location.pathname)}
-    >
-      {children}
-    </Container>
-  );
-}
+// function AppContainer({ children }) {
+//   const location = useLocation();
+//   console.log("location", location);
+//   return (
+//     <Container
+//       style={{
+//         borderRight: "1px solid lightgrey",
+//         borderLeft: "1px solid lightgrey",
+//         padding: "0",
+//       }}
+//       fluid={fluidpages.includes(location.pathname)}
+//     >
+//       {children}
+//     </Container>
+//   );
+// }

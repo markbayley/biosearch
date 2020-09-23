@@ -25,23 +25,25 @@ const Home = (props) => {
         {/* <div className="home-title">
             Delivering open access to Australia's terrestrial ecosystem data
           </div> */}
-        <div className="home-caption">
-          The TERN Australian SuperSite Network is made up of a number of
-          "SuperSites" located across the country, each representative of a
-          different ecosystem type.
-        </div>
+        <div>
+          <div className="home-caption">
+            The TERN Australian SuperSite Network is made up of a number of
+            "SuperSites" located across the country, each representative of a
+            different ecosystem type.
+          </div>
 
-        <Button
-          color="home-search"
-          className="home-search"
-          tag={RRNavLink}
-          to="/search"
-        >
-          <FontAwesomeIcon icon={faSearch} /> Search Images
-        </Button>
+          <Button
+            color="home-search"
+            className="home-search"
+            tag={RRNavLink}
+            to="/search"
+          >
+            <FontAwesomeIcon icon={faSearch} /> Search Images
+          </Button>
+        </div>
       </div>
 
-      <div className="content-home">
+      <Container className="content-home">
         <Row>
           <Col xl={3} className="sites-sidebar">
             <div className="home-title">Sites</div>
@@ -171,6 +173,9 @@ const Home = (props) => {
             </p>
           </Col>
         </Row>
+      </Container>
+      <div className="home-banner">
+      
       </div>
     </div>
   );

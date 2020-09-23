@@ -31,9 +31,12 @@
           transition: all .2s ease-in-out;
         }
         &:focus {
-          outline: none;
+          outline: 0 none;
+          box-shadow: none;
         }
       }
+
+
 
       .chevron-left {
         height: 100%;
@@ -47,7 +50,8 @@
           transition: all .2s ease-in-out;
         }
         &:focus {
-          outline: none;
+           outline: 0 none;
+           box-shadow: none;
         }
       }
     }
