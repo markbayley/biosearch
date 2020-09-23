@@ -4,7 +4,7 @@ import SelectFacet from "./SelectFacet";
 import ImageTypeSelectFacet from "./ImageTypeSelectFacet";
 import TextFacet from "./TextFacet";
 import MapImageToggle from "../buttons/MapImageToggle";
-
+import ResetAllFacets from "./ResetAllFacets";
 import "./BioFacetsEngine.scss";
 
 const BioFacetsEngine = () => (
@@ -24,6 +24,7 @@ const BioFacetsEngine = () => (
       placeholder="Select Image Types"
     />
     <ReactDateRangeFacet />
+    <ResetAllFacets />
   </div>
 );
 
