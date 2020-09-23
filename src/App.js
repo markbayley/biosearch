@@ -50,21 +50,3 @@ function App() {
 
 export default App;
 
-// const fluidpages = ["/search"];
-
-// function AppContainer({ children }) {
-//   const location = useLocation();
-//   console.log("location", location);
-//   return (
-//     <Container
-//       style={{
-//         borderRight: "1px solid lightgrey",
-//         borderLeft: "1px solid lightgrey",
-//         padding: "0",
-//       }}
-//       fluid={fluidpages.includes(location.pathname)}
-//     >
-//       {children}
-//     </Container>
-//   );
-// }

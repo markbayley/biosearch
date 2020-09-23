@@ -22,29 +22,37 @@ const Home = (props) => {
   return (
     <div>
       <div className="home-header">
-        {/* <div className="home-title">
-            Delivering open access to Australia's terrestrial ecosystem data
-          </div> */}
-        <div>
+        <Container>
+          {/* SUBHEADER */}
           <div className="home-caption">
+            <h3>Bioimages Portal</h3>
             The TERN Australian SuperSite Network is made up of a number of
-            "SuperSites" located across the country, each representative of a
-            different ecosystem type.
+            representitive ecosystem "SuperSites" located across the country.
+            <br />
+            <Button
+              color="homesearch"
+              className="homesearch"
+              tag={RRNavLink}
+              to="/search"
+            >
+              <FontAwesomeIcon icon={faSearch} /> Search Images
+            </Button>
           </div>
 
-          <Button
+          {/* <Button
             color="home-search"
             className="home-search"
             tag={RRNavLink}
             to="/search"
           >
             <FontAwesomeIcon icon={faSearch} /> Search Images
-          </Button>
-        </div>
+          </Button> */}
+        </Container>
       </div>
 
       <Container className="content-home">
         <Row>
+          {/* SIDEBAR  */}
           <Col xl={3} className="sites-sidebar">
             <div className="home-title">Sites</div>
 
@@ -60,52 +68,82 @@ const Home = (props) => {
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink>Cape Tribulation</NavLink>
+                <NavLink tag={RRNavLink} to="/about">
+                  Cape Tribulation
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink>Cumberland Plain</NavLink>
+                <NavLink tag={RRNavLink} to="/about">
+                  Cumberland Plain
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink>Calperum Mallee</NavLink>
+                <NavLink tag={RRNavLink} to="/about">
+                  Calperum Mallee
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink>Cowbay</NavLink>
+                <NavLink tag={RRNavLink} to="/about">
+                  Cowbay
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink>Gingin Banksia Woodland</NavLink>
+                <NavLink tag={RRNavLink} to="/about">
+                  Gingin Banksia Woodland
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink>Great Western Woodland</NavLink>
+                <NavLink tag={RRNavLink} to="/about">
+                  Great Western Woodland
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="">Karawatha</NavLink>
+                <NavLink tag={RRNavLink} to="/about">
+                  Karawatha
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink>Litchfield Savanna</NavLink>
+                <NavLink tag={RRNavLink} to="/about">
+                  Litchfield Savanna
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink>Mitchel Grass Rangeland</NavLink>
+                <NavLink tag={RRNavLink} to="/about">
+                  Mitchel Grass Rangeland
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink>Robson Creek</NavLink>
+                <NavLink tag={RRNavLink} to="/about">
+                  Robson Creek
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink>Samford</NavLink>
+                <NavLink tag={RRNavLink} to="/about">
+                  Samford
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink>Tumbarumba</NavLink>
+                <NavLink tag={RRNavLink} to="/about">
+                  Tumbarumba
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink>Wombat Stringybark Eucalypt</NavLink>
+                <NavLink tag={RRNavLink} to="/about">
+                  Wombat Stringybark Eucalypt
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink>Whroo Victorian Dry Eucalypt</NavLink>
+                <NavLink tag={RRNavLink} to="/about">
+                  Whroo Victorian Dry Eucalypt
+                </NavLink>
               </NavItem>
             </Nav>
           </Col>
-
+          {/* CONTENT */}
           <Col>
-            <div className="home-title">Welcome to TERN Bioimages Portal</div>
+            <div className="home-title center">
+              Welcome to TERN Bioimages Portal
+            </div>
             <p className="home-text">
               BioImage data from the Australian SuperSite Network records
               vegetation condition across 1 ha vegetation plots. The records
@@ -131,6 +169,51 @@ const Home = (props) => {
               nunc nibh et sem. Donec vitae dui pharetra, iaculis nunc at,
               scelerisque purus. Morbi vel suscipit libero, vestibulum sodales
               nisl. Cras quis consequat velit.
+            </p>
+          </Col>
+        </Row>
+      </Container>
+
+      {/* BANNER */}
+      <div className="home-banner">
+        <Nav className="image-links-banner center">
+          <NavItem>
+            <NavLink tag={RRNavLink} to="/about">
+              <SvgLai className="icon-large svg-icon-phenocam" />
+              <h5>Leaf Area</h5>
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink tag={RRNavLink} to="/about">
+              <SvgPanoramic className="icon-large svg-icon-phenocam" />
+              <h5>Panorama</h5>
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink tag={RRNavLink} to="/about">
+              <SvgPhenocam className="icon-large svg-icon-phenocam" />
+              <h5>Phenocam</h5>
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink tag={RRNavLink} to="/about">
+              <SvgPhotopoint className="icon-large svg-icon-phenocam" />
+              <h5>Photopoint</h5>
+            </NavLink>
+          </NavItem>
+        </Nav>
+      </div>
+
+      <Container>
+        <Row>
+          <Col>
+            <div className="home-title">Image Types</div>
+            <p className="home-text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id
+              dapibus nisl. Mauris ut ipsum nunc. Proin maximus, justo quis
+              maximus ultricies, elit massa interdum lectus, sit amet pulvinar
+              nunc nibh et sem vel suscipit libero, vestibulum sodales nisl.
+              Cras quis consequat velit.
             </p>
 
             <Nav className="image-links center">
@@ -159,24 +242,23 @@ const Home = (props) => {
                 </NavLink>
               </NavItem>
             </Nav>
-
-            <p className="info-text center">
-              Click on an icon to learn more about image types...
+            <p className="home-text-highlighted">
+              <h4>Lorem Ipsum</h4>
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id
+              dapibus nisl. Mauris ut ipsum nunc. Proin maximus, justo quis
+              maximus ultricies, elit massa interdum lectus, sit amet pulvinar
+              nunc nibh et sem."
             </p>
             <p className="home-text">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id
               dapibus nisl. Mauris ut ipsum nunc. Proin maximus, justo quis
               maximus ultricies, elit massa interdum lectus, sit amet pulvinar
-              nunc nibh et sem. Donec vitae dui pharetra, iaculis nunc at,
-              scelerisque purus. Morbi vel suscipit libero, vestibulum sodales
-              nisl. Cras quis consequat velit.
+              nunc nibh et sem vel suscipit libero, vestibulum sodales nisl.
+              Cras quis consequat velit.
             </p>
           </Col>
         </Row>
       </Container>
-      <div className="home-banner">
-      
-      </div>
     </div>
   );
 };

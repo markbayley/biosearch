@@ -1,34 +1,51 @@
 .svg-icon {
-            display: inline-block;
-            margin-left: 2px;
-            width: 1.6em;
-            height: 1.5em;
-            /* margin-top: 5%; */
-            transform: scale(.97);
-        }
+  display: inline-block;
+  margin-left: 2px;
+  width: 1.6em;
+  height: 1.5em;
+  /* margin-top: 5%; */
+  transform: scale(0.97);
+}
 .svg-icon2 {
-            display: inline-block;
-            margin-top: 2px;
-            margin-right: 2px;
-            margin-bottom: 2px;
-            margin-left: 2px;
-            width: 1.6em;
-            height: 1.5em;
-            transform: scale(.97);
-        }
+  display: inline-block;
+  margin-top: 2px;
+  margin-right: 2px;
+  margin-bottom: 2px;
+  margin-left: 2px;
+  width: 1.6em;
+  height: 1.5em;
+  transform: scale(0.97);
+}
 
 .svg-icon-lai {
-    color: #669FBA;
+  color: #669fba;
 }
 
 .svg-icon-panoramic {
-  color: #A5C8DC;
+  color: #a5c8dc;
 }
 
 .svg-icon-phenocam {
-    color: #F5A26C;
+  color: #f5a26c;
 }
 
 .svg-icon-photopoint {
-    color: #B3D4C9;
+  color: #b3d4c9;
+}
+.svg-icon-ancillary-fauna {
+  color: #009688;
+}
+.svg-icon-ancillary-fungi {
+  color: #009688;
+}
+
+.svg-icon-ancillary-flora {
+  color: #009688;
+}
+
+.svg-icon-ancillary-general {
+  color: #009688;
+}
+.svg-icon-ancillary-samford-camera-trap {
+  color: #009688;
 }

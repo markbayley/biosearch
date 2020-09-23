@@ -3,46 +3,47 @@
 @import "~bootstrap/scss/mixins/_breakpoints";
 
 .home-header {
-  background-image: url(https://bioimages.tern.org.au/images/hero.jpg);
+  background-image: url(https://www.tern.org.au/wp-content/uploads/trees.jpg);
   background-size: cover;
-  background-position: 0px -50px;
+  // background-position: 0px -50px;
   background-repeat: no-repeat;
   height: auto;
-  padding-top: 60px;
-  padding-bottom: 20px;
+  padding: 60px 0px;
+  // padding-bottom: 20px;
   border-top: 1px solid #6eb3a6;
   border-bottom: 5px solid #6eb3a6;
 }
 
-.home-banner {
-  background-color: #b3d4c9;
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 15vh;
-  padding-top: 60px;
-  padding-bottom: 20px;
-  border-top: 1px solid #6eb3a6;
+.home-text {
+  padding: 10px 15px;
+  font-size: 19px;
 }
 
-.home-text {
-  padding: 0px 15px;
+.home-text-highlighted {
+  padding: 15px 35px;
+  font-size: 19px;
+  background-color:#6eb3a6;
+  color: #fff;
+  margin: 2em 3em;
+  border-radius: 5px;
 }
 
 .home-title {
-  font-size: 24px;
-  font-weight: 500;
+  font-size: 28px;
+  font-weight: 900;
   padding: 10px 15px;
-  color: #00565d;
+  // color: #00565d;
+  color:  #043E4F;
 }
 
 .content-home {
   // border-bottom: 1px solid #6eb3a6;
-  padding: 20px 0px 0px 0px; 
+  padding: 15px 0px 0px 0px; 
 }
 
 .content-about {
   // border-bottom: 1px solid #6eb3a6;
-  padding: 0px 30px 0px 30px; 
+  padding: 15px 0px 0px 0px; 
 }
 
 .home-subtitle {
@@ -63,52 +64,77 @@
 }
 
 .home-caption {
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 200;
-  background-color: black;
-  opacity: 0.6;
-  color: #fff;
-  width: 40em;
-  padding: 1em;
-  padding-left: 2em;
+  background-color: rgba(255, 255, 255, 0.8);
+  // opacity: 0.7;
+  color: black;
+  width: 27em;
+  padding: 2em;
+  border-radius: 3px;
+  // padding-left: 2em;
+  // margin-left: 0;
 }
-
 
 .sites-sidebar {
   // border: 1px solid lightgrey;
   border-right: 1px solid lightgrey;
   height: auto;
+  // color: black;
 }
 
 .home-sites {
   padding: 0px 15px;
-  //   margin-left: 10px;
+  font-size: 17px;
 }
 
 .home-sites a:hover {
-  background-color: #b3d4c9;
+  // background-color: #b3d4c9;
+  color: #F5A26C;
   cursor: pointer;
 }
 
-.btn-home-search {
+// .btn-home-search {
+//   background-color: #ed694b;
+//   color: #fff;
+//   font-weight: 900;
+//   border-radius: 25px;
+//   font-size: 20px;
+//   position: absolute;
+//   right: 17.5em;
+//   top: 12em;
+//   padding: 10px 20px;
+//   margin-top: 50px;
+//   -webkit-box-shadow: 0px 1px 2px 0px #00565d;
+//   -moz-box-shadow: 0px 1px 2px 0px #00565d;
+//   box-shadow: 0px 1px 2px 0px #00565d;
+// }
+
+// .btn-home-search:hover {
+//   background-color: #6eb3a6;
+//   //background-color: #f5a26c;
+//   color: #fff;
+// }
+
+
+
+.btn-homesearch {
   background-color: #ed694b;
   color: #fff;
   font-weight: 900;
-  border-radius: 10px;
+  border-radius: 25px;
   font-size: 20px;
-  position: absolute;
-  right: 10em;
-  top: 10em;
+  // margin: 5em 0em;
   padding: 10px 20px;
-  margin-top: 30px;
+  margin-top: 20px;
   -webkit-box-shadow: 0px 1px 2px 0px #00565d;
   -moz-box-shadow: 0px 1px 2px 0px #00565d;
   box-shadow: 0px 1px 2px 0px #00565d;
 }
 
-.btn-home-search:hover {
-  background-color: #6eb3a6;
-  //background-color: #f5a26c;
+.btn-homesearch:hover {
+  // background-color: #6eb3a6;
+  background-color: #dc4425;
   color: #fff;
 }
 
@@ -127,10 +153,11 @@
 }
 
 .map-links {
-  width: 600px;
-  height: 350px;
+  width: 800px;
+  height: 450px;
   border: 1px solid #6eb3a6;
   margin-bottom: 20px;
+  margin-right: 15px;
 }
 
 .map-links:hover {
@@ -154,6 +181,14 @@
   border-radius: 5px;
   margin: 3px 3px 9px 0px;
   padding: 2px;
+}
+
+.icon-large {
+  width: 55px;
+  // border: 1px solid #669FBA;
+  // border-radius: 5px;
+  margin-left: 15px;
+  padding: 3px;
 }
 
 .sample-image {
@@ -184,9 +219,48 @@
   width: 120px;
 }
 .image-links a:hover {
+  color: #F5A26C;
+  // border-radius: 5px;
+  // border: 1px solid #6eb3a6;
+  // background-color: #b3d4c9;
+}
+
+.image-links-banner:hover {
+  // background-color: #eee;
+
+}
+
+
+.home-banner {
+  background-color: #eee;
+  background-size: cover;
+  background-repeat: no-repeat;
+  // height: 15vh;
+  // padding-top: 60px;
+  // padding-bottom: 20px;
+  padding: 30px;
+  border-bottom: 5px solid #6eb3a6;
+  margin: 30px 0px;
+  // border-bottom: 1px solid #6eb3a6
+}
+
+
+
+.image-links-banner a {
+  display: inline-block;
   border-radius: 5px;
-  border: 1px solid #6eb3a6;
-  background-color: #b3d4c9;
+  margin: 0em 5em 0em 5em;
+  // background-color: #fff;
+  border: 1px solid #eee;
+  width: 120px;
+  color: black;
+}
+.image-links-banner a:hover {
+  // border-radius: 5px;
+  color: #F5A26C;
+  font-style: bold;
+  // border: 1px solid #6eb3a6;
+  // background-color: #b3d4c9;
 }
 
 .info-text {

@@ -22,23 +22,32 @@ const About = (props) => {
   return (
     <div>
       <div className="home-header">
-        {/* <div className="home-title">
-            Delivering open access to Australia's terrestrial ecosystem data
-          </div> */}
-        <div className="home-caption">
-          The TERN Australian SuperSite Network is made up of a number of
-          "SuperSites" located across the country, each representative of a
-          different ecosystem type.
-        </div>
+        <Container>
+          {/* SUBHEADER */}
+          <div className="home-caption">
+            <h3>Bioimages Portal</h3>
+            The TERN Australian SuperSite Network is made up of a number of
+            representitive ecosystem "SuperSites" located across the country.
+            <br />
+            <Button
+              color="homesearch"
+              className="homesearch"
+              tag={RRNavLink}
+              to="/search"
+            >
+              <FontAwesomeIcon icon={faSearch} /> Search Images
+            </Button>
+          </div>
 
-        <Button
-          color="home-search"
-          className="home-search"
-          tag={RRNavLink}
-          to="/search"
-        >
-          <FontAwesomeIcon icon={faSearch} /> Search Images
-        </Button>
+          {/* <Button
+            color="home-search"
+            className="home-search"
+            tag={RRNavLink}
+            to="/search"
+          >
+            <FontAwesomeIcon icon={faSearch} /> Search Images
+          </Button> */}
+        </Container>
       </div>
 
       <Container className="content-about">
@@ -54,6 +63,7 @@ const About = (props) => {
               nisl. Cras quis consequat velit.
             </p>
             <hr />
+
             <div className="home-title">Sites</div>
             <p className="home-text">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id
@@ -66,7 +76,7 @@ const About = (props) => {
 
             <div className="about-site-title" id="alice-mulga">
               <NavLink tag={RRNavLink} to="/search">
-                 <FontAwesomeIcon icon={faMapMarkerAlt} /> Alice Mulga
+                <FontAwesomeIcon icon={faMapMarkerAlt} /> Alice Mulga
               </NavLink>
             </div>
             <p className="home-text">
@@ -123,6 +133,23 @@ const About = (props) => {
               src="https://via.placeholder.com/250"
               alt="leaf area index"
             />
+          </Col>
+        </Row>
+      </Container>
+      <div className="home-header">
+        <Button
+          color="home-search"
+          className="home-search"
+          tag={RRNavLink}
+          to="/search"
+        >
+          <FontAwesomeIcon icon={faSearch} /> Search Images
+        </Button>
+      </div>
+
+      <Container>
+        <Row>
+          <Col>
             <hr />
             <div className="home-title">Image Types</div>
 
@@ -245,6 +272,35 @@ const About = (props) => {
           </Col>
         </Row>
       </Container>
+      {/* BANNER */}
+      <div className="home-banner">
+        <Nav className="image-links-banner center">
+          <NavItem>
+            <NavLink tag={RRNavLink} to="/about">
+              <SvgLai className="icon svg-icon-phenocam" />
+              <p>Leaf Index</p>
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink tag={RRNavLink} to="/about">
+              <SvgPanoramic className="icon svg-icon-phenocam" />
+              <p>Panorama</p>
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink tag={RRNavLink} to="/about">
+              <SvgPhenocam className="icon svg-icon-phenocam" />
+              <p>Phenocam</p>
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink tag={RRNavLink} to="/about">
+              <SvgPhotopoint className="icon svg-icon-phenocam" />
+              <p>Photopoint</p>
+            </NavLink>
+          </NavItem>
+        </Nav>
+      </div>
     </div>
   );
 };
