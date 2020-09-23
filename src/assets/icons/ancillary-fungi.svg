@@ -3,12 +3,12 @@
  "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
 <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
 viewBox="0 0 1280.000000 1076.000000"
- preserveAspectRatio="xMidYMid meet">
+ preserveAspectRatio="xMidYMid meet" fill="currentColor">
 <metadata>
 Created by potrace 1.15, written by Peter Selinger 2001-2017
 </metadata>
 <g transform="translate(0.000000,1076.000000) scale(0.100000,-0.100000)"
-fill="#009688" stroke="none">
+ stroke="none">
 <path d="M8287 10745 c-179 -34 -385 -107 -623 -220 -164 -78 -269 -136 -619
 -345 -749 -446 -826 -481 -1507 -679 -500 -145 -706 -257 -790 -428 -28 -58
 -32 -75 -31 -147 1 -124 46 -230 169 -402 273 -382 766 -757 1344 -1024 387
