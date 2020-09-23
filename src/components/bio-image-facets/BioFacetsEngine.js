@@ -1,4 +1,5 @@
 import React from "react";
+import { Row } from "reactstrap";
 import ReactDateRangeFacet from "./ReactDateRangeFacet";
 import SelectFacet from "./SelectFacet";
 import ImageTypeSelectFacet from "./ImageTypeSelectFacet";
@@ -7,10 +8,14 @@ import MapImageToggle from "../buttons/MapImageToggle";
 import ResetAllFacets from "./ResetAllFacets";
 import "./BioFacetsEngine.scss";
 
+
 const BioFacetsEngine = () => (
   <div className="bio-facets">
     <TextFacet facet="search_string" placeholder="Enter search text" />
-    <MapImageToggle />
+    <Row>
+      <ResetAllFacets />
+      <MapImageToggle />
+    </Row>
     <SelectFacet facet="site_id" showZeros={false} placeholder="Select Sites" />
     <SelectFacet facet="plot" showZeros={false} placeholder="Select Plots" />
     <SelectFacet
@@ -24,7 +29,6 @@ const BioFacetsEngine = () => (
       placeholder="Select Image Types"
     />
     <ReactDateRangeFacet />
-    <ResetAllFacets />
   </div>
 );
 

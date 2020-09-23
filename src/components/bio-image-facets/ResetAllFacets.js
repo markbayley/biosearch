@@ -6,6 +6,8 @@ import {
   fetchFacetsSearchAction,
 } from "../../store/reducer";
 import "../buttons/buttons.scss";
+import { faUndoAlt } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const ResetAllFacets = () => {
   const dispatch = useDispatch();
@@ -29,8 +31,12 @@ const ResetAllFacets = () => {
     dispatch(fetchFacetsSearchAction());
   };
   return (
-    <Button color="round" className="round" onClick={handleResetAllFilters}>
-      Clear All Filters
+    <Button
+      // size="sm"
+      color="reset"
+      onClick={handleResetAllFilters}
+    >
+      <FontAwesomeIcon icon={faUndoAlt} /> Clear Filters
     </Button>
   );
 };

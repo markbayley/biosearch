@@ -70,16 +70,15 @@
   background-color:#6EB3A6;
   color: #fff;
   font-family: "museo-sans", sans-serif;
-  border-radius: 10px;
-  font-weight: 200;
+  border-radius: 20px;
+  font-weight: 400;
   font-size: 16px;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   display: inline-block; 
   text-align: right; 
- 
   display: block;
   margin-left:auto;
-  margin-right:0;
+  margin-right: 15px;
 }
 
 .btn-toggle:hover {
@@ -89,7 +88,31 @@
       background-color: #065f65;
       border-color: #065f65;
     }
-  }
+}
+
+.btn-reset {
+  background-color:#6EB3A6;
+  color: #fff;
+  font-family: "museo-sans", sans-serif;
+  border-radius: 20px;
+  font-weight: 400;
+  font-size: 16px;
+  margin-bottom: 10px;
+  display: inline-block; 
+  text-align: right; 
+  display: block;
+  margin-right:auto;
+  margin-left: 15px;
+}
+
+.btn-reset:hover {
+  color:  #00565D;
+  background-image: linear-gradient(to bottom right,  #c9e7dd, #B3D4C9,);
+  &.clicked, button {
+      background-color: #065f65;
+      border-color: #065f65;
+    }
+}
 
 
 

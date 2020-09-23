@@ -15,7 +15,7 @@ function MapImageToggle() {
   return searchMode === "Images"
     ? (
       <Button
-        size="sm"
+        // size="sm"
         color="toggle"
         onClick={() => dispatch(setSearchModeAction("Map"))}
       >
@@ -25,7 +25,7 @@ function MapImageToggle() {
       </Button>
     ) : (
       <Button
-        size="sm"
+        // size="sm"
         color="toggle"
         onClick={() => dispatch(setSearchModeAction("Images"))}
       >
