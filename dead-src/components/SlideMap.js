@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import ReactDOM from "react-dom";
 import "./SlideMap.scss";
-import BioMapEngine from "./bio-image-map/BioMapEngine";
+import BioMapEngine from "../../src/components/bio-image-map/BioMapEngine";
 
 const SlideMap = () => {
   const [isOpen, setIsOpen] = useState(false);

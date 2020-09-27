@@ -21,7 +21,7 @@ const Help = (props) => {
         <Container>
           {/* SUBHEADER */}
           <div className="home-caption">
-            <h3>Bioimages Portal</h3>
+            <h2>Bioimages Portal</h2>
             The TERN Australian SuperSite Network is made up of a number of
             representitive ecosystem "SuperSites" located across the country.
             <br />
