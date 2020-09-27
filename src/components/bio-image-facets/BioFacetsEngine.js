@@ -8,13 +8,10 @@ import MapImageToggle from "../buttons/MapImageToggle";
 import ResetAllFacets from "./ResetAllFacets";
 import "./BioFacetsEngine.scss";
 
-
 const BioFacetsEngine = () => (
   <div className="bio-facets">
     <TextFacet facet="search_string" placeholder="Enter search text" />
-
     <MapImageToggle />
-
     <SelectFacet facet="site_id" showZeros={false} placeholder="Select Sites" />
     <SelectFacet facet="plot" showZeros={false} placeholder="Select Plots" />
     <SelectFacet
