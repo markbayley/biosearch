@@ -7,17 +7,8 @@
   #map-id {
     height: 100%;
 
-
-    // TODO: leaflet-container same as markercluster-map ...
-    .leaflet-container {
-      height: 80vh;
-      width: fluid;
-    }
-
-
     .markercluster-map {
       height: 83vh;
-
 
       .tool-tip {
         margin: 0px;
@@ -29,7 +20,7 @@
 
         a {
           .tool-tip-link {
-             color: #065f65;
+            color: #e36a51;
             text-transform: capitalize;
           }
         }
@@ -71,3 +62,5 @@
 
   }
 }
+
+

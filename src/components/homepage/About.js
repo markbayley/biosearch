@@ -20,7 +20,7 @@ import { ReactComponent as SvgPhotopoint } from "../../assets/icons/photopoint.s
 
 const About = (props) => {
   return (
-    <div>
+    <div style={{ scrollbehaviour: "smooth" }}>
       <div className="home-header">
         <Container>
           {/* SUBHEADER */}
@@ -62,9 +62,8 @@ const About = (props) => {
               scelerisque purus. Morbi vel suscipit libero, vestibulum sodales
               nisl. Cras quis consequat velit.
             </p>
-            <hr />
 
-            <div className="home-title">Sites</div>
+            <div className="section-title">Sites</div>
             <p className="home-text">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id
               dapibus nisl. Mauris ut ipsum nunc. Proin maximus, justo quis
@@ -91,22 +90,23 @@ const About = (props) => {
               scelerisque purus. Morbi vel suscipit libero, vestibulum sodales
               nisl. Cras quis consequat velit.{" "}
             </p>
-
-            <img
-              className="sample-image"
-              src="https://via.placeholder.com/250"
-              alt="leaf area index"
-            />
-            <img
-              className="sample-image"
-              src="https://via.placeholder.com/250"
-              alt="leaf area index"
-            />
-            <img
-              className="sample-image"
-              src="https://via.placeholder.com/250"
-              alt="leaf area index"
-            />
+            <div className="image-div">
+              <img
+                className="sample-image"
+                src="https://via.placeholder.com/250"
+                alt="leaf area index"
+              />
+              <img
+                className="sample-image"
+                src="https://via.placeholder.com/250"
+                alt="leaf area index"
+              />
+              <img
+                className="sample-image"
+                src="https://via.placeholder.com/250"
+                alt="leaf area index"
+              />
+            </div>
 
             <div className="home-subtitle" id="alice-mulga">
               <FontAwesomeIcon icon={faMapMarkerAlt} /> Boyagin
@@ -123,35 +123,28 @@ const About = (props) => {
               scelerisque purus. Morbi vel suscipit libero, vestibulum sodales
               nisl. Cras quis consequat velit.
             </p>
-            <img
-              className="sample-image"
-              src="https://via.placeholder.com/250"
-              alt="leaf area index"
-            />
-            <img
-              className="sample-image"
-              src="https://via.placeholder.com/250"
-              alt="leaf area index"
-            />
+            <div className="image-div">
+              <img
+                className="sample-image"
+                src="https://via.placeholder.com/250"
+                alt="leaf area index"
+              />
+              <img
+                className="sample-image"
+                src="https://via.placeholder.com/250"
+                alt="leaf area index"
+              />
+            </div>
           </Col>
         </Row>
       </Container>
-      <div className="home-header">
-        <Button
-          color="home-search"
-          className="home-search"
-          tag={RRNavLink}
-          to="/search"
-        >
-          <FontAwesomeIcon icon={faSearch} /> Search Images
-        </Button>
-      </div>
+
+      <div className="about-banner"></div>
 
       <Container>
         <Row>
           <Col>
-            <hr />
-            <div className="home-title">Image Types</div>
+            <div className="section-title">Image Types</div>
 
             <p className="home-text">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id
@@ -161,7 +154,7 @@ const About = (props) => {
               scelerisque purus. Morbi vel suscipit libero, vestibulum sodales
               nisl. Cras quis consequat velit.
             </p>
-            <div className="home-subtitle-type">
+            <div className="home-subtitle-type" id="leaf-index">
               <SvgLai className="icon-small svg-icon-lai" />
               Leaf Area Index
             </div>
@@ -173,21 +166,23 @@ const About = (props) => {
               scelerisque purus. Morbi vel suscipit libero, vestibulum sodales
               nisl. Cras quis consequat velit.
             </p>
-            <img
-              className="sample-image"
-              src="https://via.placeholder.com/250"
-              alt="leaf area index"
-            />
-            <img
-              className="sample-image"
-              src="https://via.placeholder.com/250"
-              alt="leaf area index"
-            />
-            <img
-              className="sample-image"
-              src="https://via.placeholder.com/250"
-              alt="leaf area index"
-            />
+            <div className="image-div">
+              <img
+                className="sample-image"
+                src="https://via.placeholder.com/250"
+                alt="leaf area index"
+              />
+              <img
+                className="sample-image"
+                src="https://via.placeholder.com/250"
+                alt="leaf area index"
+              />
+              <img
+                className="sample-image"
+                src="https://via.placeholder.com/250"
+                alt="leaf area index"
+              />
+            </div>
             <div className="home-subtitle-type">
               <SvgPanoramic className="icon-small svg-icon-lai" />
               Panorama
@@ -200,22 +195,24 @@ const About = (props) => {
               scelerisque purus. Morbi vel suscipit libero, vestibulum sodales
               nisl. Cras quis consequat velit.
             </p>
-            <img
-              className="sample-image"
-              src="https://via.placeholder.com/250"
-              alt="leaf area index"
-            />
-            <img
-              className="sample-image"
-              src="https://via.placeholder.com/250"
-              alt="leaf area index"
-            />
-            <img
-              className="sample-image"
-              src="https://via.placeholder.com/250"
-              alt="leaf area index"
-            />
-            <div className="home-subtitle-type">
+            <div className="image-div">
+              <img
+                className="sample-image"
+                src="https://via.placeholder.com/250"
+                alt="leaf area index"
+              />
+              <img
+                className="sample-image"
+                src="https://via.placeholder.com/250"
+                alt="leaf area index"
+              />
+              <img
+                className="sample-image"
+                src="https://via.placeholder.com/250"
+                alt="leaf area index"
+              />
+            </div>
+            <div className="home-subtitle-type" id="about#phenocam">
               <SvgPhenocam className="icon-small svg-icon-phenocam" />
               Phenocam
             </div>
@@ -227,21 +224,23 @@ const About = (props) => {
               scelerisque purus. Morbi vel suscipit libero, vestibulum sodales
               nisl. Cras quis consequat velit.
             </p>
-            <img
-              className="sample-image"
-              src="https://via.placeholder.com/250"
-              alt="leaf area index"
-            />
-            <img
-              className="sample-image"
-              src="https://via.placeholder.com/250"
-              alt="leaf area index"
-            />
-            <img
-              className="sample-image"
-              src="https://via.placeholder.com/250"
-              alt="leaf area index"
-            />
+            <div className="image-div">
+              <img
+                className="sample-image"
+                src="https://via.placeholder.com/250"
+                alt="leaf area index"
+              />
+              <img
+                className="sample-image"
+                src="https://via.placeholder.com/250"
+                alt="leaf area index"
+              />
+              <img
+                className="sample-image"
+                src="https://via.placeholder.com/250"
+                alt="leaf area index"
+              />
+            </div>
             <div className="home-subtitle-type">
               <SvgPhotopoint className="icon-small svg-icon-lai" />
               Photopoint
@@ -254,53 +253,28 @@ const About = (props) => {
               scelerisque purus. Morbi vel suscipit libero, vestibulum sodales
               nisl. Cras quis consequat velit.
             </p>
-            <img
-              className="sample-image"
-              src="https://via.placeholder.com/250"
-              alt="leaf area index"
-            />
-            <img
-              className="sample-image"
-              src="https://via.placeholder.com/250"
-              alt="leaf area index"
-            />
-            <img
-              className="sample-image"
-              src="https://via.placeholder.com/250"
-              alt="leaf area index"
-            />
+            <div className="image-div">
+              <img
+                className="sample-image"
+                src="https://via.placeholder.com/250"
+                alt="leaf area index"
+              />
+              <img
+                className="sample-image"
+                src="https://via.placeholder.com/250"
+                alt="leaf area index"
+              />
+              <img
+                className="sample-image"
+                src="https://via.placeholder.com/250"
+                alt="leaf area index"
+              />
+            </div>
           </Col>
         </Row>
       </Container>
-      {/* BANNER */}
-      <div className="home-banner">
-        <Nav className="image-links-banner center">
-          <NavItem>
-            <NavLink tag={RRNavLink} to="/about">
-              <SvgLai className="icon svg-icon-phenocam" />
-              <p>Leaf Index</p>
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink tag={RRNavLink} to="/about">
-              <SvgPanoramic className="icon svg-icon-phenocam" />
-              <p>Panorama</p>
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink tag={RRNavLink} to="/about">
-              <SvgPhenocam className="icon svg-icon-phenocam" />
-              <p>Phenocam</p>
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink tag={RRNavLink} to="/about">
-              <SvgPhotopoint className="icon svg-icon-phenocam" />
-              <p>Photopoint</p>
-            </NavLink>
-          </NavItem>
-        </Nav>
-      </div>
+
+      <hr />
     </div>
   );
 };

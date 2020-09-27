@@ -21,7 +21,7 @@ function MapImageToggle() {
       >
         <FontAwesomeIcon icon={faGlobeAsia} />
         {" "}
-        Map
+        View Map
       </Button>
     ) : (
       <Button
