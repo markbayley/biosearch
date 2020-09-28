@@ -1,15 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
+import { Router } from "react-router-dom";
 import axios from "axios";
-
-import { BrowserRouter } from "react-router-dom";
 
 // include all our global standard styles.
 // should probably be the first css to be included, so that later css can override
 import "tern-react/dist/index.css";
 
-import { store } from "./store/configureStore";
+import { store, history } from "./store/configureStore";
 import App from "./App";
 
 import { CONFIG } from "./config";
@@ -22,10 +21,12 @@ axios({
   ReactDOM.render(
     // <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <Router history={history}>
+        <App />
+      </Router>
     </Provider>,
     // </React.StrictMode>
-    document.getElementById("root")
+    document.getElementById("root"),
   );
 });
 
@@ -36,4 +37,4 @@ axios({
       .getRegistrations()
       .then((regs) => regs.forEach((reg) => reg.unregister()));
   }
-})();
+}());

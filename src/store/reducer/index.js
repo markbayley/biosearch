@@ -10,8 +10,9 @@ export * from "./search";
 export * from "./ui";
 export * from "./login";
 
-// create root reducer including all sub reducers
-export const rootReducer = combineReducers({
+// function to create root reducer including redux-first-history reducer and all our sub reducers
+export const createRootReducer = (routerReducer) => combineReducers({
+  router: routerReducer,
   search: searchReducer,
   ui: uiReducer,
   login: loginReducer,
