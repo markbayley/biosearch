@@ -4,6 +4,7 @@ import uniq from "lodash/uniq";
 import {
   all, takeLatest, put, call, select, cancelled, delay, take, race,
 } from "redux-saga/effects";
+import { LOCATION_CHANGE } from "redux-first-history";
 import {
   fetchSearchAction,
   fetchSearchDoneAction,
@@ -229,10 +230,19 @@ function* checkLoginStatusWatchStopTask() {
   }
 }
 
+function* locationChangeSaga(action) {
+  const { location } = action.payload;
+  if (location.pathname === "/search") {
+    const query = yield select((state) => state.ui.query);
+    yield put(fetchFacetsSearchAction({ query }));
+  }
+}
+
 export function* rootSaga() {
   // TODO: fetchFacetsAction is not emitted separately ... only Search or facets and search
   yield takeLatest(fetchFacetsAction.type, fetchFacetsSaga);
   yield takeLatest(fetchSearchAction.type, fetchSearchSaga);
   yield takeLatest(fetchFacetsSearchAction.type, fetchFacetsSearchSaga);
   yield takeLatest(checkLoginStatusStartAction.type, checkLoginStatusWatchStopTask);
+  yield takeLatest(LOCATION_CHANGE, locationChangeSaga);
 }
