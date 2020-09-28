@@ -15,7 +15,7 @@ const BioMapEngine = () => {
     lat: -26.47,
     lng: 134.02,
     zoomSnap: 0.5,
-        maxZoom: 30,
+    maxZoom: 30,
     minZoom: 4.5,
     zoom: 4.5,
   });
