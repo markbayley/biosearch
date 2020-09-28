@@ -10,21 +10,21 @@
     width: 100%;
 
 
-    .biologo {
-        margin: 0;
-        line-height: 2em;
-        // margin-left: 130px;
+    .navbar-text {
+        white-space:nowrap;
 
-        @include media-breakpoint-down(lg) {
-            display: none;
+        .biologo {
+
+            @include media-breakpoint-down(lg) {
+                display: none;
+            }
+
+            .bio-icon {
+                height: 35px;
+                margin-top: auto;
+                margin-bottom: auto;
+            }
         }
-
-        .bio-icon {
-            margin-bottom: 3%;
-            height: 35px;
-            margin-top: 0%;
-        }
-
     }
 
     .nav-item a:focus {
