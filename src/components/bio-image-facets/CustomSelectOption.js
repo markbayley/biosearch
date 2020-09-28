@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { components } from "react-select";
 import "./ImageTypeSelectFacet.scss";
 import { ReactComponent as SvgLai } from "../../assets/icons/LAI.svg";
@@ -14,6 +15,8 @@ import { ReactComponent as SvgAncillaryCameraTrap } from "../../assets/icons/anc
 const CustomSelectOption = (props) => {
   const { Option } = components;
 
+  const { data } = props;
+
   const optionSVGs = {
     lai: SvgLai,
     panorama: SvgPanoramic,
@@ -25,8 +28,8 @@ const CustomSelectOption = (props) => {
     "ancillary.general": SvgAncillaryGeneral,
     "ancillary.samford camera trap": SvgAncillaryCameraTrap,
   };
-  const Icon = optionSVGs[props.data.value];
-  const cssClassName = props.data.value.replace(/[\W_]/g, "-");
+  const Icon = optionSVGs[data.value];
+  const cssClassName = data.value.replace(/[\W_]/g, "-");
 
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
@@ -37,10 +40,14 @@ const CustomSelectOption = (props) => {
             <Icon />
           </span>
         )}
-        <span>{`${props.data.label} (${props.data.count})`}</span>
+        <span>{`${data.label} (${data.count})`}</span>
       </div>
     </Option>
   );
+};
+
+CustomSelectOption.propTypes = {
+  data: PropTypes.objectOf(PropTypes.any).isRequired,
 };
 
 export default CustomSelectOption;

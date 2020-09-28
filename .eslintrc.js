@@ -65,7 +65,7 @@ module.exports = {
           multiline: true,
           consistent: true,
         },
-        ObjectPattern: { minProperties: 4, multiline: true, consistent: true },
+        ObjectPattern: { minProperties: 5, multiline: true, consistent: true },
         ImportDeclaration: {
           minProperties: 5,
           multiline: true,

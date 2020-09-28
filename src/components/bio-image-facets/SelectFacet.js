@@ -2,35 +2,30 @@
 import React from "react";
 import Select from "react-select";
 import PropTypes from "prop-types";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import get from "lodash/get";
-import {
-  updateFilterAction,
-  fetchFacetsSearchAction,
-} from "../../store/reducer";
 import { facetColourStyles } from "./facetColourStyles";
 
-const SelectFacet = ({ facet, showZeros, ...props }) => {
-  const dispatch = useDispatch();
-
-  // currently selected facets
-  const selected = useSelector((state) => state.ui.searchFilters[facet]);
+const SelectFacet = ({
+  name, value, showZeros, onChange, ...props
+}) => {
   // facet data as returned by ES
-  const facets = useSelector((state) => state.search.facets[facet]);
+  const facets = useSelector((state) => state.search.facets[name]);
   // vocabulary with labels for facet values
-  const vocab = useSelector((state) => get(state.search.vocabs, facet, null));
-
-  const selectedValues = new Set(selected.map((item) => item.value));
+  const vocab = useSelector((state) => get(state.search.vocabs, name, null));
 
   // build list of options for select widget
   const cur_value = [];
   const options = facets.buckets.reduce((accum, item) => {
     const count = item.doc_count;
     if (showZeros || count > 0) {
-      const value = item.key;
-      const label = get(vocab, `${item.key}.label`, item.key);
-      const option = { label, value, count };
-      if (selectedValues.has(value)) {
+      const option = {
+        label: get(vocab, `${item.key}.label`, item.key),
+        value: item.key,
+        count,
+      };
+      // is optionValue in current values?
+      if (value && value.includes(option.value)) {
         cur_value.push(option);
       }
       // add option to result
@@ -42,12 +37,10 @@ const SelectFacet = ({ facet, showZeros, ...props }) => {
   const handleChange = (items) => {
     // update state
     if (items === null) {
-      dispatch(updateFilterAction({ [facet]: [] }));
+      onChange(name, []);
     } else {
-      dispatch(updateFilterAction({ [facet]: items }));
+      onChange(name, items.map((e) => e.value));
     }
-    // update facets and search results
-    dispatch(fetchFacetsSearchAction());
   };
 
   return (
@@ -68,13 +61,20 @@ const SelectFacet = ({ facet, showZeros, ...props }) => {
 };
 
 SelectFacet.propTypes = {
-  // the property name in redux store at 'state.search.facets[facet]'.
-  facet: PropTypes.string.isRequired,
+  // the property name in redux store at 'state.search.facets[name]'
+  // and state.search.vocabs[name] with vocabulary for lables and additional infos.
+  // which holds current possible values
+  name: PropTypes.string.isRequired,
+  // the current value
+  value: PropTypes.arrayOf(PropTypes.any),
   // show values with 0 results?
   showZeros: PropTypes.bool,
+  // onChange callback
+  onChange: PropTypes.func.isRequired,
 };
 
 SelectFacet.defaultProps = {
+  value: [],
   showZeros: true,
 };
 
