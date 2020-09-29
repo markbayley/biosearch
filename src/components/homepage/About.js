@@ -17,6 +17,7 @@ import { ReactComponent as SvgLai } from "../../assets/icons/LAI.svg";
 import { ReactComponent as SvgPanoramic } from "../../assets/icons/panoramic.svg";
 import { ReactComponent as SvgPhenocam } from "../../assets/icons/phenocam.svg";
 import { ReactComponent as SvgPhotopoint } from "../../assets/icons/photopoint.svg";
+import TimeLine from "./TimeLine";
 
 const About = (props) => {
   return (
@@ -72,68 +73,137 @@ const About = (props) => {
               scelerisque purus. Morbi vel suscipit libero, vestibulum sodales
               nisl. Cras quis consequat velit.
             </p>
+            <div
+              style={{
+                backgroundColor: "#eeeeee",
+                margin: "15px",
+                borderTop: "5px solid #F5A26C",
+              }}
+            >
+              <div className="about-site-title" id="alice-mulga">
+                <NavLink tag={RRNavLink} to="/search">
+                  <FontAwesomeIcon icon={faMapMarkerAlt} /> Alice Mulga
+                </NavLink>
+              </div>
+              <p className="home-text-title">
+                Total Images:
+                <a href=""> 1200 </a> Image Types:
+                <a href="">
+                  {" "}
+                  Leaf Area(279), Panorama(200), Phenocam(565), Photopoint(156)
+                </a>
+              </p>
+              <p className="home-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+                id dapibus nisl. Mauris ut ipsum nunc. Proin maximus, justo quis
+                maximus ultricies, elit massa interdum lectus, sit amet pulvinar
+                nunc nibh et sem.{" "}
+              </p>
+              <p className="home-text-title">
+                Data Distribution: All | <a>Leaf Area Index</a> | Panorama |
+                Phenocam | Photopoint |
+              </p>
 
-            <div className="about-site-title" id="alice-mulga">
-              <NavLink tag={RRNavLink} to="/search">
-                <FontAwesomeIcon icon={faMapMarkerAlt} /> Alice Mulga
+              <TimeLine />
+              <NavLink
+                tag={RRNavLink}
+                to="/search#alice-mulga"
+                className="site-search-link"
+              >
+                <em>
+                  <FontAwesomeIcon icon={faSearch} /> Search Alice Mulga{" "}
+                </em>
               </NavLink>
-            </div>
-            <p className="home-text">
-              <strong>Total Images:</strong> 1000 <strong>Image Types: </strong>{" "}
-              LAI, Phenocam, Photopoint{" "}
-            </p>
-            <p className="home-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id
-              dapibus nisl. Mauris ut ipsum nunc. Proin maximus, justo quis
-              maximus ultricies, elit massa interdum lectus, sit amet pulvinar
-              nunc nibh et sem. Donec vitae dui pharetra, iaculis nunc at,
-              scelerisque purus. Morbi vel suscipit libero, vestibulum sodales
-              nisl. Cras quis consequat velit.{" "}
-            </p>
-            <div className="image-div">
-              <img
-                className="sample-image"
-                src="https://via.placeholder.com/250"
-                alt="leaf area index"
-              />
-              <img
-                className="sample-image"
-                src="https://via.placeholder.com/250"
-                alt="leaf area index"
-              />
-              <img
-                className="sample-image"
-                src="https://via.placeholder.com/250"
-                alt="leaf area index"
-              />
+              <div className="image-div"></div>
             </div>
 
-            <div className="home-subtitle" id="alice-mulga">
-              <FontAwesomeIcon icon={faMapMarkerAlt} /> Boyagin
+            <div
+              style={{
+                backgroundColor: "#eee",
+                margin: "15px",
+                borderTop: "5px solid #F5A26C",
+              }}
+            >
+              <div className="about-site-title" id="alice-mulga">
+                <NavLink tag={RRNavLink} to="/search">
+                  <FontAwesomeIcon icon={faMapMarkerAlt} /> Boyagin Wandoo
+                  Woodland
+                </NavLink>
+              </div>
+              <p className="home-text-title">
+                <strong>Total Images:</strong>
+                <a href=""> 1000 </a> <strong> Image Types: </strong>
+                <a href=""> Leaf Area, </a>
+                <a href=""> Panorama </a>
+              </p>
+              <p className="home-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+                id dapibus nisl. Mauris ut ipsum nunc. Proin maximus, justo quis
+                maximus ultricies, elit massa interdum lectus, sit amet pulvinar
+                nunc nibh et sem. Donec vitae dui pharetra, iaculis nunc at,
+                scelerisque purus. Morbi vel suscipit libero, vestibulum sodales
+                nisl. Cras quis consequat velit.{" "}
+              </p>
+              <p className="home-text-title">
+                Data Distribution: All | <a>Leaf Area Index</a> | Panorama |
+                Phenocam | Photopoint |
+              </p>
+
+              <TimeLine />
+              <NavLink
+                tag={RRNavLink}
+                to="/search#alice-mulga"
+                className="site-search-link"
+              >
+                <em>
+                  <FontAwesomeIcon icon={faSearch} /> Search Boyagin Woodlands{" "}
+                </em>
+              </NavLink>
+              <div className="image-div"></div>
             </div>
-            <p className="home-text">
-              <strong>Total Images:</strong> 1000 <strong>Image Types:</strong>{" "}
-              LAI, Phenocam, Photopoint
-            </p>
-            <p className="home-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id
-              dapibus nisl. Mauris ut ipsum nunc. Proin maximus, justo quis
-              maximus ultricies, elit massa interdum lectus, sit amet pulvinar
-              nunc nibh et sem. Donec vitae dui pharetra, iaculis nunc at,
-              scelerisque purus. Morbi vel suscipit libero, vestibulum sodales
-              nisl. Cras quis consequat velit.
-            </p>
-            <div className="image-div">
-              <img
-                className="sample-image"
-                src="https://via.placeholder.com/250"
-                alt="leaf area index"
-              />
-              <img
-                className="sample-image"
-                src="https://via.placeholder.com/250"
-                alt="leaf area index"
-              />
+
+            <div
+              style={{
+                backgroundColor: "#eee",
+                margin: "15px",
+                borderTop: "5px solid #F5A26C",
+              }}
+            >
+              <div className="about-site-title" id="alice-mulga">
+                <NavLink tag={RRNavLink} to="/search">
+                  <FontAwesomeIcon icon={faMapMarkerAlt} /> Cape Tribulation
+                </NavLink>
+              </div>
+              <p className="home-text-title">
+                <strong>Total Images:</strong>
+                <a href=""> 1000 </a> <strong> Image Types: </strong>
+                <a href=""> Leaf Area </a>
+                <a href=""> Panorama </a>
+              </p>
+              <p className="home-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+                id dapibus nisl. Mauris ut ipsum nunc. Proin maximus, justo quis
+                maximus ultricies, elit massa interdum lectus, sit amet pulvinar
+                nunc nibh et sem. Donec vitae dui pharetra, iaculis nunc at,
+                scelerisque purus. Morbi vel suscipit libero, vestibulum sodales
+                nisl. Cras quis consequat velit.{" "}
+              </p>
+              <p className="home-text-title">
+                Data Distribution: All | <a>Leaf Area Index</a> | Panorama |
+                Phenocam | Photopoint |
+              </p>
+
+              <TimeLine />
+              <NavLink
+                tag={RRNavLink}
+                to="/search#alice-mulga"
+                className="site-search-link"
+              >
+                <em>
+                  <FontAwesomeIcon icon={faSearch} /> Search Cape Tribulation{" "}
+                </em>
+              </NavLink>
+              <div className="image-div"></div>
             </div>
           </Col>
         </Row>
@@ -154,63 +224,119 @@ const About = (props) => {
               scelerisque purus. Morbi vel suscipit libero, vestibulum sodales
               nisl. Cras quis consequat velit.
             </p>
-            <div className="home-subtitle-type" id="leaf-index">
-              <SvgLai className="icon-small svg-icon-lai" />
-              Leaf Area Index
+
+            <div
+              style={{
+                backgroundColor: "#eee",
+                margin: "15px",
+                borderTop: "5px solid #6EB3A6",
+              }}
+            >
+              <div className="home-subtitle-type" id="leaf-index">
+                <SvgLai className="icon-small svg-icon-lai" />
+                Leaf Area Index
+              </div>
+              <p className="home-text-title">
+                <strong>Total Images:</strong>
+                <a href=""> 1376 </a> <strong> Sites: </strong>
+                <a href=""> Alice Mulga(876), </a>
+                <a href=""> Boyagin Wandoo Woodlands(345), </a>
+                <a href=""> Cape Tribulation(155) </a>
+              </p>
+              <p className="home-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+                id dapibus nisl. Mauris ut ipsum nunc. Proin maximus, justo quis
+                maximus ultricies, elit massa interdum lectus, sit amet pulvinar
+                nunc nibh et sem.
+              </p>
+              <p className="home-text-title">
+                Data Distribution: All | <a>Alice Mulga</a> | Boyagin Wandoo
+                Woodlands | Cape Tribulation |
+              </p>
+              <TimeLine />
+              <NavLink
+                tag={RRNavLink}
+                to="/search#leaf-area"
+                className="site-search-link"
+              >
+                <em>
+                  <FontAwesomeIcon icon={faSearch} /> Search Leaf Area Index{" "}
+                </em>
+              </NavLink>
+              <div className="image-div">
+                {/* <img
+                  className="sample-image"
+                  src="https://via.placeholder.com/250"
+                  alt="leaf area index"
+                />
+                <img
+                  className="sample-image"
+                  src="https://via.placeholder.com/250"
+                  alt="leaf area index"
+                />
+                <img
+                  className="sample-image"
+                  src="https://via.placeholder.com/250"
+                  alt="leaf area index"
+                /> */}
+              </div>
             </div>
-            <p className="home-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id
-              dapibus nisl. Mauris ut ipsum nunc. Proin maximus, justo quis
-              maximus ultricies, elit massa interdum lectus, sit amet pulvinar
-              nunc nibh et sem. Donec vitae dui pharetra, iaculis nunc at,
-              scelerisque purus. Morbi vel suscipit libero, vestibulum sodales
-              nisl. Cras quis consequat velit.
-            </p>
-            <div className="image-div">
-              <img
-                className="sample-image"
-                src="https://via.placeholder.com/250"
-                alt="leaf area index"
-              />
-              <img
-                className="sample-image"
-                src="https://via.placeholder.com/250"
-                alt="leaf area index"
-              />
-              <img
-                className="sample-image"
-                src="https://via.placeholder.com/250"
-                alt="leaf area index"
-              />
-            </div>
-            <div className="home-subtitle-type">
-              <SvgPanoramic className="icon-small svg-icon-lai" />
-              Panorama
-            </div>
-            <p className="home-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id
-              dapibus nisl. Mauris ut ipsum nunc. Proin maximus, justo quis
-              maximus ultricies, elit massa interdum lectus, sit amet pulvinar
-              nunc nibh et sem. Donec vitae dui pharetra, iaculis nunc at,
-              scelerisque purus. Morbi vel suscipit libero, vestibulum sodales
-              nisl. Cras quis consequat velit.
-            </p>
-            <div className="image-div">
-              <img
-                className="sample-image"
-                src="https://via.placeholder.com/250"
-                alt="leaf area index"
-              />
-              <img
-                className="sample-image"
-                src="https://via.placeholder.com/250"
-                alt="leaf area index"
-              />
-              <img
-                className="sample-image"
-                src="https://via.placeholder.com/250"
-                alt="leaf area index"
-              />
+
+            <div
+              style={{
+                backgroundColor: "#eee",
+                margin: "15px",
+                borderTop: "5px solid #6EB3A6",
+              }}
+            >
+              <div className="home-subtitle-type" id="panorama">
+                <SvgPanoramic className="icon-small svg-icon-panorama" />
+                Panorama
+              </div>
+              <p className="home-text-title">
+                <strong>Total Images:</strong>
+                <a href=""> 1376 </a> <strong> Sites: </strong>
+                <a href=""> Alice Mulga(876), </a>
+                <a href=""> Boyagin Wandoo Woodlands(345), </a>
+                <a href=""> Cape Tribulation(155) </a>
+              </p>
+              <p className="home-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+                id dapibus nisl. Mauris ut ipsum nunc. Proin maximus, justo quis
+                maximus ultricies, elit massa interdum lectus, sit amet pulvinar
+                nunc nibh et sem.
+              </p>
+              <p className="home-text-title">
+                Data Distribution: All | <a>Alice Mulga</a> | Boyagin Wandoo
+                Woodlands | Cape Tribulation |
+              </p>
+              <TimeLine />
+              <NavLink
+                tag={RRNavLink}
+                to="/search#panorama"
+                className="site-search-link"
+              >
+                <em>
+                  <FontAwesomeIcon icon={faSearch} /> Search Panorama{" "}
+                </em>
+              </NavLink>
+              <div className="image-div">
+                {/* <img
+                  className="sample-image"
+                  src="https://via.placeholder.com/250"
+                  alt="leaf area index"
+                />
+                <img
+                  className="sample-image"
+                  src="https://via.placeholder.com/250"
+                  alt="leaf area index"
+                />
+                <img
+                  className="sample-image"
+                  src="https://via.placeholder.com/250"
+                  alt="leaf area index"
+                /> */}
+              </div>
             </div>
             <div className="home-subtitle-type" id="about#phenocam">
               <SvgPhenocam className="icon-small svg-icon-phenocam" />

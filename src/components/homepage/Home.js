@@ -132,7 +132,7 @@ const Home = (props) => {
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink tag={RRNavLink} to="/about">
+                <NavLink to="/about">
                   <FontAwesomeIcon icon={faMapMarkerAlt} /> Cape Tribulation
                 </NavLink>
               </NavItem>
@@ -285,9 +285,13 @@ const Home = (props) => {
                     <NavbarText style={{ textAlign: "center" }}>
                       Morbi vel suscipit libero, vestibulum sodales nisl.
                     </NavbarText>
-                    <Button to="/about#panorama" color="learn-more">
+                    <NavLink
+                      tag={RRNavLink}
+                      to="/about#panorama"
+                      style={{ border: "none" }}
+                    >
                       Learn more
-                    </Button>
+                    </NavLink>
                   </NavItem>
                 </Col>
                 <Col sm={12} md={3}>
@@ -298,6 +302,7 @@ const Home = (props) => {
                       style={{ border: "none" }}
                     >
                       <SvgPhenocam className="icon-large svg-icon-phenocam" />
+                      {/* <div className="circle"></div> */}
                     </NavLink>
                     <h5>Phenocam</h5>
                     <NavbarText style={{ textAlign: "center" }}>
