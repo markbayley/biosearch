@@ -45,7 +45,7 @@ const About = () => {
       </Container>
       {/* <div className="about-banner"></div> */}
       {/* ABOUT -IMAGE TYPES */}
-      <Container>
+      <Container className="content-about">
         <Row>
           <Col>
             <div className="section-title">Image Types</div>

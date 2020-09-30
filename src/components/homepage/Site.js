@@ -17,20 +17,20 @@ const Site = ({name, id}) => {
     >
       <div className="about-site-title" id={id}>
         <NavLink tag={RRNavLink} to="/search">
-          <FontAwesomeIcon icon={faMapMarkerAlt} /> 
+          <FontAwesomeIcon icon={faMapMarkerAlt} />
           {name}
         </NavLink>
       </div>
       <p className="home-text-title">
-        Total Images:
+        <strong>Total Images: </strong>
         <a href="">1200</a>
-        Image Types:
+        <strong>Image Types: </strong>
         <a href="">
           {" "}
           Leaf Area(279), Panorama(200), Phenocam(565), Photopoint(156)
         </a>
       </p>
-      <p className="home-text">
+      <p className="home-text-light">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id
         dapibus nisl. Mauris ut ipsum nunc. Proin maximus, justo quis maximus
         ultricies, elit massa interdum lectus, sit amet pulvinar nunc nibh et
@@ -39,16 +39,12 @@ const Site = ({name, id}) => {
       <div style={{ paddingBottom: "50px" }}>
         <p className="home-text-title">
           <strong>Data Distribution:</strong>
-          All | <a>Leaf Area Index</a>| Panorama | Phenocam | Photopoint |
+          <a> Leaf Area Index</a>| Panorama | Phenocam | Photopoint | All
         </p>
 
         <TimeLine />
       </div>
-      <NavLink
-        tag={RRNavLink}
-        to="/search#{id}"
-        className="site-search-link"
-      >
+      <NavLink tag={RRNavLink} to="/search#{id}" className="site-search-link">
         <em>
           <FontAwesomeIcon icon={faSearch} />
           Search {name}{" "}

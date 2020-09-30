@@ -19,7 +19,7 @@ import { ReactComponent as SvgPhotopoint } from "../../assets/icons/photopoint.s
 import SubHeader from "./SubHeader";
 import SitesList from "./SitesList";
 
-const Home = (props) => {
+const Home = () => {
   return (
     <div id="top">
       <SubHeader />
@@ -121,7 +121,6 @@ const Home = (props) => {
             </p>
           </Col>
         </Row>
-        <hr />
       </Container>
 
       <Container id="images">

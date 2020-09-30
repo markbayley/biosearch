@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 const BioTotalImages = ({ totalDocuments }) => (
   <div
-    style={{ paddingTop: "3px" }}
+    style={{ paddingTop: "4px" }}
   >
     Images:
     {totalDocuments}
