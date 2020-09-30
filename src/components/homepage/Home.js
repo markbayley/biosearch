@@ -12,14 +12,14 @@ import {
 } from "reactstrap";
 import { Link } from "react-scroll";
 import "./Home.scss";
-import { faSearch, faMapMarkerAlt, faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ReactComponent as SvgLai } from "../../assets/icons/LAI.svg";
 import { ReactComponent as SvgPanoramic } from "../../assets/icons/panoramic.svg";
 import { ReactComponent as SvgPhenocam } from "../../assets/icons/phenocam.svg";
 import { ReactComponent as SvgPhotopoint } from "../../assets/icons/photopoint.svg";
 
-const Home = () => {
+const Home = (props) => {
   return (
     <div id="top">
       <div className="home-header">
@@ -28,7 +28,7 @@ const Home = () => {
           <div className="home-caption">
             <h2>Bioimages Portal</h2>
             The TERN Australian SuperSite Network is made up of a number of
-            representitive ecosystem SuperSites located across the country.
+            representitive ecosystem "SuperSites" located across the country.
             <br />
             <Button
               color="homesearch"
@@ -36,13 +36,11 @@ const Home = () => {
               tag={RRNavLink}
               to="/search"
             >
-              <FontAwesomeIcon icon={faSearch} />
-              {" "}
-              Search Images
+              <FontAwesomeIcon icon={faSearch} /> Search Images
             </Button>
           </div>
 
-        {/* <Button
+          {/* <Button
             color="home-search"
             className="home-search"
             tag={RRNavLink}
@@ -50,188 +48,161 @@ const Home = () => {
           >
             <FontAwesomeIcon icon={faSearch} /> Search Images
           </Button> */}
-      </Container>
-    </div>
-    <Container className="content-home">
-      <div className="home-title center">
-        Welcome to TERN Bioimages Portal
+        </Container>
       </div>
-      <p className="home-text-start center">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id
-        dapibus nisl. Mauris ut ipsum nunc. Proin maximus, justo quis maximus
-        ultricies, elit massa interdum lectus, sit amet pulvinar nunc nibh et
-        sem. Donec vitae dui pharetra. Proin maximus, justo quis maximus
-        ultricies, elit massa interdum lectus, sit amet pulvinar nunc nibh et
-        sem.
-      </p>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-around",
-          margin: "30px 0px",
-        }}
-      >
-        <Link to="sites" smooth duration={1000}>
-          <Button color="home-link">
-            <img
-              src="https://www.tern.org.au/wp-content/uploads/elementor/thumbs/landscapes@2x-oopx3npcygot4af5sj4glj66ndagy61zmv36qh0pts.png"
-              alt="link icon"
-              width="100px"
-              height="100px"
-            />
-            <br />
-            <br />
-            <h5 style={{ textAlign: "center" }}>Search Sites</h5>
-            {/* <div className="home-text">
+      <Container className="content-home">
+        <div className="home-title center">
+          Welcome to TERN Bioimages Portal
+        </div>
+        <p className="home-text-start center">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id
+          dapibus nisl. Mauris ut ipsum nunc. Proin maximus, justo quis maximus
+          ultricies, elit massa interdum lectus, sit amet pulvinar nunc nibh et
+          sem. Donec vitae dui pharetra. Proin maximus, justo quis maximus
+          ultricies, elit massa interdum lectus, sit amet pulvinar nunc nibh et
+          sem.
+        </p>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-around",
+            margin: "30px 0px",
+          }}
+        >
+          <Link to="sites" smooth duration={1000}>
+            <Button color="home-link">
+              <img
+                src="https://www.tern.org.au/wp-content/uploads/elementor/thumbs/landscapes@2x-oopx3npcygot4af5sj4glj66ndagy61zmv36qh0pts.png"
+                alt="link icon"
+                width="100px"
+                height="100px"
+              />
+              <br />
+              <br />
+              <h5 style={{ textAlign: "center" }}>Search Sites</h5>
+              {/* <div className="home-text">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </div> */}
-          </Button>
-        </Link>
+            </Button>
+          </Link>
 
-        <Link to="images" smooth duration={1000}>
-          <Button color="home-link">
-            <img
-              src="https://www.tern.org.au/wp-content/uploads/2019/10/ecosystem@2x.png"
-              alt="link icon"
-              width="100px"
-              height="100px"
-            />
-            <br />
-            <br />
-            <h5 style={{ textAlign: "center" }}>Filter Images</h5>
-          </Button>
-        </Link>
+          <Link to="images" smooth duration={1000}>
+            <Button color="home-link">
+              <img
+                src="https://www.tern.org.au/wp-content/uploads/2019/10/ecosystem@2x.png"
+                alt="link icon"
+                width="100px"
+                height="100px"
+              />
+              <br />
+              <br />
+              <h5 style={{ textAlign: "center" }}>Filter Images</h5>
+            </Button>
+          </Link>
 
-        <Link to="download" smooth duration={1000}>
-          <Button color="home-link">
-            <img
-              src="https://www.tern.org.au/wp-content/uploads/elementor/thumbs/eco-process@2x-oopx4hs6yj3tyxcwibleedsu0otrqxhxf3ma8tjl26.png"
-              alt="link icon"
-              width="100px"
-              height="100px"
-            />
-            <br />
-            <br />
-            <h5 style={{ textAlign: "center" }}> Download</h5>
-          </Button>
-        </Link>
-      </div>
+          <Link to="download" smooth duration={1000}>
+            <Button color="home-link">
+              <img
+                src="https://www.tern.org.au/wp-content/uploads/elementor/thumbs/eco-process@2x-oopx4hs6yj3tyxcwibleedsu0otrqxhxf3ma8tjl26.png"
+                alt="link icon"
+                width="100px"
+                height="100px"
+              />
+              <br />
+              <br />
+              <h5 style={{ textAlign: "center" }}> Download</h5>
+            </Button>
+          </Link>
+        </div>
+
+        <Row>
+          {/* SIDEBAR  */}
+          <Col xl={3} className="sites-sidebar" id="sites">
+            <div className="section-title">Sites</div>
 
             <Nav navbar className="home-sites">
               <NavItem>
                 <NavLink tag={RRNavLink} to="/about#alice-mulga">
-                  <FontAwesomeIcon icon={faMapMarkerAlt} />
-                  {" "}
-                  Alice Mulga
+                  <FontAwesomeIcon icon={faMapMarkerAlt} /> Alice Mulga
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={RRNavLink} to="/about#boyagin">
-                  <FontAwesomeIcon icon={faMapMarkerAlt} />
-                  {" "}
-                  Boyagin
-                </NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink to="/about">
-                  <FontAwesomeIcon icon={faMapMarkerAlt} />
-                  {" "}
-                  Cape Tribulation
+                  <FontAwesomeIcon icon={faMapMarkerAlt} /> Boyagin
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={RRNavLink} to="/about">
-                  <FontAwesomeIcon icon={faMapMarkerAlt} />
-                  {" "}
-                  Cumberland Plain
+                  <FontAwesomeIcon icon={faMapMarkerAlt} /> Cape Tribulation
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={RRNavLink} to="/about">
-                  <FontAwesomeIcon icon={faMapMarkerAlt} />
-                  {" "}
-                  Calperum Mallee
+                  <FontAwesomeIcon icon={faMapMarkerAlt} /> Cumberland Plain
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={RRNavLink} to="/about">
-                  <FontAwesomeIcon icon={faMapMarkerAlt} />
-                  {" "}
-                  Cowbay
+                  <FontAwesomeIcon icon={faMapMarkerAlt} /> Calperum Mallee
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={RRNavLink} to="/about">
-                  <FontAwesomeIcon icon={faMapMarkerAlt} />
-                  {" "}
-                  Gingin Banksia
+                  <FontAwesomeIcon icon={faMapMarkerAlt} /> Cowbay
+                </NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink tag={RRNavLink} to="/about">
+                  <FontAwesomeIcon icon={faMapMarkerAlt} /> Gingin Banksia
                   Woodland
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={RRNavLink} to="/about">
-                  <FontAwesomeIcon icon={faMapMarkerAlt} />
-                  {" "}
-                  Great Western
+                  <FontAwesomeIcon icon={faMapMarkerAlt} /> Great Western
                   Woodland
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={RRNavLink} to="/about">
-                  <FontAwesomeIcon icon={faMapMarkerAlt} />
-                  {" "}
-                  Karawatha
+                  <FontAwesomeIcon icon={faMapMarkerAlt} /> Karawatha
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={RRNavLink} to="/about">
-                  <FontAwesomeIcon icon={faMapMarkerAlt} />
-                  {" "}
-                  Litchfield Savanna
+                  <FontAwesomeIcon icon={faMapMarkerAlt} /> Litchfield Savanna
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={RRNavLink} to="/about">
-                  <FontAwesomeIcon icon={faMapMarkerAlt} />
-                  {" "}
-                  Mitchel Grass
+                  <FontAwesomeIcon icon={faMapMarkerAlt} /> Mitchel Grass
                   Rangeland
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={RRNavLink} to="/about">
-                  <FontAwesomeIcon icon={faMapMarkerAlt} />
-                  {" "}
-                  Robson Creek
+                  <FontAwesomeIcon icon={faMapMarkerAlt} /> Robson Creek
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={RRNavLink} to="/about">
-                  <FontAwesomeIcon icon={faMapMarkerAlt} />
-                  {" "}
-                  Samford
+                  <FontAwesomeIcon icon={faMapMarkerAlt} /> Samford
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={RRNavLink} to="/about">
-                  <FontAwesomeIcon icon={faMapMarkerAlt} />
-                  {" "}
-                  Tumbarumba
+                  <FontAwesomeIcon icon={faMapMarkerAlt} /> Tumbarumba
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={RRNavLink} to="/about">
-                  <FontAwesomeIcon icon={faMapMarkerAlt} />
-                  {" "}
-                  Wombat Stringybark
+                  <FontAwesomeIcon icon={faMapMarkerAlt} /> Wombat Stringybark
                   Eucalypt
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={RRNavLink} to="/about">
-                  <FontAwesomeIcon icon={faMapMarkerAlt} />
-                  {" "}
-                  Whroo Victorian Dry
+                  <FontAwesomeIcon icon={faMapMarkerAlt} /> Whroo Victorian Dry
                   Eucalypt
                 </NavLink>
               </NavItem>
@@ -246,12 +217,13 @@ const Home = () => {
               include Leaf Area Index, Phenocamera, and Photopoint images.
             </p>
 
-          <Nav navbar className="home-sites">
-            <NavItem>
-              <NavLink tag={RRNavLink} to="/about#alice-mulga">
-                <FontAwesomeIcon icon={faMapMarkerAlt} />
-                {" "}
-                Alice Mulga
+            <Row className="center">
+              <NavLink tag={RRNavLink} to="/about#sites">
+                <img
+                  src="/img/sample-map.png"
+                  alt="sample site map"
+                  className="map-links"
+                />
               </NavLink>
             </Row>
             <p className="info-text center">
@@ -267,6 +239,7 @@ const Home = () => {
             </p>
           </Col>
         </Row>
+        <hr />
       </Container>
 
       <Container id="images">
@@ -310,21 +283,11 @@ const Home = () => {
                     </NavLink>
                     <h5>Panorama</h5>
                     <NavbarText style={{ textAlign: "center" }}>
-                      Morbi vel suscipit libero.
+                      Morbi vel suscipit libero, vestibulum sodales nisl.
                     </NavbarText>
-                    <NavLink
-                      tag={RRNavLink}
-                      to="/about#panorama"
-                      style={{
-                        border: "none",
-                        width: "auto",
-                        color: "#ED694B",
-                      }}
-                    >
+                    <Button to="/about#panorama" color="learn-more">
                       Learn more
-                      {" "}
-                      <FontAwesomeIcon icon={faChevronRight} />
-                    </NavLink>
+                    </Button>
                   </NavItem>
                 </Col>
                 <Col sm={12} md={3}>
@@ -335,7 +298,6 @@ const Home = () => {
                       style={{ border: "none" }}
                     >
                       <SvgPhenocam className="icon-large svg-icon-phenocam" />
-                      {/* <div className="circle"></div> */}
                     </NavLink>
                     <h5>Phenocam</h5>
                     <NavbarText style={{ textAlign: "center" }}>
@@ -367,37 +329,28 @@ const Home = () => {
           </Col>
         </Row>
 
-      <Row>
-        <Col>
-          <p className="home-text-2">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id
-            dapibus nisl. Mauris ut ipsum nunc. Proin maximus, justo quis
-            maximus ultricies, elit massa interdum lectus, sit amet pulvinar
-            nunc nibh et sem vel suscipit libero, vestibulum sodales nisl.
-            Cras quis consequat velit.
-          </p>
-        </Col>
-      </Row>
-    </Container>
+        <Row>
+          <Col>
+            <p className="home-text-2">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id
+              dapibus nisl. Mauris ut ipsum nunc. Proin maximus, justo quis
+              maximus ultricies, elit massa interdum lectus, sit amet pulvinar
+              nunc nibh et sem vel suscipit libero, vestibulum sodales nisl.
+              Cras quis consequat velit.
+            </p>
+          </Col>
+        </Row>
+      </Container>
 
       <Container id="download">
+        <div className="section-title-2">Download</div>
         <p className="home-text-highlighted">
           <h4>Lorem Ipsum</h4>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id
           dapibus nisl. Mauris ut ipsum nunc. Proin maximus, justo quis maximus
           ultricies, elit massa interdum lectus, sit amet pulvinar nunc nibh et
-          sem.
+          sem."
         </p>
-        <p className="home-text-2">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id
-          dapibus nisl. Mauris ut ipsum nunc. Proin maximus, justo quis maximus
-          ultricies, elit massa interdum lectus, sit amet pulvinar nunc nibh et
-          sem vel suscipit libero, vestibulum sodales nisl. Cras quis consequat
-          velit.
-        </p>
-      </Container>
-      <Container>
-        <div className="section-title-2">Download</div>
         <p className="home-text-2">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id
           dapibus nisl. Mauris ut ipsum nunc. Proin maximus, justo quis maximus

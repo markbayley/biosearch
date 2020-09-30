@@ -460,5 +460,6 @@ const About = () => {
     <hr />
   </div>
 );
+}
 
 export default About;
