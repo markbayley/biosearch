@@ -12,7 +12,9 @@ const BioImagesAppHeader = () => (
   <>
     <NavbarText>
       <h3 className="biologo">
-        <BioimagesDownload className="bio-icon" /> Bioimages
+        <BioimagesDownload className="bio-icon" />
+        {" "}
+        Bioimages
       </h3>
     </NavbarText>
     <Nav navbar>

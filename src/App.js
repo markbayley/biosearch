@@ -1,14 +1,10 @@
 import React, { useEffect } from "react";
 import {
-  BrowserRouter as Router,
   Route,
   Switch,
-  useRouteMatch,
-  useLocation,
 } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { TopBar, Footer, AppHeader, getTernMenu } from "tern-react";
-import { Container } from "reactstrap";
 import { CONFIG } from "./config";
 import { checkLoginStatusStartAction } from "./store/reducer";
 import BioImagesAppHeader from "./components/headers/BioImagesAppHeader";
@@ -24,7 +20,7 @@ function App() {
   });
 
   return (
-    <Router>
+    <>
       <TopBar menuConfig={getTernMenu(CONFIG.MENU)} />
       <AppHeader fluid>
         <BioImagesAppHeader />
@@ -44,9 +40,8 @@ function App() {
         </Route>
       </Switch>
       <Footer about={getTernMenu(CONFIG.MENU).resources} />
-    </Router>
+    </>
   );
 }
 
 export default App;
-

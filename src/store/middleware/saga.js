@@ -4,10 +4,10 @@ import uniq from "lodash/uniq";
 import {
   all, takeLatest, put, call, select, cancelled, delay, take, race,
 } from "redux-saga/effects";
+import { LOCATION_CHANGE } from "redux-first-history";
 import {
   fetchSearchAction,
   fetchSearchDoneAction,
-  fetchFacetsAction,
   fetchFacetsDoneAction,
   fetchSearchErrorAction,
   fetchVocabsDoneAction,
@@ -20,6 +20,28 @@ import {
 
 import { bioimages } from "./api";
 
+function queryStringToParams(queryString) {
+  const query = new URLSearchParams(queryString);
+
+  const params = {};
+  // single values:
+  ["search_string", "date_from", "date_to", "page_size", "page_num", "sort_order", "sort_column"].forEach((key) => {
+    const val = query.get(key);
+    if (val) {
+      params[key] = val;
+    }
+  });
+
+  // array values:
+  ["site_id", "plot", "site_visit_id"].forEach((key) => {
+    const val = query.getAll(key);
+    if (val && val.length) {
+      params[key] = val.join(",");
+    }
+  });
+  // image_type:
+  return params;
+}
 /**
  * Convert selected filter values from UI to search parameters for API
  *
@@ -43,12 +65,12 @@ function filtersToParams(filters) {
           const img_types = [];
           const img_type_subs = [];
           value.forEach((item) => {
-            if (item.value.includes("ancillary.")) {
-              const parts = item.value.split(".");
+            if (item.includes("ancillary.")) {
+              const parts = item.split(".");
               img_types.push(parts[0]);
               img_type_subs.push(parts[1]);
             } else {
-              img_types.push(item.value);
+              img_types.push(item);
             }
           });
           if (img_types.length > 0) {
@@ -58,7 +80,7 @@ function filtersToParams(filters) {
             params.image_type_sub = img_type_subs.join(",");
           }
         } else {
-          params[key] = value.map((item) => item.value).join(",");
+          params[key] = value.join(",");
         }
       }
     } else if (key === "date_range") {
@@ -113,13 +135,16 @@ function extractFacetResult(data) {
   return result;
 }
 
-function* fetchSearchSaga(action, params) {
+function* fetchSearchSaga(action) {
   try {
-    let apiparams = params;
-    if (!apiparams) {
-      const filters = yield select((state) => state.ui.searchFilters);
-      apiparams = filtersToParams(filters);
-    }
+    const apiparams = action.payload.queryString
+      ? queryStringToParams(action.payload.queryString)
+      : filtersToParams(action.payload.query);
+    // let apiparams = params;
+    // if (!apiparams) {
+    //   const filters = yield select((state) => state.ui.searchFilters);
+    //   apiparams = filtersToParams(filters);
+    // }
     const { data } = yield call(bioimages.fetchSearch, apiparams);
     yield put(fetchSearchDoneAction(data));
   } catch (error) {
@@ -133,15 +158,18 @@ function* fetchSearchSaga(action, params) {
   }
 }
 
-function* fetchFacetsSaga(action, params) {
+function* fetchFacetsSaga(action) {
   try {
     // TODO: state may not be accurate at this stage ...
     //       => find a better way to get full set of search parameters
-    let apiparams = params;
-    if (!apiparams) {
-      const filters = yield select((state) => state.ui.searchFilters);
-      apiparams = filtersToParams(filters);
-    }
+    const apiparams = action.payload.queryString
+      ? queryStringToParams(action.payload.queryString)
+      : filtersToParams(action.payload.query);
+    // let apiparams = params;
+    // if (!apiparams) {
+    //   const filters = yield select((state) => state.ui.searchFilters);
+    //   apiparams = filtersToParams(filters);
+    // }
     const { data } = yield call(bioimages.fetchFacets, apiparams);
     const vocabs = yield select((state) => state.search.vocabs);
     // TODO: we probably want to load vocabs regularly / or on page load
@@ -169,13 +197,10 @@ function* fetchFacetsSaga(action, params) {
 }
 
 function* fetchFacetsSearchSaga(action) {
-  // get filters and api params
-  const filters = yield select((state) => state.ui.searchFilters);
-  const params = filtersToParams(filters);
   // run fetch search and fetch facets in parallel
   yield all([
-    call(fetchFacetsSaga, action, params),
-    call(fetchSearchSaga, action, params),
+    call(fetchFacetsSaga, action),
+    call(fetchSearchSaga, action),
   ]);
 }
 
@@ -229,10 +254,21 @@ function* checkLoginStatusWatchStopTask() {
   }
 }
 
+function* locationChangeSaga(action) {
+  const { location } = action.payload;
+  // TODO: inspect location
+  //       if change is only search control, then don't trigger facet update ... only do search
+  //       maybe location has last values? or we could use location.state to check
+  //       if only search is required
+  if (location.pathname === "/search") {
+    const query = yield select((state) => state.ui.query);
+    yield put(fetchFacetsSearchAction({ query }));
+  }
+}
+
 export function* rootSaga() {
-  // TODO: fetchFacetsAction is not emitted separately ... only Search or facets and search
-  yield takeLatest(fetchFacetsAction.type, fetchFacetsSaga);
   yield takeLatest(fetchSearchAction.type, fetchSearchSaga);
   yield takeLatest(fetchFacetsSearchAction.type, fetchFacetsSearchSaga);
   yield takeLatest(checkLoginStatusStartAction.type, checkLoginStatusWatchStopTask);
+  yield takeLatest(LOCATION_CHANGE, locationChangeSaga);
 }

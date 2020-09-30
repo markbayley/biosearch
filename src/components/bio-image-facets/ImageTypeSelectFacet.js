@@ -4,90 +4,70 @@ import startCase from "lodash/startCase";
 import get from "lodash/get";
 import Select from "react-select";
 import PropTypes from "prop-types";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  updateFilterAction,
-  fetchFacetsSearchAction,
-} from "../../store/reducer";
+import { useSelector } from "react-redux";
 import { facetColourStyles } from "./facetColourStyles";
 import CustomSelectOption from "./CustomSelectOption";
 import CustomSelectValue from "./CustomSelectValue";
 
-const ImageTypeSelectFacet = ({ facet, showZeros, ...props }) => {
-  const dispatch = useDispatch();
-
-  // currently selected facets
-  const selected = useSelector((state) => state.ui.searchFilters[facet]);
+const ImageTypeSelectFacet = ({
+  name, value, showZeros, onChange, ...props
+}) => {
   // facet data as returned by ES
-  const facets = useSelector((state) => state.search.facets[facet]);
+  const facets = useSelector((state) => state.search.facets[name]);
   // vocabulary with labels for facet values
-  const vocab = useSelector((state) => get(state.search.vocabs, facet, null));
-
-  const selectedValues = new Set(selected.map((item) => item.value));
+  const vocab = useSelector((state) => get(state.search.vocabs, name, null));
 
   // build list of options for select widget
   const cur_value = [];
-  const options = facets.buckets.reduce((accum, item) => {
-    const count = item.doc_count;
-    const value = item.key;
-    const label = get(vocab, `${value}.label`, facet);
-
-    if (value === "ancillary") {
-      const ancillaryList = item["image_type_sub"].buckets.reduce(
-        (anciAccum, sub_type) => {
-          const subCount = sub_type.doc_count;
+  const options = [];
+  facets.buckets.forEach((item) => {
+    // for ancillaries add image_type_sub as well
+    if (item.key === "ancillary") {
+      item["image_type_sub"].buckets.forEach(
+        (sub_type) => {
           // FIXME: [TERNDA-860] Data corruption needs to be fixed.
           // Ancillary Samford camera trap has string like %/20.
           // Wilma and Andrew need to look at backend data
-          if (showZeros || subCount > 0) {
-            const subValue = `ancillary.${sub_type.key.replace(/%20/gi, " ")}`;
-            const subLabel = `${label}[${startCase(
-              get(
-                vocab,
-                `${value}.${sub_type.key}.label`,
-                sub_type.key,
-              ).replace(/%20/gi, " "),
-            )}]`;
+          if (showZeros || sub_type.doc_count > 0) {
             const option = {
-              label: subLabel,
-              value: subValue,
-              count: subCount,
+              label: `${get(vocab, `${item.key}.label`, name)}[${startCase(
+                get(
+                  vocab,
+                  `${item.key}.${sub_type.key}.label`,
+                  sub_type.key,
+                ).replace(/%20/gi, " "),
+              )}]`,
+              value: `ancillary.${sub_type.key.replace(/%20/gi, " ")}`,
+              count: sub_type.doc_count,
             };
-            if (selectedValues.has(subValue)) {
+            if (value && value.includes(option.value)) {
               cur_value.push(option);
             }
-            anciAccum.push(option);
+            options.push(option);
           }
-          return anciAccum;
         },
-        [],
       );
-      return ancillaryList;
-    }
-    if (showZeros || count > 0) {
+    } else if (showZeros || item.doc_count > 0) {
       const option = {
-        label,
-        value,
-        count,
+        label: get(vocab, `${item.key}.label`, name),
+        value: item.key,
+        count: item.doc_count,
       };
-      if (selectedValues.has(value)) {
+      if (value && value.includes(option.value)) {
         cur_value.push(option);
       }
-      accum.push(option);
+      options.push(option);
     }
-    return accum;
-  }, []);
+  });
 
   const handleChange = (items) => {
     // update state
     if (items === null) {
       // react-select return null if nothing is selected
-      dispatch(updateFilterAction({ [facet]: [] }));
+      onChange(name, []);
     } else {
-      dispatch(updateFilterAction({ [facet]: items }));
+      onChange(name, items.map((e) => e.value));
     }
-    // update facets and search results
-    dispatch(fetchFacetsSearchAction());
   };
 
   return (
@@ -111,11 +91,14 @@ const ImageTypeSelectFacet = ({ facet, showZeros, ...props }) => {
 };
 
 ImageTypeSelectFacet.propTypes = {
-  facet: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  value: PropTypes.arrayOf(PropTypes.any),
   showZeros: PropTypes.bool,
+  onChange: PropTypes.func.isRequired,
 };
 ImageTypeSelectFacet.defaultProps = {
   showZeros: true,
+  value: [],
 };
 
 export default ImageTypeSelectFacet;

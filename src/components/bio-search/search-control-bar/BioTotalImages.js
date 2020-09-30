@@ -1,15 +1,17 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import PropTypes from "prop-types";
 
-const BioTotalImages = () => {
-  const totalDocuments = useSelector((state) => state.search.totalDocuments) || 0;
-  return (
-    <div
-      style={{ paddingTop: "3px" }}
-    >
-      Images:
-      {totalDocuments}
-    </div>
-  );
+const BioTotalImages = ({ totalDocuments }) => (
+  <div
+    style={{ paddingTop: "3px" }}
+  >
+    Images:
+    {totalDocuments}
+  </div>
+);
+
+BioTotalImages.propTypes = {
+  totalDocuments: PropTypes.number.isRequired,
 };
+
 export default BioTotalImages;

@@ -6,14 +6,11 @@ const ImageMarkerEngine = () => {
   // all sites from facet
   const sites = useSelector((state) => state.search.facets.site_id.buckets);
   // current select sites UI
-  const selectedSites = useSelector((state) => state.ui.searchFilters.site_id);
+  const selectedSites = useSelector((state) => state.ui.query.site_id);
 
   // site.doc_count, site.key
   // TODO: may fail if vocab is null
   const site_vocab = useSelector((state) => state.search.vocabs.site_id);
-
-  // set of currently selected site ids
-  const selectedSiteIds = new Set(selectedSites.map((site) => site.value));
 
   const getSiteCoordinates = (site) => {
     const sitePosition = site_vocab[site.key].centre_point.coordinates;
@@ -40,7 +37,7 @@ const ImageMarkerEngine = () => {
         sitePosition={getSiteCoordinates(site)}
         name={site_vocab[site.key].label}
         count={site.doc_count}
-        selected={selectedSiteIds.has(site.key)}
+        selected={selectedSites.includes(site.key)}
       />
     ))
   );

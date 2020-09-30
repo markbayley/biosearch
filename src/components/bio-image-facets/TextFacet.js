@@ -1,53 +1,40 @@
 /* eslint-disable no-nested-ternary */
 import React from "react";
 import PropTypes from "prop-types";
-import { useDispatch, useSelector } from "react-redux";
 import {
   Form, InputGroup, InputGroupAddon, Input, Button,
 } from "reactstrap";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import {
-  updateFilterAction, fetchFacetsSearchAction,
-} from "../../store/reducer";
-
 import "./TextFacet.scss";
 import "../buttons/buttons.scss";
 
-const TextFacet = ({ facet, ...props }) => {
-  const dispatch = useDispatch();
-
-  // currently selected facets
-  const value = useSelector((state) => state.ui.searchFilters[facet]);
-
-  const handleChange = (event) => dispatch(updateFilterAction({ [facet]: event.target.value }));
-
+const TextFacet = ({ name, value, onChange, ...props }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     event.stopPropagation();
-    dispatch(fetchFacetsSearchAction());
+    onChange(name, event.target.elements.text.value);
   };
 
   return (
     <Form onSubmit={handleSubmit} className="mb-4 text-facet">
-      <InputGroup
-        inline="true"
-      // className="mb-4 text-facet"
-      >
+      <InputGroup inline="true">
         <Input
-          onChange={handleChange}
-          onBlur={handleSubmit}
+          onBlur={(e) => e.target.form.requestSubmit()}
           className="text-facet-input"
           type="text"
           aria-label="term"
-          value={value}
+          name="text"
+          defaultValue={value}
+          // set key to force re-recration if value changes
+          key={value}
           // eslint-disable-next-line react/jsx-props-no-spreading
           {...props}
         />
         <InputGroupAddon addonType="append">
           <span className="separator" />
-          <Button color="round" className="round" onClick={handleSubmit} type="submit">
+          <Button color="round" className="round" type="submit">
             <FontAwesomeIcon icon={faSearch} />
           </Button>
         </InputGroupAddon>
@@ -57,7 +44,16 @@ const TextFacet = ({ facet, ...props }) => {
 };
 
 TextFacet.propTypes = {
-  facet: PropTypes.string.isRequired,
+  // called when value change has been committed
+  onChange: PropTypes.func.isRequired,
+  // name of facet parameter
+  name: PropTypes.string.isRequired,
+  // used as initialValue in text field
+  value: PropTypes.string,
+};
+
+TextFacet.defaultProps = {
+  value: "",
 };
 
 export default TextFacet;

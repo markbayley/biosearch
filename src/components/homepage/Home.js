@@ -42,7 +42,7 @@ const Home = () => {
             </Button>
           </div>
 
-          {/* <Button
+        {/* <Button
             color="home-search"
             className="home-search"
             tag={RRNavLink}
@@ -50,77 +50,72 @@ const Home = () => {
           >
             <FontAwesomeIcon icon={faSearch} /> Search Images
           </Button> */}
-        </Container>
+      </Container>
+    </div>
+    <Container className="content-home">
+      <div className="home-title center">
+        Welcome to TERN Bioimages Portal
       </div>
-      <Container className="content-home">
-        <div className="home-title center">
-          Welcome to TERN Bioimages Portal
-        </div>
-        <p className="home-text-start center">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id
-          dapibus nisl. Mauris ut ipsum nunc. Proin maximus, justo quis maximus
-          ultricies, elit massa interdum lectus, sit amet pulvinar nunc nibh et
-          sem. Donec vitae dui pharetra. Proin maximus, justo quis maximus
-          ultricies, elit massa interdum lectus, sit amet pulvinar nunc nibh et
-          sem.
-        </p>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-around",
-            margin: "30px 0px",
-          }}
-        >
-          <Link to="sites" smooth duration={1000}>
-            <Button color="home-link">
-              <img
-                src="https://www.tern.org.au/wp-content/uploads/elementor/thumbs/landscapes@2x-oopx3npcygot4af5sj4glj66ndagy61zmv36qh0pts.png"
-                alt="link icon"
-                width="100px"
-                height="100px"
-              />
-              <br />
-              <br />
-              <h5 style={{ textAlign: "center" }}>Search Sites</h5>
-              {/* <div className="home-text">
+      <p className="home-text-start center">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id
+        dapibus nisl. Mauris ut ipsum nunc. Proin maximus, justo quis maximus
+        ultricies, elit massa interdum lectus, sit amet pulvinar nunc nibh et
+        sem. Donec vitae dui pharetra. Proin maximus, justo quis maximus
+        ultricies, elit massa interdum lectus, sit amet pulvinar nunc nibh et
+        sem.
+      </p>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-around",
+          margin: "30px 0px",
+        }}
+      >
+        <Link to="sites" smooth duration={1000}>
+          <Button color="home-link">
+            <img
+              src="https://www.tern.org.au/wp-content/uploads/elementor/thumbs/landscapes@2x-oopx3npcygot4af5sj4glj66ndagy61zmv36qh0pts.png"
+              alt="link icon"
+              width="100px"
+              height="100px"
+            />
+            <br />
+            <br />
+            <h5 style={{ textAlign: "center" }}>Search Sites</h5>
+            {/* <div className="home-text">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </div> */}
-            </Button>
-          </Link>
+          </Button>
+        </Link>
 
-          <Link to="images" smooth duration={1000}>
-            <Button color="home-link">
-              <img
-                src="https://www.tern.org.au/wp-content/uploads/2019/10/ecosystem@2x.png"
-                alt="link icon"
-                width="100px"
-                height="100px"
-              />
-              <br />
-              <br />
-              <h5 style={{ textAlign: "center" }}>Filter Images</h5>
-            </Button>
-          </Link>
+        <Link to="images" smooth duration={1000}>
+          <Button color="home-link">
+            <img
+              src="https://www.tern.org.au/wp-content/uploads/2019/10/ecosystem@2x.png"
+              alt="link icon"
+              width="100px"
+              height="100px"
+            />
+            <br />
+            <br />
+            <h5 style={{ textAlign: "center" }}>Filter Images</h5>
+          </Button>
+        </Link>
 
-          <Link to="download" smooth duration={1000}>
-            <Button color="home-link">
-              <img
-                src="https://www.tern.org.au/wp-content/uploads/elementor/thumbs/eco-process@2x-oopx4hs6yj3tyxcwibleedsu0otrqxhxf3ma8tjl26.png"
-                alt="link icon"
-                width="100px"
-                height="100px"
-              />
-              <br />
-              <br />
-              <h5 style={{ textAlign: "center" }}> Download</h5>
-            </Button>
-          </Link>
-        </div>
-
-        <Row>
-          {/* SIDEBAR  */}
-          <Col xl={3} className="sites-sidebar" id="sites">
-            <div className="section-title">Sites</div>
+        <Link to="download" smooth duration={1000}>
+          <Button color="home-link">
+            <img
+              src="https://www.tern.org.au/wp-content/uploads/elementor/thumbs/eco-process@2x-oopx4hs6yj3tyxcwibleedsu0otrqxhxf3ma8tjl26.png"
+              alt="link icon"
+              width="100px"
+              height="100px"
+            />
+            <br />
+            <br />
+            <h5 style={{ textAlign: "center" }}> Download</h5>
+          </Button>
+        </Link>
+      </div>
 
             <Nav navbar className="home-sites">
               <NavItem>
@@ -251,13 +246,12 @@ const Home = () => {
               include Leaf Area Index, Phenocamera, and Photopoint images.
             </p>
 
-            <Row className="center">
-              <NavLink tag={RRNavLink} to="/about#sites">
-                <img
-                  src="/img/sample-map.png"
-                  alt="sample site map"
-                  className="map-links"
-                />
+          <Nav navbar className="home-sites">
+            <NavItem>
+              <NavLink tag={RRNavLink} to="/about#alice-mulga">
+                <FontAwesomeIcon icon={faMapMarkerAlt} />
+                {" "}
+                Alice Mulga
               </NavLink>
             </Row>
             <p className="info-text center">
@@ -373,18 +367,18 @@ const Home = () => {
           </Col>
         </Row>
 
-        <Row>
-          <Col>
-            <p className="home-text-2">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id
-              dapibus nisl. Mauris ut ipsum nunc. Proin maximus, justo quis
-              maximus ultricies, elit massa interdum lectus, sit amet pulvinar
-              nunc nibh et sem vel suscipit libero, vestibulum sodales nisl.
-              Cras quis consequat velit.
-            </p>
-          </Col>
-        </Row>
-      </Container>
+      <Row>
+        <Col>
+          <p className="home-text-2">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id
+            dapibus nisl. Mauris ut ipsum nunc. Proin maximus, justo quis
+            maximus ultricies, elit massa interdum lectus, sit amet pulvinar
+            nunc nibh et sem vel suscipit libero, vestibulum sodales nisl.
+            Cras quis consequat velit.
+          </p>
+        </Col>
+      </Row>
+    </Container>
 
       <Container id="download">
         <p className="home-text-highlighted">

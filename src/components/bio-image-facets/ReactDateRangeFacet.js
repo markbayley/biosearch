@@ -1,21 +1,14 @@
 import React from "react";
+import PropTypes from "prop-types";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import get from "lodash/get";
 import moment from "moment";
 import { InputGroup, Input } from "reactstrap";
-import {
-  updateFilterAction,
-  fetchFacetsSearchAction,
-} from "../../store/reducer";
 import "./DatePicker.scss";
 
-const ReactDateRangeFacet = () => {
-  const dispatch = useDispatch();
-  const { start, end } = useSelector(
-    (state) => state.ui.searchFilters.date_range,
-  );
+const ReactDateRangeFacet = ({ start, end, onChange }) => {
   let { min: date_min, max: date_max } = useSelector((state) => get(state.search.facets, "file_created", { min: null, max: null }));
   if (date_min) {
     date_min = new Date(date_min);
@@ -67,13 +60,7 @@ const ReactDateRangeFacet = () => {
       dateRange.end = fDate;
     }
 
-    dispatch(
-      updateFilterAction({
-        date_range: { ...dateRange },
-      }),
-    );
-
-    dispatch(fetchFacetsSearchAction());
+    onChange("date_range", dateRange);
   };
 
   return (
@@ -116,4 +103,16 @@ const ReactDateRangeFacet = () => {
     </div>
   );
 };
+
+ReactDateRangeFacet.propTypes = {
+  start: PropTypes.string,
+  end: PropTypes.string,
+  onChange: PropTypes.func.isRequired,
+};
+
+ReactDateRangeFacet.defaultProps = {
+  start: "",
+  end: "",
+};
+
 export default ReactDateRangeFacet;

@@ -34,28 +34,28 @@ const About = () => {
         </Container>
       </div>
 
-      <Container className="content-about">
-        <Row>
-          <Col>
-            <div className="home-title">About the TERN Bioimages Portal</div>
-            <p className="home-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id
-              dapibus nisl. Mauris ut ipsum nunc. Proin maximus, justo quis
-              maximus ultricies, elit massa interdum lectus, sit amet pulvinar
-              nunc nibh et sem. Donec vitae dui pharetra, iaculis nunc at,
-              scelerisque purus. Morbi vel suscipit libero, vestibulum sodales
-              nisl. Cras quis consequat velit.
-            </p>
+    <Container className="content-about">
+      <Row>
+        <Col>
+          <div className="home-title">About the TERN Bioimages Portal</div>
+          <p className="home-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id
+            dapibus nisl. Mauris ut ipsum nunc. Proin maximus, justo quis
+            maximus ultricies, elit massa interdum lectus, sit amet pulvinar
+            nunc nibh et sem. Donec vitae dui pharetra, iaculis nunc at,
+            scelerisque purus. Morbi vel suscipit libero, vestibulum sodales
+            nisl. Cras quis consequat velit.
+          </p>
 
-            <div className="section-title">Sites</div>
-            <p className="home-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id
-              dapibus nisl. Mauris ut ipsum nunc. Proin maximus, justo quis
-              maximus ultricies, elit massa interdum lectus, sit amet pulvinar
-              nunc nibh et sem. Donec vitae dui pharetra, iaculis nunc at,
-              scelerisque purus. Morbi vel suscipit libero, vestibulum sodales
-              nisl. Cras quis consequat velit.
-            </p>
+          <div className="section-title">Sites</div>
+          <p className="home-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id
+            dapibus nisl. Mauris ut ipsum nunc. Proin maximus, justo quis
+            maximus ultricies, elit massa interdum lectus, sit amet pulvinar
+            nunc nibh et sem. Donec vitae dui pharetra, iaculis nunc at,
+            scelerisque purus. Morbi vel suscipit libero, vestibulum sodales
+            nisl. Cras quis consequat velit.
+          </p>
 
             {/* ALICE MULGA */}
             <div
@@ -457,9 +457,8 @@ const About = () => {
         </Row>
       </Container>
 
-      <hr />
-    </div>
-  );
-};
+    <hr />
+  </div>
+);
 
 export default About;

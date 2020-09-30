@@ -1,23 +1,16 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import { Container, Row, Col } from "reactstrap";
 import Favourite from "./bio-favourites/Favourite";
 import BioFacetsEngine from "./bio-image-facets/BioFacetsEngine";
 import BioMapEngine from "./bio-image-map/BioMapEngine";
 import SearchEngine from "./bio-search/SearchEngine";
 import FilterHeader from "./headers/FilterHeader";
-import { fetchFacetsSearchAction } from "../store/reducer";
 
 import "./BioImagesEngine.scss";
 
 const BioImagesEngine = () => {
-  const dispatch = useDispatch();
   const searchMode = useSelector((state) => state.ui.searchResults.searchMode);
-
-  // trigger initial search to populate facets results
-  useEffect(() => {
-    dispatch(fetchFacetsSearchAction());
-  }, [dispatch]);
 
   return (
     <Container fluid className="main-content">
