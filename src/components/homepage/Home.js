@@ -12,14 +12,14 @@ import {
 } from "reactstrap";
 import { Link } from "react-scroll";
 import "./Home.scss";
-import { faSearch, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faMapMarkerAlt, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ReactComponent as SvgLai } from "../../assets/icons/LAI.svg";
 import { ReactComponent as SvgPanoramic } from "../../assets/icons/panoramic.svg";
 import { ReactComponent as SvgPhenocam } from "../../assets/icons/phenocam.svg";
 import { ReactComponent as SvgPhotopoint } from "../../assets/icons/photopoint.svg";
 
-const Home = (props) => {
+const Home = () => {
   return (
     <div id="top">
       <div className="home-header">
@@ -28,7 +28,7 @@ const Home = (props) => {
           <div className="home-caption">
             <h2>Bioimages Portal</h2>
             The TERN Australian SuperSite Network is made up of a number of
-            representitive ecosystem "SuperSites" located across the country.
+            representitive ecosystem SuperSites located across the country.
             <br />
             <Button
               color="homesearch"
@@ -36,7 +36,9 @@ const Home = (props) => {
               tag={RRNavLink}
               to="/search"
             >
-              <FontAwesomeIcon icon={faSearch} /> Search Images
+              <FontAwesomeIcon icon={faSearch} />
+              {" "}
+              Search Images
             </Button>
           </div>
 
@@ -123,86 +125,118 @@ const Home = (props) => {
             <Nav navbar className="home-sites">
               <NavItem>
                 <NavLink tag={RRNavLink} to="/about#alice-mulga">
-                  <FontAwesomeIcon icon={faMapMarkerAlt} /> Alice Mulga
+                  <FontAwesomeIcon icon={faMapMarkerAlt} />
+                  {" "}
+                  Alice Mulga
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={RRNavLink} to="/about#boyagin">
-                  <FontAwesomeIcon icon={faMapMarkerAlt} /> Boyagin
+                  <FontAwesomeIcon icon={faMapMarkerAlt} />
+                  {" "}
+                  Boyagin
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink to="/about">
-                  <FontAwesomeIcon icon={faMapMarkerAlt} /> Cape Tribulation
+                  <FontAwesomeIcon icon={faMapMarkerAlt} />
+                  {" "}
+                  Cape Tribulation
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={RRNavLink} to="/about">
-                  <FontAwesomeIcon icon={faMapMarkerAlt} /> Cumberland Plain
+                  <FontAwesomeIcon icon={faMapMarkerAlt} />
+                  {" "}
+                  Cumberland Plain
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={RRNavLink} to="/about">
-                  <FontAwesomeIcon icon={faMapMarkerAlt} /> Calperum Mallee
+                  <FontAwesomeIcon icon={faMapMarkerAlt} />
+                  {" "}
+                  Calperum Mallee
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={RRNavLink} to="/about">
-                  <FontAwesomeIcon icon={faMapMarkerAlt} /> Cowbay
+                  <FontAwesomeIcon icon={faMapMarkerAlt} />
+                  {" "}
+                  Cowbay
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={RRNavLink} to="/about">
-                  <FontAwesomeIcon icon={faMapMarkerAlt} /> Gingin Banksia
+                  <FontAwesomeIcon icon={faMapMarkerAlt} />
+                  {" "}
+                  Gingin Banksia
                   Woodland
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={RRNavLink} to="/about">
-                  <FontAwesomeIcon icon={faMapMarkerAlt} /> Great Western
+                  <FontAwesomeIcon icon={faMapMarkerAlt} />
+                  {" "}
+                  Great Western
                   Woodland
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={RRNavLink} to="/about">
-                  <FontAwesomeIcon icon={faMapMarkerAlt} /> Karawatha
+                  <FontAwesomeIcon icon={faMapMarkerAlt} />
+                  {" "}
+                  Karawatha
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={RRNavLink} to="/about">
-                  <FontAwesomeIcon icon={faMapMarkerAlt} /> Litchfield Savanna
+                  <FontAwesomeIcon icon={faMapMarkerAlt} />
+                  {" "}
+                  Litchfield Savanna
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={RRNavLink} to="/about">
-                  <FontAwesomeIcon icon={faMapMarkerAlt} /> Mitchel Grass
+                  <FontAwesomeIcon icon={faMapMarkerAlt} />
+                  {" "}
+                  Mitchel Grass
                   Rangeland
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={RRNavLink} to="/about">
-                  <FontAwesomeIcon icon={faMapMarkerAlt} /> Robson Creek
+                  <FontAwesomeIcon icon={faMapMarkerAlt} />
+                  {" "}
+                  Robson Creek
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={RRNavLink} to="/about">
-                  <FontAwesomeIcon icon={faMapMarkerAlt} /> Samford
+                  <FontAwesomeIcon icon={faMapMarkerAlt} />
+                  {" "}
+                  Samford
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={RRNavLink} to="/about">
-                  <FontAwesomeIcon icon={faMapMarkerAlt} /> Tumbarumba
+                  <FontAwesomeIcon icon={faMapMarkerAlt} />
+                  {" "}
+                  Tumbarumba
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={RRNavLink} to="/about">
-                  <FontAwesomeIcon icon={faMapMarkerAlt} /> Wombat Stringybark
+                  <FontAwesomeIcon icon={faMapMarkerAlt} />
+                  {" "}
+                  Wombat Stringybark
                   Eucalypt
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink tag={RRNavLink} to="/about">
-                  <FontAwesomeIcon icon={faMapMarkerAlt} /> Whroo Victorian Dry
+                  <FontAwesomeIcon icon={faMapMarkerAlt} />
+                  {" "}
+                  Whroo Victorian Dry
                   Eucalypt
                 </NavLink>
               </NavItem>
@@ -239,7 +273,6 @@ const Home = (props) => {
             </p>
           </Col>
         </Row>
-        <hr />
       </Container>
 
       <Container id="images">
@@ -283,14 +316,20 @@ const Home = (props) => {
                     </NavLink>
                     <h5>Panorama</h5>
                     <NavbarText style={{ textAlign: "center" }}>
-                      Morbi vel suscipit libero, vestibulum sodales nisl.
+                      Morbi vel suscipit libero.
                     </NavbarText>
                     <NavLink
                       tag={RRNavLink}
                       to="/about#panorama"
-                      style={{ border: "none" }}
+                      style={{
+                        border: "none",
+                        width: "auto",
+                        color: "#ED694B",
+                      }}
                     >
                       Learn more
+                      {" "}
+                      <FontAwesomeIcon icon={faChevronRight} />
                     </NavLink>
                   </NavItem>
                 </Col>
@@ -348,14 +387,23 @@ const Home = (props) => {
       </Container>
 
       <Container id="download">
-        <div className="section-title-2">Download</div>
         <p className="home-text-highlighted">
           <h4>Lorem Ipsum</h4>
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id
           dapibus nisl. Mauris ut ipsum nunc. Proin maximus, justo quis maximus
           ultricies, elit massa interdum lectus, sit amet pulvinar nunc nibh et
-          sem."
+          sem.
         </p>
+        <p className="home-text-2">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id
+          dapibus nisl. Mauris ut ipsum nunc. Proin maximus, justo quis maximus
+          ultricies, elit massa interdum lectus, sit amet pulvinar nunc nibh et
+          sem vel suscipit libero, vestibulum sodales nisl. Cras quis consequat
+          velit.
+        </p>
+      </Container>
+      <Container>
+        <div className="section-title-2">Download</div>
         <p className="home-text-2">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id
           dapibus nisl. Mauris ut ipsum nunc. Proin maximus, justo quis maximus

@@ -1,6 +1,4 @@
 
-
-
 .chart {
   height: 50px;
   display: flex;
@@ -13,17 +11,6 @@
   grid-gap: 0.25rem;
   grid-template-columns: repeat(55, minmax(0, 1fr));
   margin-top: 10px;
-}
-
-
-
-.x-axis {
-  // display: grid;
-  // height: 100%;
-  // grid-template-rows: repeat(10, minmax(0, 1fr));
-  // text-align: right;
-  // font-size: 0.15rem;
-  // padding-right: 15px;
 }
 
 .x-axis {
@@ -62,7 +49,7 @@
     background-color: grey;
   }
 }
-.box:hover {            
-  background-color: #6EB3A6;
+.box-image:hover {            
+  background-color: #F5A26C;
   cursor: pointer;
 }

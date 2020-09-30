@@ -1,16 +1,8 @@
 import React from "react";
 import { NavLink as RRNavLink } from "react-router-dom";
-import {
-  Button,
-  Container,
-  Row,
-  Col,
-  Nav,
-  NavbarText,
-  NavItem,
-  NavLink,
-} from "reactstrap";
+import { Button, Container, Row, Col, NavLink } from "reactstrap";
 import "./Home.scss";
+import { Link } from "react-scroll";
 import { faSearch, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { ReactComponent as SvgLai } from "../../assets/icons/LAI.svg";
@@ -19,7 +11,7 @@ import { ReactComponent as SvgPhenocam } from "../../assets/icons/phenocam.svg";
 import { ReactComponent as SvgPhotopoint } from "../../assets/icons/photopoint.svg";
 import TimeLine from "./TimeLine";
 
-const About = (props) => {
+const About = () => {
   return (
     <div style={{ scrollbehaviour: "smooth" }}>
       <div className="home-header">
@@ -28,7 +20,7 @@ const About = (props) => {
           <div className="home-caption">
             <h2>Bioimages Portal</h2>
             The TERN Australian SuperSite Network is made up of a number of
-            representitive ecosystem "SuperSites" located across the country.
+            representitive ecosystem SuperSites located across the country.
             <br />
             <Button
               color="homesearch"
@@ -39,15 +31,6 @@ const About = (props) => {
               <FontAwesomeIcon icon={faSearch} /> Search Images
             </Button>
           </div>
-
-          {/* <Button
-            color="home-search"
-            className="home-search"
-            tag={RRNavLink}
-            to="/search"
-          >
-            <FontAwesomeIcon icon={faSearch} /> Search Images
-          </Button> */}
         </Container>
       </div>
 
@@ -73,6 +56,8 @@ const About = (props) => {
               scelerisque purus. Morbi vel suscipit libero, vestibulum sodales
               nisl. Cras quis consequat velit.
             </p>
+
+            {/* ALICE MULGA */}
             <div
               style={{
                 backgroundColor: "#eeeeee",
@@ -87,7 +72,8 @@ const About = (props) => {
               </div>
               <p className="home-text-title">
                 Total Images:
-                <a href=""> 1200 </a> Image Types:
+                <a href="">1200</a>
+                Image Types:
                 <a href="">
                   {" "}
                   Leaf Area(279), Panorama(200), Phenocam(565), Photopoint(156)
@@ -99,24 +85,32 @@ const About = (props) => {
                 maximus ultricies, elit massa interdum lectus, sit amet pulvinar
                 nunc nibh et sem.{" "}
               </p>
-              <p className="home-text-title">
-                Data Distribution: All | <a>Leaf Area Index</a> | Panorama |
-                Phenocam | Photopoint |
-              </p>
+              <div style={{ paddingBottom: "50px" }}>
+                <p className="home-text-title">
+                  <strong>Data Distribution:</strong>
+                  All 
+                  |
+                  {" "}
+                  <a>Leaf Area Index</a>
+                  | Panorama | Phenocam | Photopoint |
+                </p>
 
-              <TimeLine />
+                <TimeLine />
+              </div>
               <NavLink
                 tag={RRNavLink}
                 to="/search#alice-mulga"
                 className="site-search-link"
               >
                 <em>
-                  <FontAwesomeIcon icon={faSearch} /> Search Alice Mulga{" "}
+                  <FontAwesomeIcon icon={faSearch} /> 
+                  Search Alice Mulga{" "}
                 </em>
               </NavLink>
-              <div className="image-div"></div>
+           
             </div>
 
+            {/* BOYAGIN */}
             <div
               style={{
                 backgroundColor: "#eee",
@@ -126,17 +120,18 @@ const About = (props) => {
             >
               <div className="about-site-title" id="alice-mulga">
                 <NavLink tag={RRNavLink} to="/search">
-                  <FontAwesomeIcon icon={faMapMarkerAlt} /> Boyagin Wandoo
-                  Woodland
+                  <FontAwesomeIcon icon={faMapMarkerAlt} />
+                  {" "}
+                  Boyagin Wandoo Woodland
                 </NavLink>
               </div>
               <p className="home-text-title">
-                <strong>Total Images:</strong>
-                <a href=""> 1000 </a> <strong> Image Types: </strong>
+                <strong>Total Images:</strong> {1000}
+                <strong> Image Types: </strong>
                 <a href=""> Leaf Area, </a>
                 <a href=""> Panorama </a>
               </p>
-              <p className="home-text">
+              <p className="home-text-light">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
                 id dapibus nisl. Mauris ut ipsum nunc. Proin maximus, justo quis
                 maximus ultricies, elit massa interdum lectus, sit amet pulvinar
@@ -144,24 +139,33 @@ const About = (props) => {
                 scelerisque purus. Morbi vel suscipit libero, vestibulum sodales
                 nisl. Cras quis consequat velit.{" "}
               </p>
-              <p className="home-text-title">
-                Data Distribution: All | <a>Leaf Area Index</a> | Panorama |
-                Phenocam | Photopoint |
-              </p>
+              <div style={{ paddingBottom: "50px" }}>
+                <p className="home-text-title">
+                  <strong>Data Distribution:</strong>
+                  All 
+                  |
+                  {" "}
+                  <a>Leaf Area Index</a>
+                  | Panorama | Phenocam | Photopoint |
+                </p>
 
-              <TimeLine />
+                <TimeLine />
+              </div>
+
               <NavLink
                 tag={RRNavLink}
                 to="/search#alice-mulga"
                 className="site-search-link"
               >
                 <em>
-                  <FontAwesomeIcon icon={faSearch} /> Search Boyagin Woodlands{" "}
+                  <FontAwesomeIcon icon={faSearch} />
+                  Search Boyagin Woodlands{" "}
                 </em>
               </NavLink>
-              <div className="image-div"></div>
+
             </div>
 
+            {/* CAPE TRIBULATION */}
             <div
               style={{
                 backgroundColor: "#eee",
@@ -171,12 +175,15 @@ const About = (props) => {
             >
               <div className="about-site-title" id="alice-mulga">
                 <NavLink tag={RRNavLink} to="/search">
-                  <FontAwesomeIcon icon={faMapMarkerAlt} /> Cape Tribulation
+                  <FontAwesomeIcon icon={faMapMarkerAlt} /> 
+                  {" "}
+                  Cape Tribulation
                 </NavLink>
               </div>
               <p className="home-text-title">
                 <strong>Total Images:</strong>
-                <a href=""> 1000 </a> <strong> Image Types: </strong>
+                <a href=""> 1000 </a> 
+                <strong> Image Types: </strong>
                 <a href=""> Leaf Area </a>
                 <a href=""> Panorama </a>
               </p>
@@ -186,31 +193,40 @@ const About = (props) => {
                 maximus ultricies, elit massa interdum lectus, sit amet pulvinar
                 nunc nibh et sem. Donec vitae dui pharetra, iaculis nunc at,
                 scelerisque purus. Morbi vel suscipit libero, vestibulum sodales
-                nisl. Cras quis consequat velit.{" "}
+                nisl. Cras quis consequat velit.
+                {" "}
               </p>
-              <p className="home-text-title">
-                Data Distribution: All | <a>Leaf Area Index</a> | Panorama |
-                Phenocam | Photopoint |
-              </p>
+              <div style={{ paddingBottom: "50px" }}>
+                <p className="home-text-title">
+                  <strong>Data Distribution:</strong>
+                  All 
+                  |
+                  {" "}
+                  <a>Leaf Area Index</a>
+                  | Panorama | Phenocam | Photopoint |
+                </p>
 
-              <TimeLine />
+                <TimeLine />
+              </div>
               <NavLink
                 tag={RRNavLink}
                 to="/search#alice-mulga"
                 className="site-search-link"
               >
                 <em>
-                  <FontAwesomeIcon icon={faSearch} /> Search Cape Tribulation{" "}
+                  <FontAwesomeIcon icon={faSearch} /> 
+                  Search Cape Tribulation{" "}
                 </em>
               </NavLink>
-              <div className="image-div"></div>
+              
             </div>
           </Col>
         </Row>
       </Container>
 
-      <div className="about-banner"></div>
+      {/* <div className="about-banner"></div> */}
 
+      {/* ABOUT -IMAGE TYPES */}
       <Container>
         <Row>
           <Col>
@@ -225,6 +241,7 @@ const About = (props) => {
               nisl. Cras quis consequat velit.
             </p>
 
+            {/* LEAF AREA INDEX */}
             <div
               style={{
                 backgroundColor: "#eee",
@@ -238,10 +255,15 @@ const About = (props) => {
               </div>
               <p className="home-text-title">
                 <strong>Total Images:</strong>
-                <a href=""> 1376 </a> <strong> Sites: </strong>
-                <a href=""> Alice Mulga(876), </a>
+                <a href=""> 1376 </a> <br />
+                <strong> Sites: </strong>
+                <Link> Alice Mulga(876), </Link>
                 <a href=""> Boyagin Wandoo Woodlands(345), </a>
                 <a href=""> Cape Tribulation(155) </a>
+                Cumberland Plain, Calperum Mallee, Cowbay, Gingin Banksia
+                Woodland, Great Western Woodland, Karawatha, Litchfield Savanna,
+                Mitchel Grass Rangeland, Robson Creek, Samford, Tumbarumba,
+                Wombat Stringybark Eucalypt, Whroo Victorian Dry Eucalypt
               </p>
               <p className="home-text">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
@@ -249,39 +271,49 @@ const About = (props) => {
                 maximus ultricies, elit massa interdum lectus, sit amet pulvinar
                 nunc nibh et sem.
               </p>
-              <p className="home-text-title">
-                Data Distribution: All | <a>Alice Mulga</a> | Boyagin Wandoo
-                Woodlands | Cape Tribulation |
-              </p>
-              <TimeLine />
+              <div style={{ paddingBottom: "50px" }}>
+                <p className="home-text-title">
+                  <strong>Data Distribution:</strong>
+                  All 
+                  |
+                  {" "}
+                  <a>Leaf Area Index</a>
+                  | Panorama | Phenocam | Photopoint |
+                </p>
+                <TimeLine />
+              </div>
+
+              {/* <div className="image-div">
+                <img
+                  className="sample-image"
+                  src="https://via.placeholder.com/250"
+                  alt="leaf area index"
+                />
+                <img
+                  className="sample-image"
+                  src="https://via.placeholder.com/250"
+                  alt="leaf area index"
+                />
+                <img
+                  className="sample-image"
+                  src="https://via.placeholder.com/250"
+                  alt="leaf area index"
+                />
+              </div> */}
               <NavLink
                 tag={RRNavLink}
                 to="/search#leaf-area"
                 className="site-search-link"
               >
                 <em>
-                  <FontAwesomeIcon icon={faSearch} /> Search Leaf Area Index{" "}
+                  <FontAwesomeIcon icon={faSearch} /> 
+                  Search Leaf Area Index
+                  {" "}
                 </em>
               </NavLink>
-              <div className="image-div">
-                {/* <img
-                  className="sample-image"
-                  src="https://via.placeholder.com/250"
-                  alt="leaf area index"
-                />
-                <img
-                  className="sample-image"
-                  src="https://via.placeholder.com/250"
-                  alt="leaf area index"
-                />
-                <img
-                  className="sample-image"
-                  src="https://via.placeholder.com/250"
-                  alt="leaf area index"
-                /> */}
-              </div>
             </div>
 
+            {/* PANORAMA */}
             <div
               style={{
                 backgroundColor: "#eee",
@@ -295,7 +327,8 @@ const About = (props) => {
               </div>
               <p className="home-text-title">
                 <strong>Total Images:</strong>
-                <a href=""> 1376 </a> <strong> Sites: </strong>
+                <a href=""> 1376 </a> 
+                <strong> Sites: </strong>
                 <a href=""> Alice Mulga(876), </a>
                 <a href=""> Boyagin Wandoo Woodlands(345), </a>
                 <a href=""> Cape Tribulation(155) </a>
@@ -306,95 +339,119 @@ const About = (props) => {
                 maximus ultricies, elit massa interdum lectus, sit amet pulvinar
                 nunc nibh et sem.
               </p>
-              <p className="home-text-title">
-                Data Distribution: All | <a>Alice Mulga</a> | Boyagin Wandoo
-                Woodlands | Cape Tribulation |
-              </p>
-              <TimeLine />
+              <div style={{ paddingBottom: "50px" }}>
+                <p className="home-text-title">
+                  Data Distribution: All | <a>Alice Mulga</a> | Boyagin Wandoo
+                  Woodlands | Cape Tribulation |
+                </p>
+                <TimeLine />
+              </div>
               <NavLink
                 tag={RRNavLink}
                 to="/search#panorama"
                 className="site-search-link"
               >
                 <em>
-                  <FontAwesomeIcon icon={faSearch} /> Search Panorama{" "}
+                  <FontAwesomeIcon icon={faSearch} /> 
+                  Search Panorama
+                  {" "}
                 </em>
               </NavLink>
-              <div className="image-div">
-                {/* <img
-                  className="sample-image"
-                  src="https://via.placeholder.com/250"
-                  alt="leaf area index"
-                />
-                <img
-                  className="sample-image"
-                  src="https://via.placeholder.com/250"
-                  alt="leaf area index"
-                />
-                <img
-                  className="sample-image"
-                  src="https://via.placeholder.com/250"
-                  alt="leaf area index"
-                /> */}
+         
+            </div>
+
+            {/* PHENOCAM */}
+            <div
+              style={{
+                backgroundColor: "#eee",
+                margin: "15px",
+                borderTop: "5px solid #6EB3A6",
+              }}
+            >
+              <div className="home-subtitle-type" id="about#phenocam">
+                <SvgPhenocam className="icon-small svg-icon-phenocam" />
+                Phenocam
               </div>
+              <p className="home-text-title">
+                <strong>Total Images:</strong>
+                <a href=""> 1376 </a>
+                <strong> Sites: </strong>
+                <a href=""> Alice Mulga(876), </a>
+                <a href=""> Boyagin Wandoo Woodlands(345), </a>
+                <a href=""> Cape Tribulation(155) </a>
+              </p>
+              <p className="home-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+                id dapibus nisl. Mauris ut ipsum nunc. Proin maximus, justo quis
+                maximus ultricies, elit massa interdum lectus, sit amet pulvinar
+                nunc nibh et sem.
+              </p>
+              <div style={{ paddingBottom: "50px" }}>
+                <p className="home-text-title">
+                  Data Distribution: All |<a>Alice Mulga</a>| Boyagin Wandoo
+                  Woodlands | Cape Tribulation
+                </p>
+                <TimeLine />
+              </div>
+              <NavLink
+                tag={RRNavLink}
+                to="/search#panorama"
+                className="site-search-link"
+              >
+                <em>
+                  <FontAwesomeIcon icon={faSearch} /> 
+                  Search Phenocam
+                  {" "}
+                </em>
+              </NavLink>
+            
             </div>
-            <div className="home-subtitle-type" id="about#phenocam">
-              <SvgPhenocam className="icon-small svg-icon-phenocam" />
-              Phenocam
-            </div>
-            <p className="home-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id
-              dapibus nisl. Mauris ut ipsum nunc. Proin maximus, justo quis
-              maximus ultricies, elit massa interdum lectus, sit amet pulvinar
-              nunc nibh et sem. Donec vitae dui pharetra, iaculis nunc at,
-              scelerisque purus. Morbi vel suscipit libero, vestibulum sodales
-              nisl. Cras quis consequat velit.
-            </p>
-            <div className="image-div">
-              <img
-                className="sample-image"
-                src="https://via.placeholder.com/250"
-                alt="leaf area index"
-              />
-              <img
-                className="sample-image"
-                src="https://via.placeholder.com/250"
-                alt="leaf area index"
-              />
-              <img
-                className="sample-image"
-                src="https://via.placeholder.com/250"
-                alt="leaf area index"
-              />
-            </div>
-            <div className="home-subtitle-type">
-              <SvgPhotopoint className="icon-small svg-icon-lai" />
-              Photopoint
-            </div>
-            <p className="home-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id
-              dapibus nisl. Mauris ut ipsum nunc. Proin maximus, justo quis
-              maximus ultricies, elit massa interdum lectus, sit amet pulvinar
-              nunc nibh et sem. Donec vitae dui pharetra, iaculis nunc at,
-              scelerisque purus. Morbi vel suscipit libero, vestibulum sodales
-              nisl. Cras quis consequat velit.
-            </p>
-            <div className="image-div">
-              <img
-                className="sample-image"
-                src="https://via.placeholder.com/250"
-                alt="leaf area index"
-              />
-              <img
-                className="sample-image"
-                src="https://via.placeholder.com/250"
-                alt="leaf area index"
-              />
-              <img
-                className="sample-image"
-                src="https://via.placeholder.com/250"
-                alt="leaf area index"
-              />
+
+            {/* PHOTOPOINT */}
+            <div
+              style={{
+                backgroundColor: "#eee",
+                margin: "15px",
+                borderTop: "5px solid #6EB3A6",
+              }}
+            >
+              <div className="home-subtitle-type">
+                <SvgPhotopoint className="icon-small svg-icon-photopoint" />
+                Photopoint
+              </div>
+              <p className="home-text-title">
+                <strong>Total Images:</strong>
+                <a href=""> 1376 </a>
+                <strong> Sites: </strong>
+                <a href=""> Alice Mulga(876), </a>
+                <a href=""> Boyagin Wandoo Woodlands(345), </a>
+                <a href=""> Cape Tribulation(155) </a>
+              </p>
+              <p className="home-text">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
+                id dapibus nisl. Mauris ut ipsum nunc. Proin maximus, justo quis
+                maximus ultricies, elit massa interdum lectus, sit amet pulvinar
+                nunc nibh et sem.
+              </p>
+              <div style={{ paddingBottom: "50px" }}>
+                <p className="home-text-title">
+                  Data Distribution: All |<a>Alice Mulga</a>| Boyagin Wandoo
+                  Woodlands | Cape Tribulation |
+                </p>
+                <TimeLine />
+              </div>
+              <NavLink
+                tag={RRNavLink}
+                to="/search#panorama"
+                className="site-search-link"
+              >
+                <em>
+                  <FontAwesomeIcon icon={faSearch} /> 
+                  Search Photopoint
+                  {" "}
+                </em>
+              </NavLink>
+      
             </div>
           </Col>
         </Row>
