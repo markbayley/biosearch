@@ -44,7 +44,6 @@ const About = () => {
         </Row>
       </Container>
       {/* <div className="about-banner"></div> */}
-      {/* ABOUT -IMAGE TYPES */}
       <Container className="content-about">
         <Row>
           <Col>

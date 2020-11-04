@@ -53,9 +53,9 @@ const Home = () => {
               <br />
               <br />
               <h5 style={{ textAlign: "center" }}>Search Sites</h5>
-              {/* <div className="home-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </div> */}
+              <div className="home-text-light">
+                Click to learn more
+              </div>
             </Button>
           </Link>
 
@@ -70,6 +70,7 @@ const Home = () => {
               <br />
               <br />
               <h5 style={{ textAlign: "center" }}>Filter Images</h5>
+              <div className="home-text-light">Click to learn more</div>
             </Button>
           </Link>
 
@@ -84,6 +85,7 @@ const Home = () => {
               <br />
               <br />
               <h5 style={{ textAlign: "center" }}> Download</h5>
+              <div className="home-text-light">Click to learn more</div>
             </Button>
           </Link>
         </div>

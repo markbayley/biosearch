@@ -11,20 +11,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { ReactComponent as SvgPhotopoint } from "../../assets/icons/photopoint.svg";
 import TimeLine from "./TimeLine";
 
-function Type({ name, id, svg }) {
+function Type({ name, id }) {
   return (
-    <div
-      style={{
-        backgroundColor: "#eee",
-        margin: "15px",
-        borderTop: "5px solid #6EB3A6",
-      }}
-    >
+    <div className="item-div-image">
       <div className="home-subtitle-type" id={id}>
         {/* <SvgLai className="icon-small svg-icon-lai" /> */}
-        <FontAwesomeIcon icon={faImages} />
-        {" "}
-        {name}
+        <NavLink tag={RRNavLink} to="/search" className="nav-link-type">
+          <FontAwesomeIcon icon={faImages} /> {name}
+        </NavLink>
       </div>
       <p className="home-text-title">
         <strong>Total Images:</strong>
@@ -47,16 +41,12 @@ function Type({ name, id, svg }) {
       </p>
       <div style={{ paddingBottom: "50px" }}>
         <p className="home-text-title">
-          <strong>Data Distribution:</strong>
-          All | <a>Leaf Area Index</a>| Panorama | Phenocam | Photopoint |
+          <strong>Data Distribution: </strong>
+          <a> Leaf Area Index</a>| Panorama | Phenocam | Photopoint | All
         </p>
         <TimeLine />
       </div>
-      <NavLink
-        tag={RRNavLink}
-        to="/search#{id}"
-        className="site-search-link"
-      >
+      <NavLink tag={RRNavLink} to="/search#{id}" className="site-search-link">
         <em>
           <FontAwesomeIcon icon={faSearch} />
           Search {name}{" "}
