@@ -1,10 +1,10 @@
 React image search biodiversity research appplication
 
-<img src="https://github.com/markbayley/tern6/blob/master/public/toggle.png" width="auto" height="auto"/>
+<img src="https://github.com/markbayley/tern6/blob/develop/public/toggle.png" width="auto" height="auto"/>
 
 Design of landing page
 
-<img src="https://github.com/markbayley/tern6/blob/master/public/mockup8.png" width="auto" height="auto"/>
+<img src="https://github.com/markbayley/tern6/blob/develop/public/mockup8.png" width="auto" height="auto"/>
 
 Quick Guide:
 
